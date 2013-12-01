@@ -3,6 +3,7 @@ package stuffstuff;
 import net.minecraft.creativetab.CreativeTabs;
 import stuffstuff.blocks.Blocks;
 import stuffstuff.config.ConfigHandler;
+import stuffstuff.creative.TabStuffStuff;
 import stuffstuff.info.ModInfo;
 import stuffstuff.items.Items;
 import stuffstuff.network.PacketHandler;
@@ -16,19 +17,11 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
-@Mod(modid = ModInfo.ID, name = ModInfo.NAME, version = ModInfo.VERSION)//, dependencies = "required-after:AppliedEnergistics")
+@Mod(modid = ModInfo.ID, name = ModInfo.NAME, version = ModInfo.VERSION)
 @NetworkMod(channels = {ModInfo.CHANNEL}, clientSideRequired = true, serverSideRequired = false, packetHandler = PacketHandler.class)
 public class StuffStuff
 {
-	public static CreativeTabs tabStuffStuff = new CreativeTabs("tabStuffStuff")
-    {
-		// TODO put this into its own full class.  It needs more functionality and would look silly here.
-//    	public ItemStack getIconItemStack()
-//    	{
-//    		return new ItemStack(Blocks.blockSingularity);
-////    		return new ItemStack(Block.stone);
-//    	}
-    };
+	public static CreativeTabs tabStuffStuff = new TabStuffStuff("StuffStuff");
 	
 	@Instance(ModInfo.ID)
 	public StuffStuff instance;

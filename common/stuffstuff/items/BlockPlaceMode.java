@@ -46,7 +46,6 @@ public enum BlockPlaceMode
 	
 	public BlockPlaceMode getPrevious()
 	{
-//		return fromInt((this.mode == 0 ? 5 : this.mode - 1));
 		return fromInt((this.mode - 1) % 5);
 	}
 	

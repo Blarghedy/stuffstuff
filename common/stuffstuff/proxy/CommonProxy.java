@@ -14,7 +14,7 @@ public class CommonProxy
 
 	public void registerHandlers()
 	{
-		System.out.println("Common handlers registered");
+
 	}
 	
     public void setKeyBinding(String name, int value) 

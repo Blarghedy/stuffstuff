@@ -37,6 +37,6 @@ public class Items
 
 	public static void registerRecipes()
     {
-	    
+	    // TODO come up with recipes that make sense and stuff
     }
 }

@@ -40,7 +40,8 @@ public class PacketHandler implements IPacketHandler
 		        }
 				break;
 			case SOUND_KEY:
-				
+				// TODO do stuff, probably involving the notification helper
+				break;
 		}
     }
 	
@@ -64,7 +65,7 @@ public class PacketHandler implements IPacketHandler
 	public static void sendSoundPacket(String sound)
 	{
 
-		
+		// TODO do stuff
 
 //        data.writeUTF(playerName);
 //        data.writeUTF(soundName);

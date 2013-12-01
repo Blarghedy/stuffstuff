@@ -22,6 +22,7 @@ public class StuffStuff
 {
 	public static CreativeTabs tabStuffStuff = new CreativeTabs("tabStuffStuff")
     {
+		// TODO put this into its own full class.  It needs more functionality and would look silly here.
 //    	public ItemStack getIconItemStack()
 //    	{
 //    		return new ItemStack(Blocks.blockSingularity);
@@ -31,7 +32,6 @@ public class StuffStuff
 	
 	@Instance(ModInfo.ID)
 	public StuffStuff instance;
-	//@SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
 
 	@SidedProxy(clientSide = "stuffstuff.proxy.ClientProxy", serverSide = "stuffstuff.proxy.CommonProxy")
 	public static CommonProxy proxy;

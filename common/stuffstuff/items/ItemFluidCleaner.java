@@ -25,9 +25,9 @@ import stuffstuff.fluid.FluidHelper;
 public class ItemFluidCleaner extends FluidCleanerBase
 {
 
-	public ItemFluidCleaner(int id)//, int stillFluid, int movingFluid)
+	public ItemFluidCleaner(int id)
 	{
-		super(id);//super(id, Block.waterStill.blockID, Block.waterMoving.blockID);
+		super(id);
 		setUnlocalizedName(ItemInfo.FLUID_CLEANER_UNLOCALIZED_NAME);
 	}
 	
@@ -40,7 +40,7 @@ public class ItemFluidCleaner extends FluidCleanerBase
 			FluidStack fluid = getFluid(itemstack);
 			if (fluid == null || fluid.getFluid() == null || fluid.amount == 0)
 			{
-				// it's empty so we need to check if we're targeting a fluid and fill it if so
+				// TODO add functionality to fill this item like a bucket
 			}
 			else
 			{

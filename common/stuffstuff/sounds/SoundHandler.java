@@ -17,10 +17,9 @@ public class SoundHandler {
             // If we cannot add the custom sound file to the pool, log the exception
             catch (Exception e) {
 //                LogHelper.warning("Failed loading sound file: " + soundFile);
-            	System.out.println("Failed loading sound file: " + sound);
+            	System.err.append("Failed loading sound file: " + sound);
             }
         }
-    	System.out.println("in onsoundload end");
     }
 
 	private void addSound(SoundLoadEvent e, Sounds s)

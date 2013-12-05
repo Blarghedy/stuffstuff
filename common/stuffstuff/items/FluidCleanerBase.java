@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import stuffstuff.StuffStuff;
+import stuffstuff.client.sounds.Sounds;
 import stuffstuff.config.MiscConfig;
 import stuffstuff.fluid.IFluidHandler;
 import stuffstuff.helper.StringHelper;
@@ -11,7 +12,6 @@ import stuffstuff.info.ItemInfo;
 import stuffstuff.items.helper.ChargeHelper;
 import stuffstuff.items.interfaces.IChargeable;
 import stuffstuff.items.interfaces.IKeyBound;
-import stuffstuff.sounds.Sounds;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;

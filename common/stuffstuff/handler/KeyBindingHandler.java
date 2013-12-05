@@ -5,6 +5,7 @@ import java.util.EnumSet;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import stuffstuff.handler.helper.KeyBindingHelper;
 import stuffstuff.info.ModInfo;
 import stuffstuff.items.interfaces.IKeyBound;
 import stuffstuff.network.PacketHandler;

@@ -26,6 +26,6 @@ public class ItemInfo
 	
 	public static final String BLOCK_PLACER_UNLOCALIZED_NAME = "blockPlacer";
 	public static final String BLOCK_PLACER_NAME = "Block Placer";
-	public static final String BLOCK_PLACER_ICON = "blockPlacer";
+	public static final String BLOCK_PLACER_ICON = "block_placer_open";
 	
 }	

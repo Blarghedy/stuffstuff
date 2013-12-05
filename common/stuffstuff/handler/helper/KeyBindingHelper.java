@@ -1,4 +1,4 @@
-package stuffstuff.handler;
+package stuffstuff.handler.helper;
 
 import java.util.ArrayList;
 

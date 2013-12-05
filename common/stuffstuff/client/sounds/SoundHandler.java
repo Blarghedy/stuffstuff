@@ -1,4 +1,4 @@
-package stuffstuff.sounds;
+package stuffstuff.client.sounds;
 
 import net.minecraftforge.client.event.sound.SoundLoadEvent;
 import net.minecraftforge.event.ForgeSubscribe;

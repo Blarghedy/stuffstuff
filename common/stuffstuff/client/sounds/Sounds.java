@@ -1,4 +1,4 @@
-package stuffstuff.sounds;
+package stuffstuff.client.sounds;
 
 import java.util.ArrayList;
 

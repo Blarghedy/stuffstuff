@@ -1,27 +1,69 @@
 package stuffstuff.items;
 
-import cpw.mods.fml.common.network.PacketDispatcher;
 import stuffstuff.StuffStuff;
 import stuffstuff.config.MiscConfig;
+import stuffstuff.info.GuiInfo;
 import stuffstuff.info.ItemInfo;
 import stuffstuff.items.helper.ChargeHelper;
 import stuffstuff.items.helper.BlockPlaceModeHelper;
 import stuffstuff.items.interfaces.IBlockPlaceMode;
 import stuffstuff.items.interfaces.IChargeable;
 import stuffstuff.items.interfaces.IKeyBound;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.Icon;
 
 public class ItemBlockPlacer extends Item implements IChargeable, IKeyBound, IBlockPlaceMode
 {
-	
+	public static final int NO_TARGET = -1;
+	public static final String TARGET_BLOCK_KEY = "ss target";
 	public ItemBlockPlacer(int id)
 	{
 		super(id);
 		setCreativeTab(StuffStuff.tabStuffStuff);
 		setUnlocalizedName(ItemInfo.BLOCK_PLACER_UNLOCALIZED_NAME);
 		
+	}
+	
+	@Override
+	public void registerIcons(IconRegister register)
+	{
+		itemIcon = register.registerIcon(ItemInfo.TEXTURE_LOCATION + ":" + ItemInfo.BLOCK_PLACER_ICON);
+	}
+	
+	@Override
+	public Icon getIconIndex(ItemStack itemstack)
+	{
+	    // TODO Auto-generated method stub
+	    return super.getIconIndex(itemstack);
+	}
+	
+	public int getTargetBlockID(ItemStack itemstack)
+	{
+		NBTTagCompound tag = itemstack.stackTagCompound;
+		if (tag == null || !tag.hasKey(TARGET_BLOCK_KEY))
+		{
+			return NO_TARGET;
+		}
+		else
+		{
+			return tag.getInteger(TARGET_BLOCK_KEY);
+		}
+	}
+	
+	public int setTargetBlockID(ItemStack itemstack, int target)
+	{
+		NBTTagCompound tag = itemstack.stackTagCompound;
+		if (tag == null) tag = itemstack.stackTagCompound = new NBTTagCompound();
+		if (target > 4095)
+		{
+			target = -1; // TODO figure out a solid thing to do here 'cause iunno
+		}
+		tag.setInteger(TARGET_BLOCK_KEY, target);
+		return target;
 	}
 
 	/*
@@ -61,6 +103,13 @@ public class ItemBlockPlacer extends Item implements IChargeable, IKeyBound, IBl
 	@Override
     public void doKeyBindingAction(EntityPlayer thePlayer, ItemStack itemStack, String keyBinding)
 	{
+		// charge: charge up
+		// shift + charge: charge down
+		// toggle: mode change
+		// shift + toggle: mode down
+		// extra: GUI
+		// shift + extra: select targeted block
+
 		System.out.println(keyBinding);
 		if (keyBinding.equals(MiscConfig.KEYBINDING_CHARGE)) 
 		{
@@ -98,6 +147,18 @@ public class ItemBlockPlacer extends Item implements IChargeable, IKeyBound, IBl
 			else
 			{
 				decrementBlockPlaceMode(itemStack);
+			}
+		}
+		else if (keyBinding.equals(MiscConfig.KEYBINDING_EXTRA))
+		{
+			//        thePlayer.openGui(EquivalentExchange3.instance, GuiIds.PORTABLE_CRAFTING, thePlayer.worldObj, (int) thePlayer.posX, (int) thePlayer.posY, (int) thePlayer.posZ);
+			if (!thePlayer.isSneaking())
+			{
+				thePlayer.openGui(StuffStuff.instance, GuiInfo.ITEM_BLOCK_PLACER_ID, thePlayer.worldObj, (int)thePlayer.posX, (int)thePlayer.posY, (int)thePlayer.posZ);
+			}
+			else
+			{
+				// select targeted block
 			}
 		}
 	}

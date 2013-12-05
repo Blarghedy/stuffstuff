@@ -2,6 +2,7 @@ package stuffstuff;
 
 import net.minecraft.creativetab.CreativeTabs;
 import stuffstuff.blocks.Blocks;
+import stuffstuff.client.interfaces.GuiHandler;
 import stuffstuff.config.ConfigHandler;
 import stuffstuff.creative.TabStuffStuff;
 import stuffstuff.info.ModInfo;
@@ -24,7 +25,7 @@ public class StuffStuff
 	public static CreativeTabs tabStuffStuff = new TabStuffStuff("StuffStuff");
 	
 	@Instance(ModInfo.ID)
-	public StuffStuff instance;
+	public static StuffStuff instance;
 
 	@SidedProxy(clientSide = "stuffstuff.proxy.ClientProxy", serverSide = "stuffstuff.proxy.CommonProxy")
 	public static CommonProxy proxy;
@@ -48,7 +49,7 @@ public class StuffStuff
 		Items.registerRecipes();
 		Blocks.addNames();
 		Blocks.registerTileEntities();
-		
+		new GuiHandler();
 	}
 	
 	@EventHandler

@@ -15,7 +15,7 @@ import stuffstuff.network.PacketHandler;
 
 public class GuiFluidCleanerBase extends GuiBase
 {
-	private static final ResourceLocation texture = new ResourceLocation(ModInfo.ID, GuiInfo.ITEM_BLOCK_PLACER_GUI);
+	private static final ResourceLocation texture = new ResourceLocation(ModInfo.ID, GuiInfo.FLUID_CLEANER_BASE_GUI);
 	private ItemStack itemstack;
 	private FluidCleanerBase item;
 	private static final GuiScaledRectangle chargeRect;

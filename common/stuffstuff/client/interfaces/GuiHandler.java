@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import stuffstuff.StuffStuff;
 import stuffstuff.info.GuiInfo;
+import stuffstuff.inventory.ContainerFluidCleanerBase;
 import stuffstuff.inventory.ContainerItemBlockPlacer;
 import stuffstuff.items.FluidCleanerBase;
 import stuffstuff.items.ItemBlockPlacer;
@@ -46,7 +47,7 @@ public class GuiHandler implements IGuiHandler
 					Item item = itemstack.getItem();
 					if (item instanceof FluidCleanerBase)
 					{
-						return new ContainerItemBlockPlacer(player.inventory, itemstack);
+						return new ContainerFluidCleanerBase(player.inventory, itemstack);
 					}
 				}
 				break;

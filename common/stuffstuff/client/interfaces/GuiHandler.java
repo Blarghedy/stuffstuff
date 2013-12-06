@@ -32,7 +32,7 @@ public class GuiHandler implements IGuiHandler
 					Item item = itemstack.getItem();
 					if (item instanceof ItemBlockPlacer)
 					{
-						return new ContainerItemBlockPlacer(player.inventory);
+						return new ContainerItemBlockPlacer(player.inventory, itemstack);
 					}
 				}
 //				TileEntity te = world.getBlockTileEntity(x, y, z);

@@ -195,24 +195,34 @@ public abstract class FluidCleanerBase extends Item implements IFluidContainerIt
 	/*
 	 * IChargeable implementation
 	 */
+	@Override
 	public int getCharge(ItemStack itemstack)
 	{
 		return ChargeHelper.getCharge(itemstack);
 	}
-	
+
+	@Override
 	public int setCharge(ItemStack itemstack, short charge)
 	{
 		return ChargeHelper.setCharge(itemstack, charge);
 	}
-	
+
+	@Override
 	public int incrementCharge(ItemStack itemstack)
 	{
 		return ChargeHelper.incrementCharge(itemstack);
 	}
-	
+
+	@Override
 	public int decrementCharge(ItemStack itemstack)
 	{
 		return ChargeHelper.decrementCharge(itemstack);
+	}
+
+	@Override
+	public double getChargePercent(ItemStack itemstack)
+	{
+		return ChargeHelper.getChargePercent(itemstack);
 	}
 	
 	/*

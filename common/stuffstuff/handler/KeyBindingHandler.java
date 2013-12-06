@@ -40,14 +40,15 @@ public class KeyBindingHandler extends KeyBindingRegistry.KeyHandler
 
                     if (currentItem != null) {
                         if (currentItem.getItem() instanceof IKeyBound) {
-                            if (!KeyBindingHelper.isClientSided(kb.keyDescription)) {
-                            	// TODO networking stuff yay... gotta tell the server to increase charge and stuff here
-//                                PacketDispatcher.sendPacketToServer(PacketTypeHandler.populatePacket(new PacketKeyPressed(kb.keyDescription)));
+                        	// TODO Pahimar had the client sided stuff, but I'm not sure I want to.  Look into that.  
+//                            if (!KeyBindingHelper.isClientSided(kb.keyDescription)) {
+//                            	// TODO networking stuff yay... gotta tell the server to increase charge and stuff here
+////                                PacketDispatcher.sendPacketToServer(PacketTypeHandler.populatePacket(new PacketKeyPressed(kb.keyDescription)));
                             	PacketHandler.sendKeyPacket(kb.keyDescription);
-                            }
-                            else {
-                                ((IKeyBound) currentItem.getItem()).doKeyBindingAction(player, currentItem, kb.keyDescription);
-                            }
+//                            }
+//                            else {
+//                                ((IKeyBound) currentItem.getItem()).doKeyBindingAction(player, currentItem, kb.keyDescription);
+//                            }
                         }
                     }
                 }

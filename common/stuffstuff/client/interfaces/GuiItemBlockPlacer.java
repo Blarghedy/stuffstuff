@@ -14,6 +14,7 @@ import stuffstuff.items.BlockPlaceMode;
 import stuffstuff.items.ItemBlockPlacer;
 import stuffstuff.items.Items;
 import stuffstuff.items.helper.ChargeHelper;
+import stuffstuff.network.PacketHandler;
 import stuffstuff.player.NotificationHelper;
 
 public class GuiItemBlockPlacer extends GuiBase
@@ -24,10 +25,12 @@ public class GuiItemBlockPlacer extends GuiBase
 	private ItemBlockPlacer item;
 	private static final GuiScaledRectangle chargeRect;
 	private static final GuiScaledRectangle powerRect;
-
+	public static final byte CHARGE_RECT_INDEX = -1;
+	public static final byte POWER_RECT_INDEX = -2;
+	
 	public GuiItemBlockPlacer(InventoryPlayer invPlayer, ItemStack itemstack)
 	{
-		super(new ContainerItemBlockPlacer(invPlayer));
+		super(new ContainerItemBlockPlacer(invPlayer, itemstack));
 		xSize = 175;
 		ySize = 165;
 		this.itemstack = itemstack;
@@ -42,8 +45,8 @@ public class GuiItemBlockPlacer extends GuiBase
 			buttons[i] = new GuiButton(46 + i * (18 + 5), 9, 18, 18, i);
 		}
 
-		chargeRect = new GuiScaledRectangle(10, 10, 10, 60, -1);
-		powerRect = new GuiScaledRectangle(28, 10, 10, 60, -1);
+		chargeRect = new GuiScaledRectangle(10, 10, 10, 60, CHARGE_RECT_INDEX);
+		powerRect = new GuiScaledRectangle(28, 10, 10, 60, POWER_RECT_INDEX);
 	}
 
 	@Override
@@ -60,7 +63,7 @@ public class GuiItemBlockPlacer extends GuiBase
 		int mode = item.getBlockPlaceMode(itemstack).getMode();
 		buttons[mode].draw(this, 176, 70);
 		// TODO possibly make a getChargePercent or something in IChargeable? This is kinda awkward
-		double charge = 1.0 * Items.itemBlockPlacer.getCharge(itemstack) / ChargeHelper.MAX_CHARGE;
+		double charge = Items.itemBlockPlacer.getChargePercent(itemstack);
 		chargeRect.draw(this, 176, 10, charge);
 		powerRect.draw(this, 186, 10);
 	}
@@ -93,6 +96,7 @@ public class GuiItemBlockPlacer extends GuiBase
 			if (b.mouseInButton(this, x, y))
 			{
 				Items.itemBlockPlacer.setBlockPlaceMode(this.itemstack, BlockPlaceMode.fromInt(b.getIndex()));
+				PacketHandler.sendGuiPacket((byte)b.getIndex(), (byte)-1);
 			}
 		}
 		
@@ -100,6 +104,7 @@ public class GuiItemBlockPlacer extends GuiBase
 		{
 			int charge = (int)(chargeRect.getRelativeMouseY(this, x, y) * 10 + .5);
 			Items.itemBlockPlacer.setCharge(itemstack, (short)charge);
+			PacketHandler.sendGuiPacket(CHARGE_RECT_INDEX, (byte)charge);
 		}
 	}
 }

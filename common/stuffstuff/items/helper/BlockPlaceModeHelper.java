@@ -45,7 +45,7 @@ public class BlockPlaceModeHelper
 	public static BlockPlaceMode incrementBlockPlaceMode(ItemStack itemstack)
 	{
 		BlockPlaceMode mode = getBlockPlaceMode(itemstack);
-		System.out.println(mode);
+		NotificationHelper.notifySelf("trying to increment " + mode + " to " + mode.getNext());
 		if (mode != null)
 		{
 			return setBlockPlaceMode(itemstack, mode.getNext());

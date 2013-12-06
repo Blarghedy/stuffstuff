@@ -96,6 +96,13 @@ public class ItemBlockPlacer extends Item implements IChargeable, IKeyBound, IBl
 		int charge = ChargeHelper.decrementCharge(itemstack);
 		return charge;
     }
+	
+	@Override
+	public double getChargePercent(ItemStack itemstack)
+	{
+		double charge = ChargeHelper.getChargePercent(itemstack);
+	    return charge;
+	}
 
 	/*
 	 * IKeyBound implementation
@@ -110,7 +117,6 @@ public class ItemBlockPlacer extends Item implements IChargeable, IKeyBound, IBl
 		// extra: GUI
 		// shift + extra: select targeted block
 
-		System.out.println(keyBinding);
 		if (keyBinding.equals(MiscConfig.KEYBINDING_CHARGE)) 
 		{
 			if (!thePlayer.isSneaking()) 

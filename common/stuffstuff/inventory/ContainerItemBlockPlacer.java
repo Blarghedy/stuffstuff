@@ -17,10 +17,12 @@ public class ContainerItemBlockPlacer extends Container
 	private int charge = 0;
 	private double power = 0;
 	private IInventory inventory;
+	private ItemStack itemstack;
 	
-	public ContainerItemBlockPlacer(InventoryPlayer player)
+	public ContainerItemBlockPlacer(InventoryPlayer player, ItemStack itemstack)
 	{
 	    inventory = new InventoryBasic("badgers", true, 1);
+	    this.itemstack = itemstack;
 	    
 		// TODO note whether this is the proper order.  VSWE's did it this way but EE3 didn't
         // Add the player's action bar slots to the container
@@ -59,6 +61,11 @@ public class ContainerItemBlockPlacer extends Container
 	    // TODO Auto-generated method stub
 //	    return super.transferStackInSlot(player, index);
 		return null;
+	}
+	
+	public ItemStack getItemStack()
+	{
+		return this.itemstack;
 	}
 
 }

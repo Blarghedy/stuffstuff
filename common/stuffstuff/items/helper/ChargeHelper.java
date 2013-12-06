@@ -1,5 +1,6 @@
 package stuffstuff.items.helper;
 
+import stuffstuff.items.Items;
 import stuffstuff.player.NotificationHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -71,5 +72,10 @@ public class ChargeHelper
 		
 		setCharge(itemstack, (short)(charge - 1));
 		return charge - 1;
+	}
+	
+	public static double getChargePercent(ItemStack itemstack)
+	{
+		return 1.0 * getCharge(itemstack) / MAX_CHARGE;
 	}
 }

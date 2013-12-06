@@ -9,6 +9,8 @@ import stuffstuff.items.helper.BlockPlaceModeHelper;
 import stuffstuff.items.interfaces.IBlockPlaceMode;
 import stuffstuff.items.interfaces.IChargeable;
 import stuffstuff.items.interfaces.IKeyBound;
+import stuffstuff.power.IStuffPower;
+import stuffstuff.power.helper.StuffPowerHelper;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -16,7 +18,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.Icon;
 
-public class ItemBlockPlacer extends Item implements IChargeable, IKeyBound, IBlockPlaceMode
+public class ItemBlockPlacer extends Item implements IChargeable, IKeyBound, IBlockPlaceMode, IStuffPower
 {
 	public static final int NO_TARGET = -1;
 	public static final String TARGET_BLOCK_KEY = "ss target";
@@ -66,8 +68,8 @@ public class ItemBlockPlacer extends Item implements IChargeable, IKeyBound, IBl
 		return target;
 	}
 
-	/*
-	 * IChargeable implementation
+	/**
+	 * {@link IChargeable} implementation
 	 */
 	@Override
     public int getCharge(ItemStack itemstack)
@@ -104,8 +106,8 @@ public class ItemBlockPlacer extends Item implements IChargeable, IKeyBound, IBl
 	    return charge;
 	}
 
-	/*
-	 * IKeyBound implementation
+	/**
+	 * {@link IKeyBound} implementation
 	 */
 	@Override
     public void doKeyBindingAction(EntityPlayer thePlayer, ItemStack itemStack, String keyBinding)
@@ -170,7 +172,7 @@ public class ItemBlockPlacer extends Item implements IChargeable, IKeyBound, IBl
 	}
 	
 	/**
-	 * IBlockPlaceMode implementation
+	 * {@link IBlockPlaceMode} implementation
 	 */
 
 	@Override
@@ -196,4 +198,44 @@ public class ItemBlockPlacer extends Item implements IChargeable, IKeyBound, IBl
     {
 	    return BlockPlaceModeHelper.decrementBlockPlaceMode(itemstack);
     }
+	
+	/**
+	 * {@link IStuffPower} implementation
+	 */
+
+	@Override
+    public double getStuffPower(ItemStack itemstack)
+    {
+		return StuffPowerHelper.getStuffPower(itemstack);
+    }
+
+	@Override
+    public double setStuffPower(ItemStack itemstack, double power)
+    {
+		return StuffPowerHelper.setStuffPower(itemstack, power);
+    }
+
+	@Override
+    public double increaseStuffPower(ItemStack itemstack, double amount)
+    {
+		return StuffPowerHelper.increaseStuffPower(itemstack, amount);
+    }
+
+	@Override
+    public double decreaseStuffPower(ItemStack itemstack, double amount)
+    {
+		return StuffPowerHelper.decreaseStuffPower(itemstack, amount);
+    }
+
+	@Override
+    public double getMaxStuffPower()
+    {
+		return 100;
+    }
+	
+	@Override
+	public double getStuffPowerPercent(ItemStack itemstack)
+	{
+	    return StuffPowerHelper.getStuffPower(itemstack);
+	}
 }

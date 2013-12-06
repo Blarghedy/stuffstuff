@@ -7,6 +7,7 @@ import net.minecraft.world.World;
 import stuffstuff.StuffStuff;
 import stuffstuff.info.GuiInfo;
 import stuffstuff.inventory.ContainerItemBlockPlacer;
+import stuffstuff.items.FluidCleanerBase;
 import stuffstuff.items.ItemBlockPlacer;
 import stuffstuff.player.NotificationHelper;
 import cpw.mods.fml.common.network.IGuiHandler;
@@ -23,10 +24,12 @@ public class GuiHandler implements IGuiHandler
 	@Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
     {
+		ItemStack itemstack;
+		
 		switch (ID)
 		{
 			case GuiInfo.ITEM_BLOCK_PLACER_ID:
-				ItemStack itemstack = player.getHeldItem();
+				itemstack = player.getHeldItem();
 				if (itemstack != null)
 				{
 					Item item = itemstack.getItem();
@@ -35,12 +38,18 @@ public class GuiHandler implements IGuiHandler
 						return new ContainerItemBlockPlacer(player.inventory, itemstack);
 					}
 				}
-//				TileEntity te = world.getBlockTileEntity(x, y, z);
-//				if (te != null && te instanceof TileEntityMachine)
-//				{
-//					return new ContainerMachine(player.inventory, (TileEntityMachine)te);
-//				}
-//				break;
+				break;
+			case GuiInfo.FLUID_CLEANER_BASE_ID:
+				itemstack = player.getHeldItem();
+				if (itemstack != null)
+				{
+					Item item = itemstack.getItem();
+					if (item instanceof FluidCleanerBase)
+					{
+						return new ContainerItemBlockPlacer(player.inventory, itemstack);
+					}
+				}
+				break;
 		}
 	    return null;
     }
@@ -48,10 +57,11 @@ public class GuiHandler implements IGuiHandler
 	@Override
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
     {
+		ItemStack itemstack;
 		switch (ID)
 		{
 			case GuiInfo.ITEM_BLOCK_PLACER_ID:
-				ItemStack itemstack = player.getHeldItem();
+				itemstack = player.getHeldItem();
 				if (itemstack != null)
 				{
 					Item item = itemstack.getItem();
@@ -60,6 +70,18 @@ public class GuiHandler implements IGuiHandler
 						return new GuiItemBlockPlacer(player.inventory, itemstack);
 					}
 				}
+				break;
+			case GuiInfo.FLUID_CLEANER_BASE_ID:
+				itemstack = player.getHeldItem();
+				if (itemstack != null)
+				{
+					Item item = itemstack.getItem();
+					if (item instanceof FluidCleanerBase)
+					{
+						return new GuiFluidCleanerBase(player.inventory, itemstack);
+					}
+				}
+				break;
 //				TileEntity te = world.getBlockTileEntity(x, y, z);
 //				if (te != null && te instanceof TileEntityMachine)
 //				{

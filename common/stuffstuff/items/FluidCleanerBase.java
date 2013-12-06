@@ -8,10 +8,12 @@ import stuffstuff.client.sounds.Sounds;
 import stuffstuff.config.MiscConfig;
 import stuffstuff.fluid.IFluidHandler;
 import stuffstuff.helper.StringHelper;
-import stuffstuff.info.ItemInfo;
+import stuffstuff.info.GuiInfo;
 import stuffstuff.items.helper.ChargeHelper;
 import stuffstuff.items.interfaces.IChargeable;
 import stuffstuff.items.interfaces.IKeyBound;
+import stuffstuff.power.IStuffPower;
+import stuffstuff.power.helper.StuffPowerHelper;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -23,7 +25,7 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidContainerItem;
 
-public abstract class FluidCleanerBase extends Item implements IFluidContainerItem, IFluidHandler, IChargeable, IKeyBound
+public abstract class FluidCleanerBase extends Item implements IFluidContainerItem, IFluidHandler, IChargeable, IKeyBound, IStuffPower
 {
 	ArrayList<ItemStack> itemstacks;
 	ArrayList<Fluid> acceptedFluids;
@@ -272,5 +274,56 @@ public abstract class FluidCleanerBase extends Item implements IFluidContainerIt
 				}
 			}
 		}
+		else if (keyBinding.equals(MiscConfig.KEYBINDING_EXTRA))
+		{
+			if (!thePlayer.isSneaking())
+			{
+				thePlayer.openGui(StuffStuff.instance, GuiInfo.FLUID_CLEANER_BASE_ID, thePlayer.worldObj, (int)thePlayer.posX, (int)thePlayer.posY, (int)thePlayer.posZ);
+			}
+			else
+			{
+				// TODO I like the idea of selecting a fluid here with shift + c
+			}
+		}
     }
+	
+	/**
+	 * {@link IStuffPower} implementation
+	 */
+
+	@Override
+    public double getStuffPower(ItemStack itemstack)
+    {
+		return StuffPowerHelper.getStuffPower(itemstack);
+    }
+
+	@Override
+    public double setStuffPower(ItemStack itemstack, double power)
+    {
+		return StuffPowerHelper.setStuffPower(itemstack, power);
+    }
+
+	@Override
+    public double increaseStuffPower(ItemStack itemstack, double amount)
+    {
+		return StuffPowerHelper.increaseStuffPower(itemstack, amount);
+    }
+
+	@Override
+    public double decreaseStuffPower(ItemStack itemstack, double amount)
+    {
+		return StuffPowerHelper.decreaseStuffPower(itemstack, amount);
+    }
+
+	@Override
+    public double getMaxStuffPower()
+    {
+		return 100;
+    }
+	
+	@Override
+	public double getStuffPowerPercent(ItemStack itemstack)
+	{
+	    return StuffPowerHelper.getStuffPower(itemstack);
+	}
 }

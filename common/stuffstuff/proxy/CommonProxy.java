@@ -14,7 +14,7 @@ public class CommonProxy
 
 	public void registerHandlers()
 	{
-
+		
 	}
 	
     public void setKeyBinding(String name, int value) 

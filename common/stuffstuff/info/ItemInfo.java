@@ -28,4 +28,8 @@ public class ItemInfo
 	public static final String BLOCK_PLACER_NAME = "Block Placer";
 	public static final String BLOCK_PLACER_ICON = "block_placer_open";
 	
+	public static final int BLOCK_PLACER_MAX_PER_TICK_DEFAULT = 100;
+	public static final String BLOCK_PLACER_MAX_PER_TICK_KEY = "Block placer max per tick";
+	public static int BLOCK_PLACER_MAX_PER_TICK;
+	
 }	

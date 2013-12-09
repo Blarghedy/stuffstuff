@@ -31,7 +31,7 @@ public class ItemBlockPlacerHandler implements ITickHandler
 	}
 	
 	// TODO this might need some refactoring for efficiency, depending on the performance hit from doing it this way
-	public void addPoint(EntityPlayer player, ItemStack itemstack, DimensionPoint p)
+	public void addPoint(EntityPlayer player, ItemStack itemstack, Point p)
 	{
 		LinkedList<Tuple> list = null;
 		if (map.containsKey(player))
@@ -49,15 +49,15 @@ public class ItemBlockPlacerHandler implements ITickHandler
 		}
 	}
 	
-	public void addPoints(EntityPlayer player, ItemStack itemstack, Collection<DimensionPoint> points)
+	public void addPoints(EntityPlayer player, ItemStack itemstack, Collection<Point> points)
 	{
-		for (DimensionPoint p : points)
+		for (Point p : points)
 		{
 			addPoint(player, itemstack, p);
 		}
 	}
 	
-	public void addRegion(EntityPlayer player, ItemStack itemstack, DimensionPoint p1, DimensionPoint p2, DimensionPoint p3, DimensionPoint face)
+	public void addRegion(EntityPlayer player, ItemStack itemstack, Point p1, Point p2, Point p3, Point face)
 	{
 		if (p1.getDimID() != p2.getDimID() || p2.getDimID() != p3.getDimID())
 		{

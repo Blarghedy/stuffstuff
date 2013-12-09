@@ -9,7 +9,6 @@ import java.util.PriorityQueue;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Tuple;
-import stuffstuff.helper.DimensionPoint;
 import stuffstuff.helper.PQNode;
 import stuffstuff.helper.PQNodeComparitor;
 import stuffstuff.helper.Point;
@@ -59,7 +58,7 @@ public class ItemBlockPlacerHandler implements ITickHandler
 	
 	public void addRegion(EntityPlayer player, ItemStack itemstack, Point p1, Point p2, Point p3, Point face)
 	{
-		if (p1.getDimID() != p2.getDimID() || p2.getDimID() != p3.getDimID())
+		if (p1.dimID != p2.dimID || p2.dimID != p3.dimID)
 		{
 			return;
 		}

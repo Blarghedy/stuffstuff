@@ -7,6 +7,7 @@ import stuffstuff.config.ConfigHandler;
 import stuffstuff.creative.TabStuffStuff;
 import stuffstuff.info.ModInfo;
 import stuffstuff.items.Items;
+import stuffstuff.items.handler.ItemBlockPlacerHandler;
 import stuffstuff.network.PacketHandler;
 import stuffstuff.proxy.CommonProxy;
 import cpw.mods.fml.common.Mod;
@@ -23,6 +24,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 public class StuffStuff
 {
 	public static CreativeTabs tabStuffStuff = new TabStuffStuff("StuffStuff");
+	public static ItemBlockPlacerHandler itemBlockPlacerHandler;
 	
 	@Instance(ModInfo.ID)
 	public static StuffStuff instance;
@@ -40,6 +42,7 @@ public class StuffStuff
 		proxy.initSounds();
 		proxy.initRenderer();
 		proxy.registerHandlers();
+		itemBlockPlacerHandler = new ItemBlockPlacerHandler();
 	}
 	
 	@EventHandler 

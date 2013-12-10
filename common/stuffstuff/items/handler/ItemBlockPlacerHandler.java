@@ -1,83 +1,114 @@
 package stuffstuff.items.handler;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.PriorityQueue;
 
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Tuple;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldProvider;
+import net.minecraftforge.common.ForgeDirection;
+import stuffstuff.StuffStuff;
 import stuffstuff.helper.PQNode;
 import stuffstuff.helper.PQNodeComparitor;
 import stuffstuff.helper.Point;
+import stuffstuff.info.ItemInfo;
 import stuffstuff.info.ModInfo;
+import stuffstuff.items.BlockPlaceMode;
 import stuffstuff.items.ItemBlockPlacer;
+import stuffstuff.items.Items;
+import stuffstuff.player.NotificationHelper;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
 
 public class ItemBlockPlacerHandler implements ITickHandler
 {
-	private HashMap<EntityPlayer, LinkedList<Tuple>> map;
-	private PriorityQueue<PQNode> queue;
+	private HashMap<ItemStack, PriorityQueue<PQNode>> map;
 	
 	public ItemBlockPlacerHandler()
 	{
-		queue = new PriorityQueue<PQNode>(100, new PQNodeComparitor());
-		map = new HashMap<EntityPlayer, LinkedList<Tuple>>();
-		// TODO probably unrelated to the constructor but we should probably just have things mapped to the ItemStack.  The player doesn't really matter, yeah?
+//		queue = new PriorityQueue<PQNode>(100, new PQNodeComparitor());
+		map = new HashMap<ItemStack, PriorityQueue<PQNode>>();
 	}
 	
-	// TODO this might need some refactoring for efficiency, depending on the performance hit from doing it this way
-	public void addPoint(EntityPlayer player, ItemStack itemstack, Point p)
+	private PriorityQueue<PQNode> getQueue(ItemStack itemstack)
 	{
-		LinkedList<Tuple> list = null;
-		if (map.containsKey(player))
-		{
-			list = map.get(player);
-		}
-		if (list == null)
-		{
-			list = new LinkedList<Tuple>();
-			map.put(player, list);
-		}
 		if (itemstack.getItem() instanceof ItemBlockPlacer)
 		{
-			list.add(new Tuple(itemstack, p));
+			if (map.containsKey(itemstack))
+			{
+				return map.get(itemstack);
+			}
+			else
+			{
+				PriorityQueue<PQNode> queue = new PriorityQueue<PQNode>(50, new PQNodeComparitor());
+				map.put(itemstack, queue);
+				return queue;
+			}
+		}
+		else
+		{
+			return null;
 		}
 	}
 	
-	public void addPoints(EntityPlayer player, ItemStack itemstack, Collection<Point> points)
+	public void event(Point clicked, int sideClicked, ItemStack itemstack)
 	{
-		for (Point p : points)
-		{
-			addPoint(player, itemstack, p);
-		}
-	}
-	
-	public void addRegion(EntityPlayer player, ItemStack itemstack, Point p1, Point p2, Point p3, Point face)
-	{
-		if (p1.dimID != p2.dimID || p2.dimID != p3.dimID)
-		{
-			return;
-		}
+		PriorityQueue<PQNode> queue = getQueue(itemstack);
+		if (queue == null) return; // it isn't a block placer
 		
+		ItemBlockPlacer item = (ItemBlockPlacer)itemstack.getItem();
+		BlockPlaceMode mode = item.getBlockPlaceMode(itemstack);
+		int charge = item.getCharge(itemstack);
+		
+		switch(mode)
+		{
+			// CREATION, EXTENSION, PILLAR, REPLACE, PROJECTION
+			case EXTENSION:
+				
+				break;
+			case PILLAR:
+				
+				break;
+			case REPLACE:
+				
+				break;
+			case PROJECTION:
+				
+				break;
+			case CREATION:
+			default:
+					
+		}
 	}
 	
-	public void stuff(Point p1, Point p2, Point start)
+	public void addRegion(Point p1, Point p2, Point start, int depth, ForgeDirection direction, ItemStack itemstack)
 	{
 		int minx, maxx, miny, maxy, minz, maxz;
 		int dimID = start.dimID;
 		int priority;
-		int depth;
+		int offsetX, offsetY, offsetZ;
+		PriorityQueue<PQNode> queue = getQueue(itemstack);
 		
 		if (start.dimID != p1.dimID || p1.dimID != p2.dimID)
 		{
 			// TODO probably an error message for the user although 
 			// I think this should be prevented before this function is called
+			System.out.printf("dimension IDs do not match %d %d %d\n", start.dimID, p1.dimID, p2.dimID);
 			return;
 		}
+		
+		if (direction == ForgeDirection.UNKNOWN)
+		{
+			// Is this possible?  I doubt it.
+			System.out.println("Returning: direction is UNKNOWN");
+			return;
+		}
+		
+		offsetX = direction.offsetX;
+		offsetY = direction.offsetY;
+		offsetZ = direction.offsetZ;
 		
 		if (p1.x < p2.x) 
 		{
@@ -112,7 +143,7 @@ public class ItemBlockPlacerHandler implements ITickHandler
 			maxz = p1.z;
 		}
 
-		for (int inDepth = 0; inDepth < 10; inDepth++)
+		for (int inDepth = 0; inDepth < depth; inDepth++)
 		{
 			for (int i = minx; i < maxx; i++)
 			{
@@ -132,7 +163,8 @@ public class ItemBlockPlacerHandler implements ITickHandler
 						{
 							priority += inDepth * 100;
 						}
-						queue.add(new PQNode(priority, new Point(i, j, k, dimID)));
+						queue.add(new PQNode(priority, new Point(i + offsetX * inDepth, j + offsetY * inDepth, k + offsetZ * inDepth, dimID), Items.itemBlockPlacer.getBlockPlaceMode(itemstack)));
+						NotificationHelper.notifySelf("Added to queue");
 					}
 				}
 			}
@@ -152,8 +184,47 @@ public class ItemBlockPlacerHandler implements ITickHandler
 	@Override
     public void tickEnd(EnumSet<TickType> type, Object... tickData)
     {
-	    // TODO Auto-generated method stub
-	    
+		System.out.println("I'm TICKING");
+		
+		ArrayList<ItemStack> delQueue = new ArrayList<ItemStack>();
+		World world;
+		
+	    for (ItemStack itemstack : map.keySet())
+	    {
+	    	PriorityQueue<PQNode> queue = map.get(itemstack);
+	    	int i = 0;
+	    	while (i < ItemInfo.BLOCK_PLACER_MAX_PER_TICK && !queue.isEmpty())
+	    	{
+	    		NotificationHelper.notifySelf("Ticking: " + i + " " + queue.size());
+	    		PQNode node = queue.poll();
+		    	world = WorldProvider.getProviderForDimension(node.point.dimID).worldObj;
+		    	
+	    		BlockPlaceMode mode = BlockPlaceMode.CREATION;
+	    		
+	    		if (node.args.length > 0 && node.args[0] instanceof BlockPlaceMode)
+	    		{
+	    			mode = (BlockPlaceMode) node.args[0];
+	    		}
+	    		
+	    		switch(mode)
+	    		{
+	    			case CREATION:
+	    			case PROJECTION:
+	    			case PILLAR:
+	    			case EXTENSION:
+	    				int blockID = world.getBlockId(node.point.x, node.point.y, node.point.z);
+	    				if (blockID == 0) 
+	    					world.setBlock(node.point.x, node.point.y, node.point.z, 1);
+	    				break;
+	    			case REPLACE:
+//	    				int blockID = world.getBlockId(node.point.x, node.point.y, node.point.z);
+//	    				if (blockID == 0) 
+	    					world.setBlock(node.point.x, node.point.y, node.point.z, 1);
+	    				
+	    		}
+	    		i++;
+	    	}
+	    }
     }
 
 	@Override

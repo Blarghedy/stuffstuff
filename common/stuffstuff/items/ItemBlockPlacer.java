@@ -18,6 +18,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.Icon;
+import net.minecraft.world.World;
 
 public class ItemBlockPlacer extends Item implements IChargeable, IKeyBound, IBlockPlaceMode, IStuffPower
 {
@@ -42,6 +43,15 @@ public class ItemBlockPlacer extends Item implements IChargeable, IKeyBound, IBl
 	{
 	    // TODO Auto-generated method stub
 	    return super.getIconIndex(itemstack);
+	}
+	
+	@Override
+	public boolean onItemUseFirst(ItemStack stack, EntityPlayer player,
+	        World world, int x, int y, int z, int side, float hitX, float hitY,
+	        float hitZ)
+	{
+		// This function is huge so I'm just sticking it in the helper to avoid bloat here.
+	    return BlockPlaceModeHelper.onItemUseFirst(stack, player, world, x, y, z, side, hitX, hitY, hitZ);
 	}
 	
 	public int getTargetBlockID(ItemStack itemstack)

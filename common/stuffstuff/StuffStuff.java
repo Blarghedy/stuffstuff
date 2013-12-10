@@ -39,10 +39,11 @@ public class StuffStuff
 		Items.init();
 		Blocks.init();
 		
+		itemBlockPlacerHandler = new ItemBlockPlacerHandler();
+		
 		proxy.initSounds();
 		proxy.initRenderer();
 		proxy.registerHandlers();
-		itemBlockPlacerHandler = new ItemBlockPlacerHandler();
 	}
 	
 	@EventHandler 

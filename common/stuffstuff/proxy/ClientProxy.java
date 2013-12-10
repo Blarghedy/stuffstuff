@@ -30,6 +30,7 @@ public class ClientProxy extends CommonProxy
 		MinecraftForge.EVENT_BUS.register(new RenderWorldLastHandler());
 		KeyBindingRegistry.registerKeyBinding(new KeyBindingHandler());
         MinecraftForge.EVENT_BUS.register(new SoundHandler());
+		System.out.println("REGISTERING TICK ON CLIENT: " + StuffStuff.itemBlockPlacerHandler);
 		TickRegistry.registerTickHandler(StuffStuff.itemBlockPlacerHandler, Side.CLIENT);
 		System.out.println("Client handlers registered.");
 	}

@@ -21,6 +21,7 @@ public class CommonProxy
 	{
 //				MinecraftForge.EVENT_BUS.register(new SoundHandler());
 //		MinecraftForge.EVENT_BUS.register(StuffStuff.itemBlockPlacerHandler);
+		
 		System.out.println("REGISTERING TICK ON SERVER: " + StuffStuff.itemBlockPlacerHandler);
 		TickRegistry.registerTickHandler(StuffStuff.itemBlockPlacerHandler, Side.SERVER);
 	}

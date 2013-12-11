@@ -115,7 +115,7 @@ public class BlockPlaceModeHelper
 				switch (mode)
 				{
 					case PILLAR:
-						depth = charge * 5;
+						depth = charge * 10;
 					case REPLACE:
 					case EXTENSION:
 						p1 = new Point(x + charge, y, z + charge, dimID);
@@ -135,7 +135,7 @@ public class BlockPlaceModeHelper
 				switch (mode)
 				{
 					case PILLAR:
-						depth = charge * 5;
+						depth = charge * 10;
 					case REPLACE:
 					case EXTENSION:
 						p1 = new Point(x + charge, y + charge, z, dimID);
@@ -155,18 +155,18 @@ public class BlockPlaceModeHelper
 				switch (mode)
 				{
 					case PILLAR:
-						depth = charge * 5;
+						depth = charge * 10;
 					case REPLACE:
 					case EXTENSION:
-						p1 = new Point(x + charge, y + charge, z, dimID);
-						p2 = new Point(x - charge, y - charge, z, dimID);
+						p1 = new Point(x, y + charge, z + charge, dimID);
+						p2 = new Point(x, y - charge, z - charge, dimID);
 						break;
 					case PROJECTION:
 						
 						break;
 					case CREATION:
-						p1 = new Point(x + 1, y + charge, z + charge, dimID);
-						p2 = new Point(x + 1, y - charge, z - charge, dimID);
+						p1 = new Point(x - 1, y + charge, z + charge, dimID);
+						p2 = new Point(x - 1, y - charge, z - charge, dimID);
 				}
 				break;
 			default:
@@ -180,7 +180,7 @@ public class BlockPlaceModeHelper
 		}
 		
 		StuffStuff.itemBlockPlacerHandler.addRegion(p1, p2, start, depth, ForgeDirection.getOrientation(ForgeDirection.OPPOSITES[sideHit.ordinal()]), itemstack);
-		NotificationHelper.notifySelf("Exiting properly: " + p1 + " " + p2 + " " + start + " " + depth + " " + ForgeDirection.getOrientation(ForgeDirection.OPPOSITES[sideHit.ordinal()]));
+//		NotificationHelper.notifySelf("Exiting properly: " + p1 + " " + p2 + " " + start + " " + depth + " " + ForgeDirection.getOrientation(ForgeDirection.OPPOSITES[sideHit.ordinal()]));
 		return false;
 	}
 

@@ -14,4 +14,9 @@ public class PQNode
 		this.point = point;
 		this.args = args;
 	}
+	
+	public String toString()
+	{
+		return "Node at " + point + " with args " + args;
+	}
 }

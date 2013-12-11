@@ -22,6 +22,7 @@ public class ConfigHandler
 			ItemInfo.FLUID_CLEANER_ID = config.getItem(ItemInfo.FLUID_CLEANER_KEY, ItemInfo.FLUID_CLEANER_DEFAULT).getInt();
 			ItemInfo.BLOCK_PLACER_ID = config.getItem(ItemInfo.BLOCK_PLACER_KEY, ItemInfo.BLOCK_PLACER_DEFAULT).getInt();
 			ItemInfo.BLOCK_PLACER_MAX_PER_TICK = config.getItem(ItemInfo.BLOCK_PLACER_MAX_PER_TICK_KEY, ItemInfo.BLOCK_PLACER_MAX_PER_TICK_DEFAULT).getInt();
+			ItemInfo.BLOCK_PLACER_MAX_PER_TICK = config.get(ItemInfo.BLOCK_PLACER_CATEGORY, ItemInfo.BLOCK_PLACER_MAX_PER_TICK_KEY, ItemInfo.BLOCK_PLACER_MAX_PER_TICK_DEFAULT).getInt();
 			BlockInfo.BLOCK_PLACER_ID = config.getBlock(BlockInfo.BLOCK_PLACER_KEY, BlockInfo.BLOCK_PLACER_DEFAULT).getInt();
 			
 			MiscConfig.PLAY_SOUNDS = config.get(MiscConfig.MISC_CONFIG_CATEGORY, MiscConfig.PLAY_SOUNDS_KEY, MiscConfig.PLAY_SOUNDS_DEFAULT).getBoolean(MiscConfig.PLAY_SOUNDS_DEFAULT); 

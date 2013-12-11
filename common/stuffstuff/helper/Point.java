@@ -17,6 +17,11 @@ public class Point
 		this(x, y, z, 0);
 	}
 	
+	public String toString()
+	{
+		return "Point at (" + x + " " + y + " " + z + ") in Dimension " + dimID;
+	}
+	
 	public Point minus(Point p)
 	{
 		return new Point(x - p.x, y - p.y, z - p.y, dimID);

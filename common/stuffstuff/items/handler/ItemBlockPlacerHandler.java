@@ -226,7 +226,7 @@ public class ItemBlockPlacerHandler implements ITickHandler
 				}
 				i++;
 			}
-			if (queue.size() == 0) delQueue.add(itemstack);
+//			if (queue.size() == 0) delQueue.add(itemstack);
 		}
 
 		for (ItemStack itemstack : delQueue)

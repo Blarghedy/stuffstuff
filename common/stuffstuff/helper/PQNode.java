@@ -1,7 +1,5 @@
 package stuffstuff.helper;
 
-import stuffstuff.items.BlockPlaceMode;
-
 public class PQNode
 {
 	public final int priority;

@@ -29,7 +29,7 @@ public class BlockInfo
 	public static final String BLOCK_PLAID_LOG_KEY = "logPlaid";
 	public static final String BLOCK_PLAID_LOG_NAME = "Plaid Log";
 	public static final String BLOCK_PLAID_LOG_UNLOCALIZED_NAME = "logPlaid";
-	public static final String[] BLOCK_PLAID_LOG_TEXTURES = {"log_plaid_red", "log_plaid_green", "log_plaid_blue", "log_plaid_white",  "log_plaid_red_green"};
+	public static final String[] BLOCK_PLAID_LOG_TEXTURES = {"log_plaid_red", "log_plaid_green", "log_plaid_blue", "log_plaid_white"};// I guess this isn't compatible with RotatableColumn,  "log_plaid_red_green"};
 
 	public static final String BLOCK_PLAID_LOG_TOP_TEXTURE = "log_plaid_top";
 

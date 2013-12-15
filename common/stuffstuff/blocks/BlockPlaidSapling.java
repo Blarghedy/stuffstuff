@@ -56,11 +56,16 @@ public class BlockPlaidSapling extends BlockSapling
 	}
 	
 	@Override
-	public void growTree(World par1World, int par2, int par3, int par4,
-	        Random par5Random)
+	public void growTree(World world, int x, int y, int z, Random rand)
 	{
 	    // TODO Auto-generated method stub
-	    super.growTree(par1World, par2, par3, par4, par5Random);
+	    super.growTree(world, x, y, z, rand);
+	}
+	
+	@Override
+	protected boolean canThisPlantGrowOnThisBlockID(int blockID)
+	{
+	    return super.canThisPlantGrowOnThisBlockID(blockID);
 	}
 
 }

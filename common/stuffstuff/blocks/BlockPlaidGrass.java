@@ -1,5 +1,7 @@
 package stuffstuff.blocks;
 
+import java.util.Random;
+
 import stuffstuff.StuffStuff;
 import stuffstuff.info.BlockInfo;
 import net.minecraft.block.Block;
@@ -7,7 +9,11 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
+import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.event.entity.EntityEvent.CanUpdate;
 
 public class BlockPlaidGrass extends Block
 {
@@ -21,6 +27,7 @@ public class BlockPlaidGrass extends Block
 		setStepSound(soundGrassFootstep);
 		setHardness(.7F);
 		setUnlocalizedName(BlockInfo.BLOCK_PLAID_GRASS_UNLOCALIZED_NAME);
+		setTickRandomly(true);
 	}
 	
 	@Override
@@ -52,42 +59,12 @@ public class BlockPlaidGrass extends Block
 	public Icon getBlockTexture(IBlockAccess blockAccess, int x, int y, int z, int side)
 	{
 	    ForgeDirection face = ForgeDirection.getOrientation(side);
-	    int index = 0;
-
-		// TODO might need to check on this for quadrants other than 1
-	    // This whole thing is an odd way to figure out which plaid icon to use.
-		int xmod = Math.abs(x % 64);
-		int zmod = Math.abs(z % 64);
-		
-		if (xmod == 0 || zmod == 0)
-		{
-			index = 2; // red
-		}
-		else if (xmod == 32 || zmod == 32)
-		{
-			index = 3; // white
-		}
-		else if ((xmod <= 17 || xmod >= 46) && (zmod <= 13 || zmod >= 51))
-		{
-			index = 1; // green
-		}
-		else if ((xmod >= 18 && xmod <= 45) && (zmod >= 14 && zmod <= 50))
-		{
-			index = 0; // blue
-		}
-		else if (xmod %2 == zmod % 2)
-		{
-			index = 1; // green
-		}
-		else
-		{
-			index = 0; // blue
-		}
+		PlaidColor color = PlaidColor.getPlaidColorFromPos(x, y, z);
 		
 	    switch(face)
 	    {
 	    	case UP:
-	    		return topIcons[index];
+	    		return topIcons[color.ordinal()];
 	    	case DOWN: // just need vanilla dirt texture
 	    		return Block.grass.getBlockTexture(blockAccess, x, y, z, side);
 	    	default: // all 4 sides
@@ -98,8 +75,67 @@ public class BlockPlaidGrass extends Block
 	    		}
 	    		else
 	    		{
-	    			return sideIcons[index];
+	    			return sideIcons[color.ordinal()];
 	    		}
 	    }
+	}
+	
+	@Override
+	public void updateTick(World world, int x, int y, int z, Random rand)
+	{
+		if (!world.isRemote)
+		{
+			if (world.getBlockLightValue(x, y + 1, z) < 4 && world.getBlockLightOpacity(x, y + 1, z) > 2)
+			{
+				world.setBlock(x, y, z, Block.dirt.blockID);
+			}
+			else if (world.getBlockLightValue(x, y + 1, z) > 9)
+			{
+				int newx = x, newy = y, newz = z;
+				
+				// Just for the heck of it, and because it is plaid, after all, let's
+				// encourage it to spread in a straight line instead of completely randomly
+				// The end effect of this should be diamond-shaped patches of plad grass.
+				switch(rand.nextInt(4))
+				{
+					case 0:
+						newx = x - 1;
+						break;
+					case 1:
+						newx = x + 1;
+						break;
+					case 2:
+						newz = z - 1;
+						break;
+					default:
+						newz = z + 1;
+				}
+				
+				// We really need a way to encourage it to grow up/down, so this does that.
+				newy = y + rand.nextInt(3) - 1;
+				
+				if (world.getBlockId(newx, newy, newz) == Block.dirt.blockID && world.getBlockLightValue(newx,  newy + 1, newz) > 3 && world.getBlockLightOpacity(newx, newy + 1, newz) < 3)
+				{
+					world.setBlock(newx, newy, newz, Blocks.blockPlaidGrass.blockID);
+				}
+			}
+		}
+	}
+	
+	@Override
+	public boolean canSustainPlant(World world, int x, int y, int z, ForgeDirection direction, IPlantable plant)
+	{
+        int plantID = plant.getPlantID(world, x, y + 1, z);
+        EnumPlantType plantType = plant.getPlantType(world, x, y + 1, z);
+        
+        if (plantType == EnumPlantType.Plains) return true;
+        
+	    return super.canSustainPlant(world, x, y, z, direction, plant);
+	}
+	
+	@Override
+	public int tickRate(World world)
+	{
+	    return super.tickRate(world);
 	}
 }

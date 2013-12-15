@@ -20,6 +20,7 @@ public class BlockPlaidPlank extends Block
 		setHardness(2F);
 		setStepSound(soundWoodFootstep);
 		setUnlocalizedName(BlockInfo.BLOCK_PLAID_PLANK_UNLOCALIZED_NAME);
+		setBurnProperties(id, 5, 20);
     }
 	
 	@Override

@@ -1,29 +1,33 @@
 package stuffstuff.blocks;
 
 import java.util.List;
+import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockLog;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
+import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 import stuffstuff.StuffStuff;
 import stuffstuff.info.BlockInfo;
 
-public class BlockPlaidLog extends Block
+public class BlockPlaidLog extends BlockLog
 {
 	private Icon[] icons;
 	private Icon topIcon;
 	
 	public BlockPlaidLog(int id)
     {
-	    super(id, Material.wood);
+	    super(id);
 		setCreativeTab(StuffStuff.tabStuffStuff);
 		setHardness(2F);
 		setStepSound(soundWoodFootstep);
 		setUnlocalizedName(BlockInfo.BLOCK_PLAID_LOG_UNLOCALIZED_NAME);
+		setBurnProperties(id, 5, 20);
     }
 
 	@Override
@@ -38,8 +42,19 @@ public class BlockPlaidLog extends Block
 	@Override
 	public Icon getIcon(int side, int meta)
 	{
-		ForgeDirection d = ForgeDirection.getOrientation(side);
-		return (d == ForgeDirection.UP || d == ForgeDirection.DOWN ? topIcon : icons[meta]);
+		return super.getIcon(side, meta); // BlockRotatedPillar takes care of this for us
+	}
+	
+	@Override
+	protected Icon getEndIcon(int par1)
+	{
+	    return topIcon;
+	}
+	
+	@Override
+	protected Icon getSideIcon(int meta)
+	{
+		return icons[meta];
 	}
 	
 	@Override
@@ -59,5 +74,23 @@ public class BlockPlaidLog extends Block
 	public int damageDropped(int meta)
 	{
 		return meta;
+	}
+	
+	@Override
+	public int idDropped(int par1, Random par2Random, int par3)
+	{
+		return blockID;
+	}
+	
+	@Override
+	public boolean isWood(World world, int x, int y, int z)
+	{
+	    return true;
+	}
+	
+	@Override
+	public boolean canSustainLeaves(World world, int x, int y, int z)
+	{
+		return true;
 	}
 }

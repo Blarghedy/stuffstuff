@@ -26,14 +26,14 @@ public class BlockPlaidLog extends BlockLog
 		setCreativeTab(StuffStuff.tabStuffStuff);
 		setHardness(2F);
 		setStepSound(soundWoodFootstep);
-		setUnlocalizedName(BlockInfo.BLOCK_PLAID_LOG_UNLOCALIZED_NAME);
+		setUnlocalizedName(BlockInfo.PLAID_LOG_UNLOCALIZED_NAME);
 		setBurnProperties(id, 5, 20);
     }
 
 	@Override
 	public void getSubBlocks(int id, CreativeTabs tab, List list)
 	{
-	    for (int i = 0; i < BlockInfo.BLOCK_PLAID_LOG_TEXTURES.length; i++)
+	    for (int i = 0; i < BlockInfo.PLAID_LOG_TEXTURES.length; i++)
 	    {
 	    	list.add(new ItemStack(id, 1, i));
 	    }
@@ -60,14 +60,14 @@ public class BlockPlaidLog extends BlockLog
 	@Override
 	public void registerIcons(IconRegister register)
 	{
-		icons = new Icon[BlockInfo.BLOCK_PLAID_LOG_TEXTURES.length];
+		icons = new Icon[BlockInfo.PLAID_LOG_TEXTURES.length];
 		
-	    for (int i = 0; i < BlockInfo.BLOCK_PLAID_LOG_TEXTURES.length; i++)
+	    for (int i = 0; i < BlockInfo.PLAID_LOG_TEXTURES.length; i++)
 	    {
-	    	icons[i] = register.registerIcon(BlockInfo.TEXTURE_LOCATION + ":" + BlockInfo.BLOCK_PLAID_LOG_TEXTURES[i]);
+	    	icons[i] = register.registerIcon(BlockInfo.TEXTURE_LOCATION + ":" + BlockInfo.PLAID_LOG_TEXTURES[i]);
 	    }
 	    
-	    topIcon = register.registerIcon(BlockInfo.TEXTURE_LOCATION + ":" + BlockInfo.BLOCK_PLAID_LOG_TOP_TEXTURE);
+	    topIcon = register.registerIcon(BlockInfo.TEXTURE_LOCATION + ":" + BlockInfo.PLAID_LOG_TOP_TEXTURE);
 	}
 	
 	@Override

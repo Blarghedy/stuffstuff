@@ -19,7 +19,7 @@ public class BlockPlaidPlank extends Block
 		setCreativeTab(StuffStuff.tabStuffStuff);
 		setHardness(2F);
 		setStepSound(soundWoodFootstep);
-		setUnlocalizedName(BlockInfo.BLOCK_PLAID_PLANK_UNLOCALIZED_NAME);
+		setUnlocalizedName(BlockInfo.PLAID_PLANK_UNLOCALIZED_NAME);
 		setBurnProperties(id, 5, 20);
     }
 	
@@ -68,7 +68,7 @@ public class BlockPlaidPlank extends Block
 			
 			for (int j = 0; j < BlockInfo.PLAID_WIDTH; j++)
 			{
-				icons[i][j] = register.registerIcon(BlockInfo.TEXTURE_LOCATION + ":" + BlockInfo.BLOCK_PLAID_PLANK_TEXTURES[i][j]);
+				icons[i][j] = register.registerIcon(BlockInfo.TEXTURE_LOCATION + ":" + BlockInfo.PLAID_PLANK_TEXTURES[i][j]);
 			}
 		}
 	}

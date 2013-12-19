@@ -15,29 +15,33 @@ public class Blocks
 	public static Block blockPlaidLog;
 	public static Block blockPlaidSapling;
 	public static Block blockPlaidGrass;
+	public static Block blockPlaidLeaves;
 	
 	public static void init()
     {
 //	    blockBlockPlacer = new BlockBlockPlacer(BlockInfo.BLOCK_PLACER_ID);
-	    blockPlaidPlank = new BlockPlaidPlank(BlockInfo.BLOCK_PLAID_PLANK_ID);
-	    blockPlaidLog = new BlockPlaidLog(BlockInfo.BLOCK_PLAID_LOG_ID);
-	    blockPlaidSapling = new BlockPlaidSapling(BlockInfo.BLOCK_PLAID_SAPLING_ID);
-	    blockPlaidGrass = new BlockPlaidGrass(BlockInfo.BLOCK_PLAID_GRASS_ID);
+	    blockPlaidPlank = new BlockPlaidPlank(BlockInfo.PLAID_PLANK_ID);
+	    blockPlaidLog = new BlockPlaidLog(BlockInfo.PLAID_LOG_ID);
+	    blockPlaidSapling = new BlockPlaidSapling(BlockInfo.PLAID_SAPLING_ID);
+	    blockPlaidGrass = new BlockPlaidGrass(BlockInfo.PLAID_GRASS_ID);
+	    blockPlaidLeaves = new BlockPlaidLeaves(BlockInfo.PLAID_LEAVES_ID);
 	    
 //		GameRegistry.registerBlock(blockBlockPlacer, BlockInfo.BLOCK_PLACER_NAME);
-		GameRegistry.registerBlock(blockPlaidPlank, BlockInfo.BLOCK_PLAID_PLANK_NAME);
-		GameRegistry.registerBlock(blockPlaidLog, ItemPlaidLog.class, BlockInfo.BLOCK_PLAID_LOG_NAME);
-		GameRegistry.registerBlock(blockPlaidSapling, BlockInfo.BLOCK_PLAID_SAPLING_NAME);
-		GameRegistry.registerBlock(blockPlaidGrass, BlockInfo.BLOCK_PLAID_GRASS_NAME);
+		GameRegistry.registerBlock(blockPlaidPlank, BlockInfo.PLAID_PLANK_NAME);
+		GameRegistry.registerBlock(blockPlaidLog, ItemPlaidLog.class, BlockInfo.PLAID_LOG_NAME);
+		GameRegistry.registerBlock(blockPlaidSapling, BlockInfo.PLAID_SAPLING_NAME);
+		GameRegistry.registerBlock(blockPlaidGrass, BlockInfo.PLAID_GRASS_NAME);
+		GameRegistry.registerBlock(blockPlaidLeaves, BlockInfo.PLAID_LEAVES_NAME);
 	}
 	
 	public static void addNames()
 	{
 //		LanguageRegistry.addName(blockBlockPlacer, BlockInfo.BLOCK_PLACER_NAME);
-		LanguageRegistry.addName(blockPlaidPlank, BlockInfo.BLOCK_PLAID_PLANK_NAME);
-		LanguageRegistry.addName(blockPlaidLog, BlockInfo.BLOCK_PLAID_LOG_NAME);
-		LanguageRegistry.addName(blockPlaidSapling, BlockInfo.BLOCK_PLAID_SAPLING_NAME);
-		LanguageRegistry.addName(blockPlaidGrass, BlockInfo.BLOCK_PLAID_GRASS_NAME);
+		LanguageRegistry.addName(blockPlaidPlank, BlockInfo.PLAID_PLANK_NAME);
+		LanguageRegistry.addName(blockPlaidLog, BlockInfo.PLAID_LOG_NAME);
+		LanguageRegistry.addName(blockPlaidSapling, BlockInfo.PLAID_SAPLING_NAME);
+		LanguageRegistry.addName(blockPlaidGrass, BlockInfo.PLAID_GRASS_NAME);
+		LanguageRegistry.addName(blockPlaidLeaves, BlockInfo.PLAID_LEAVES_NAME);
 	}
 
 	

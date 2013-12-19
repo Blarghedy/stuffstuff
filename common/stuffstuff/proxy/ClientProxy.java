@@ -3,11 +3,14 @@ package stuffstuff.proxy;
 import net.minecraftforge.common.MinecraftForge;
 import stuffstuff.StuffStuff;
 import stuffstuff.client.sounds.SoundHandler;
+import stuffstuff.handler.BonemealEventHandler;
 import stuffstuff.handler.DrawBlockHighlightHandler;
 import stuffstuff.handler.KeyBindingHandler;
 import stuffstuff.handler.RenderWorldLastHandler;
 import stuffstuff.handler.helper.KeyBindingHelper;
+import stuffstuff.worldgen.PlaidWorldGen;
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 
@@ -26,11 +29,15 @@ public class ClientProxy extends CommonProxy
 	
 	public void registerHandlers()
 	{
+		KeyBindingRegistry.registerKeyBinding(new KeyBindingHandler());
+		
 		MinecraftForge.EVENT_BUS.register(new DrawBlockHighlightHandler());
 		MinecraftForge.EVENT_BUS.register(new RenderWorldLastHandler());
-		KeyBindingRegistry.registerKeyBinding(new KeyBindingHandler());
-        MinecraftForge.EVENT_BUS.register(new SoundHandler());
+		MinecraftForge.EVENT_BUS.register(new SoundHandler());
+		MinecraftForge.EVENT_BUS.register(new BonemealEventHandler());
+        
 		TickRegistry.registerTickHandler(StuffStuff.itemBlockPlacerHandler, Side.CLIENT);
+		GameRegistry.registerWorldGenerator(new PlaidWorldGen());
 		System.out.println("Client handlers registered.");
 	}
 	

@@ -18,7 +18,7 @@ public class BlockBlockPlacer extends BlockContainer
 		setCreativeTab(StuffStuff.tabStuffStuff);
 		setHardness(2F);
 		setStepSound(Block.soundMetalFootstep);
-		setUnlocalizedName(BlockInfo.BLOCK_PLACER_UNLOCALIZED_NAME);
+		setUnlocalizedName(BlockInfo.PLACER_UNLOCALIZED_NAME);
     }
 
 	/**

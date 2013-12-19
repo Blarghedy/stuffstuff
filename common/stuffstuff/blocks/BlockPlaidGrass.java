@@ -26,24 +26,24 @@ public class BlockPlaidGrass extends Block
 		setCreativeTab(StuffStuff.tabStuffStuff);
 		setStepSound(soundGrassFootstep);
 		setHardness(.7F);
-		setUnlocalizedName(BlockInfo.BLOCK_PLAID_GRASS_UNLOCALIZED_NAME);
+		setUnlocalizedName(BlockInfo.PLAID_GRASS_UNLOCALIZED_NAME);
 		setTickRandomly(true);
 	}
 	
 	@Override
 	public void registerIcons(IconRegister register)
 	{
-		sideIcons = new Icon[BlockInfo.BLOCK_PLAID_GRASS_SIDE_TEXTURES.length];
-		topIcons = new Icon[BlockInfo.BLOCK_PLAID_GRASS_TOP_TEXTURES.length];
+		sideIcons = new Icon[BlockInfo.PLAID_GRASS_SIDE_TEXTURES.length];
+		topIcons = new Icon[BlockInfo.PLAID_GRASS_TOP_TEXTURES.length];
 
 		for (int i = 0; i < sideIcons.length; i++)
 		{
-			sideIcons[i] = register.registerIcon(BlockInfo.TEXTURE_LOCATION + ":" + BlockInfo.BLOCK_PLAID_GRASS_SIDE_TEXTURES[i]);
+			sideIcons[i] = register.registerIcon(BlockInfo.TEXTURE_LOCATION + ":" + BlockInfo.PLAID_GRASS_SIDE_TEXTURES[i]);
 		}
 
 		for (int i = 0; i < topIcons.length; i++)
 		{
-			topIcons[i] = register.registerIcon(BlockInfo.TEXTURE_LOCATION + ":" + BlockInfo.BLOCK_PLAID_GRASS_TOP_TEXTURES[i]);
+			topIcons[i] = register.registerIcon(BlockInfo.TEXTURE_LOCATION + ":" + BlockInfo.PLAID_GRASS_TOP_TEXTURES[i]);
 		}
 	}
 	

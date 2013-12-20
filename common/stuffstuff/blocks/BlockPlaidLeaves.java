@@ -1,8 +1,11 @@
 package stuffstuff.blocks;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockLeavesBase;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -24,6 +27,9 @@ public class BlockPlaidLeaves extends BlockLeavesBase
 		// TODO figure out how to use this third argument.
 	    super(id, Material.leaves, false);
 	    setCreativeTab(StuffStuff.tabStuffStuff);
+	    setLightOpacity(1);
+	    setStepSound(soundGrassFootstep);
+	    setHardness(.2F);
     }
 	
 	@Override
@@ -37,7 +43,7 @@ public class BlockPlaidLeaves extends BlockLeavesBase
 	@Override
 	public boolean shouldSideBeRendered(IBlockAccess blockAccess, int x, int y, int z, int side)
 	{
-	    return super.shouldSideBeRendered(blockAccess, x, y, z, side);
+	    return !isOpaqueCube() || super.shouldSideBeRendered(blockAccess, x, y, z, side);
 	}
 	
 	@Override
@@ -56,7 +62,7 @@ public class BlockPlaidLeaves extends BlockLeavesBase
 	@Override
 	public Icon getIcon(int side, int meta)
 	{
-	    return isOpaqueCube() ? opaqueIcons[meta] : icons[meta];
+	    return isOpaqueCube() ? opaqueIcons[meta % opaqueIcons.length] : icons[meta % icons.length];
 	}
 	
 	@Override
@@ -94,5 +100,34 @@ public class BlockPlaidLeaves extends BlockLeavesBase
 	public int damageDropped(int meta)
 	{
 		return meta;
+	}
+	
+	@Override
+	public int idDropped(int meta, Random rand, int a)
+	{
+		return Blocks.blockPlaidSapling.blockID;
+	}
+	
+	@Override
+	public int quantityDropped(Random random)
+	{
+		return random.nextInt(20) > 1 ? 0 : 1;
+	}
+	
+	@Override
+	public void dropBlockAsItemWithChance(World world, int x, int y, int z, int meta, float chance, int par7)
+	{
+		if(!world.isRemote)
+		{
+			ArrayList<ItemStack> items = getBlockDropped(world, x, y, z, meta, par7);
+			
+			for (ItemStack item : items)
+			{
+				if (world.rand.nextFloat() <= chance)
+				{
+					this.dropBlockAsItem_do(world, x, y, z, item);
+				}
+			}
+		}
 	}
 }

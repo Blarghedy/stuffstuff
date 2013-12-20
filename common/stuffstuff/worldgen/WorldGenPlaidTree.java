@@ -30,13 +30,13 @@ public class WorldGenPlaidTree extends WorldGenTrees
 	@Override
 	public boolean generate(World world, Random random, int x, int j, int z)
 	{
-		//		for (int i = 0; i < 50; i++)
-		//		{
-		int y = world.getActualHeight();
-		while (world.isAirBlock(x, y, z) && y-- > 0);
+		for (int i = 0; i < 5; i++)
+		{
+			int y = world.getActualHeight();
+			while (world.isAirBlock(x, y, z) && y-- > 0);
 
-		boolean grew = growTree(world, random, x + random.nextInt(16), y + 1, z + random.nextInt(16));
-		//		}
+			boolean grew = growTree(world, random, x + random.nextInt(16), y + 1, z + random.nextInt(16));
+		}
 		return true;
 	}
 
@@ -57,7 +57,7 @@ public class WorldGenPlaidTree extends WorldGenTrees
 			block = Block.blocksList[blockId];
 
 			if((block != null 
-					//					&& block.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, (BlockPlaidSapling)Blocks.blockPlaidSapling)
+					&& block.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, (BlockPlaidSapling)Blocks.blockPlaidSapling)
 					) 
 					&& y < worldHeight - treeHeight - 1)
 			{

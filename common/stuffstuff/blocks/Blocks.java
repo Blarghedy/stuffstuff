@@ -2,6 +2,7 @@ package stuffstuff.blocks;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import stuffstuff.blocks.items.ItemPlaidLeaves;
 import stuffstuff.blocks.items.ItemPlaidLog;
 import stuffstuff.config.ConfigHandler;
 import stuffstuff.info.BlockInfo;
@@ -31,7 +32,7 @@ public class Blocks
 		GameRegistry.registerBlock(blockPlaidLog, ItemPlaidLog.class, BlockInfo.PLAID_LOG_NAME);
 		GameRegistry.registerBlock(blockPlaidSapling, BlockInfo.PLAID_SAPLING_NAME);
 		GameRegistry.registerBlock(blockPlaidGrass, BlockInfo.PLAID_GRASS_NAME);
-		GameRegistry.registerBlock(blockPlaidLeaves, BlockInfo.PLAID_LEAVES_NAME);
+		GameRegistry.registerBlock(blockPlaidLeaves, ItemPlaidLeaves.class, BlockInfo.PLAID_LEAVES_NAME);
 	}
 	
 	public static void addNames()

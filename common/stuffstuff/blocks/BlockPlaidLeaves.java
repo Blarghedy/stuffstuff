@@ -17,15 +17,13 @@ import net.minecraft.world.World;
 import stuffstuff.StuffStuff;
 import stuffstuff.info.BlockInfo;
 
-public class BlockPlaidLeaves extends BlockLeaves//Base
+public class BlockPlaidLeaves extends BlockLeaves
 {
 	private Icon[] icons;
 	private Icon[] opaqueIcons;
 	
 	public BlockPlaidLeaves(int id)
     {
-		// TODO figure out how to use this third argument.
-//	    super(id, Material.leaves, false);
 		super(id);
 	    setCreativeTab(StuffStuff.tabStuffStuff);
 	    setLightOpacity(1);
@@ -78,10 +76,7 @@ public class BlockPlaidLeaves extends BlockLeaves//Base
 	@Override
 	public void breakBlock(World world, int x, int y, int z, int id, int meta)
 	{
-    	if (world.checkChunksExist(x - 2, y - 2, z - 2, x + 2, y + 2, z + 2))
-    	{
-    		// TODO this
-    	}
+		super.breakBlock(world, x, y, z, id, meta);
 	}
 	
 	@Override
@@ -93,7 +88,6 @@ public class BlockPlaidLeaves extends BlockLeaves//Base
 	@Override
 	public void beginLeavesDecay(World world, int x, int y, int z)
 	{
-	    // TODO Auto-generated method stub
 	    super.beginLeavesDecay(world, x, y, z);
 	}
 	

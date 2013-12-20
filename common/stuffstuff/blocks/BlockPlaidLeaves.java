@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
-import net.minecraft.block.BlockLeavesBase;
-import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 import stuffstuff.StuffStuff;
 import stuffstuff.info.BlockInfo;
 
-public class BlockPlaidLeaves extends BlockLeavesBase
+public class BlockPlaidLeaves extends BlockLeaves//Base
 {
 	private Icon[] icons;
 	private Icon[] opaqueIcons;
@@ -25,7 +25,8 @@ public class BlockPlaidLeaves extends BlockLeavesBase
 	public BlockPlaidLeaves(int id)
     {
 		// TODO figure out how to use this third argument.
-	    super(id, Material.leaves, false);
+//	    super(id, Material.leaves, false);
+		super(id);
 	    setCreativeTab(StuffStuff.tabStuffStuff);
 	    setLightOpacity(1);
 	    setStepSound(soundGrassFootstep);
@@ -62,7 +63,7 @@ public class BlockPlaidLeaves extends BlockLeavesBase
 	@Override
 	public Icon getIcon(int side, int meta)
 	{
-	    return isOpaqueCube() ? opaqueIcons[meta % opaqueIcons.length] : icons[meta % icons.length];
+	    return isOpaqueCube() ? opaqueIcons[meta & 3] : icons[meta & 3];
 	}
 	
 	@Override
@@ -99,7 +100,7 @@ public class BlockPlaidLeaves extends BlockLeavesBase
 	@Override
 	public int damageDropped(int meta)
 	{
-		return meta;
+		return meta & 3;
 	}
 	
 	@Override
@@ -130,4 +131,25 @@ public class BlockPlaidLeaves extends BlockLeavesBase
 			}
 		}
 	}
+	
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public int getBlockColor()
+    {
+    	// what even is this?
+    	return 16777215;
+    }
+    
+    @Override
+    public int getRenderColor(int par1)
+    {
+        return getBlockColor();
+    }
+    
+    @Override
+    public int colorMultiplier(IBlockAccess par1iBlockAccess, int par2, int par3, int par4)
+    {
+    	return getBlockColor();
+    }
 }

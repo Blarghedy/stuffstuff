@@ -44,14 +44,15 @@ public class StuffStuff
 		proxy.initSounds();
 		proxy.initRenderer();
 		proxy.registerHandlers();
+		proxy.registerBiomes();
+		Items.addNames();
+		Blocks.addNames();
 	}
 	
 	@EventHandler 
 	public void init(FMLInitializationEvent e)
 	{
-		Items.addNames();
 		Items.registerRecipes();
-		Blocks.addNames();
 		Blocks.registerTileEntities();
 		new GuiHandler();
 	}

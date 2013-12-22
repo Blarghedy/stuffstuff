@@ -13,16 +13,16 @@ import net.minecraft.world.gen.feature.WorldGenTrees;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.ForgeDirection;
 
-public class WorldGenPlaidTree extends WorldGenTrees
+public class WorldGenPlaidTrees extends WorldGenTrees
 {
 
 
-	public WorldGenPlaidTree(boolean doBlockNotify)
+	public WorldGenPlaidTrees(boolean doBlockNotify)
 	{
 		super(doBlockNotify);
 	}
 
-	public WorldGenPlaidTree()
+	public WorldGenPlaidTrees()
 	{
 		this(false);
 	}

@@ -21,6 +21,7 @@ public class ConfigHandler
 			ItemInfo.FLUID_SMOOTHER_ID = config.getItem(ItemInfo.FLUID_SMOOTHER_KEY, ItemInfo.FLUID_SMOOTHER_DEFAULT).getInt();
 			ItemInfo.FLUID_CLEANER_ID = config.getItem(ItemInfo.FLUID_CLEANER_KEY, ItemInfo.FLUID_CLEANER_DEFAULT).getInt();
 			ItemInfo.BLOCK_PLACER_ID = config.getItem(ItemInfo.BLOCK_PLACER_KEY, ItemInfo.BLOCK_PLACER_DEFAULT).getInt();
+			
 			ItemInfo.BLOCK_PLACER_MAX_PER_TICK = config.get(ItemInfo.BLOCK_PLACER_CATEGORY, ItemInfo.BLOCK_PLACER_MAX_PER_TICK_KEY, ItemInfo.BLOCK_PLACER_MAX_PER_TICK_DEFAULT).getInt();
 			
 			BlockInfo.PLACER_ID = config.getBlock(BlockInfo.PLACER_KEY, BlockInfo.PLACER_DEFAULT).getInt();
@@ -29,6 +30,11 @@ public class ConfigHandler
 			BlockInfo.PLAID_SAPLING_ID = config.getBlock(BlockInfo.PLAID_SAPLING_KEY, BlockInfo.PLAID_SAPLING_DEFAULT).getInt();
 			BlockInfo.PLAID_GRASS_ID = config.getBlock(BlockInfo.PLAID_GRASS_KEY, BlockInfo.PLAID_GRASS_DEFAULT).getInt();
 			BlockInfo.PLAID_LEAVES_ID = config.getBlock(BlockInfo.PLAID_LEAVES_KEY, BlockInfo.PLAID_LEAVES_DEFAULT).getInt();
+			BlockInfo.PLAID_SAND_ID = config.getBlock(BlockInfo.PLAID_SAND_KEY, BlockInfo.PLAID_SAND_DEFAULT).getInt();
+			BlockInfo.PLAID_GRAVEL_ID = config.getBlock(BlockInfo.PLAID_GRAVEL_KEY, BlockInfo.PLAID_GRAVEL_DEFAULT).getInt();
+			BlockInfo.PLAID_COBBLESTONE_ID = config.getBlock(BlockInfo.PLAID_COBBLESTONE_KEY, BlockInfo.PLAID_COBBLESTONE_DEFAULT).getInt();
+			BlockInfo.PLAID_STONE_ID = config.getBlock(BlockInfo.PLAID_STONE_KEY, BlockInfo.PLAID_STONE_DEFAULT).getInt();
+			BlockInfo.PLAID_DIRT_ID = config.getBlock(BlockInfo.PLAID_DIRT_KEY, BlockInfo.PLAID_DIRT_DEFAULT).getInt();
 			
 			MiscConfig.PLAY_SOUNDS = config.get(MiscConfig.MISC_CONFIG_CATEGORY, MiscConfig.PLAY_SOUNDS_KEY, MiscConfig.PLAY_SOUNDS_DEFAULT).getBoolean(MiscConfig.PLAY_SOUNDS_DEFAULT);
 			

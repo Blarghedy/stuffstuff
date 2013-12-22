@@ -25,6 +25,11 @@ public class CommonProxy
 		System.out.println("REGISTERING TICK ON SERVER: " + StuffStuff.itemBlockPlacerHandler);
 		TickRegistry.registerTickHandler(StuffStuff.itemBlockPlacerHandler, Side.SERVER);
 	}
+    
+    public void registerBiomes()
+    {
+    	
+    }
 	
     public void setKeyBinding(String name, int value) 
     {

@@ -19,6 +19,7 @@ public class BlockPlaidGrass extends Block
 {
 	private Icon[] sideIcons;
 	private Icon[] topIcons;
+	private Icon sideSnowIcon;
 	
 	public BlockPlaidGrass(int id)
 	{
@@ -35,6 +36,8 @@ public class BlockPlaidGrass extends Block
 	{
 		sideIcons = new Icon[BlockInfo.PLAID_GRASS_SIDE_TEXTURES.length];
 		topIcons = new Icon[BlockInfo.PLAID_GRASS_TOP_TEXTURES.length];
+		
+		sideSnowIcon = register.registerIcon(BlockInfo.TEXTURE_LOCATION + ":" + BlockInfo.PLAID_GRASS_SIDE_SNOW_TEXTURE);
 
 		for (int i = 0; i < sideIcons.length; i++)
 		{
@@ -71,7 +74,7 @@ public class BlockPlaidGrass extends Block
 	    		Material mat = blockAccess.getBlockMaterial(x, y + 1, z);
 	    		if (mat == Material.snow || mat == Material.craftedSnow)
 	    		{
-	    			return Block.dirt.getBlockTexture(blockAccess, x, y, z, side);
+	    			return sideSnowIcon;
 	    		}
 	    		else
 	    		{
@@ -114,7 +117,8 @@ public class BlockPlaidGrass extends Block
 				// We really need a way to encourage it to grow up/down, so this does that.
 				newy = y + rand.nextInt(3) - 1;
 				
-				if (world.getBlockId(newx, newy, newz) == Block.dirt.blockID && world.getBlockLightValue(newx,  newy + 1, newz) > 3 && world.getBlockLightOpacity(newx, newy + 1, newz) < 3)
+				if ((world.getBlockId(newx, newy, newz) == Block.dirt.blockID || world.getBlockId(newx, newy, newz) == Blocks.blockPlaidDirt.blockID)
+						&& world.getBlockLightValue(newx,  newy + 1, newz) > 3 && world.getBlockLightOpacity(newx, newy + 1, newz) < 3)
 				{
 					world.setBlock(newx, newy, newz, Blocks.blockPlaidGrass.blockID);
 				}

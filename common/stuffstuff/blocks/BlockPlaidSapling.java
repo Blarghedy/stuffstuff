@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import stuffstuff.StuffStuff;
 import stuffstuff.info.BlockInfo;
-import stuffstuff.worldgen.WorldGenPlaidTree;
+import stuffstuff.worldgen.WorldGenPlaidTrees;
 
 public class BlockPlaidSapling extends BlockSapling
 {
@@ -25,6 +25,7 @@ public class BlockPlaidSapling extends BlockSapling
         this.setCreativeTab(StuffStuff.tabStuffStuff);
 		setHardness(0.0F);
 		setStepSound(soundGrassFootstep);
+		setUnlocalizedName(BlockInfo.PLAID_SAPLING_UNLOCALIZED_NAME);
     }
 	
 	@Override
@@ -66,7 +67,7 @@ public class BlockPlaidSapling extends BlockSapling
 		if (world.isRemote) return;
 		
 		world.setBlockToAir(x, y, z);
-		boolean grew = new WorldGenPlaidTree().growTree(world, rand, x, y, z);
+		boolean grew = new WorldGenPlaidTrees().growTree(world, rand, x, y, z);
 		if (!grew) world.setBlock(x, y, z, blockID, 0, 4);
 	}
 	

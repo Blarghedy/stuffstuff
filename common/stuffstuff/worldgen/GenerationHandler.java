@@ -16,8 +16,8 @@ public class GenerationHandler implements IWorldGenerator
 	
 	public GenerationHandler()
 	{
-	    GameRegistry.registerWorldGenerator(this);
-	    plaidStoneGen = new WorldGenMinable(Blocks.blockPlaidStone.blockID, 100);
+//	    GameRegistry.registerWorldGenerator(this);
+//	    plaidStoneGen = new WorldGenMinable(Blocks.blockPlaidStone.blockID, 100);
 	}
 	
 	private void generateStandardOre(Random rand, int chunkX, int chunkZ, World world, int iterations, WorldGenerator gen, int lowestY, int highestY)

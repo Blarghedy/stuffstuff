@@ -15,8 +15,6 @@ import net.minecraftforge.common.ForgeDirection;
 
 public class WorldGenPlaidTrees extends WorldGenTrees
 {
-
-
 	public WorldGenPlaidTrees(boolean doBlockNotify)
 	{
 		super(doBlockNotify);
@@ -28,14 +26,14 @@ public class WorldGenPlaidTrees extends WorldGenTrees
 	}
 
 	@Override
-	public boolean generate(World world, Random random, int x, int j, int z)
+	public boolean generate(World world, Random random, int x, int tries, int z)
 	{
-		for (int i = 0; i < 5; i++)
+		for (int i = 0; i < 1; i++)
 		{
 			int y = world.getActualHeight();
 			while (world.isAirBlock(x, y, z) && y-- > 0);
 
-			boolean grew = growTree(world, random, x + random.nextInt(16), y + 1, z + random.nextInt(16));
+			boolean grew = growTree(world, random, x + random.nextInt(16) - 8, y + 1, z + random.nextInt(16) - 8);
 		}
 		return true;
 	}

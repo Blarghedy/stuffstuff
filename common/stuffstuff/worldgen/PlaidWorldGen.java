@@ -20,10 +20,6 @@ public class PlaidWorldGen implements IWorldGenerator
 		
 		BiomeGenBase b = world.getBiomeGenForCoords(x, z);
 		
-//		if(random.nextInt(100) < 40)
-		{
-			new WorldGenPlaidTrees().generate(world, random, x, random.nextInt(3) + 4, z);
-		}
     }
 
 }

@@ -7,6 +7,7 @@ import stuffstuff.blocks.Blocks;
 import stuffstuff.worldgen.PlaidWorldGen;
 import stuffstuff.worldgen.WorldGenPlaidTrees;
 import net.minecraft.block.Block;
+import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeDecorator;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.BiomeGenPlains;
@@ -26,7 +27,6 @@ public class BiomeGenPlaidPlain extends BiomeGenPlains
 	    super(id);
 	    setBiomeName("Plaid Plain");
 //	    
-	    System.out.println("Trying to use plaid grass blockID: " + (byte)Blocks.blockPlaidGrass.blockID + " should be " + Blocks.blockPlaidGrass.blockID);
 	    this.topBlock = (byte)Blocks.blockPlaidGrass.blockID;
         this.fillerBlock = (byte)Blocks.blockPlaidDirt.blockID;
         
@@ -38,22 +38,43 @@ public class BiomeGenPlaidPlain extends BiomeGenPlains
 //        this.waterColorMultiplier = 16777215;
 //        
         this.worldGeneratorTrees = new WorldGenPlaidTrees(false);
+        this.theBiomeDecorator.treesPerChunk = 1;
 //        this.worldGeneratorBigTree = new WorldGenBigTree(false);
 ////        this.worldGeneratorForest = new WorldGenForest(false);
 ////        this.worldGeneratorSwamp = new WorldGenSwamp();
     }
 	
 	@Override
+	public void decorate(World world, Random rand, int startX, int startZ)
+	{
+//		System.out.println("DECORATING IN GENERATOR " + startX + " " + startZ + " ");
+	    super.decorate(world, rand, startX, startZ);
+	    for (int x = startX; x < startX + 16; x++)
+	    {
+	    	for (int z = startZ; z < startZ + 16; z++)
+	    	{
+	    		int ytop = 255;
+	    		while (!world.isAirBlock(x, ytop--, z));
+	    		for (int y = ytop; y > 0; y--)
+	    		{
+	    			if (world.getBlockId(x, y, z) == Block.stone.blockID && world.getBiomeGenForCoords(x, z) instanceof BiomeGenPlaidPlain)
+	    				world.setBlock(x, y, z, Blocks.blockPlaidStone.blockID, 0, 2); // 2 so it doesn't update but sends to client
+	    		}
+	    	}
+	    }
+	}
+	
+	@Override
 	public BiomeDecorator createBiomeDecorator()
 	{
-		System.out.println("BIOME DECORATED");
 		return new BiomeDecoratorPlaidPlain(this);
 	}
 	
 	@Override
 	public WorldGenerator getRandomWorldGenForTrees(Random par1Random)
 	{
-	    return new WorldGenPlaidTrees(false);
+		System.out.println("Got tree gen");
+	    return worldGeneratorTrees;
 	}
 	
 	@Override

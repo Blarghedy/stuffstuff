@@ -33,7 +33,10 @@ public class WorldGenPlaidTrees extends WorldGenTrees
 			int y = world.getActualHeight();
 			while (world.isAirBlock(x, y, z) && y-- > 0);
 
-			boolean grew = growTree(world, random, x + random.nextInt(16) - 8, y + 1, z + random.nextInt(16) - 8);
+			boolean grew = growTree(world, random, x, y + 1, z);
+			
+			x += random.nextInt(16) - 8;
+			z += random.nextInt(16) - 8;
 		}
 		return true;
 	}

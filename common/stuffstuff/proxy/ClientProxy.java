@@ -16,6 +16,7 @@ import stuffstuff.handler.DrawBlockHighlightHandler;
 import stuffstuff.handler.KeyBindingHandler;
 import stuffstuff.handler.RenderWorldLastHandler;
 import stuffstuff.handler.helper.KeyBindingHelper;
+import stuffstuff.render.Renderers;
 import stuffstuff.worldgen.Biomes;
 import stuffstuff.worldgen.biome.BiomeGenPlaidPlain;
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
@@ -33,6 +34,7 @@ public class ClientProxy extends CommonProxy
 	
 	public void initRenderer()
 	{
+		Renderers.init();
 		System.out.println("Client renderers initialized");
 	}
 	

@@ -1,5 +1,7 @@
 package stuffstuff.fluid;
 
+import javax.swing.Renderer;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.util.Icon;
@@ -10,6 +12,7 @@ import stuffstuff.StuffStuff;
 import stuffstuff.blocks.PlaidColor;
 import stuffstuff.fluids.Fluids;
 import stuffstuff.info.FluidInfo;
+import stuffstuff.render.Renderers;
 
 public class BlockFluidPlaidWater extends BlockFluidClassic
 {
@@ -37,7 +40,7 @@ public class BlockFluidPlaidWater extends BlockFluidClassic
 	{
 	    // TODO Auto-generated method stub
 //	    return super.getRenderType();
-		return 0;
+		return Renderers.plaidFluidRenderID;
 	}
 
 	@Override
@@ -93,7 +96,7 @@ public class BlockFluidPlaidWater extends BlockFluidClassic
 			icons = flowingIcons;
 		}
 
-		return icons[color.ordinal()];
+		return icons[(color.ordinal() + 3) % 4];
 	}
 
 }

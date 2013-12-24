@@ -10,12 +10,14 @@ import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.Ev
 import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType.LAPIS;
 import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType.REDSTONE;
 import stuffstuff.blocks.Blocks;
+import stuffstuff.fluids.Fluids;
 import net.minecraft.block.Block;
 import net.minecraft.world.biome.BiomeDecorator;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenBigMushroom;
 import net.minecraft.world.gen.feature.WorldGenCactus;
 import net.minecraft.world.gen.feature.WorldGenFlowers;
+import net.minecraft.world.gen.feature.WorldGenLiquids;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraft.world.gen.feature.WorldGenReed;
 import net.minecraft.world.gen.feature.WorldGenSand;
@@ -46,7 +48,7 @@ public class BiomeDecoratorPlaidPlain extends BiomeDecorator
 //        this.redstoneGen = new WorldGenMinable(Block.oreRedstone.blockID, 7);
 //        this.diamondGen = new WorldGenMinable(Block.oreDiamond.blockID, 7);
 //        this.lapisGen = new WorldGenMinable(Block.oreLapis.blockID, 6);
-        this.generateLakes = true;
+        this.generateLakes = false;
         this.biome = biome;
 //        this.plantYellowGen = new WorldGenFlowers(Block.plantYellow.blockID);
 //        this.plantRedGen = new WorldGenFlowers(Block.plantRed.blockID);
@@ -67,7 +69,6 @@ public class BiomeDecoratorPlaidPlain extends BiomeDecorator
 	protected void decorate()
 	{
 	    super.decorate();
-	    
 	}
 
 	@Override

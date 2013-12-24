@@ -13,35 +13,50 @@ import stuffstuff.info.FluidInfo;
 
 public class BlockFluidPlaidWater extends BlockFluidClassic
 {
-//	private Icon stillIcon;
-//	private Icon flowingIcon;
+	//	private Icon stillIcon;
+	//	private Icon flowingIcon;
 	private Icon[] stillIcons;
 	private Icon[] flowingIcons;
-	
+
 	public BlockFluidPlaidWater(int id)
-    {
-	    super(id, Fluids.fluidPlaidWater, Material.water);
-	    setUnlocalizedName(FluidInfo.PLAID_WATER_UNLOCALIZED_NAME);
-	    setCreativeTab(StuffStuff.tabStuffStuff);
-    }
-	
+	{
+		super(id, Fluids.fluidPlaidWater, Material.water);
+		setUnlocalizedName(FluidInfo.PLAID_WATER_UNLOCALIZED_NAME);
+		setCreativeTab(StuffStuff.tabStuffStuff);
+	}
+
+	@Override
+	public boolean renderAsNormalBlock()
+	{
+		// TODO Auto-generated method stub
+		return super.renderAsNormalBlock();
+	}
+
+	@Override
+	public int getRenderType()
+	{
+	    // TODO Auto-generated method stub
+//	    return super.getRenderType();
+		return 0;
+	}
+
 	@Override
 	public void registerIcons(IconRegister register)
 	{
-//		stillIcon = register.registerIcon(FluidInfo.TEXTURE_LOCATION + ":" + FluidInfo.PLAID_WATER_STILL_TEXTURE);
-//		flowingIcon = register.registerIcon(FluidInfo.TEXTURE_LOCATION + ":" + FluidInfo.PLAID_WATER_MOVING_TEXTURE);
-		
+		//		stillIcon = register.registerIcon(FluidInfo.TEXTURE_LOCATION + ":" + FluidInfo.PLAID_WATER_STILL_TEXTURE);
+		//		flowingIcon = register.registerIcon(FluidInfo.TEXTURE_LOCATION + ":" + FluidInfo.PLAID_WATER_MOVING_TEXTURE);
+
 		stillIcons = new Icon[FluidInfo.PLAID_WATER_STILL_TEXTURES.length];
 		flowingIcons = new Icon[FluidInfo.PLAID_WATER_MOVING_TEXTURES.length];
-		
+
 		for (int i = 0; i < stillIcons.length; i++)
 		{
 			stillIcons[i] = register.registerIcon(FluidInfo.TEXTURE_LOCATION + ":" + FluidInfo.PLAID_WATER_STILL_TEXTURES[i]);
 			flowingIcons[i] = register.registerIcon(FluidInfo.TEXTURE_LOCATION + ":" + FluidInfo.PLAID_WATER_MOVING_TEXTURES[i]);
 		}
-		
+
 	}
-	
+
 	@Override
 	public Icon getIcon(int side, int meta)
 	{
@@ -62,7 +77,7 @@ public class BlockFluidPlaidWater extends BlockFluidClassic
 				return flowingIcons[3];
 		}
 	}
-	
+
 	@Override
 	public Icon getBlockTexture(IBlockAccess blockAccess, int x, int y, int z, int side)
 	{
@@ -77,7 +92,7 @@ public class BlockFluidPlaidWater extends BlockFluidClassic
 		{
 			icons = flowingIcons;
 		}
-		
+
 		return icons[color.ordinal()];
 	}
 

@@ -5,11 +5,13 @@ import stuffstuff.blocks.Blocks;
 import stuffstuff.client.interfaces.GuiHandler;
 import stuffstuff.config.ConfigHandler;
 import stuffstuff.creative.TabStuffStuff;
+import stuffstuff.fluids.Fluids;
 import stuffstuff.info.ModInfo;
 import stuffstuff.items.Items;
 import stuffstuff.items.handler.ItemBlockPlacerHandler;
 import stuffstuff.network.PacketHandler;
 import stuffstuff.proxy.CommonProxy;
+import stuffstuff.worldgen.Biomes;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -38,15 +40,18 @@ public class StuffStuff
 		ConfigHandler.init(e.getSuggestedConfigurationFile());
 		Items.init();
 		Blocks.init();
+		Biomes.init();
+		Fluids.init();
 		
 		itemBlockPlacerHandler = new ItemBlockPlacerHandler();
 		
 		proxy.initSounds();
 		proxy.initRenderer();
 		proxy.registerHandlers();
-		proxy.registerBiomes();
+		
 		Items.addNames();
 		Blocks.addNames();
+		Fluids.addNames();
 	}
 	
 	@EventHandler 

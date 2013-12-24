@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import stuffstuff.blocks.Blocks;
-import stuffstuff.worldgen.PlaidWorldGen;
+import stuffstuff.worldgen.Biomes;
 import stuffstuff.worldgen.WorldGenPlaidTrees;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;

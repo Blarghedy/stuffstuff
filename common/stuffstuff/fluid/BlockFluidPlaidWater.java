@@ -2,10 +2,12 @@ package stuffstuff.fluid;
 
 import javax.swing.Renderer;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import stuffstuff.StuffStuff;
@@ -16,8 +18,6 @@ import stuffstuff.render.Renderers;
 
 public class BlockFluidPlaidWater extends BlockFluidClassic
 {
-	//	private Icon stillIcon;
-	//	private Icon flowingIcon;
 	private Icon[] stillIcons;
 	private Icon[] flowingIcons;
 
@@ -31,24 +31,18 @@ public class BlockFluidPlaidWater extends BlockFluidClassic
 	@Override
 	public boolean renderAsNormalBlock()
 	{
-		// TODO Auto-generated method stub
 		return super.renderAsNormalBlock();
 	}
 
 	@Override
 	public int getRenderType()
 	{
-	    // TODO Auto-generated method stub
-//	    return super.getRenderType();
 		return Renderers.plaidFluidRenderID;
 	}
 
 	@Override
 	public void registerIcons(IconRegister register)
 	{
-		//		stillIcon = register.registerIcon(FluidInfo.TEXTURE_LOCATION + ":" + FluidInfo.PLAID_WATER_STILL_TEXTURE);
-		//		flowingIcon = register.registerIcon(FluidInfo.TEXTURE_LOCATION + ":" + FluidInfo.PLAID_WATER_MOVING_TEXTURE);
-
 		stillIcons = new Icon[FluidInfo.PLAID_WATER_STILL_TEXTURES.length];
 		flowingIcons = new Icon[FluidInfo.PLAID_WATER_MOVING_TEXTURES.length];
 
@@ -57,7 +51,6 @@ public class BlockFluidPlaidWater extends BlockFluidClassic
 			stillIcons[i] = register.registerIcon(FluidInfo.TEXTURE_LOCATION + ":" + FluidInfo.PLAID_WATER_STILL_TEXTURES[i]);
 			flowingIcons[i] = register.registerIcon(FluidInfo.TEXTURE_LOCATION + ":" + FluidInfo.PLAID_WATER_MOVING_TEXTURES[i]);
 		}
-
 	}
 
 	@Override
@@ -97,6 +90,24 @@ public class BlockFluidPlaidWater extends BlockFluidClassic
 		}
 
 		return icons[(color.ordinal() + 3) % 4];
+	}
+	
+	@Override
+	protected boolean canFlowInto(IBlockAccess world, int x, int y, int z)
+	{
+	    return world.getBlockId(x, y, z) == Block.waterStill.blockID || world.getBlockId(x, y, z) == Block.waterMoving.blockID ? false : super.canFlowInto(world, x, y, z);
+	}
+	
+	@Override
+	public boolean canDisplace(IBlockAccess world, int x, int y, int z)
+	{
+		return world.getBlockMaterial(x, y, z).isLiquid() ? false : super.canDisplace(world, x, y, z);
+	}
+	
+	@Override
+	public boolean displaceIfPossible(World world, int x, int y, int z)
+	{
+	    return world.getBlockMaterial(x, y, z).isLiquid() ? false : super.displaceIfPossible(world, x, y, z);
 	}
 
 }

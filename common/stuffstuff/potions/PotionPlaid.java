@@ -18,7 +18,7 @@ public class PotionPlaid extends Potion
 	@Override
 	public boolean isReady(int par1, int par2)
 	{
-		// TODO not sure what this is really
+		// not sure what this is really
 		return par1 >= 1; 
 	}
 	

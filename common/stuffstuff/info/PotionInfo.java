@@ -11,5 +11,6 @@ public class PotionInfo
 	public static final String PLAID_POTION_NAME = "Plaid Vision";
 	public static final String PLAID_KEY = "potionPlaid";
 	public static final String PLAID_UNLOCALIZED_NAME = "potionPlaid";
+	public static final String PLAID_OVERLAY_TEXTURE = "stuffstuff:textures/effects/plaid_potion.png";
 	
 }

@@ -2,10 +2,12 @@ package stuffstuff.handler.helper;
 
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.event.DrawBlockHighlightEvent;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
+import stuffstuff.handler.DrawBlockHighlightHandler;
 import cpw.mods.fml.client.FMLClientHandler;
 
 public class QuadHelper
@@ -14,6 +16,13 @@ public class QuadHelper
 	private static int pulse = 0;
     private static boolean doInc = true;
     
+    /**
+     * Renders a single pulsing quad in the render layer, if that's the proper term.  The
+     * rendering environment MUST be set up before this function is called.  
+     * For a sample use see {@link DrawBlockHighlightHandler#drawInWorldBlockPlaceOverlay(DrawBlockHighlightEvent)}
+     * @param texture
+     * @param maxTransparency
+     */
     public static void renderPulsingQuad(ResourceLocation texture, float maxTransparency)
     {
     	renderQuad(texture, maxTransparency, true);

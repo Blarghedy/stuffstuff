@@ -2,7 +2,6 @@ package stuffstuff.compat.buildcraft;
 
 import net.minecraftforge.fluids.FluidRegistry;
 import stuffstuff.info.ModInfo;
-import stuffstuff.items.ItemFluidCleaner;
 import stuffstuff.items.Items;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Loader;

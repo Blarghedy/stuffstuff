@@ -1,7 +1,7 @@
 package stuffstuff.fluid;
 
-import stuffstuff.info.FluidInfo;
 import net.minecraftforge.fluids.Fluid;
+import stuffstuff.info.FluidInfo;
 
 public class FluidPlaidWater extends Fluid
 {

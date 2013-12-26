@@ -1,9 +1,8 @@
 package stuffstuff.proxy;
 
+import stuffstuff.StuffStuff;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
-import net.minecraftforge.common.MinecraftForge;
-import stuffstuff.StuffStuff;
 
 public class CommonProxy
 {

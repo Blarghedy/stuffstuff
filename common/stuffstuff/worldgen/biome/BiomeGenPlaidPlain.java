@@ -1,24 +1,16 @@
 package stuffstuff.worldgen.biome;
 
-import java.util.ArrayList;
 import java.util.Random;
 
-import stuffstuff.blocks.Blocks;
-import stuffstuff.fluids.Fluids;
-import stuffstuff.worldgen.Biomes;
-import stuffstuff.worldgen.WorldGenPlaidTrees;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeDecorator;
-import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.BiomeGenPlains;
-import net.minecraft.world.biome.WorldChunkManager;
-import net.minecraft.world.gen.feature.WorldGenBigTree;
-import net.minecraft.world.gen.feature.WorldGenForest;
 import net.minecraft.world.gen.feature.WorldGenLiquids;
-import net.minecraft.world.gen.feature.WorldGenSwamp;
-import net.minecraft.world.gen.feature.WorldGenTrees;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import stuffstuff.blocks.Blocks;
+import stuffstuff.fluids.Fluids;
+import stuffstuff.worldgen.WorldGenPlaidTrees;
 
 
 public class BiomeGenPlaidPlain extends BiomeGenPlains

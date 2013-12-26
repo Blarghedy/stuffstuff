@@ -2,12 +2,12 @@ package stuffstuff.config;
 
 import java.io.File;
 
+import net.minecraftforge.common.Configuration;
 import stuffstuff.StuffStuff;
 import stuffstuff.info.BlockInfo;
 import stuffstuff.info.FluidInfo;
 import stuffstuff.info.ItemInfo;
 import stuffstuff.info.PotionInfo;
-import net.minecraftforge.common.Configuration;
 
 public class ConfigHandler
 {

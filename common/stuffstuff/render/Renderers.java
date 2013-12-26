@@ -1,7 +1,6 @@
 package stuffstuff.render;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
-import net.minecraft.client.renderer.RenderBlocks;
 
 public class Renderers
 {

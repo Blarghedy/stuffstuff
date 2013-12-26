@@ -4,19 +4,19 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import com.google.common.io.ByteArrayDataInput;
-import com.google.common.io.ByteStreams;
-
-import stuffstuff.info.ModInfo;
-import stuffstuff.inventory.ContainerItemBlockPlacer;
-import stuffstuff.items.BlockPlaceMode;
-import stuffstuff.items.ItemBlockPlacer;
-import stuffstuff.items.Items;
-import stuffstuff.items.interfaces.IKeyBound;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
+import stuffstuff.info.ModInfo;
+import stuffstuff.inventory.ContainerItemBlockPlacer;
+import stuffstuff.items.BlockPlaceMode;
+import stuffstuff.items.Items;
+import stuffstuff.items.interfaces.IKeyBound;
+
+import com.google.common.io.ByteArrayDataInput;
+import com.google.common.io.ByteStreams;
+
 import cpw.mods.fml.common.network.IPacketHandler;
 import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.common.network.Player;

@@ -3,6 +3,16 @@ package stuffstuff.items;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidContainerRegistry;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.IFluidContainerItem;
 import stuffstuff.StuffStuff;
 import stuffstuff.client.sounds.Sounds;
 import stuffstuff.config.MiscConfig;
@@ -14,16 +24,6 @@ import stuffstuff.items.interfaces.IChargeable;
 import stuffstuff.items.interfaces.IKeyBound;
 import stuffstuff.power.IStuffPower;
 import stuffstuff.power.helper.StuffPowerHelper;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidContainerRegistry;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.IFluidContainerItem;
 
 public abstract class FluidCleanerBase extends Item implements IFluidContainerItem, IFluidHandler, IChargeable, IKeyBound, IStuffPower
 {

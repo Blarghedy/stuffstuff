@@ -8,7 +8,6 @@ import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.Ev
 import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType.IRON;
 import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType.LAPIS;
 import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType.REDSTONE;
-import stuffstuff.blocks.Blocks;
 import net.minecraft.world.biome.BiomeDecorator;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenMinable;
@@ -16,6 +15,7 @@ import net.minecraft.world.gen.feature.WorldGenSand;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.OreGenEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
+import stuffstuff.blocks.Blocks;
 
 public class BiomeDecoratorPlaidPlain extends BiomeDecorator
 {

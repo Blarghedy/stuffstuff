@@ -1,8 +1,8 @@
 package stuffstuff.power.helper;
 
-import stuffstuff.power.IStuffPower;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import stuffstuff.power.IStuffPower;
 
 public class StuffPowerHelper
 {

@@ -10,7 +10,6 @@ import stuffstuff.inventory.ContainerFluidCleanerBase;
 import stuffstuff.inventory.ContainerItemBlockPlacer;
 import stuffstuff.items.FluidCleanerBase;
 import stuffstuff.items.ItemBlockPlacer;
-import stuffstuff.player.NotificationHelper;
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 

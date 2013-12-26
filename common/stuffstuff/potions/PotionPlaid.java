@@ -1,9 +1,9 @@
 package stuffstuff.potions;
 
-import stuffstuff.info.PotionInfo;
 import net.minecraft.client.Minecraft;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
+import stuffstuff.info.PotionInfo;
 
 public class PotionPlaid extends Potion
 {

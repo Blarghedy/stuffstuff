@@ -3,10 +3,10 @@ package stuffstuff.potions;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
-import cpw.mods.fml.common.registry.LanguageRegistry;
-import stuffstuff.info.PotionInfo;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
+import stuffstuff.info.PotionInfo;
+import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class Potions
 {

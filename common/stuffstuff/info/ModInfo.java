@@ -1,7 +1,5 @@
 package stuffstuff.info;
 
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.network.NetworkMod;
 
 public class ModInfo
 {

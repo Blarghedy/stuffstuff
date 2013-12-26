@@ -2,13 +2,14 @@ package stuffstuff.handler;
 
 import java.util.EnumSet;
 
-import org.lwjgl.opengl.GL11;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.ForgeDirection;
+
+import org.lwjgl.opengl.GL11;
+
 import stuffstuff.handler.helper.QuadHelper;
 import stuffstuff.info.ItemInfo;
 import stuffstuff.info.ModInfo;

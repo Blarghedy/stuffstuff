@@ -2,16 +2,13 @@ package stuffstuff.worldgen;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
+import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.WorldGenTrees;
+import net.minecraftforge.common.ForgeDirection;
 import stuffstuff.blocks.BlockPlaidSapling;
 import stuffstuff.blocks.Blocks;
 import stuffstuff.blocks.PlaidColor;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockSapling;
-import net.minecraft.util.Direction;
-import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.WorldGenTrees;
-import net.minecraft.world.gen.feature.WorldGenerator;
-import net.minecraftforge.common.ForgeDirection;
 
 public class WorldGenPlaidTrees extends WorldGenTrees
 {

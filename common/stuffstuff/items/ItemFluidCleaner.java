@@ -9,9 +9,9 @@ import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
+import stuffstuff.fluid.FluidHelper;
 import stuffstuff.info.ItemInfo;
 import stuffstuff.player.NotificationHelper;
-import stuffstuff.fluid.FluidHelper;
 
 public class ItemFluidCleaner extends FluidCleanerBase
 {

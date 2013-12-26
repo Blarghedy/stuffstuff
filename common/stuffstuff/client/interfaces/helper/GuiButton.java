@@ -3,7 +3,6 @@ package stuffstuff.client.interfaces.helper;
 import java.util.Arrays;
 
 import stuffstuff.client.interfaces.GuiBase;
-import stuffstuff.player.NotificationHelper;
 
 public class GuiButton
 {

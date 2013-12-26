@@ -1,7 +1,7 @@
 package stuffstuff.items.interfaces;
 
-import stuffstuff.items.BlockPlaceMode;
 import net.minecraft.item.ItemStack;
+import stuffstuff.items.BlockPlaceMode;
 
 public interface IBlockPlaceMode
 {

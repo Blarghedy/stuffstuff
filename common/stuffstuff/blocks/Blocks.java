@@ -1,13 +1,11 @@
 package stuffstuff.blocks;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
+import net.minecraft.block.Block;
 import stuffstuff.blocks.items.ItemPlaidLeaves;
 import stuffstuff.blocks.items.ItemPlaidLog;
-import stuffstuff.config.ConfigHandler;
 import stuffstuff.info.BlockInfo;
-import stuffstuff.info.ItemInfo;
-import net.minecraft.block.Block;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class Blocks
 {

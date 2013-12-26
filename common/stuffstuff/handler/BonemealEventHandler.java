@@ -1,9 +1,9 @@
 package stuffstuff.handler;
 
-import stuffstuff.blocks.BlockPlaidSapling;
 import net.minecraft.block.Block;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.player.BonemealEvent;
+import stuffstuff.blocks.BlockPlaidSapling;
 
 public class BonemealEventHandler
 {

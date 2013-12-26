@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -16,6 +14,8 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import stuffstuff.StuffStuff;
 import stuffstuff.info.BlockInfo;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockPlaidLeaves extends BlockLeaves
 {

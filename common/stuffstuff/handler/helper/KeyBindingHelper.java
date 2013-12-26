@@ -2,8 +2,8 @@ package stuffstuff.handler.helper;
 
 import java.util.ArrayList;
 
-import stuffstuff.config.MiscConfig;
 import net.minecraft.client.settings.KeyBinding;
+import stuffstuff.config.MiscConfig;
 
 
 /**

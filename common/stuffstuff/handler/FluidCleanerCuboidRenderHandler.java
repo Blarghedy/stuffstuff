@@ -19,7 +19,7 @@ import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
 
-public class FluidCleanerOverlayHandler implements ITickHandler
+public class FluidCleanerCuboidRenderHandler implements ITickHandler
 {
 	// Thanks Pahimar!
 

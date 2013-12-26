@@ -35,14 +35,12 @@ public enum Sounds
 	public static void play(int index, double x, double y, double z, float volume, float pitch)
 	{
 		Sounds s = get(index);
-		System.out.println("Attempting to play sound with index " + index + ".  Sound: " + s);
 		if (s != null) 
 			s.play(x, y, z, volume, pitch);
 	}
 	
 	public void play(double x, double y, double z, float volume, float pitch)
 	{
-		System.out.println("Playing " + SOUNDS_LOCATION + name);
 		Minecraft.getMinecraft().sndManager.playSound(SOUNDS_LOCATION + name, (float)x, (float)y, (float)z, volume, pitch);
 	}
 	

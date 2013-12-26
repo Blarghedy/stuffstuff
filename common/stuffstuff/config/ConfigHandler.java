@@ -6,6 +6,7 @@ import stuffstuff.StuffStuff;
 import stuffstuff.info.BlockInfo;
 import stuffstuff.info.FluidInfo;
 import stuffstuff.info.ItemInfo;
+import stuffstuff.info.PotionInfo;
 import net.minecraftforge.common.Configuration;
 
 public class ConfigHandler
@@ -38,6 +39,8 @@ public class ConfigHandler
 			BlockInfo.PLAID_DIRT_ID = config.getBlock(BlockInfo.PLAID_DIRT_KEY, BlockInfo.PLAID_DIRT_DEFAULT).getInt();
 			
 			FluidInfo.PLAID_WATER_ID = config.getBlock(FluidInfo.PLAID_WATER_KEY, FluidInfo.PLAID_WATER_DEFAULT).getInt();
+			
+			PotionInfo.PLAID_ID = config.get(PotionInfo.POTION_CATEGORY, PotionInfo.PLAID_KEY, PotionInfo.PLAID_DEFAULT).getInt();
 			
 			MiscConfig.PLAY_SOUNDS = config.get(MiscConfig.MISC_CONFIG_CATEGORY, MiscConfig.PLAY_SOUNDS_KEY, MiscConfig.PLAY_SOUNDS_DEFAULT).getBoolean(MiscConfig.PLAY_SOUNDS_DEFAULT);
 			

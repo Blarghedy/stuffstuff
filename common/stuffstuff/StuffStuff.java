@@ -10,6 +10,7 @@ import stuffstuff.info.ModInfo;
 import stuffstuff.items.Items;
 import stuffstuff.items.handler.ItemBlockPlacerHandler;
 import stuffstuff.network.PacketHandler;
+import stuffstuff.potions.Potions;
 import stuffstuff.proxy.CommonProxy;
 import stuffstuff.worldgen.Biomes;
 import cpw.mods.fml.common.Mod;
@@ -42,6 +43,7 @@ public class StuffStuff
 		Blocks.init();
 		Biomes.init();
 		Fluids.init();
+		Potions.init();
 		
 		itemBlockPlacerHandler = new ItemBlockPlacerHandler();
 		

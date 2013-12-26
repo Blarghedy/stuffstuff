@@ -92,7 +92,6 @@ public class BiomeGenPlaidPlain extends BiomeGenPlains
 	@Override
 	public WorldGenerator getRandomWorldGenForTrees(Random par1Random)
 	{
-		System.out.println("Got tree gen");
 		return worldGeneratorTrees;
 	}
 

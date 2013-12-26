@@ -5,6 +5,13 @@ import javax.swing.Renderer;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -14,6 +21,7 @@ import stuffstuff.StuffStuff;
 import stuffstuff.blocks.PlaidColor;
 import stuffstuff.fluids.Fluids;
 import stuffstuff.info.FluidInfo;
+import stuffstuff.potions.Potions;
 import stuffstuff.render.Renderers;
 
 public class BlockFluidPlaidWater extends BlockFluidClassic
@@ -110,4 +118,16 @@ public class BlockFluidPlaidWater extends BlockFluidClassic
 	    return world.getBlockMaterial(x, y, z).isLiquid() ? false : super.displaceIfPossible(world, x, y, z);
 	}
 
+	@Override
+	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
+	{
+//		if(entity instanceof EntityPlayer || entity instanceof EntityMob || entity instanceof EntityCreature)
+		if(entity instanceof EntityLivingBase)
+		{
+			// ent.addPotionEffect(new PotionEffect(Potion.poison.id, 12 * 20, 0));
+			EntityLivingBase ent = (EntityLivingBase)entity;
+			ent.addPotionEffect(new PotionEffect(Potion.invisibility.id, 5*20, 0));
+			ent.addPotionEffect(new PotionEffect(Potions.potionPlaid.id, 5*20, 0));
+		}
+	}
 }

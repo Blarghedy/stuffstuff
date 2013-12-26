@@ -53,12 +53,10 @@ public class FluidHelper
 		Block block = Block.blocksList[id];
 		if (block == null)
 		{
-			System.out.printf("null block at %d %d %d\n", x, y, z);
 			return false;
 		}
 		else
 		{
-			System.out.printf("not null block at %d %d %d\n", x, y, z);
 			return block instanceof IFluidBlock || 
 					id == Block.waterMoving.blockID || 
 					id == Block.waterStill.blockID || 
@@ -76,18 +74,14 @@ public class FluidHelper
 		}
 		else if (fluid.equals(FluidRegistry.LAVA))
 		{
-			System.out.println(" - lava");
 			return id == Block.lavaMoving.blockID || id == Block.lavaStill.blockID;
 		}
 		else if (fluid.equals(FluidRegistry.WATER))
 		{
-			System.out.println(" - water");
 			return id == Block.waterMoving.blockID || id == Block.waterStill.blockID;
 		}
 		else
 		{
-			System.out.print("ID: " + id + " ");
-			System.out.println((id == fluid.getBlockID()) + " " + Block.blocksList[id].getUnlocalizedName());
 			return id == fluid.getBlockID();
 		}
 	}

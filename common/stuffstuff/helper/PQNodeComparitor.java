@@ -9,7 +9,6 @@ public class PQNodeComparitor implements Comparator<PQNode>
     {
 		if (o1 == null || o2 == null)
 		{
-			System.out.println(o1 + " " + o2);
 //			return 0;
 		}
 	    return o1.priority - o2.priority;

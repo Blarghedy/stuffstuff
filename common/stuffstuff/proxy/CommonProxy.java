@@ -4,6 +4,7 @@ import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 import net.minecraftforge.common.MinecraftForge;
 import stuffstuff.StuffStuff;
+import stuffstuff.handler.ServerTickHandler;
 
 public class CommonProxy
 {
@@ -22,7 +23,7 @@ public class CommonProxy
 //				MinecraftForge.EVENT_BUS.register(new SoundHandler());
 //		MinecraftForge.EVENT_BUS.register(StuffStuff.itemBlockPlacerHandler);
 		
-		System.out.println("REGISTERING TICK ON SERVER: " + StuffStuff.itemBlockPlacerHandler);
+		// TODO does this need to be here or in client?
 		TickRegistry.registerTickHandler(StuffStuff.itemBlockPlacerHandler, Side.SERVER);
 	}
 	

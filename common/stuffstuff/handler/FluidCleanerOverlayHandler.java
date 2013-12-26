@@ -59,7 +59,6 @@ public class FluidCleanerOverlayHandler implements ITickHandler
         double x = Math.floor(player.posX) + 0.5F;
         double y = Math.floor(player.posY) + 0.5F;
         double z = Math.floor(player.posZ) + 0.5F;
-//        partialTicks = rand.nextFloat();
         double iPX = player.prevPosX + (player.posX - player.prevPosX) * partialTicks;
         double iPY = player.prevPosY + (player.posY - player.prevPosY) * partialTicks;
         double iPZ = player.prevPosZ + (player.posZ - player.prevPosZ) * partialTicks;
@@ -82,10 +81,6 @@ public class FluidCleanerOverlayHandler implements ITickHandler
             int zCorrection = i == 2 ? -1 : 1;
             GL11.glPushMatrix();
             GL11.glTranslated(-iPX + x + xShift, -iPY + y + yShift, -iPZ + z + zShift);
-//            System.out.printf("%d sum   %f %f %f\n", i, -iPX + x + xShift, -iPY + y + yShift, -iPZ + z + zShift);
-//            System.out.printf("%d ipXYZ %f %f %f\n", i, -iPX, -iPY, -iPZ);
-//            System.out.printf("%d XYZ   %f %f %f\n", i, x, y, z);
-//            System.out.printf("%d shift %f %f %f\n", i, xShift, yShift, zShift);
             GL11.glScalef(1F * xScale, 1F * yScale, 1F * zScale);
             GL11.glRotatef(90, forgeDir.offsetX, forgeDir.offsetY, forgeDir.offsetZ);
             GL11.glTranslated(0, 0, 0.5f * zCorrection);

@@ -17,7 +17,6 @@ import stuffstuff.info.ModInfo;
 import stuffstuff.items.BlockPlaceMode;
 import stuffstuff.items.ItemBlockPlacer;
 import stuffstuff.items.Items;
-import stuffstuff.player.NotificationHelper;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
 

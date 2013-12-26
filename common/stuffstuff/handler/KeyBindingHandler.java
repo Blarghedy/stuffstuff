@@ -12,7 +12,6 @@ import stuffstuff.network.PacketHandler;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
 import cpw.mods.fml.common.TickType;
-import cpw.mods.fml.common.network.PacketDispatcher;
 
 public class KeyBindingHandler extends KeyBindingRegistry.KeyHandler
 { 

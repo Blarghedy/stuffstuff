@@ -1,22 +1,19 @@
 package stuffstuff.handler;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.event.RenderWorldLastEvent;
+import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.event.ForgeSubscribe;
+
 import org.lwjgl.opengl.GL11;
 
 import stuffstuff.handler.helper.QuadHelper;
 import stuffstuff.info.ItemInfo;
 import stuffstuff.items.FluidCleanerBase;
 import cpw.mods.fml.client.FMLClientHandler;
-import cpw.mods.fml.common.TickType;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.RenderGlobal;
-import net.minecraft.client.renderer.entity.RenderPlayer;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.event.RenderPlayerEvent;
-import net.minecraftforge.client.event.RenderWorldLastEvent;
-import net.minecraftforge.common.ForgeDirection;
-import net.minecraftforge.event.ForgeSubscribe;
 
 public class RenderWorldLastHandler
 {

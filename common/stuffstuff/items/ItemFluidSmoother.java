@@ -1,14 +1,14 @@
 package stuffstuff.items;
 
-import stuffstuff.fluid.FluidHelper;
-import stuffstuff.info.ItemInfo;
-import stuffstuff.player.NotificationHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ChatMessageComponent;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
+import stuffstuff.fluid.FluidHelper;
+import stuffstuff.info.ItemInfo;
+import stuffstuff.player.NotificationHelper;
+
 
 public class ItemFluidSmoother extends FluidCleanerBase
 {

@@ -1,24 +1,24 @@
 package stuffstuff.items;
 
-import stuffstuff.StuffStuff;
-import stuffstuff.config.MiscConfig;
-import stuffstuff.info.GuiInfo;
-import stuffstuff.info.ItemInfo;
-import stuffstuff.items.helper.ChargeHelper;
-import stuffstuff.items.helper.BlockPlaceModeHelper;
-import stuffstuff.items.interfaces.IBlockPlaceMode;
-import stuffstuff.items.interfaces.IChargeable;
-import stuffstuff.items.interfaces.IKeyBound;
-import stuffstuff.power.IStuffPower;
-import stuffstuff.power.helper.StuffPowerHelper;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
+import stuffstuff.StuffStuff;
+import stuffstuff.config.MiscConfig;
+import stuffstuff.info.GuiInfo;
+import stuffstuff.info.ItemInfo;
+import stuffstuff.items.helper.BlockPlaceModeHelper;
+import stuffstuff.items.helper.ChargeHelper;
+import stuffstuff.items.interfaces.IBlockPlaceMode;
+import stuffstuff.items.interfaces.IChargeable;
+import stuffstuff.items.interfaces.IKeyBound;
+import stuffstuff.power.IStuffPower;
+import stuffstuff.power.helper.StuffPowerHelper;
+
 
 public class ItemBlockPlacer extends Item implements IChargeable, IKeyBound, IBlockPlaceMode, IStuffPower
 {

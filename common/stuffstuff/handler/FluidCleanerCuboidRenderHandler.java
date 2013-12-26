@@ -4,8 +4,6 @@ import java.util.EnumSet;
 
 import org.lwjgl.opengl.GL11;
 
-import java.util.Random;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

@@ -1,7 +1,6 @@
 package stuffstuff.worldgen.biome;
 
 import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType.COAL;
-import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType.CUSTOM;
 import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType.DIAMOND;
 import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType.DIRT;
 import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType.GOLD;
@@ -10,19 +9,10 @@ import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.Ev
 import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType.LAPIS;
 import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType.REDSTONE;
 import stuffstuff.blocks.Blocks;
-import stuffstuff.fluids.Fluids;
-import net.minecraft.block.Block;
 import net.minecraft.world.biome.BiomeDecorator;
 import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.world.gen.feature.WorldGenBigMushroom;
-import net.minecraft.world.gen.feature.WorldGenCactus;
-import net.minecraft.world.gen.feature.WorldGenFlowers;
-import net.minecraft.world.gen.feature.WorldGenLiquids;
 import net.minecraft.world.gen.feature.WorldGenMinable;
-import net.minecraft.world.gen.feature.WorldGenReed;
 import net.minecraft.world.gen.feature.WorldGenSand;
-import net.minecraft.world.gen.feature.WorldGenWaterlily;
-import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.OreGenEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;

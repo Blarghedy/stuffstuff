@@ -4,16 +4,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-import net.minecraftforge.client.event.DrawBlockHighlightEvent;
 import net.minecraftforge.common.ForgeDirection;
 import stuffstuff.StuffStuff;
 import stuffstuff.helper.Point;
-import stuffstuff.helper.RotationHelper;
 import stuffstuff.items.BlockPlaceMode;
 import stuffstuff.items.ItemBlockPlacer;
-import stuffstuff.items.handler.ItemBlockPlacerHandler;
-import stuffstuff.items.interfaces.IBlockPlaceMode;
-import stuffstuff.items.interfaces.IChargeable;
 import stuffstuff.player.NotificationHelper;
 
 public class BlockPlaceModeHelper

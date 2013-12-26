@@ -1,7 +1,6 @@
 package stuffstuff.handler;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.EnumMovingObjectType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.DrawBlockHighlightEvent;
@@ -9,7 +8,6 @@ import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.event.ForgeSubscribe;
 
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
 
 import stuffstuff.handler.helper.QuadHelper;
 import stuffstuff.helper.RotationHelper;

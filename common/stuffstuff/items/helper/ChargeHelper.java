@@ -1,10 +1,8 @@
 package stuffstuff.items.helper;
 
-import stuffstuff.items.Items;
 import stuffstuff.player.NotificationHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagShort;
 
 public class ChargeHelper
 {

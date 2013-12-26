@@ -1,23 +1,14 @@
 package stuffstuff.items;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ChatMessageComponent;
 import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidContainerRegistry;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
-import stuffstuff.StuffStuff;
-import stuffstuff.helper.StringHelper;
 import stuffstuff.info.ItemInfo;
 import stuffstuff.player.NotificationHelper;
 import stuffstuff.fluid.FluidHelper;

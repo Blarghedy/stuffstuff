@@ -11,7 +11,7 @@ public class PotionPlaid extends Potion
 	public PotionPlaid(int id)
     {
 	    super(id, true, 055555);
-	    setIconIndex(1, 0);
+	    setIconIndex(0, 0);
 	    setPotionName(PotionInfo.PLAID_POTION_NAME);
     }
 	
@@ -26,7 +26,7 @@ public class PotionPlaid extends Potion
 	public int getStatusIconIndex()
 	{
 		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(PotionInfo.TEXTURE_LOCATION));
-		return 1;
+		return super.getStatusIconIndex();
 	}
 
 }

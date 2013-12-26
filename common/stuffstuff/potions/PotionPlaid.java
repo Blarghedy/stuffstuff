@@ -3,6 +3,7 @@ package stuffstuff.potions;
 import stuffstuff.info.PotionInfo;
 import net.minecraft.client.Minecraft;
 import net.minecraft.potion.Potion;
+import net.minecraft.util.ResourceLocation;
 
 public class PotionPlaid extends Potion
 {
@@ -24,7 +25,7 @@ public class PotionPlaid extends Potion
 	@Override
 	public int getStatusIconIndex()
 	{
-		Minecraft.getMinecraft().renderEngine.bindTexture(Potions.textures);
+		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(PotionInfo.TEXTURE_LOCATION));
 		return 1;
 	}
 

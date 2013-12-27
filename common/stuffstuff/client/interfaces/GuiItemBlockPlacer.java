@@ -18,21 +18,21 @@ import stuffstuff.network.PacketHandler;
 public class GuiItemBlockPlacer extends GuiBase
 {
 	private static final ResourceLocation texture = new ResourceLocation(ModInfo.ID, GuiInfo.ITEM_BLOCK_PLACER_GUI);
-	protected static final GuiButton buttons[]; 
+	protected static final GuiButton buttons[];
 	private ItemStack itemstack;
 	private ItemBlockPlacer item;
 	private static final GuiScaledRectangle chargeRect;
 	private static final GuiScaledRectangle powerRect;
 	public static final byte CHARGE_RECT_INDEX = -1;
 	public static final byte POWER_RECT_INDEX = -2;
-	
+
 	public GuiItemBlockPlacer(InventoryPlayer invPlayer, ItemStack itemstack)
 	{
 		super(new ContainerItemBlockPlacer(invPlayer, itemstack));
 		xSize = 175;
 		ySize = 165;
 		this.itemstack = itemstack;
-		this.item = (ItemBlockPlacer)itemstack.getItem();
+		item = (ItemBlockPlacer)itemstack.getItem();
 	}
 
 	static
@@ -53,7 +53,7 @@ public class GuiItemBlockPlacer extends GuiBase
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 
 		// 176, 70
-		this.mc.getTextureManager().bindTexture(texture);
+		mc.getTextureManager().bindTexture(texture);
 		int xStart = (width - xSize) / 2;
 		int yStart = (height - ySize) / 2;
 		this.drawTexturedModalRect(xStart, yStart, 0, 0, xSize, ySize);
@@ -77,12 +77,12 @@ public class GuiItemBlockPlacer extends GuiBase
 				button.drawString(this, x, y, BlockPlaceMode.fromInt(button.getIndex()).toString());
 			}
 		}
-		
+
 		if (chargeRect.mouseInButton(this, x, y))
 		{
 			chargeRect.drawString(this, x, y, "Charge: " + Items.itemBlockPlacer.getCharge(itemstack) + "\nClick to edit.");
 		}
-		
+
 		if (powerRect.mouseInButton(this, x, y))
 		{
 			// TODO add color coding for when power is low
@@ -96,15 +96,15 @@ public class GuiItemBlockPlacer extends GuiBase
 		// button: 0 left, 1 right, maybe 2 middle
 		super.mouseClicked(x, y, button);
 
-		for (GuiButton b : buttons) 
+		for (GuiButton b : buttons)
 		{
 			if (b.mouseInButton(this, x, y))
 			{
-				Items.itemBlockPlacer.setBlockPlaceMode(this.itemstack, BlockPlaceMode.fromInt(b.getIndex()));
+				Items.itemBlockPlacer.setBlockPlaceMode(itemstack, BlockPlaceMode.fromInt(b.getIndex()));
 				PacketHandler.sendGuiPacket((byte)b.getIndex(), (byte)-1);
 			}
 		}
-		
+
 		if (chargeRect.mouseInButton(this, x, y))
 		{
 			int charge = (int)(chargeRect.getRelativeMouseY(this, x, y) * 10 + .5);

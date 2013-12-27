@@ -8,25 +8,25 @@ public class CommonProxy
 {
 	public void initSounds()
 	{
-		
+
 	}
-	
+
 	public void initRenderer()
 	{
-		
+
 	}
 
 	public void registerHandlers()
 	{
-//				MinecraftForge.EVENT_BUS.register(new SoundHandler());
-//		MinecraftForge.EVENT_BUS.register(StuffStuff.itemBlockPlacerHandler);
-		
+		// MinecraftForge.EVENT_BUS.register(new SoundHandler());
+		// MinecraftForge.EVENT_BUS.register(StuffStuff.itemBlockPlacerHandler);
+
 		// TODO does this need to be here or in client?
 		TickRegistry.registerTickHandler(StuffStuff.itemBlockPlacerHandler, Side.SERVER);
 	}
-	
-    public void setKeyBinding(String name, int value) 
-    {
-    	
-    }
+
+	public void setKeyBinding(String name, int value)
+	{
+
+	}
 }

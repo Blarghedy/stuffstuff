@@ -16,75 +16,75 @@ public class BlockPlaidLog extends BlockLog
 {
 	private Icon[] icons;
 	private Icon topIcon;
-	
+
 	public BlockPlaidLog(int id)
-    {
-	    super(id);
+	{
+		super(id);
 		setCreativeTab(StuffStuff.tabStuffStuff);
 		setHardness(2F);
 		setStepSound(soundWoodFootstep);
 		setUnlocalizedName(BlockInfo.PLAID_LOG_UNLOCALIZED_NAME);
 		setBurnProperties(id, 5, 20);
-    }
+	}
 
 	@Override
 	public void getSubBlocks(int id, CreativeTabs tab, List list)
 	{
-	    for (int i = 0; i < BlockInfo.PLAID_LOG_TEXTURES.length; i++)
-	    {
-	    	list.add(new ItemStack(id, 1, i));
-	    }
+		for (int i = 0; i < BlockInfo.PLAID_LOG_TEXTURES.length; i++)
+		{
+			list.add(new ItemStack(id, 1, i));
+		}
 	}
-	
+
 	@Override
 	public Icon getIcon(int side, int meta)
 	{
 		return super.getIcon(side, meta); // BlockRotatedPillar takes care of this for us
 	}
-	
+
 	@Override
 	protected Icon getEndIcon(int par1)
 	{
-	    return topIcon;
+		return topIcon;
 	}
-	
+
 	@Override
 	protected Icon getSideIcon(int meta)
 	{
 		return icons[meta];
 	}
-	
+
 	@Override
 	public void registerIcons(IconRegister register)
 	{
 		icons = new Icon[BlockInfo.PLAID_LOG_TEXTURES.length];
-		
-	    for (int i = 0; i < BlockInfo.PLAID_LOG_TEXTURES.length; i++)
-	    {
-	    	icons[i] = register.registerIcon(BlockInfo.TEXTURE_LOCATION + ":" + BlockInfo.PLAID_LOG_TEXTURES[i]);
-	    }
-	    
-	    topIcon = register.registerIcon(BlockInfo.TEXTURE_LOCATION + ":" + BlockInfo.PLAID_LOG_TOP_TEXTURE);
+
+		for (int i = 0; i < BlockInfo.PLAID_LOG_TEXTURES.length; i++)
+		{
+			icons[i] = register.registerIcon(BlockInfo.TEXTURE_LOCATION + ":" + BlockInfo.PLAID_LOG_TEXTURES[i]);
+		}
+
+		topIcon = register.registerIcon(BlockInfo.TEXTURE_LOCATION + ":" + BlockInfo.PLAID_LOG_TOP_TEXTURE);
 	}
-	
+
 	@Override
 	public int damageDropped(int meta)
 	{
 		return meta;
 	}
-	
+
 	@Override
 	public int idDropped(int par1, Random par2Random, int par3)
 	{
 		return blockID;
 	}
-	
+
 	@Override
 	public boolean isWood(World world, int x, int y, int z)
 	{
-	    return true;
+		return true;
 	}
-	
+
 	@Override
 	public boolean canSustainLeaves(World world, int x, int y, int z)
 	{

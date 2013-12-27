@@ -9,7 +9,7 @@ public class ItemPlaidLog extends ItemBlock
 		super(id);
 		setHasSubtypes(true);
 	}
-	
+
 	@Override
 	public int getMetadata(int dmg)
 	{

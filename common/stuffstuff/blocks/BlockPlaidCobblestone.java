@@ -11,20 +11,20 @@ public class BlockPlaidCobblestone extends Block
 {
 
 	public BlockPlaidCobblestone(int id)
-    {
+	{
 		super(id, Material.rock);
 		setCreativeTab(StuffStuff.tabStuffStuff);
 		setHardness(2F);
 		setStepSound(soundStoneFootstep);
 		setUnlocalizedName(BlockInfo.PLAID_COBBLESTONE_UNLOCALIZED_NAME);
-    }
-	
+	}
+
 	@Override
 	public Icon getIcon(int par1, int par2)
 	{
 		return blockIcon;
 	}
-	
+
 	@Override
 	public void registerIcons(IconRegister register)
 	{

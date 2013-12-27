@@ -9,6 +9,6 @@ public class StuffStuffAchievements
 	@ForgeSubscribe
 	public void chunkEntered(EntityEvent.EnteringChunk event)
 	{
-		// TODO deal with entering chunks here.  Add achievement: Gone to Plaid
+		// TODO deal with entering chunks here. Add achievement: Gone to Plaid
 	}
 }

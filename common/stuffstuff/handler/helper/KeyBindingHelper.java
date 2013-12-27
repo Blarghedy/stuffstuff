@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import net.minecraft.client.settings.KeyBinding;
 import stuffstuff.config.MiscConfig;
 
-
 /**
  * Equivalent-Exchange-3
  * 
@@ -15,50 +14,59 @@ import stuffstuff.config.MiscConfig;
  * @license Lesser GNU Public License v3 (http://www.gnu.org/licenses/lgpl.html)
  * 
  */
-public class KeyBindingHelper {
+public class KeyBindingHelper
+{
 
-    public static ArrayList<KeyBinding> keyBindingsList;
-    public static ArrayList<Boolean> isRepeatingList;
+	public static ArrayList<KeyBinding> keyBindingsList;
+	public static ArrayList<Boolean> isRepeatingList;
 
-    public static void addKeyBinding(String name, int value) {
+	public static void addKeyBinding(String name, int value)
+	{
 
-        if (keyBindingsList == null) {
-            keyBindingsList = new ArrayList<KeyBinding>();
-        }
+		if (keyBindingsList == null)
+		{
+			keyBindingsList = new ArrayList<KeyBinding>();
+		}
 
-        keyBindingsList.add(new KeyBinding(name, value));
-    }
+		keyBindingsList.add(new KeyBinding(name, value));
+	}
 
-    public static void addIsRepeating(boolean value) {
+	public static void addIsRepeating(boolean value)
+	{
 
-        if (isRepeatingList == null) {
-            isRepeatingList = new ArrayList<Boolean>();
-        }
+		if (isRepeatingList == null)
+		{
+			isRepeatingList = new ArrayList<Boolean>();
+		}
 
-        isRepeatingList.add(value);
-    }
+		isRepeatingList.add(value);
+	}
 
-    public static KeyBinding[] gatherKeyBindings() {
+	public static KeyBinding[] gatherKeyBindings()
+	{
 
-        return keyBindingsList.toArray(new KeyBinding[keyBindingsList.size()]);
-    }
+		return keyBindingsList.toArray(new KeyBinding[keyBindingsList.size()]);
+	}
 
-    public static boolean[] gatherIsRepeating() {
+	public static boolean[] gatherIsRepeating()
+	{
 
-        boolean[] isRepeating = new boolean[isRepeatingList.size()];
+		boolean[] isRepeating = new boolean[isRepeatingList.size()];
 
-        for (int x = 0; x < isRepeating.length; x++) {
-            isRepeating[x] = isRepeatingList.get(x).booleanValue();
-        }
+		for (int x = 0; x < isRepeating.length; x++)
+		{
+			isRepeating[x] = isRepeatingList.get(x).booleanValue();
+		}
 
-        return isRepeating;
-    }
+		return isRepeating;
+	}
 
-    // TODO Still not ideal, won't work for every case. Specifically, make it context sensitive
-    public static boolean isClientSided(String keybinding) {
-        if (keybinding.equalsIgnoreCase(MiscConfig.KEYBINDING_TOGGLE))
-            return true;
-        else
-            return false;
-    }
+	// TODO Still not ideal, won't work for every case. Specifically, make it context sensitive
+	public static boolean isClientSided(String keybinding)
+	{
+		if (keybinding.equalsIgnoreCase(MiscConfig.KEYBINDING_TOGGLE))
+			return true;
+		else
+			return false;
+	}
 }

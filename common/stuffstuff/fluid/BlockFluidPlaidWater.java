@@ -60,7 +60,7 @@ public class BlockFluidPlaidWater extends BlockFluidClassic
 	public Icon getIcon(int side, int meta)
 	{
 		ForgeDirection face = ForgeDirection.getOrientation(side);
-		switch(face)
+		switch (face)
 		{
 			case UP:
 			case DOWN:
@@ -94,35 +94,35 @@ public class BlockFluidPlaidWater extends BlockFluidClassic
 
 		return icons[(color.ordinal() + 3) % 4];
 	}
-	
+
 	@Override
 	protected boolean canFlowInto(IBlockAccess world, int x, int y, int z)
 	{
-	    return world.getBlockId(x, y, z) == Block.waterStill.blockID || world.getBlockId(x, y, z) == Block.waterMoving.blockID ? false : super.canFlowInto(world, x, y, z);
+		return world.getBlockId(x, y, z) == Block.waterStill.blockID || world.getBlockId(x, y, z) == Block.waterMoving.blockID ? false : super.canFlowInto(world, x, y, z);
 	}
-	
+
 	@Override
 	public boolean canDisplace(IBlockAccess world, int x, int y, int z)
 	{
 		return world.getBlockMaterial(x, y, z).isLiquid() ? false : super.canDisplace(world, x, y, z);
 	}
-	
+
 	@Override
 	public boolean displaceIfPossible(World world, int x, int y, int z)
 	{
-	    return world.getBlockMaterial(x, y, z).isLiquid() ? false : super.displaceIfPossible(world, x, y, z);
+		return world.getBlockMaterial(x, y, z).isLiquid() ? false : super.displaceIfPossible(world, x, y, z);
 	}
 
 	@Override
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
 	{
-//		if(entity instanceof EntityPlayer || entity instanceof EntityMob || entity instanceof EntityCreature)
-		if(entity instanceof EntityLivingBase)
+		// if(entity instanceof EntityPlayer || entity instanceof EntityMob || entity instanceof EntityCreature)
+		if (entity instanceof EntityLivingBase)
 		{
 			// ent.addPotionEffect(new PotionEffect(Potion.poison.id, 12 * 20, 0));
 			EntityLivingBase ent = (EntityLivingBase)entity;
-			ent.addPotionEffect(new PotionEffect(Potion.invisibility.id, 5*20, 0));
-			ent.addPotionEffect(new PotionEffect(Potions.potionPlaid.id, 5*20, 0));
+			ent.addPotionEffect(new PotionEffect(Potion.invisibility.id, 5 * 20, 0));
+			ent.addPotionEffect(new PotionEffect(Potions.potionPlaid.id, 5 * 20, 0));
 		}
 	}
 }

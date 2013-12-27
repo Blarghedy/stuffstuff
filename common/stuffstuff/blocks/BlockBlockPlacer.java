@@ -12,21 +12,21 @@ public class BlockBlockPlacer extends BlockContainer
 {
 
 	public BlockBlockPlacer(int id)
-    {
-	    super(id, Material.iron);
+	{
+		super(id, Material.iron);
 		setCreativeTab(StuffStuff.tabStuffStuff);
 		setHardness(2F);
 		setStepSound(Block.soundMetalFootstep);
 		setUnlocalizedName(BlockInfo.PLACER_UNLOCALIZED_NAME);
-    }
+	}
 
 	/**
 	 * ITileEntityProvider Implementation
 	 */
 	@Override
-    public TileEntity createNewTileEntity(World world)
-    {
-	    return null;
-    }
+	public TileEntity createNewTileEntity(World world)
+	{
+		return null;
+	}
 
 }

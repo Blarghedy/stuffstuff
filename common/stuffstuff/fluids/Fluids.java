@@ -13,17 +13,17 @@ public class Fluids
 {
 	public static BlockFluidBase blockFluidPlaidWater;
 	public static Fluid fluidPlaidWater;
-	
+
 	public static void init()
 	{
 		fluidPlaidWater = new FluidPlaidWater(FluidInfo.PLAID_WATER_NAME);
 		FluidRegistry.registerFluid(fluidPlaidWater);
 		int tmp = FluidInfo.PLAID_WATER_ID;
-		blockFluidPlaidWater = new BlockFluidPlaidWater(tmp);//FluidInfo.PLAID_WATER_ID);
-		
+		blockFluidPlaidWater = new BlockFluidPlaidWater(tmp);// FluidInfo.PLAID_WATER_ID);
+
 		GameRegistry.registerBlock(blockFluidPlaidWater, FluidInfo.PLAID_WATER_NAME);
 	}
-	
+
 	public static void addNames()
 	{
 		LanguageRegistry.addName(blockFluidPlaidWater, FluidInfo.PLAID_WATER_NAME);

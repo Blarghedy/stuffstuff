@@ -15,13 +15,12 @@ public class MinefactoryReloaded
 	@EventHandler
 	public static void load(FMLInitializationEvent e)
 	{
-		if(!Loader.isModLoaded("MinefactoryReloaded"))
+		if (!Loader.isModLoaded("MinefactoryReloaded"))
 		{
 			FMLLog.warning("MineFactoryReloaded missing - stuffstuff MFR compat not loading");
 			return;
 		}
 		System.out.println("MFR Compat loaded");
-		
+
 	}
 }
-

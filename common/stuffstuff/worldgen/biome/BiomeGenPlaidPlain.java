@@ -12,7 +12,6 @@ import stuffstuff.blocks.Blocks;
 import stuffstuff.fluids.Fluids;
 import stuffstuff.worldgen.WorldGenPlaidTrees;
 
-
 public class BiomeGenPlaidPlain extends BiomeGenPlains
 {
 
@@ -20,22 +19,22 @@ public class BiomeGenPlaidPlain extends BiomeGenPlains
 	{
 		super(id);
 		setBiomeName("Plaid Plain");
-		//	    
-		this.topBlock = (byte)Blocks.blockPlaidGrass.blockID;
-		this.fillerBlock = (byte)Blocks.blockPlaidDirt.blockID;
+		//
+		topBlock = (byte)Blocks.blockPlaidGrass.blockID;
+		fillerBlock = (byte)Blocks.blockPlaidDirt.blockID;
 
-		//        this.field_76754_C = 5169201; // what
-		//        this.minHeight = 0.1F;
-		//        this.maxHeight = 0.3F;
-		//        this.temperature = 0.5F;
-		//        this.rainfall = 0.5F;
-		//        this.waterColorMultiplier = 16777215;
-		//        
-		this.worldGeneratorTrees = new WorldGenPlaidTrees(false);
-		this.theBiomeDecorator.treesPerChunk = 1;
-		//        this.worldGeneratorBigTree = new WorldGenBigTree(false);
-		////        this.worldGeneratorForest = new WorldGenForest(false);
-		////        this.worldGeneratorSwamp = new WorldGenSwamp();
+		// this.field_76754_C = 5169201; // what
+		// this.minHeight = 0.1F;
+		// this.maxHeight = 0.3F;
+		// this.temperature = 0.5F;
+		// this.rainfall = 0.5F;
+		// this.waterColorMultiplier = 16777215;
+		//
+		worldGeneratorTrees = new WorldGenPlaidTrees(false);
+		theBiomeDecorator.treesPerChunk = 1;
+		// this.worldGeneratorBigTree = new WorldGenBigTree(false);
+		// // this.worldGeneratorForest = new WorldGenForest(false);
+		// // this.worldGeneratorSwamp = new WorldGenSwamp();
 	}
 
 	@Override
@@ -48,7 +47,7 @@ public class BiomeGenPlaidPlain extends BiomeGenPlains
 			x = chunk_X + rand.nextInt(16) + 8;
 			y = rand.nextInt(rand.nextInt(120) + 8);
 			z = chunk_Z + rand.nextInt(16) + 8;
-			(new WorldGenLiquids(Fluids.blockFluidPlaidWater.blockID)).generate(world, rand, x, y, z);
+			new WorldGenLiquids(Fluids.blockFluidPlaidWater.blockID).generate(world, rand, x, y, z);
 		}
 		for (x = chunk_X; x < chunk_X + 16; x++)
 		{
@@ -57,7 +56,10 @@ public class BiomeGenPlaidPlain extends BiomeGenPlains
 				if (world.getBiomeGenForCoords(x, z) instanceof BiomeGenPlaidPlain)
 				{
 					int ytop = 255;
-					while (!world.isAirBlock(x, ytop--, z));
+					while (!world.isAirBlock(x, ytop--, z))
+					{
+						;
+					}
 					for (y = ytop; y > 0; y--)
 					{
 						if (world.getBlockId(x, y, z) == Block.stone.blockID)

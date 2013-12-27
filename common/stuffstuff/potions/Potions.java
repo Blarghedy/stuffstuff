@@ -12,15 +12,15 @@ public class Potions
 {
 	public static Potion potionPlaid;
 	public static ResourceLocation textures;
-	
+
 	public static void init()
 	{
 		modifyAccess();
 		textures = new ResourceLocation(PotionInfo.ICON_TEXTURE_LOCATION);
-		
+
 		potionPlaid = new PotionPlaid(PotionInfo.PLAID_ID);
 	}
-	
+
 	public static void addNames()
 	{
 		LanguageRegistry.addName(potionPlaid, PotionInfo.PLAID_NAME);
@@ -29,13 +29,13 @@ public class Potions
 	private static void modifyAccess()
 	{
 		Potion[] potionTypes = null;
-		
-		for (Field f : Potion.class.getDeclaredFields()) 
+
+		for (Field f : Potion.class.getDeclaredFields())
 		{
 			f.setAccessible(true);
-			try 
+			try
 			{
-				if (f.getName().equals("potionTypes") || f.getName().equals("field_76425_a")) 
+				if (f.getName().equals("potionTypes") || f.getName().equals("field_76425_a"))
 				{
 					Field modfield = Field.class.getDeclaredField("modifiers");
 					modfield.setAccessible(true);
@@ -47,13 +47,12 @@ public class Potions
 					f.set(null, newPotionTypes);
 				}
 			}
-			catch (Exception e) 
+			catch (Exception e)
 			{
 				System.err.println("[Stuff Stuff] Severe error.  Please report this to the mod author:");
 				System.err.println(e);
 			}
 		}
 	}
-	
-	
+
 }

@@ -11,20 +11,20 @@ public class BlockPlaidSand extends Block
 {
 
 	public BlockPlaidSand(int id)
-    {
-	    super(id, Material.sand);
+	{
+		super(id, Material.sand);
 		setCreativeTab(StuffStuff.tabStuffStuff);
 		setHardness(.5F);
 		setStepSound(soundStoneFootstep);
 		setUnlocalizedName(BlockInfo.PLAID_SAND_UNLOCALIZED_NAME);
-    }
-	
+	}
+
 	@Override
 	public Icon getIcon(int par1, int par2)
 	{
 		return blockIcon;
 	}
-	
+
 	@Override
 	public void registerIcons(IconRegister register)
 	{

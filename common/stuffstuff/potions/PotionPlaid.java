@@ -9,19 +9,19 @@ public class PotionPlaid extends Potion
 {
 
 	public PotionPlaid(int id)
-    {
-	    super(id, true, 055555);
-	    setIconIndex(0, 0);
-	    setPotionName(PotionInfo.PLAID_POTION_NAME);
-    }
-	
+	{
+		super(id, true, 055555);
+		setIconIndex(0, 0);
+		setPotionName(PotionInfo.PLAID_POTION_NAME);
+	}
+
 	@Override
 	public boolean isReady(int par1, int par2)
 	{
 		// not sure what this is really
-		return par1 >= 1; 
+		return par1 >= 1;
 	}
-	
+
 	@Override
 	public int getStatusIconIndex()
 	{

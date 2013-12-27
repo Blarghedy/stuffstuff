@@ -21,8 +21,7 @@ public class ItemFluidCleaner extends FluidCleanerBase
 		super(id);
 		setUnlocalizedName(ItemInfo.FLUID_CLEANER_UNLOCALIZED_NAME);
 	}
-	
-	
+
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player)
 	{
@@ -62,7 +61,7 @@ public class ItemFluidCleaner extends FluidCleanerBase
 	@Override
 	public void addInformation(ItemStack itemstack, EntityPlayer player, List info, boolean par4)
 	{
-	    // add hover text
+		// add hover text
 		String fname = getFluidName(itemstack);
 		if (fname == null || fname.equals(""))
 		{
@@ -73,33 +72,31 @@ public class ItemFluidCleaner extends FluidCleanerBase
 		{
 			info.add("Delete " + fname);
 		}
-	    super.addInformation(itemstack, player, info, par4);
+		super.addInformation(itemstack, player, info, par4);
 	}
-	
+
 	@Override
 	public void registerIcons(IconRegister par1IconRegister)
 	{
-	    super.registerIcons(par1IconRegister);
+		super.registerIcons(par1IconRegister);
 	}
-	
+
 	@Override
 	public Icon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
 	{
-	    return super.getIcon(stack, renderPass, player, usingItem, useRemaining);
+		return super.getIcon(stack, renderPass, player, usingItem, useRemaining);
 	}
-	
+
 	@Override
 	public Icon getIconIndex(ItemStack par1ItemStack)
 	{
-	    return super.getIconIndex(par1ItemStack);
+		return super.getIconIndex(par1ItemStack);
 	}
 
-
 	@Override
-    public String getItemName()
-    {
-	    return ItemInfo.FLUID_CLEANER_NAME;
-    }
+	public String getItemName()
+	{
+		return ItemInfo.FLUID_CLEANER_NAME;
+	}
 
-	
 }

@@ -12,7 +12,7 @@ public class Biomes
 	public static BiomeGenBase plaidPlainsBiome;
 
 	public static void init()
-	{	
+	{
 		plaidPlainsBiome = new BiomeGenPlaidPlain(100);
 		BiomeDictionary.registerBiomeType(plaidPlainsBiome, Type.PLAINS);
 		GameRegistry.addBiome(plaidPlainsBiome);

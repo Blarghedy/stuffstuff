@@ -8,10 +8,12 @@ public class StuffFluidRegistry
 {
 	public static ArrayList<IFluidHandler> fluidHandlers = new ArrayList<IFluidHandler>();
 	public static ArrayList<Fluid> registeredFluids = new ArrayList<Fluid>();
-	
+
 	/**
 	 * Registers Fluid f with all registered handlers and adds f to the list of registered Fluids.
-	 * @param f Fluid to be registered
+	 * 
+	 * @param f
+	 *            Fluid to be registered
 	 */
 	public static void registerFluid(Fluid f)
 	{
@@ -19,14 +21,16 @@ public class StuffFluidRegistry
 		{
 			handler.addFluid(f);
 		}
-		
+
 		registeredFluids.add(f);
 	}
-	
+
 	/**
-	 * Registers all registered Fluids with IFluidHandler handler and adds 
-	 * handler to the list of registered IFluidHandlers. 
-	 * @param handler IFluidHandler to be registered
+	 * Registers all registered Fluids with IFluidHandler handler and adds
+	 * handler to the list of registered IFluidHandlers.
+	 * 
+	 * @param handler
+	 *            IFluidHandler to be registered
 	 */
 	public static void registerHandler(IFluidHandler handler)
 	{
@@ -34,7 +38,7 @@ public class StuffFluidRegistry
 		{
 			handler.addFluid(f);
 		}
-		
+
 		fluidHandlers.add(handler);
 	}
 }

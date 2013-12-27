@@ -19,7 +19,7 @@ public class RenderWorldLastHandler
 {
 
 	@ForgeSubscribe
-	public void onDrawBlockHighlightEvent(RenderWorldLastEvent event) 
+	public void onDrawBlockHighlightEvent(RenderWorldLastEvent event)
 	{
 		Minecraft minecraft = FMLClientHandler.instance().getClient();
 		EntityPlayer player = minecraft.thePlayer;
@@ -27,10 +27,11 @@ public class RenderWorldLastHandler
 		if (player != null)
 		{
 			itemStack = player.inventory.getCurrentItem();
-			if (Minecraft.isGuiEnabled() && minecraft.inGameHasFocus){
+			if (Minecraft.isGuiEnabled() && minecraft.inGameHasFocus)
+			{
 				if (itemStack != null && itemStack.getItem() instanceof FluidCleanerBase)
 				{
-					FluidCleanerBase cleaner = (FluidCleanerBase)(itemStack.getItem());
+					FluidCleanerBase cleaner = (FluidCleanerBase)itemStack.getItem();
 					int charge = cleaner.getCharge(itemStack);
 					renderFluidCleanerCuboid(minecraft, player, itemStack, event.partialTicks, charge); // TODO look into partialTicks
 				}
@@ -56,11 +57,11 @@ public class RenderWorldLastHandler
 		float yShift = 0.01F;
 		float zShift = 0.01F;
 
-
 		GL11.glDepthMask(false);
 		GL11.glDisable(GL11.GL_CULL_FACE);
 
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < 6; i++)
+		{
 			ForgeDirection forgeDir = ForgeDirection.getOrientation(i);
 			int zCorrection = i == 2 ? -1 : 1;
 			GL11.glPushMatrix();

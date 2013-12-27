@@ -16,33 +16,31 @@ public class ChargeHelper
 
 		short charge = 0;
 		if (tag == null || !tag.hasKey(CHARGE_KEY))
-		{
 			return setCharge(itemstack, (short)2);
-		}
 		else
 		{
-			charge = tag.getShort(CHARGE_KEY); 
+			charge = tag.getShort(CHARGE_KEY);
 			if (charge < 0)
-			{
 				return setCharge(itemstack, (short)2);
-			}
 			else if (charge > MAX_CHARGE)
-			{
 				return setCharge(itemstack, (short)MAX_CHARGE);
-			}
 			else
-			{
 				return charge;
-			}
 		}
 	}
 
 	public static int setCharge(ItemStack itemstack, short charge)
 	{
 		NBTTagCompound tag = itemstack.stackTagCompound;
-		if (charge < -1) charge = (short)0;
-		else if (charge > MAX_CHARGE) charge = MAX_CHARGE; 
-		
+		if (charge < -1)
+		{
+			charge = (short)0;
+		}
+		else if (charge > MAX_CHARGE)
+		{
+			charge = MAX_CHARGE;
+		}
+
 		if (tag == null)
 		{
 			tag = new NBTTagCompound();
@@ -57,8 +55,9 @@ public class ChargeHelper
 	public static int incrementCharge(ItemStack itemstack)
 	{
 		int charge = getCharge(itemstack);
-		if (charge == MAX_CHARGE) return charge; // no need to touch NBT any more than this
-		
+		if (charge == MAX_CHARGE)
+			return charge; // no need to touch NBT any more than this
+
 		setCharge(itemstack, (short)(charge + 1));
 		return charge + 1;
 	}
@@ -66,12 +65,13 @@ public class ChargeHelper
 	public static int decrementCharge(ItemStack itemstack)
 	{
 		int charge = getCharge(itemstack);
-		if (charge == 0) return charge; // no need to touch NBT any more than this
-		
+		if (charge == 0)
+			return charge; // no need to touch NBT any more than this
+
 		setCharge(itemstack, (short)(charge - 1));
 		return charge - 1;
 	}
-	
+
 	public static double getChargePercent(ItemStack itemstack)
 	{
 		return 1.0 * getCharge(itemstack) / MAX_CHARGE;

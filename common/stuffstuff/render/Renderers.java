@@ -6,7 +6,7 @@ public class Renderers
 {
 	public static PlaidFluidRenderer plaidFluidRender;
 	public static int plaidFluidRenderID;
-	
+
 	public static void init()
 	{
 		plaidFluidRenderID = RenderingRegistry.getNextAvailableRenderId();

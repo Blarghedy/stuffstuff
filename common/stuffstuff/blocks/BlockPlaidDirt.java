@@ -17,13 +17,13 @@ public class BlockPlaidDirt extends Block
 		setStepSound(soundGravelFootstep);
 		setUnlocalizedName(BlockInfo.PLAID_DIRT_UNLOCALIZED_NAME);
 	}
-	
+
 	@Override
 	public Icon getIcon(int par1, int par2)
 	{
 		return blockIcon;
 	}
-	
+
 	@Override
 	public void registerIcons(IconRegister register)
 	{

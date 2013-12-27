@@ -19,13 +19,13 @@ public class ConfigHandler
 		{
 			config = new Configuration(file);
 			config.load();
-			
+
 			ItemInfo.FLUID_SMOOTHER_ID = config.getItem(ItemInfo.FLUID_SMOOTHER_KEY, ItemInfo.FLUID_SMOOTHER_DEFAULT).getInt();
 			ItemInfo.FLUID_CLEANER_ID = config.getItem(ItemInfo.FLUID_CLEANER_KEY, ItemInfo.FLUID_CLEANER_DEFAULT).getInt();
 			ItemInfo.BLOCK_PLACER_ID = config.getItem(ItemInfo.BLOCK_PLACER_KEY, ItemInfo.BLOCK_PLACER_DEFAULT).getInt();
-			
+
 			ItemInfo.BLOCK_PLACER_MAX_PER_TICK = config.get(ItemInfo.BLOCK_PLACER_CATEGORY, ItemInfo.BLOCK_PLACER_MAX_PER_TICK_KEY, ItemInfo.BLOCK_PLACER_MAX_PER_TICK_DEFAULT).getInt();
-			
+
 			BlockInfo.PLACER_ID = config.getBlock(BlockInfo.PLACER_KEY, BlockInfo.PLACER_DEFAULT).getInt();
 			BlockInfo.PLAID_PLANK_ID = config.getBlock(BlockInfo.PLAID_PLANK_KEY, BlockInfo.PLAID_PLANK_DEFAULT).getInt();
 			BlockInfo.PLAID_LOG_ID = config.getBlock(BlockInfo.PLAID_LOG_KEY, BlockInfo.PLAID_LOG_DEFAULT).getInt();
@@ -37,13 +37,13 @@ public class ConfigHandler
 			BlockInfo.PLAID_COBBLESTONE_ID = config.getBlock(BlockInfo.PLAID_COBBLESTONE_KEY, BlockInfo.PLAID_COBBLESTONE_DEFAULT).getInt();
 			BlockInfo.PLAID_STONE_ID = config.getBlock(BlockInfo.PLAID_STONE_KEY, BlockInfo.PLAID_STONE_DEFAULT).getInt();
 			BlockInfo.PLAID_DIRT_ID = config.getBlock(BlockInfo.PLAID_DIRT_KEY, BlockInfo.PLAID_DIRT_DEFAULT).getInt();
-			
+
 			FluidInfo.PLAID_WATER_ID = config.getBlock(FluidInfo.PLAID_WATER_KEY, FluidInfo.PLAID_WATER_DEFAULT).getInt();
-			
+
 			PotionInfo.PLAID_ID = config.get(PotionInfo.POTION_CATEGORY, PotionInfo.PLAID_KEY, PotionInfo.PLAID_DEFAULT).getInt();
-			
+
 			MiscConfig.PLAY_SOUNDS = config.get(MiscConfig.MISC_CONFIG_CATEGORY, MiscConfig.PLAY_SOUNDS_KEY, MiscConfig.PLAY_SOUNDS_DEFAULT).getBoolean(MiscConfig.PLAY_SOUNDS_DEFAULT);
-			
+
 			// do keybinding stuff yay
 			StuffStuff.proxy.setKeyBinding(MiscConfig.KEYBINDING_CHARGE, config.get(MiscConfig.CATEGORY_KEYBINDINGS, MiscConfig.KEYBINDING_CHARGE, MiscConfig.KEYBINDING_CHARGE_DEFAULT).getInt(MiscConfig.KEYBINDING_CHARGE_DEFAULT));
 			StuffStuff.proxy.setKeyBinding(MiscConfig.KEYBINDING_TOGGLE, config.get(MiscConfig.CATEGORY_KEYBINDINGS, MiscConfig.KEYBINDING_TOGGLE, MiscConfig.KEYBINDING_TOGGLE_DEFAULT).getInt(MiscConfig.KEYBINDING_TOGGLE_DEFAULT));
@@ -52,7 +52,9 @@ public class ConfigHandler
 		finally
 		{
 			if (config != null)
+			{
 				config.save();
+			}
 		}
 	}
 }

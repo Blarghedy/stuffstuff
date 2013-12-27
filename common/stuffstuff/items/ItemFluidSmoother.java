@@ -9,14 +9,13 @@ import stuffstuff.fluid.FluidHelper;
 import stuffstuff.info.ItemInfo;
 import stuffstuff.player.NotificationHelper;
 
-
 public class ItemFluidSmoother extends FluidCleanerBase
 {
 
 	public ItemFluidSmoother(int id)
-    {
-	    super(id);
-    }
+	{
+		super(id);
+	}
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player)
@@ -45,7 +44,7 @@ public class ItemFluidSmoother extends FluidCleanerBase
 						{
 							if (FluidHelper.isFlowingFluid(world, startx + i, starty + j, startz + k, fluid.getFluid()))
 							{
-								world.setBlockToAir(startx + i, starty + j, startz + k); 
+								world.setBlockToAir(startx + i, starty + j, startz + k);
 								world.setBlock(startx + i, starty + j, startz + k, fluid.getFluid().getBlockID());
 							}
 						}
@@ -53,12 +52,12 @@ public class ItemFluidSmoother extends FluidCleanerBase
 				}
 			}
 		}
-	    return super.onItemRightClick(itemstack, world, player);
+		return super.onItemRightClick(itemstack, world, player);
 	}
 
 	@Override
-    public String getItemName()
-    {
-	    return ItemInfo.FLUID_SMOOTHER_NAME;
-    }
+	public String getItemName()
+	{
+		return ItemInfo.FLUID_SMOOTHER_NAME;
+	}
 }

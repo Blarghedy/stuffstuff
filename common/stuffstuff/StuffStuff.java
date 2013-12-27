@@ -23,18 +23,18 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
 @Mod(modid = ModInfo.ID, name = ModInfo.NAME, version = ModInfo.VERSION)
-@NetworkMod(channels = {ModInfo.CHANNEL}, clientSideRequired = true, serverSideRequired = false, packetHandler = PacketHandler.class)
+@NetworkMod(channels = { ModInfo.CHANNEL }, clientSideRequired = true, serverSideRequired = false, packetHandler = PacketHandler.class)
 public class StuffStuff
 {
 	public static CreativeTabs tabStuffStuff = new TabStuffStuff("StuffStuff");
 	public static ItemBlockPlacerHandler itemBlockPlacerHandler;
-	
+
 	@Instance(ModInfo.ID)
 	public static StuffStuff instance;
 
 	@SidedProxy(clientSide = "stuffstuff.proxy.ClientProxy", serverSide = "stuffstuff.proxy.CommonProxy")
 	public static CommonProxy proxy;
-	
+
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent e)
 	{
@@ -44,30 +44,30 @@ public class StuffStuff
 		Biomes.init();
 		Fluids.init();
 		Potions.init();
-		
+
 		itemBlockPlacerHandler = new ItemBlockPlacerHandler();
-		
+
 		proxy.initSounds();
 		proxy.initRenderer();
 		proxy.registerHandlers();
-		
+
 		Items.addNames();
 		Blocks.addNames();
 		Fluids.addNames();
 	}
-	
-	@EventHandler 
+
+	@EventHandler
 	public void init(FMLInitializationEvent e)
 	{
 		Items.registerRecipes();
 		Blocks.registerTileEntities();
 		new GuiHandler();
 	}
-	
+
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent e)
 	{
-		
+
 	}
-	
+
 }

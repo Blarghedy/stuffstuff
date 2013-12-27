@@ -6,10 +6,10 @@ public class ItemPlaidLeaves extends ItemBlock
 {
 
 	public ItemPlaidLeaves(int id)
-    {
-	    super(id);
-	    setHasSubtypes(true);
-    }
+	{
+		super(id);
+		setHasSubtypes(true);
+	}
 
 	@Override
 	public int getMetadata(int dmg)

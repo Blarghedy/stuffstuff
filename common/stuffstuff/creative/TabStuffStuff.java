@@ -7,24 +7,23 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class TabStuffStuff extends CreativeTabs
 {
 	public TabStuffStuff(String label)
-    {
-	    super(label);
-    }
-	
-//	@Override
-//	public ItemStack getIconItemStack()
-//	{
-//		// TODO this
-//	    return super.getIconItemStack();
-//	}
-	
+	{
+		super(label);
+	}
+
+	// @Override
+	// public ItemStack getIconItemStack()
+	// {
+	// // TODO this
+	// return super.getIconItemStack();
+	// }
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public int getTabIconItemIndex()
 	{
-	    // TODO this
+		// TODO this
 		return super.getTabIconItemIndex();
 	}
 
 }
-

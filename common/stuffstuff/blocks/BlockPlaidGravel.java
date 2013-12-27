@@ -15,15 +15,15 @@ public class BlockPlaidGravel extends Block
 		setCreativeTab(StuffStuff.tabStuffStuff);
 		setHardness(Block.gravel.blockHardness);
 		setStepSound(Block.gravel.stepSound);
-		setUnlocalizedName(BlockInfo.PLAID_GRAVEL_UNLOCALIZED_NAME);		
+		setUnlocalizedName(BlockInfo.PLAID_GRAVEL_UNLOCALIZED_NAME);
 	}
-	
+
 	@Override
 	public Icon getIcon(int par1, int par2)
 	{
 		return blockIcon;
 	}
-	
+
 	@Override
 	public void registerIcons(IconRegister register)
 	{

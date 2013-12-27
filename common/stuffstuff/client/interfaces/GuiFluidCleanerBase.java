@@ -22,14 +22,14 @@ public class GuiFluidCleanerBase extends GuiBase
 	private static final GuiScaledRectangle powerRect;
 	public static final byte CHARGE_RECT_INDEX = -1;
 	public static final byte POWER_RECT_INDEX = -2;
-	
+
 	public GuiFluidCleanerBase(InventoryPlayer invPlayer, ItemStack itemstack)
 	{
 		super(new ContainerFluidCleanerBase(invPlayer, itemstack));
 		xSize = 175;
 		ySize = 165;
 		this.itemstack = itemstack;
-		this.item = (FluidCleanerBase)itemstack.getItem();
+		item = (FluidCleanerBase)itemstack.getItem();
 	}
 
 	static
@@ -44,7 +44,7 @@ public class GuiFluidCleanerBase extends GuiBase
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 
 		// 176, 70
-		this.mc.getTextureManager().bindTexture(texture);
+		mc.getTextureManager().bindTexture(texture);
 		int xStart = (width - xSize) / 2;
 		int yStart = (height - ySize) / 2;
 		this.drawTexturedModalRect(xStart, yStart, 0, 0, xSize, ySize);
@@ -62,7 +62,7 @@ public class GuiFluidCleanerBase extends GuiBase
 		{
 			chargeRect.drawString(this, x, y, "Charge: " + Items.itemBlockPlacer.getCharge(itemstack) + "\nClick to edit.");
 		}
-		
+
 		if (powerRect.mouseInButton(this, x, y))
 		{
 			// TODO add color coding for when power is low
@@ -75,7 +75,7 @@ public class GuiFluidCleanerBase extends GuiBase
 	{
 		// button: 0 left, 1 right, maybe 2 middle
 		super.mouseClicked(x, y, button);
-		
+
 		if (chargeRect.mouseInButton(this, x, y))
 		{
 			int charge = (int)(chargeRect.getRelativeMouseY(this, x, y) * 10 + .5);

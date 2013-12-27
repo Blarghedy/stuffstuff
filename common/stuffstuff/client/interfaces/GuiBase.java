@@ -11,20 +11,20 @@ import cpw.mods.fml.relauncher.SideOnly;
 public abstract class GuiBase extends GuiContainer
 {
 	public GuiBase(Container container)
-    {
-	    super(container);
-    }
+	{
+		super(container);
+	}
 
 	public int getLeft()
 	{
-		return this.guiLeft;
+		return guiLeft;
 	}
-	
+
 	public int getTop()
 	{
-		return this.guiTop;
+		return guiTop;
 	}
-	
+
 	public void drawHoverString(List list, int x, int y)
 	{
 		drawHoveringText(list, x - 3, y, fontRenderer);

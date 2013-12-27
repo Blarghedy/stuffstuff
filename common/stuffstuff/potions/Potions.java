@@ -16,7 +16,7 @@ public class Potions
 	public static void init()
 	{
 		modifyAccess();
-		textures = new ResourceLocation(PotionInfo.TEXTURE_LOCATION);
+		textures = new ResourceLocation(PotionInfo.ICON_TEXTURE_LOCATION);
 		
 		potionPlaid = new PotionPlaid(PotionInfo.PLAID_ID);
 	}

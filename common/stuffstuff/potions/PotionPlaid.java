@@ -25,7 +25,7 @@ public class PotionPlaid extends Potion
 	@Override
 	public int getStatusIconIndex()
 	{
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(PotionInfo.TEXTURE_LOCATION));
+		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(PotionInfo.ICON_TEXTURE_LOCATION));
 		return super.getStatusIconIndex();
 	}
 

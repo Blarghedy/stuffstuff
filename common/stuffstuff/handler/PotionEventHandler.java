@@ -1,7 +1,12 @@
 package stuffstuff.handler;
 
+import java.util.EnumSet;
+
 import org.lwjgl.opengl.GL11;
 
+import cpw.mods.fml.common.ITickHandler;
+import cpw.mods.fml.common.TickType;
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.client.renderer.RenderHelper;
@@ -15,7 +20,7 @@ import stuffstuff.info.ItemInfo;
 import stuffstuff.info.PotionInfo;
 import stuffstuff.potions.Potions;
 
-public class PotionEventHandler
+public class PotionEventHandler implements ITickHandler
 {
 	@ForgeSubscribe
 	public void onEntityUpdate(LivingUpdateEvent event)
@@ -28,40 +33,87 @@ public class PotionEventHandler
 			}
 		}
 	}
-	
+
 	@ForgeSubscribe
 	public void renderPlaidOverlayHandler(RenderGameOverlayEvent.Pre event)
 	{
+		//		EntityClientPlayerMP player = Minecraft.getMinecraft().thePlayer;
+		//		if (player.isPotionActive(Potions.potionPlaid))
+		//		{
+		//			// crosshairs kinda works
+		//			// helmet is the same
+		//			// ALL doesn't work?
+		//			if (event.type == RenderGameOverlayEvent.ElementType.HELMET)
+		//			{
+		//				int level = player.getActivePotionEffect(Potions.potionPlaid).getAmplifier() + 1;
+		//				ResourceLocation rloc = new ResourceLocation(PotionInfo.PLAID_OVERLAY_TEXTURE);
+		//
+		//				GL11.glDepthMask(false);
+		//				GL11.glDisable(GL11.GL_CULL_FACE);
+		//
+		//				GL11.glPushMatrix();
+		//				GL11.glTranslated(256/2, 256/2, 0);
+		//				GL11.glScalef(59900, 59900, 0);
+		//				GL11.glTranslated(0, 0, -1f);  
+		//				//	            GL11.glDisable(GL11.GL_DEPTH_TEST); // might need to do this to help with zfighting
+		//				QuadHelper.renderPulsingQuad(rloc, .9F);
+		//				GL11.glPopMatrix();
+		//
+		//				GL11.glEnable(GL11.GL_CULL_FACE);
+		//				GL11.glDepthMask(true);
+		//			}
+		//		}
+	}
+
+	@Override
+	public void tickStart(EnumSet<TickType> type, Object... tickData)
+	{
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void tickEnd(EnumSet<TickType> type, Object... tickData)
+	{
 		EntityClientPlayerMP player = Minecraft.getMinecraft().thePlayer;
-		if (player.isPotionActive(Potions.potionPlaid))
+		if (type.contains(TickType.RENDER) && player.isPotionActive(Potions.potionPlaid))
 		{
 			// crosshairs kinda works
 			// helmet is the same
 			// ALL doesn't work?
-			if (event.type == RenderGameOverlayEvent.ElementType.CROSSHAIRS)
-			{
 			int level = player.getActivePotionEffect(Potions.potionPlaid).getAmplifier() + 1;
 			ResourceLocation rloc = new ResourceLocation(PotionInfo.PLAID_OVERLAY_TEXTURE);
-			
+
 			GL11.glDepthMask(false);
-	        GL11.glDisable(GL11.GL_CULL_FACE);
+			GL11.glDisable(GL11.GL_CULL_FACE);
 
-//	            int zCorrection = i == 2 ? -1 : 1;
-	            GL11.glPushMatrix();
-//	            GL11.glTranslated(-iPX + x + xShift, -iPY + y + yShift, -iPZ + z + zShift);
-	            GL11.glTranslated(256/2, 256/2, 0);
-//	            GL11.glScalef(1F * xScale, 1F * yScale, 1F * zScale);
-	            GL11.glScalef(500, 500, 0);
-//	            GL11.glRotatef(90, forgeDir.offsetX, forgeDir.offsetY, forgeDir.offsetZ);
-//	            GL11.glTranslated(0, 0, 0.5f * zCorrection);
-	            GL11.glTranslated(0, 0, -1f);
-	            GL11.glClear(GL11.GL_DEPTH_BUFFER_BIT);
-	            QuadHelper.renderPulsingQuad(rloc, .9F);
-	            GL11.glPopMatrix();
+			GL11.glPushMatrix();
+//			GL11.glTranslated(256/2, 256/2, 0);
+			GL11.glScalef(59900, 59900, 0);
+//			GL11.glTranslated(0, 0, -1f);  
+			//	            GL11.glDisable(GL11.GL_DEPTH_TEST); // might need to do this to help with zfighting
+			QuadHelper.renderPulsingQuad(rloc, .9F);
+			GL11.glPopMatrix();
 
-	        GL11.glEnable(GL11.GL_CULL_FACE);
-	        GL11.glDepthMask(true);
-			}
+			GL11.glEnable(GL11.GL_CULL_FACE);
+			GL11.glDepthMask(true);
 		}
+
 	}
+
+	@Override
+	public EnumSet<TickType> ticks()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getLabel()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 }

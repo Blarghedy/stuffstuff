@@ -41,6 +41,8 @@ public class ConfigHandler
 			FluidInfo.PLAID_WATER_ID = config.getBlock(FluidInfo.PLAID_WATER_KEY, FluidInfo.PLAID_WATER_DEFAULT).getInt();
 
 			PotionInfo.PLAID_ID = config.get(PotionInfo.POTION_CATEGORY, PotionInfo.PLAID_KEY, PotionInfo.PLAID_DEFAULT).getInt();
+			PotionInfo.CUBE_DENSITY = config.get(PotionInfo.POTION_CATEGORY, PotionInfo.CUBE_DENSITY_KEY, PotionInfo.CUBE_DENSITY_DEFAULT).getInt();
+			PotionInfo.CUBE_DISTANCE = config.get(PotionInfo.POTION_CATEGORY, PotionInfo.CUBE_DISTANCE_KEY, PotionInfo.CUBE_DISTANCE_DEFAULT).getInt();
 
 			MiscConfig.PLAY_SOUNDS = config.get(MiscConfig.MISC_CONFIG_CATEGORY, MiscConfig.PLAY_SOUNDS_KEY, MiscConfig.PLAY_SOUNDS_DEFAULT).getBoolean(MiscConfig.PLAY_SOUNDS_DEFAULT);
 

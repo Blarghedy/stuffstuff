@@ -12,11 +12,18 @@ public class Potions
 {
 	public static Potion potionPlaid;
 	public static ResourceLocation textures;
+	public static ResourceLocation[] potionCubes;
 
 	public static void init()
 	{
 		modifyAccess();
 		textures = new ResourceLocation(PotionInfo.ICON_TEXTURE_LOCATION);
+		potionCubes = new ResourceLocation[PotionInfo.PLAID_CUBE_TEXTURES.length];
+
+		for (int i = 0; i < PotionInfo.PLAID_CUBE_TEXTURES.length; i++)
+		{
+			potionCubes[i] = new ResourceLocation(PotionInfo.PLAID_CUBE_TEXTURES[i]);
+		}
 
 		potionPlaid = new PotionPlaid(PotionInfo.PLAID_ID);
 	}

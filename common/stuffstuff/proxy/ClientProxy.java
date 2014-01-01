@@ -42,7 +42,6 @@ public class ClientProxy extends CommonProxy
 		MinecraftForge.EVENT_BUS.register(new PotionEventHandler());
 
 		TickRegistry.registerTickHandler(StuffStuff.itemBlockPlacerHandler, Side.CLIENT);
-		TickRegistry.registerTickHandler(new PotionEventHandler(), Side.CLIENT);
 		System.out.println("Client handlers registered.");
 	}
 

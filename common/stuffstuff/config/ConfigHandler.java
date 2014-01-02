@@ -37,6 +37,12 @@ public class ConfigHandler
 			BlockInfo.PLAID_COBBLESTONE_ID = config.getBlock(BlockInfo.PLAID_COBBLESTONE_KEY, BlockInfo.PLAID_COBBLESTONE_DEFAULT).getInt();
 			BlockInfo.PLAID_STONE_ID = config.getBlock(BlockInfo.PLAID_STONE_KEY, BlockInfo.PLAID_STONE_DEFAULT).getInt();
 			BlockInfo.PLAID_DIRT_ID = config.getBlock(BlockInfo.PLAID_DIRT_KEY, BlockInfo.PLAID_DIRT_DEFAULT).getInt();
+			BlockInfo.PLAID_STONE_BRICK_ID  = config.getBlock(BlockInfo.PLAID_STONE_BRICK_KEY, BlockInfo.PLAID_STONE_BRICK_DEFAULT).getInt();
+
+			BlockInfo.PLAID_COBBLESTONE_STAIRS_ID = config.getBlock(BlockInfo.PLAID_COBBLESTONE_STAIRS_KEY, BlockInfo.PLAID_COBBLESTONE_STAIRS_DEFAULT).getInt();
+			BlockInfo.PLAID_STONE_STAIRS_ID = config.getBlock(BlockInfo.PLAID_STONE_STAIRS_KEY, BlockInfo.PLAID_STONE_STAIRS_DEFAULT).getInt();
+			BlockInfo.PLAID_STONE_BRICK_STAIRS_ID = config.getBlock(BlockInfo.PLAID_STONE_BRICK_STAIRS_KEY, BlockInfo.PLAID_STONE_BRICK_STAIRS_DEFAULT).getInt();
+			BlockInfo.PLAID_PLANK_STAIRS_ID = config.getBlock(BlockInfo.PLAID_PLANK_STAIRS_KEY, BlockInfo.PLAID_PLANK_STAIRS_DEFAULT).getInt();
 
 			FluidInfo.PLAID_WATER_ID = config.getBlock(FluidInfo.PLAID_WATER_KEY, FluidInfo.PLAID_WATER_DEFAULT).getInt();
 

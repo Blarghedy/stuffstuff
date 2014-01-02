@@ -9,7 +9,7 @@ import net.minecraft.world.biome.BiomeGenPlains;
 import net.minecraft.world.gen.feature.WorldGenLiquids;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import stuffstuff.blocks.Blocks;
-import stuffstuff.fluids.Fluids;
+import stuffstuff.fluid.Fluids;
 import stuffstuff.worldgen.WorldGenPlaidTrees;
 
 public class BiomeGenPlaidPlain extends BiomeGenPlains

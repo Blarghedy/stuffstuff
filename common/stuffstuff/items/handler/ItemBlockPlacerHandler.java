@@ -46,36 +46,6 @@ public class ItemBlockPlacerHandler implements ITickHandler
 			return null;
 	}
 
-	// public void event(Point clicked, int sideClicked, ItemStack itemstack)
-	// {
-	// PriorityQueue<PQNode> queue = getQueue(itemstack);
-	// if (queue == null) return; // it isn't a block placer
-	//
-	// ItemBlockPlacer item = (ItemBlockPlacer)itemstack.getItem();
-	// BlockPlaceMode mode = item.getBlockPlaceMode(itemstack);
-	// int charge = item.getCharge(itemstack);
-	//
-	// switch(mode)
-	// {
-	// // CREATION, EXTENSION, PILLAR, REPLACE, PROJECTION
-	// case EXTENSION:
-	//
-	// break;
-	// case PILLAR:
-	//
-	// break;
-	// case REPLACE:
-	//
-	// break;
-	// case PROJECTION:
-	//
-	// break;
-	// case CREATION:
-	// default:
-	//
-	// }
-	// }
-
 	public void addRegion(Point p1, Point p2, Point start, int depth, ForgeDirection direction, ItemStack itemstack)
 	{
 		int minx, maxx, miny, maxy, minz, maxz;
@@ -83,7 +53,6 @@ public class ItemBlockPlacerHandler implements ITickHandler
 		int priority;
 		int offsetX, offsetY, offsetZ;
 		PriorityQueue<PQNode> queue = getQueue(itemstack);
-		// System.out.printf("Adding region (p1, p2, start), (" + p1 + " " + p2 + " " + start + "), depth %d direction %s item %s\n", depth, direction.name(), itemstack.getItem().getUnlocalizedName());
 
 		if (start.dimID != p1.dimID || p1.dimID != p2.dimID)
 		{
@@ -137,8 +106,6 @@ public class ItemBlockPlacerHandler implements ITickHandler
 			maxz = p1.z;
 		}
 
-		// System.out.printf("min(x,y,z): (%d,%d,%d), max(x,y,z): (%d,%d,%d), start: (%d,%d,%d)", minx, miny, minz, maxx, maxy, maxz, start.x, start.y, start.z);
-
 		for (int inDepth = 0; inDepth < depth; inDepth++)
 		{
 			for (int i = minx; i <= maxx; i++)
@@ -147,8 +114,6 @@ public class ItemBlockPlacerHandler implements ITickHandler
 				{
 					for (int k = minz; k <= maxz; k++)
 					{
-						// System.out.printf("(i,j,k) (%d,%d,%d)\n", i, j, k);
-
 						priority = start.distanceSquared(i, j, k, dimID);
 						if (i == start.x && (j == start.y || k == start.z) || j == start.y && k == start.z)
 						{
@@ -161,7 +126,6 @@ public class ItemBlockPlacerHandler implements ITickHandler
 							priority += inDepth * 15;
 						}
 						queue.add(new PQNode(priority, new Point(i + offsetX * inDepth, j + offsetY * inDepth, k + offsetZ * inDepth, dimID), Items.itemBlockPlacer.getBlockPlaceMode(itemstack)));
-						// NotificationHelper.notifySelf("Added to queue");
 					}
 				}
 			}
@@ -174,7 +138,7 @@ public class ItemBlockPlacerHandler implements ITickHandler
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData)
 	{
-		// TODO Auto-generated method stub
+
 	}
 
 	@Override
@@ -186,13 +150,11 @@ public class ItemBlockPlacerHandler implements ITickHandler
 		for (ItemStack itemstack : map.keySet())
 		{
 			PriorityQueue<PQNode> queue = map.get(itemstack);
-			// System.out.println("itemstack, queue: " + itemstack + " - " + queue);
 			int i = 0;
 			while (i < ItemInfo.BLOCK_PLACER_MAX_PER_TICK && !queue.isEmpty())
 			{
 				PQNode node = queue.poll();
 				world = DimensionManager.getWorld(node.point.dimID);
-				// System.out.println("Got world for " + node.point.dimID + " " + world);
 
 				BlockPlaceMode mode = BlockPlaceMode.CREATION;
 
@@ -200,7 +162,6 @@ public class ItemBlockPlacerHandler implements ITickHandler
 				{
 					mode = (BlockPlaceMode)node.args[0];
 				}
-				// System.out.println("" + i + " " + mode + " " + node);
 
 				switch (mode)
 				{

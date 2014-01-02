@@ -1,10 +1,8 @@
-package stuffstuff.fluids;
+package stuffstuff.fluid;
 
 import net.minecraftforge.fluids.BlockFluidBase;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
-import stuffstuff.fluid.BlockFluidPlaidWater;
-import stuffstuff.fluid.FluidPlaidWater;
 import stuffstuff.info.FluidInfo;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;

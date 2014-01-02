@@ -14,7 +14,6 @@ import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import stuffstuff.StuffStuff;
 import stuffstuff.blocks.PlaidColor;
-import stuffstuff.fluids.Fluids;
 import stuffstuff.info.FluidInfo;
 import stuffstuff.potions.Potions;
 import stuffstuff.render.Renderers;

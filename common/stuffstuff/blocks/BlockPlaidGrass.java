@@ -87,7 +87,7 @@ public class BlockPlaidGrass extends Block
 		{
 			if (world.getBlockLightValue(x, y + 1, z) < 4 && world.getBlockLightOpacity(x, y + 1, z) > 2)
 			{
-				world.setBlock(x, y, z, Block.dirt.blockID);
+				world.setBlock(x, y, z, Blocks.blockPlaidDirt.blockID);
 			}
 			else if (world.getBlockLightValue(x, y + 1, z) > 9)
 			{
@@ -121,6 +121,12 @@ public class BlockPlaidGrass extends Block
 			}
 		}
 	}
+	
+	@Override
+	public int idDropped(int par1, Random par2Random, int par3)
+	{
+	    return Blocks.blockPlaidDirt.idDropped(0, par2Random, par3);
+	}
 
 	@Override
 	public boolean canSustainPlant(World world, int x, int y, int z, ForgeDirection direction, IPlantable plant)
@@ -138,5 +144,11 @@ public class BlockPlaidGrass extends Block
 	public int tickRate(World world)
 	{
 		return super.tickRate(world);
+	}
+	
+	@Override
+	public void onPlantGrow(World world, int x, int y, int z, int sourceX, int sourceY, int sourceZ)
+	{
+	    world.setBlock(x, y, z, Blocks.blockPlaidDirt.blockID);
 	}
 }

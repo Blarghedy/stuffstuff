@@ -91,6 +91,37 @@ public class BlockInfo
 	public static final String PLAID_DIRT_UNLOCALIZED_NAME = "dirtPlaid";
 	public static final String PLAID_DIRT_TEXTURE = "dirt_plaid";
 
+	public static int PLAID_STONE_BRICK_ID;
+	public static final int PLAID_STONE_BRICK_DEFAULT = 467;
+	public static final String PLAID_STONE_BRICK_KEY = "stoneBrickPlaid";
+	public static final String PLAID_STONE_BRICK_NAME = "Plaid Stone Brick";
+	public static final String PLAID_STONE_BRICK_TEXTURE = "stone_brick_plaid";
+	public static final String PLAID_STONE_BRICK_UNLOCALIZED_NAME = "stoneBrickPlaid";
+
+	public static int PLAID_STONE_STAIRS_ID;
+	public static final int PLAID_STONE_STAIRS_DEFAULT = 468;
+	public static final String PLAID_STONE_STAIRS_KEY = "stairsPlaidStone";
+	public static final String PLAID_STONE_STAIRS_NAME = "Plaid Stone Stairs";
+	public static final String PLAID_STONE_STAIRS_UNLOCALIZED_NAME = "stairsPlaidStone";
+
+	public static int PLAID_COBBLESTONE_STAIRS_ID;
+	public static final int PLAID_COBBLESTONE_STAIRS_DEFAULT = 469;
+	public static final String PLAID_COBBLESTONE_STAIRS_KEY = "stairsPlaidCobblestone";
+	public static final String PLAID_COBBLESTONE_STAIRS_NAME = "Plaid Cobblestone Stairs";
+	public static final String PLAID_COBBLESTONE_STAIRS_UNLOCALIZED_NAME = "stairsPlaidCobblestone";
+
+	public static int PLAID_PLANK_STAIRS_ID;
+	public static final int PLAID_PLANK_STAIRS_DEFAULT = 470;
+	public static final String PLAID_PLANK_STAIRS_KEY = "stairsPlaidPlank";
+	public static final String PLAID_PLANK_STAIRS_NAME = "Plaid Plank Stairs";
+	public static final String PLAID_PLANK_STAIRS_UNLOCALIZED_NAME = "stairsPlaidPlank";
+
+	public static int PLAID_STONE_BRICK_STAIRS_ID;
+	public static final int PLAID_STONE_BRICK_STAIRS_DEFAULT = 471;
+	public static final String PLAID_STONE_BRICK_STAIRS_KEY = "stairsPlaidStoneBrick";
+	public static final String PLAID_STONE_BRICK_STAIRS_NAME = "Plaid Stone Brick Stairs";
+	public static final String PLAID_STONE_BRICK_STAIRS_UNLOCALIZED_NAME = "stairsPlaidStoneBrick";
+
 	static
 	{
 		PLAID_PLANK_TEXTURES = new String[PLAID_HEIGHT][];

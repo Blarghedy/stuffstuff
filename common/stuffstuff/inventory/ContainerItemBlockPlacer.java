@@ -42,8 +42,6 @@ public class ContainerItemBlockPlacer extends Container
 		// make custom slot to handle that I think
 
 		addSlotToContainer(new Slot(inventory, 0, 47, 54));
-		System.out.println("stacks: " + inventoryItemStacks.size() + " " + inventoryItemStacks);
-		System.out.println("slots: " + inventorySlots.size() + " " + inventorySlots);
 	}
 
 	@Override

@@ -1,5 +1,7 @@
 package stuffstuff.blocks;
 
+import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -13,7 +15,8 @@ public class BlockPlaidStone extends Block
 	{
 		super(id, Material.rock);
 		setCreativeTab(StuffStuff.tabStuffStuff);
-		setHardness(2F);
+		setHardness(1.5F);
+		setResistance(10);
 		setStepSound(soundStoneFootstep);
 		setUnlocalizedName(BlockInfo.PLAID_STONE_UNLOCALIZED_NAME);
 	}
@@ -28,5 +31,11 @@ public class BlockPlaidStone extends Block
 	public void registerIcons(IconRegister register)
 	{
 		blockIcon = register.registerIcon(BlockInfo.TEXTURE_LOCATION + ":" + BlockInfo.PLAID_STONE_TEXTURE);
+	}
+	
+	@Override
+	public int idDropped(int par1, Random par2Random, int par3)
+	{
+		return Blocks.blockPlaidCobble.idDropped(0, par2Random, par3);
 	}
 }

@@ -5,7 +5,7 @@ import stuffstuff.blocks.Blocks;
 import stuffstuff.client.interfaces.GuiHandler;
 import stuffstuff.config.ConfigHandler;
 import stuffstuff.creative.TabStuffStuff;
-import stuffstuff.fluids.Fluids;
+import stuffstuff.fluid.Fluids;
 import stuffstuff.info.ModInfo;
 import stuffstuff.items.Items;
 import stuffstuff.items.handler.ItemBlockPlacerHandler;

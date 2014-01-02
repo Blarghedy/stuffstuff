@@ -1,6 +1,7 @@
 package stuffstuff.blocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockStairs;
 import stuffstuff.blocks.items.ItemPlaidLeaves;
 import stuffstuff.blocks.items.ItemPlaidLog;
 import stuffstuff.info.BlockInfo;
@@ -20,6 +21,11 @@ public class Blocks
 	public static Block blockPlaidCobble;
 	public static Block blockPlaidStone;
 	public static Block blockPlaidDirt;
+	public static Block blockPlaidStoneBrick;
+	public static BlockStairs blockPlaidStoneStairs;
+	public static BlockStairs blockPlaidCobblestoneStairs;
+	public static BlockStairs blockPlaidStoneBrickStairs;
+	public static BlockStairs blockPlaidPlankStairs;
 
 	public static void init()
 	{
@@ -35,6 +41,12 @@ public class Blocks
 		blockPlaidCobble = new BlockPlaidCobblestone(BlockInfo.PLAID_COBBLESTONE_ID);
 		blockPlaidStone = new BlockPlaidStone(BlockInfo.PLAID_STONE_ID);
 		blockPlaidDirt = new BlockPlaidDirt(BlockInfo.PLAID_DIRT_ID);
+		blockPlaidStoneBrick = new BlockPlaidStoneBrick(BlockInfo.PLAID_STONE_BRICK_ID);
+
+		blockPlaidStoneStairs = new BlockStuffStairs(BlockInfo.PLAID_STONE_STAIRS_ID, blockPlaidStone);
+		blockPlaidCobblestoneStairs = new BlockStuffStairs(BlockInfo.PLAID_COBBLESTONE_STAIRS_ID, blockPlaidCobble);
+		blockPlaidStoneBrickStairs = new BlockStuffStairs(BlockInfo.PLAID_STONE_BRICK_STAIRS_ID, blockPlaidStoneBrick);
+		blockPlaidPlankStairs = new BlockStuffStairs(BlockInfo.PLAID_PLANK_STAIRS_ID, blockPlaidPlank);
 
 		// GameRegistry.registerBlock(blockBlockPlacer, BlockInfo.BLOCK_PLACER_NAME);
 		GameRegistry.registerBlock(blockPlaidPlank, BlockInfo.PLAID_PLANK_NAME);
@@ -48,7 +60,12 @@ public class Blocks
 		GameRegistry.registerBlock(blockPlaidCobble, BlockInfo.PLAID_COBBLESTONE_NAME);
 		GameRegistry.registerBlock(blockPlaidStone, BlockInfo.PLAID_STONE_NAME);
 		GameRegistry.registerBlock(blockPlaidDirt, BlockInfo.PLAID_DIRT_NAME);
+		GameRegistry.registerBlock(blockPlaidStoneBrick, BlockInfo.PLAID_STONE_BRICK_NAME);
 
+		GameRegistry.registerBlock(blockPlaidStoneStairs, BlockInfo.PLAID_STONE_STAIRS_NAME);
+		GameRegistry.registerBlock(blockPlaidCobblestoneStairs, BlockInfo.PLAID_COBBLESTONE_STAIRS_NAME);
+		GameRegistry.registerBlock(blockPlaidStoneBrickStairs, BlockInfo.PLAID_STONE_BRICK_STAIRS_NAME);
+		GameRegistry.registerBlock(blockPlaidPlankStairs, BlockInfo.PLAID_PLANK_STAIRS_NAME);
 	}
 
 	public static void addNames()
@@ -65,6 +82,12 @@ public class Blocks
 		LanguageRegistry.addName(blockPlaidCobble, BlockInfo.PLAID_COBBLESTONE_NAME);
 		LanguageRegistry.addName(blockPlaidStone, BlockInfo.PLAID_STONE_NAME);
 		LanguageRegistry.addName(blockPlaidDirt, BlockInfo.PLAID_DIRT_NAME);
+		LanguageRegistry.addName(blockPlaidStoneBrick, BlockInfo.PLAID_STONE_BRICK_NAME);
+
+		LanguageRegistry.addName(blockPlaidStoneStairs, BlockInfo.PLAID_STONE_STAIRS_NAME);
+		LanguageRegistry.addName(blockPlaidCobblestoneStairs, BlockInfo.PLAID_COBBLESTONE_STAIRS_NAME);
+		LanguageRegistry.addName(blockPlaidStoneBrickStairs, BlockInfo.PLAID_STONE_BRICK_STAIRS_NAME);
+		LanguageRegistry.addName(blockPlaidPlankStairs, BlockInfo.PLAID_PLANK_NAME);
 	}
 
 	public static void registerRecipes()

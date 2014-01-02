@@ -122,6 +122,13 @@ public class BlockInfo
 	public static final String PLAID_STONE_BRICK_STAIRS_NAME = "Plaid Stone Brick Stairs";
 	public static final String PLAID_STONE_BRICK_STAIRS_UNLOCALIZED_NAME = "stairsPlaidStoneBrick";
 
+	public static int PLAID_TALL_GRASS_ID;
+	public static final int PLAID_TALL_GRASS_DEFAULT = 472;
+	public static final String PLAID_TALL_GRASS_KEY = "tallGrassPlaid";
+	public static final String PLAID_TALL_GRASS_NAME = "Plaid Tall Grass";
+	public static final String PLAID_TALL_GRASS_UNLOCALIZED_NAME = "tallGrassPlad";
+	public static final String PLAID_TALL_GRASS_TEXTURE = "tall_grass_plaid";
+
 	static
 	{
 		PLAID_PLANK_TEXTURES = new String[PLAID_HEIGHT][];

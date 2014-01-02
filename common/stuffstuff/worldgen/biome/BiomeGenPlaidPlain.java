@@ -7,6 +7,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeDecorator;
 import net.minecraft.world.biome.BiomeGenPlains;
 import net.minecraft.world.gen.feature.WorldGenLiquids;
+import net.minecraft.world.gen.feature.WorldGenTallGrass;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import stuffstuff.blocks.Blocks;
 import stuffstuff.fluid.Fluids;
@@ -90,8 +91,8 @@ public class BiomeGenPlaidPlain extends BiomeGenPlains
 	}
 
 	@Override
-	public WorldGenerator getRandomWorldGenForGrass(Random par1Random)
+	public WorldGenerator getRandomWorldGenForGrass(Random rand)
 	{
-		return super.getRandomWorldGenForGrass(par1Random);
+		return new WorldGenTallGrass(Blocks.blockPlaidTallGrass.blockID, 0);
 	}
 }

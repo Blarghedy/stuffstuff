@@ -32,25 +32,27 @@ public class BlockPlaidPlank extends Block
 	@Override
 	public Icon getBlockTexture(IBlockAccess blockAccess, int x, int y, int z, int side)
 	{
-		x = x > 0 ? x : -x;
-		y = y > 0 ? y : -y;
-		z = z > 0 ? z : -z;
-
 		ForgeDirection face = ForgeDirection.getOrientation(side);
+		int modx;
+		int mody;
+		int modz;
+		modx = x % 4 < 0 ? 4 + x % 4 : x % 4;
+		mody = y % 4 < 0 ? 4 + y % 4 : y % 4;
+		modz = z % 4 < 0 ? 4 + z % 4 : z % 4;
 
 		switch (face)
 		{
 			case NORTH: // x y
-				return icons[3 - x % 4][3 - y % 4];
+				return icons[3 - modx][3 - mody];
 			case SOUTH:
-				return icons[x % 4][3 - y % 4];
+				return icons[modx][3 - mody];
 			case EAST: // y z
-				return icons[3 - z % 4][3 - y % 4];
+				return icons[3 - modz][3 - mody];
 			case WEST:
-				return icons[z % 4][3 - y % 4];
+				return icons[modz][3 - mody];
 			case UP:
 			case DOWN:
-				return icons[x % 4][z % 4];
+				return icons[modx][modz];
 
 			case UNKNOWN:
 			default:

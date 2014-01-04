@@ -22,6 +22,6 @@ public class ItemBucketPlaid extends ItemBucket
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister register)
 	{
-		itemIcon = register.registerIcon(ItemInfo.BUCKET_PLAID_ICON);
+		itemIcon = register.registerIcon(ItemInfo.TEXTURE_LOCATION + ":" + ItemInfo.BUCKET_PLAID_ICON);
 	}
 }

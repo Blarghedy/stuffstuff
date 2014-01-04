@@ -39,10 +39,10 @@ public class StuffStuff
 	public void preInit(FMLPreInitializationEvent e)
 	{
 		ConfigHandler.init(e.getSuggestedConfigurationFile());
+		Fluids.init();
 		Items.init();
 		Blocks.init();
 		Biomes.init();
-		Fluids.init();
 		Potions.init();
 
 		itemBlockPlacerHandler = new ItemBlockPlacerHandler();

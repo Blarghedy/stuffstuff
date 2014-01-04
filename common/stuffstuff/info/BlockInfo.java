@@ -129,6 +129,13 @@ public class BlockInfo
 	public static final String PLAID_TALL_GRASS_UNLOCALIZED_NAME = "tallGrassPlad";
 	public static final String PLAID_TALL_GRASS_TEXTURE = "tall_grass_plaid";
 
+	public static int PLAID_GLASS_ID;
+	public static final int PLAID_GLASS_DEFAULT = 473;
+	public static final String PLAID_GLASS_KEY = "glassPlaid";
+	public static final String PLAID_GLASS_NAME = "Plaid Glass";
+	public static final String PLAID_GLASS_UNLOCALIZED_NAME = "glassPlaid";
+	public static final String PLAID_GLASS_TEXTURE = "glass_plaid";
+
 	static
 	{
 		PLAID_PLANK_TEXTURES = new String[PLAID_HEIGHT][];

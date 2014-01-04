@@ -20,6 +20,13 @@ public class ItemInfo
 	public static final String FLUID_CLEANER_NAME = "Cleaner";
 	public static final String FLUID_CLEANER_ICON = "fluidCleaner";
 
+	public static int BUCKET_PLAID_ID;
+	public static final int BUCKET_PLAID_DEFAULT = 31003;
+	public static final String BUCKET_PLAID_UNLOCALIZED_NAME = "bucketPlaidWater";
+	public static final String BUCKET_PLAID_NAME = "Plaid Water Bucket";
+	public static final String BUCKET_PLAID_ICON = "plaid_water_bucket";
+	public static final String BUCKET_PLAID_KEY = "bucketPlaidWater";
+
 	public static int BLOCK_PLACER_ID;
 	public static final String BLOCK_PLACER_KEY = "blockPlacer";
 	public static final int BLOCK_PLACER_DEFAULT = 31002;
@@ -32,6 +39,7 @@ public class ItemInfo
 	public static final String BLOCK_PLACER_MAX_PER_TICK_KEY = "Block placer max per tick";
 
 	public static final String BLOCK_PLACER_CATEGORY = "Block Placer";
+
 	public static int BLOCK_PLACER_MAX_PER_TICK;
 
 }

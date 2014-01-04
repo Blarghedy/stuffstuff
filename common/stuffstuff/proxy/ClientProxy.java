@@ -4,10 +4,12 @@ import net.minecraftforge.common.MinecraftForge;
 import stuffstuff.StuffStuff;
 import stuffstuff.client.sounds.SoundHandler;
 import stuffstuff.handler.BonemealEventHandler;
+import stuffstuff.handler.BucketEventHandler;
 import stuffstuff.handler.DrawBlockHighlightHandler;
 import stuffstuff.handler.KeyBindingHandler;
 import stuffstuff.handler.PotionEventHandler;
 import stuffstuff.handler.RenderWorldLastHandler;
+import stuffstuff.handler.TextureStitchEventHandler;
 import stuffstuff.handler.helper.KeyBindingHelper;
 import stuffstuff.render.Renderers;
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
@@ -40,6 +42,8 @@ public class ClientProxy extends CommonProxy
 		MinecraftForge.EVENT_BUS.register(new SoundHandler());
 		MinecraftForge.EVENT_BUS.register(new BonemealEventHandler());
 		MinecraftForge.EVENT_BUS.register(new PotionEventHandler());
+		MinecraftForge.EVENT_BUS.register(new BucketEventHandler());
+		MinecraftForge.EVENT_BUS.register(new TextureStitchEventHandler());
 
 		TickRegistry.registerTickHandler(StuffStuff.itemBlockPlacerHandler, Side.CLIENT);
 		System.out.println("Client handlers registered.");

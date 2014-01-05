@@ -1,6 +1,7 @@
 package stuffstuff;
 
 import net.minecraft.creativetab.CreativeTabs;
+import stuffstuff.achievements.Achievements;
 import stuffstuff.blocks.Blocks;
 import stuffstuff.client.interfaces.GuiHandler;
 import stuffstuff.config.ConfigHandler;
@@ -44,6 +45,7 @@ public class StuffStuff
 		Blocks.init();
 		Biomes.init();
 		Potions.init();
+		Achievements.init();
 
 		itemBlockPlacerHandler = new ItemBlockPlacerHandler();
 

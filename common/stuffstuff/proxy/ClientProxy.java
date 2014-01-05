@@ -2,6 +2,7 @@ package stuffstuff.proxy;
 
 import net.minecraftforge.common.MinecraftForge;
 import stuffstuff.StuffStuff;
+import stuffstuff.achievements.Achievements;
 import stuffstuff.client.sounds.SoundHandler;
 import stuffstuff.handler.BonemealEventHandler;
 import stuffstuff.handler.BucketEventHandler;
@@ -44,6 +45,7 @@ public class ClientProxy extends CommonProxy
 		MinecraftForge.EVENT_BUS.register(new PotionEventHandler());
 		MinecraftForge.EVENT_BUS.register(new BucketEventHandler());
 		MinecraftForge.EVENT_BUS.register(new TextureStitchEventHandler());
+		MinecraftForge.EVENT_BUS.register(new Achievements());
 
 		TickRegistry.registerTickHandler(StuffStuff.itemBlockPlacerHandler, Side.CLIENT);
 		System.out.println("Client handlers registered.");

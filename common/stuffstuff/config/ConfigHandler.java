@@ -4,6 +4,7 @@ import java.io.File;
 
 import net.minecraftforge.common.Configuration;
 import stuffstuff.StuffStuff;
+import stuffstuff.info.AchievementInfo;
 import stuffstuff.info.BlockInfo;
 import stuffstuff.info.FluidInfo;
 import stuffstuff.info.ItemInfo;
@@ -53,6 +54,9 @@ public class ConfigHandler
 			PotionInfo.PLAID_ID = config.get(PotionInfo.POTION_CATEGORY, PotionInfo.PLAID_KEY, PotionInfo.PLAID_DEFAULT).getInt();
 			PotionInfo.CUBE_DENSITY = config.get(PotionInfo.POTION_CATEGORY, PotionInfo.CUBE_DENSITY_KEY, PotionInfo.CUBE_DENSITY_DEFAULT).getInt();
 			PotionInfo.CUBE_DISTANCE = config.get(PotionInfo.POTION_CATEGORY, PotionInfo.CUBE_DISTANCE_KEY, PotionInfo.CUBE_DISTANCE_DEFAULT).getInt();
+
+			AchievementInfo.PLAID_BIOME_ID = config.get(AchievementInfo.ACHIEVEMENTS_CATEGORY, AchievementInfo.PLAID_BIOME_KEY, AchievementInfo.PLAID_BIOME_DEFAULT).getInt();
+			AchievementInfo.PLAID_BIOME2_ID = config.get(AchievementInfo.ACHIEVEMENTS_CATEGORY, AchievementInfo.PLAID_BIOME2_KEY, AchievementInfo.PLAID_BIOME2_DEFAULT).getInt();
 
 			MiscConfig.PLAY_SOUNDS = config.get(MiscConfig.MISC_CONFIG_CATEGORY, MiscConfig.PLAY_SOUNDS_KEY, MiscConfig.PLAY_SOUNDS_DEFAULT).getBoolean(MiscConfig.PLAY_SOUNDS_DEFAULT);
 

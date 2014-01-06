@@ -1,10 +1,12 @@
 package stuffstuff.blocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.block.BlockStairs;
 import stuffstuff.blocks.items.ItemPlaidLeaves;
 import stuffstuff.blocks.items.ItemPlaidLog;
 import stuffstuff.blocks.items.ItemPlaidTallGrass;
+import stuffstuff.blocks.items.ItemStuffSlab;
 import stuffstuff.info.BlockInfo;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -29,7 +31,11 @@ public class Blocks
 	public static BlockStairs blockPlaidPlankStairs;
 	public static Block blockPlaidTallGrass;
 	public static Block blockPlaidGlass;
-
+	public static BlockStuffSlab blockStoneSlab;
+	public static BlockStuffSlab blockStoneDoubleSlab;
+	public static BlockStuffSlab blockWoodSlab;
+	public static BlockStuffSlab blockWoodDoubleSlab;
+	
 	public static void init()
 	{
 		// blockBlockPlacer = new BlockBlockPlacer(BlockInfo.BLOCK_PLACER_ID);
@@ -52,7 +58,13 @@ public class Blocks
 		blockPlaidCobblestoneStairs = new BlockStuffStairs(BlockInfo.PLAID_COBBLESTONE_STAIRS_ID, blockPlaidCobble);
 		blockPlaidStoneBrickStairs = new BlockStuffStairs(BlockInfo.PLAID_STONE_BRICK_STAIRS_ID, blockPlaidStoneBrick);
 		blockPlaidPlankStairs = new BlockStuffStairs(BlockInfo.PLAID_PLANK_STAIRS_ID, blockPlaidPlank);
-
+		
+		Block[] stoneBlocks = {blockPlaidStone, blockPlaidCobble, blockPlaidStoneBrick};
+		Block[] woodBlocks = {blockPlaidPlank, blockPlaidLog};
+		blockStoneSlab = new BlockStuffSlab(BlockInfo.STONE_SLAB_ID, false, stoneBlocks);
+		blockStoneDoubleSlab = new BlockStuffSlab(BlockInfo.STONE_SLAB_DOUBLE_ID, true, stoneBlocks);
+		blockWoodSlab = new BlockStuffSlab(BlockInfo.WOOD_SLAB_ID, false, woodBlocks);
+		blockWoodDoubleSlab = new BlockStuffSlab(BlockInfo.WOOD_SLAB_DOUBLE_ID, true, woodBlocks);
 
 		// GameRegistry.registerBlock(blockBlockPlacer, BlockInfo.BLOCK_PLACER_NAME);
 		GameRegistry.registerBlock(blockPlaidPlank, BlockInfo.PLAID_PLANK_NAME);
@@ -74,6 +86,12 @@ public class Blocks
 		GameRegistry.registerBlock(blockPlaidCobblestoneStairs, BlockInfo.PLAID_COBBLESTONE_STAIRS_NAME);
 		GameRegistry.registerBlock(blockPlaidStoneBrickStairs, BlockInfo.PLAID_STONE_BRICK_STAIRS_NAME);
 		GameRegistry.registerBlock(blockPlaidPlankStairs, BlockInfo.PLAID_PLANK_STAIRS_NAME);
+
+		ItemStuffSlab.setSlabs(blockStoneSlab, blockStoneDoubleSlab);
+		GameRegistry.registerBlock(blockStoneSlab, ItemStuffSlab.class, BlockInfo.STONE_SLAB_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockStoneDoubleSlab, ItemStuffSlab.class, BlockInfo.STONE_SLAB_DOUBLE_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockWoodSlab, ItemStuffSlab.class, BlockInfo.WOOD_SLAB_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockWoodDoubleSlab, ItemStuffSlab.class, BlockInfo.WOOD_SLAB_DOUBLE_UNLOCALIZED_NAME);
 
 	}
 

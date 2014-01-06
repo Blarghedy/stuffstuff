@@ -47,7 +47,10 @@ public class ConfigHandler
 			BlockInfo.PLAID_STONE_STAIRS_ID = config.getBlock(BlockInfo.PLAID_STONE_STAIRS_KEY, BlockInfo.PLAID_STONE_STAIRS_DEFAULT).getInt();
 			BlockInfo.PLAID_STONE_BRICK_STAIRS_ID = config.getBlock(BlockInfo.PLAID_STONE_BRICK_STAIRS_KEY, BlockInfo.PLAID_STONE_BRICK_STAIRS_DEFAULT).getInt();
 			BlockInfo.PLAID_PLANK_STAIRS_ID = config.getBlock(BlockInfo.PLAID_PLANK_STAIRS_KEY, BlockInfo.PLAID_PLANK_STAIRS_DEFAULT).getInt();
-
+			BlockInfo.STONE_SLAB_ID = config.getBlock(BlockInfo.STONE_SLAB_KEY, BlockInfo.STONE_SLAB_DEFAULT).getInt();
+			BlockInfo.STONE_SLAB_DOUBLE_ID = config.getBlock(BlockInfo.STONE_SLAB_DOUBLE_KEY, BlockInfo.STONE_SLAB_DOUBLE_DEFAULT).getInt();
+			BlockInfo.WOOD_SLAB_ID = config.getBlock(BlockInfo.WOOD_SLAB_KEY, BlockInfo.WOOD_SLAB_DEFAULT).getInt();
+			BlockInfo.WOOD_SLAB_DOUBLE_ID = config.getBlock(BlockInfo.WOOD_SLAB_DOUBLE_KEY, BlockInfo.WOOD_SLAB_DOUBLE_DEFAULT).getInt();
 
 			FluidInfo.PLAID_WATER_ID = config.getBlock(FluidInfo.PLAID_WATER_KEY, FluidInfo.PLAID_WATER_DEFAULT).getInt();
 

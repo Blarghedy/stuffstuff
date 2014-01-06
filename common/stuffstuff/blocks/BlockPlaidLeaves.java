@@ -29,6 +29,7 @@ public class BlockPlaidLeaves extends BlockLeaves
 		setLightOpacity(1);
 		setStepSound(soundGrassFootstep);
 		setHardness(.2F);
+		setBurnProperties(id, 30, 60);
 	}
 
 	@Override

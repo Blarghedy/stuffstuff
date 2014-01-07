@@ -11,6 +11,14 @@ public class PQNodeComparitor implements Comparator<PQNode>
 		{
 			// return 0;
 		}
-		return o1.priority - o2.priority;
+		try
+		{
+			return o1.priority - o2.priority;
+		}
+		catch (NullPointerException e)
+		{
+			System.err.append("Trying to access a null PQNode " + o1 + " " + o2 + "\n");
+			return 0;
+		}
 	}
 }

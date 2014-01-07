@@ -34,7 +34,9 @@ public class ItemBlockPlacerHandler implements ITickHandler
 		if (itemstack.getItem() instanceof ItemBlockPlacer)
 		{
 			if (map.containsKey(itemstack))
+			{
 				return map.get(itemstack);
+			}
 			else
 			{
 				PriorityQueue<PQNode> queue = new PriorityQueue<PQNode>(50, new PQNodeComparitor());
@@ -43,7 +45,11 @@ public class ItemBlockPlacerHandler implements ITickHandler
 			}
 		}
 		else
+		{
+			System.out.println("Itemstack not instance of ItemBlockPlacer: ");
+			System.out.println(itemstack.getItem());
 			return null;
+		}
 	}
 
 	public void addRegion(Point p1, Point p2, Point start, int depth, ForgeDirection direction, ItemStack itemstack)
@@ -53,6 +59,11 @@ public class ItemBlockPlacerHandler implements ITickHandler
 		int priority;
 		int offsetX, offsetY, offsetZ;
 		PriorityQueue<PQNode> queue = getQueue(itemstack);
+
+		if (queue == null)
+		{
+			return;
+		}
 
 		if (start.dimID != p1.dimID || p1.dimID != p2.dimID)
 		{
@@ -146,14 +157,19 @@ public class ItemBlockPlacerHandler implements ITickHandler
 	{
 		ArrayList<ItemStack> delQueue = new ArrayList<ItemStack>();
 		World world;
-
-		for (ItemStack itemstack : map.keySet())
+		// TODO Figure out why this is necessary at all, because all I can tell
+		// so far is that it magically gets rid of the ConcurrentModificationExceptions.
+		Object[] arr = map.keySet().toArray();
+		for (Object stack : arr)
 		{
+			ItemStack itemstack = (ItemStack)stack;
+
 			PriorityQueue<PQNode> queue = map.get(itemstack);
 			int i = 0;
-			while (i < ItemInfo.BLOCK_PLACER_MAX_PER_TICK && !queue.isEmpty())
+			PQNode node;
+
+			while (i < ItemInfo.BLOCK_PLACER_MAX_PER_TICK && !queue.isEmpty() && (node = queue.poll()) != null)
 			{
-				PQNode node = queue.poll();
 				world = DimensionManager.getWorld(node.point.dimID);
 
 				BlockPlaceMode mode = BlockPlaceMode.CREATION;
@@ -183,7 +199,7 @@ public class ItemBlockPlacerHandler implements ITickHandler
 				}
 				i++;
 			}
-			// if (queue.size() == 0) delQueue.add(itemstack);
+			if (queue.size() == 0) delQueue.add(itemstack);
 		}
 
 		for (ItemStack itemstack : delQueue)

@@ -4,8 +4,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
+import stuffstuff.blocks.BlockPlaidGlass;
+import stuffstuff.blocks.BlockPlaidSand;
+import stuffstuff.blocks.Blocks;
 import stuffstuff.fluid.Fluids;
 import stuffstuff.info.ItemInfo;
+import stuffstuff.recipe.Smelt;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
@@ -42,5 +46,8 @@ public class Items
 	public static void registerRecipes()
 	{
 		// TODO come up with recipes that make sense and stuff
+		Smelt.register(new ItemStack(Blocks.blockPlaidSand), new ItemStack(Blocks.blockPlaidGlass));
+		Smelt.register(new ItemStack(Blocks.blockPlaidCobble), new ItemStack(Blocks.blockPlaidStone));
+		Smelt.register(new ItemStack(Blocks.blockPlaidLog), new ItemStack(Item.coal, 1, 1));
 	}
 }

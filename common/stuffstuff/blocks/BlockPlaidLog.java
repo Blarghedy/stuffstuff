@@ -70,7 +70,7 @@ public class BlockPlaidLog extends BlockLog
 	@Override
 	public int damageDropped(int meta)
 	{
-		return meta;
+		return super.damageDropped(meta);
 	}
 
 	@Override

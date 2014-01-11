@@ -52,9 +52,8 @@ public class ConfigHandler
 			BlockInfo.WOOD_SLAB_ID = config.getBlock(BlockInfo.WOOD_SLAB_KEY, BlockInfo.WOOD_SLAB_DEFAULT).getInt();
 			BlockInfo.WOOD_SLAB_DOUBLE_ID = config.getBlock(BlockInfo.WOOD_SLAB_DOUBLE_KEY, BlockInfo.WOOD_SLAB_DOUBLE_DEFAULT).getInt();
 
-			BlockInfo.DECORATIVE_FLUIX_ID = config.getBlock(BlockInfo.DECORATIVE_FLUIX_KEY, BlockInfo.DECORATIVE_FLUIX_DEFAULT).getInt();
+			BlockInfo.FUN_FLUIX_ID = config.getBlock(BlockInfo.FUN_FLUIX_KEY, BlockInfo.FUN_FLUIX_DEFAULT).getInt();
 			BlockInfo.FLUIX_BRICK_ID = config.getBlock(BlockInfo.FLUIX_BRICK_KEY, BlockInfo.FLUIX_BRICK_DEFAULT).getInt();
-			BlockInfo.FINE_FLUIX_BRICK_ID = config.getBlock(BlockInfo.FINE_FLUIX_BRICK_KEY, BlockInfo.FINE_FLUIX_BRICK_DEFAULT).getInt();
 
 			FluidInfo.PLAID_WATER_ID = config.getBlock(FluidInfo.PLAID_WATER_KEY, FluidInfo.PLAID_WATER_DEFAULT).getInt();
 

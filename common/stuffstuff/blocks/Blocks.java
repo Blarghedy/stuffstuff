@@ -2,6 +2,8 @@ package stuffstuff.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStairs;
+import stuffstuff.blocks.items.ItemFluixBrick;
+import stuffstuff.blocks.items.ItemFunFluix;
 import stuffstuff.blocks.items.ItemPlaidLeaves;
 import stuffstuff.blocks.items.ItemPlaidLog;
 import stuffstuff.blocks.items.ItemPlaidTallGrass;
@@ -34,10 +36,9 @@ public class Blocks
 	public static BlockStuffSlab blockStoneDoubleSlab;
 	public static BlockStuffSlab blockWoodSlab;
 	public static BlockStuffSlab blockWoodDoubleSlab;
-	public static Block blockDecorativeFluix;
+	public static Block blockFunFluix;
 	public static Block blockFluixBrick;
-	public static Block blockFineFluixBrick;
-	
+
 	public static void init()
 	{
 		// blockBlockPlacer = new BlockBlockPlacer(BlockInfo.BLOCK_PLACER_ID);
@@ -68,9 +69,8 @@ public class Blocks
 		blockWoodSlab = new BlockStuffSlab(BlockInfo.WOOD_SLAB_ID, false, woodBlocks);
 		blockWoodDoubleSlab = new BlockStuffSlab(BlockInfo.WOOD_SLAB_DOUBLE_ID, true, woodBlocks);
 
-		blockDecorativeFluix = new BlockDecorativeFluix(BlockInfo.DECORATIVE_FLUIX_ID);
+		blockFunFluix = new BlockFunFluix(BlockInfo.FUN_FLUIX_ID);
 		blockFluixBrick = new BlockFluixBrick(BlockInfo.FLUIX_BRICK_ID);
-		blockFineFluixBrick = new BlockFineFluixBrick(BlockInfo.FINE_FLUIX_BRICK_ID);
 
 		// GameRegistry.registerBlock(blockBlockPlacer, BlockInfo.BLOCK_PLACER_NAME);
 		GameRegistry.registerBlock(blockPlaidPlank, BlockInfo.PLAID_PLANK_NAME);
@@ -99,9 +99,8 @@ public class Blocks
 		GameRegistry.registerBlock(blockWoodSlab, ItemStuffSlab.class, BlockInfo.WOOD_SLAB_UNLOCALIZED_NAME);
 		GameRegistry.registerBlock(blockWoodDoubleSlab, ItemStuffSlab.class, BlockInfo.WOOD_SLAB_DOUBLE_UNLOCALIZED_NAME);
 
-		GameRegistry.registerBlock(blockDecorativeFluix, BlockInfo.DECORATIVE_FLUIX_UNLOCALIZED_NAME);
-		GameRegistry.registerBlock(blockFluixBrick, BlockInfo.FLUIX_BRICK_UNLOCALIZED_NAME);
-		GameRegistry.registerBlock(blockFineFluixBrick, BlockInfo.FINE_FLUIX_BRICK_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockFunFluix, ItemFunFluix.class, BlockInfo.FUN_FLUIX_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockFluixBrick, ItemFluixBrick.class, BlockInfo.FLUIX_BRICK_UNLOCALIZED_NAME);
 
 	}
 
@@ -128,9 +127,8 @@ public class Blocks
 		LanguageRegistry.addName(blockPlaidStoneBrickStairs, BlockInfo.PLAID_STONE_BRICK_STAIRS_NAME);
 		LanguageRegistry.addName(blockPlaidPlankStairs, BlockInfo.PLAID_PLANK_NAME);
 
-		LanguageRegistry.addName(blockDecorativeFluix, BlockInfo.DECORATIVE_FLUIX_NAME);
+		LanguageRegistry.addName(blockFunFluix, BlockInfo.FUN_FLUIX_NAME);
 		LanguageRegistry.addName(blockFluixBrick, BlockInfo.FLUIX_BRICK_NAME);
-		LanguageRegistry.addName(blockFineFluixBrick, BlockInfo.FINE_FLUIX_BRICK_NAME);
 
 	}
 

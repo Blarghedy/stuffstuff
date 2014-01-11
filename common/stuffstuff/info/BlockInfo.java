@@ -153,12 +153,13 @@ public class BlockInfo
 	public static final String WOOD_SLAB_UNLOCALIZED_NAME = "stuffWoodSlab";
 	public static final String WOOD_SLAB_DOUBLE_UNLOCALIZED_NAME = "stuffDoubleWoodSlab";
 
-	public static int DECORATIVE_FLUIX_ID;
-	public static final int DECORATIVE_FLUIX_DEFAULT = 478;
-	public static final String DECORATIVE_FLUIX_KEY = "blockDecorativeFluix";
-	public static final String DECORATIVE_FLUIX_NAME = "Fun Fluix Brick";
-	public static final String DECORATIVE_FLUIX_UNLOCALIZED_NAME = "blockDecorativeFluix";
-	public static final String DECORATIVE_FLUIX_TEXTURE = "fluix_fun_brick";
+	public static int FUN_FLUIX_ID;
+	public static final int FUN_FLUIX_DEFAULT = 478;
+	public static final String FUN_FLUIX_KEY = "blockDecorativeFluix";
+	public static final String FUN_FLUIX_NAME = "Fun Fluix Brick";
+	public static final String FUN_FLUIX_UNLOCALIZED_NAME = "blockDecorativeFluix";
+	public static final String FUN_FLUIX_TEXTURE = "fluix_fun_brick";
+	public static final String FUN_FLUIX_SLIDING_TEXTURE = "fluix_fun_brick_sliding";
 
 	public static int FLUIX_BRICK_ID;
 	public static final int FLUIX_BRICK_DEFAULT = 479;
@@ -166,12 +167,6 @@ public class BlockInfo
 	public static final String FLUIX_BRICK_NAME = "Fluix Brick";
 	public static final String FLUIX_BRICK_UNLOCALIZED_NAME = "blockFluixBrick";
 	public static final String FLUIX_BRICK_TEXTURE = "fluix_brick";
-
-	public static int FINE_FLUIX_BRICK_ID;
-	public static final int FINE_FLUIX_BRICK_DEFAULT = 480;
-	public static final String FINE_FLUIX_BRICK_KEY = "blockFineFluixBrick";
-	public static final String FINE_FLUIX_BRICK_NAME = "Fine Fluix Brick";
-	public static final String FINE_FLUIX_BRICK_UNLOCALIZED_NAME = "blockFineFluixBrick";
 	public static final String FINE_FLUIX_BRICK_TEXTURE = "fine_fluix_brick";
 
 	static

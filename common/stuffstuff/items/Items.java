@@ -4,8 +4,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
-import stuffstuff.blocks.BlockPlaidGlass;
-import stuffstuff.blocks.BlockPlaidSand;
 import stuffstuff.blocks.Blocks;
 import stuffstuff.fluid.Fluids;
 import stuffstuff.info.ItemInfo;

@@ -16,7 +16,7 @@ public class BlockPlaidPlank extends Block
 	public BlockPlaidPlank(int id)
 	{
 		super(id, Material.wood);
-		setCreativeTab(StuffStuff.tabStuffStuff);
+		setCreativeTab(StuffStuff.tabPlaidStuff);
 		setHardness(2F);
 		setStepSound(soundWoodFootstep);
 		setUnlocalizedName(BlockInfo.PLAID_PLANK_UNLOCALIZED_NAME);

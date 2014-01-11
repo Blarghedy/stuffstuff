@@ -29,7 +29,7 @@ public class BlockFluidPlaidWater extends BlockFluidClassic
 	{
 		super(id, Fluids.fluidPlaidWater, Material.water);
 		setUnlocalizedName(FluidInfo.PLAID_WATER_UNLOCALIZED_NAME);
-		setCreativeTab(StuffStuff.tabStuffStuff);
+//		setCreativeTab(StuffStuff.tabPlaidStuff);
 	}
 
 	@Override

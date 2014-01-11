@@ -27,9 +27,8 @@ public class ItemBlockPlacer extends Item implements IChargeable, IKeyBound, IBl
 	public ItemBlockPlacer(int id)
 	{
 		super(id);
-		setCreativeTab(StuffStuff.tabStuffStuff);
+		setCreativeTab(StuffStuff.tabAEStuff);
 		setUnlocalizedName(ItemInfo.BLOCK_PLACER_UNLOCALIZED_NAME);
-
 	}
 
 	@Override

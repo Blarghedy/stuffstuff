@@ -5,6 +5,8 @@ import stuffstuff.achievements.Achievements;
 import stuffstuff.blocks.Blocks;
 import stuffstuff.client.interfaces.GuiHandler;
 import stuffstuff.config.ConfigHandler;
+import stuffstuff.creative.TabAEStuff;
+import stuffstuff.creative.TabPlaidStuff;
 import stuffstuff.creative.TabStuffStuff;
 import stuffstuff.fluid.Fluids;
 import stuffstuff.info.ModInfo;
@@ -28,6 +30,9 @@ import cpw.mods.fml.common.network.NetworkMod;
 public class StuffStuff
 {
 	public static CreativeTabs tabStuffStuff = new TabStuffStuff("StuffStuff");
+	public static CreativeTabs tabAEStuff = new TabAEStuff("AE Stuff");
+	public static CreativeTabs tabPlaidStuff = new TabPlaidStuff("Plaid Stuff");
+	
 	public static ItemBlockPlacerHandler itemBlockPlacerHandler;
 
 	@Instance(ModInfo.ID)

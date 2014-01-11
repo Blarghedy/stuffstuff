@@ -12,7 +12,7 @@ public class BlockPlaidDirt extends Block
 	public BlockPlaidDirt(int id)
 	{
 		super(id, Material.ground);
-		setCreativeTab(StuffStuff.tabStuffStuff);
+		setCreativeTab(StuffStuff.tabPlaidStuff);
 		setHardness(.5F);
 		setStepSound(soundGravelFootstep);
 		setUnlocalizedName(BlockInfo.PLAID_DIRT_UNLOCALIZED_NAME);

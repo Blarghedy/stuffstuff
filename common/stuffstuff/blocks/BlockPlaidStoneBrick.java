@@ -13,7 +13,7 @@ public class BlockPlaidStoneBrick extends Block
 	public BlockPlaidStoneBrick(int id)
 	{
 		super(id, Material.rock);
-		setCreativeTab(StuffStuff.tabStuffStuff);
+		setCreativeTab(StuffStuff.tabPlaidStuff);
 		setHardness(1.5F);
 		setResistance(10);
 		setStepSound(soundStoneFootstep);

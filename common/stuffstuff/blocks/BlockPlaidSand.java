@@ -13,7 +13,7 @@ public class BlockPlaidSand extends BlockSand
 	public BlockPlaidSand(int id)
 	{
 		super(id);
-		setCreativeTab(StuffStuff.tabStuffStuff);
+		setCreativeTab(StuffStuff.tabPlaidStuff);
 		setHardness(.5F);
 		setStepSound(soundSandFootstep);
 		setUnlocalizedName(BlockInfo.PLAID_SAND_UNLOCALIZED_NAME);

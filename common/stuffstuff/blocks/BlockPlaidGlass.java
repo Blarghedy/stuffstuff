@@ -14,7 +14,7 @@ public class BlockPlaidGlass extends BlockGlass
 	{
 		super(id, Material.glass, false);
 		setUnlocalizedName(BlockInfo.PLAID_GLASS_UNLOCALIZED_NAME);
-		setCreativeTab(StuffStuff.tabStuffStuff);
+		setCreativeTab(StuffStuff.tabPlaidStuff);
 	}
 	
 	@Override

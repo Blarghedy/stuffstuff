@@ -23,7 +23,7 @@ public class BlockPlaidGrass extends Block
 	public BlockPlaidGrass(int id)
 	{
 		super(id, Material.grass);
-		setCreativeTab(StuffStuff.tabStuffStuff);
+		setCreativeTab(StuffStuff.tabPlaidStuff);
 		setStepSound(soundGrassFootstep);
 		setHardness(.7F);
 		setUnlocalizedName(BlockInfo.PLAID_GRASS_UNLOCALIZED_NAME);
@@ -121,11 +121,11 @@ public class BlockPlaidGrass extends Block
 			}
 		}
 	}
-	
+
 	@Override
 	public int idDropped(int par1, Random par2Random, int par3)
 	{
-	    return Blocks.blockPlaidDirt.idDropped(0, par2Random, par3);
+		return Blocks.blockPlaidDirt.idDropped(0, par2Random, par3);
 	}
 
 	@Override
@@ -145,10 +145,10 @@ public class BlockPlaidGrass extends Block
 	{
 		return super.tickRate(world);
 	}
-	
+
 	@Override
 	public void onPlantGrow(World world, int x, int y, int z, int sourceX, int sourceY, int sourceZ)
 	{
-	    world.setBlock(x, y, z, Blocks.blockPlaidDirt.blockID);
+		world.setBlock(x, y, z, Blocks.blockPlaidDirt.blockID);
 	}
 }

@@ -25,7 +25,7 @@ public class BlockPlaidLeaves extends BlockLeaves
 	public BlockPlaidLeaves(int id)
 	{
 		super(id);
-		setCreativeTab(StuffStuff.tabStuffStuff);
+		setCreativeTab(StuffStuff.tabPlaidStuff);
 		setLightOpacity(1);
 		setStepSound(soundGrassFootstep);
 		setHardness(.2F);

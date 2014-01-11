@@ -17,7 +17,7 @@ public class BlockStuffStairs extends BlockStairs
 		model = modelBlock;
 
 		setLightOpacity(0);
-		setCreativeTab(StuffStuff.tabStuffStuff);
+		setCreativeTab(StuffStuff.tabPlaidStuff);
 		setHardness(modelBlock.blockHardness);
 		setResistance(modelBlock.blockResistance / 3.0F);
 		setStepSound(modelBlock.stepSound);

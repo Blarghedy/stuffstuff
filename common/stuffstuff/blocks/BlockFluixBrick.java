@@ -19,7 +19,7 @@ public class BlockFluixBrick extends Block
 	public BlockFluixBrick(int id)
 	{
 		super(id, Material.rock);
-		setCreativeTab(StuffStuff.tabStuffStuff);
+		setCreativeTab(StuffStuff.tabAEStuff);
 		setHardness(1.5F);
 		setResistance(10);
 		setStepSound(soundStoneFootstep);

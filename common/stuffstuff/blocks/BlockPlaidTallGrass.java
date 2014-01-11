@@ -13,8 +13,9 @@ public class BlockPlaidTallGrass extends BlockTallGrass
 	public BlockPlaidTallGrass(int id)
 	{
 		super(id);
-		setCreativeTab(StuffStuff.tabStuffStuff);
+		setCreativeTab(StuffStuff.tabPlaidStuff);
 		setUnlocalizedName(BlockInfo.PLAID_TALL_GRASS_UNLOCALIZED_NAME);
+		setStepSound(soundGrassFootstep);
 	}
 
 	@Override

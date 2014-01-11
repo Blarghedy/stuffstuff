@@ -13,7 +13,7 @@ public class ItemBucketPlaid extends ItemBucket
 	public ItemBucketPlaid(int fluidId, int blockId)
 	{
 		super(fluidId, blockId);
-		setCreativeTab(StuffStuff.tabStuffStuff);
+		setCreativeTab(StuffStuff.tabPlaidStuff);
 		setContainerItem(Item.bucketEmpty);
 		setUnlocalizedName(ItemInfo.BUCKET_PLAID_UNLOCALIZED_NAME);
 	}

@@ -24,7 +24,7 @@ public class BlockStuffSlab extends BlockHalfSlab
 		super(id, isDouble, modelBlocks[0].blockMaterial);
 		this.modelBlocks = modelBlocks;
 		setHardness(modelBlocks[0].blockHardness);
-		setCreativeTab(StuffStuff.tabStuffStuff);
+		setCreativeTab(StuffStuff.tabPlaidStuff);
 
 		if (blockID == BlockInfo.STONE_SLAB_ID)
 		{
@@ -42,7 +42,7 @@ public class BlockStuffSlab extends BlockHalfSlab
 		{
 			setUnlocalizedName(BlockInfo.WOOD_SLAB_DOUBLE_UNLOCALIZED_NAME);
 		}
-		
+
 		if (blockID == BlockInfo.STONE_SLAB_ID || blockID == BlockInfo.STONE_SLAB_DOUBLE_ID)
 		{
 			setStepSound(Block.soundStoneFootstep);
@@ -83,7 +83,7 @@ public class BlockStuffSlab extends BlockHalfSlab
 		Block model = modelBlocks[world.getBlockMetadata(x, y, z) % 8];
 		return model.getBlockTexture(world, x, y, z, side);
 	}
-	
+
 	@Override
 	public Icon getIcon(int side, int meta)
 	{
@@ -132,5 +132,5 @@ public class BlockStuffSlab extends BlockHalfSlab
 		return super.createStackedBlock(meta);
 	}
 
-	
+
 }

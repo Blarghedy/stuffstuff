@@ -20,7 +20,7 @@ public class BlockPlaidLog extends BlockLog
 	public BlockPlaidLog(int id)
 	{
 		super(id);
-		setCreativeTab(StuffStuff.tabStuffStuff);
+		setCreativeTab(StuffStuff.tabPlaidStuff);
 		setHardness(2F);
 		setStepSound(soundWoodFootstep);
 		setUnlocalizedName(BlockInfo.PLAID_LOG_UNLOCALIZED_NAME);

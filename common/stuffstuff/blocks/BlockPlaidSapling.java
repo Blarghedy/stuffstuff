@@ -21,7 +21,7 @@ public class BlockPlaidSapling extends BlockSapling
 	public BlockPlaidSapling(int id)
 	{
 		super(id);
-		this.setCreativeTab(StuffStuff.tabStuffStuff);
+		this.setCreativeTab(StuffStuff.tabPlaidStuff);
 		setHardness(0.0F);
 		setStepSound(soundGrassFootstep);
 		setUnlocalizedName(BlockInfo.PLAID_SAPLING_UNLOCALIZED_NAME);

@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
+import net.minecraft.world.IBlockAccess;
 import stuffstuff.StuffStuff;
 import stuffstuff.info.BlockInfo;
 
@@ -38,6 +39,12 @@ public class BlockFunFluix extends Block
 	public Icon getIcon(int side, int meta)
 	{
 		return meta == FUN_META ? fun : sliding;
+	}
+
+	@Override
+	public Icon getBlockTexture(IBlockAccess par1iBlockAccess, int par2, int par3, int par4, int par5)
+	{
+		return super.getBlockTexture(par1iBlockAccess, par2, par3, par4, par5);
 	}
 
 	@Override

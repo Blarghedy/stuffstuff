@@ -169,6 +169,30 @@ public class BlockInfo
 	public static final String FLUIX_BRICK_TEXTURE = "fluix_brick";
 	public static final String FINE_FLUIX_BRICK_TEXTURE = "fine_fluix_brick";
 
+	public static int FLUIX_BRICK_STAIRS_ID;
+	public static final int FLUIX_BRICK_STAIRS_DEFAULT = 480;
+	public static final String FLUIX_BRICK_STAIRS_KEY = "stairsFluixBrick";
+	public static final String FLUIX_BRICK_STAIRS_NAME = "Fluix Brick Stairs";
+	public static final String FLUIX_BRICK_STAIRS_UNLOCALIZED_NAME = "stairsFluixBrick";
+
+	public static int FINE_FLUIX_BRICK_STAIRS_ID;
+	public static final int FINE_FLUIX_BRICK_STAIRS_DEFAULT = 481;
+	public static final String FINE_FLUIX_BRICK_STAIRS_KEY = "stairsFineFluixBrick";
+	public static final String FINE_FLUIX_BRICK_STAIRS_NAME = "Fine Fluix Brick Stairs";
+	public static final String FINE_FLUIX_BRICK_STAIRS_UNLOCALIZED_NAME = "stairsFineFluixBrick";
+
+	public static int FUN_FLUIX_BRICK_STAIRS_ID;
+	public static final int FUN_FLUIX_BRICK_STAIRS_DEFAULT = 482;
+	public static final String FUN_FLUIX_BRICK_STAIRS_KEY = "stairsFunFluixBrick";
+	public static final String FUN_FLUIX_BRICK_STAIRS_NAME = "Fun Fluix Brick Stairs";
+	public static final String FUN_FLUIX_BRICK_STAIRS_UNLOCALIZED_NAME = "stairsFunFluixBrick";
+
+	public static int RUNNING_FLUIX_BRICK_STAIRS_ID;
+	public static final int RUNNING_FLUIX_BRICK_STAIRS_DEFAULT = 483;
+	public static final String RUNNING_FLUIX_BRICK_STAIRS_KEY = "stairsRunningFluixBrick";
+	public static final String RUNNING_FLUIX_BRICK_STAIRS_NAME = "Fun Fluix Brick Stairs";
+	public static final String RUNNING_FLUIX_BRICK_STAIRS_UNLOCALIZED_NAME = "stairsRunningFluixBrick";
+
 	static
 	{
 		PLAID_PLANK_TEXTURES = new String[PLAID_HEIGHT][];

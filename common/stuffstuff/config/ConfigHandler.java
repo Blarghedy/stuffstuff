@@ -4,6 +4,7 @@ import java.io.File;
 
 import net.minecraftforge.common.Configuration;
 import stuffstuff.StuffStuff;
+import stuffstuff.blocks.BlockStuffStairs;
 import stuffstuff.info.AchievementInfo;
 import stuffstuff.info.BlockInfo;
 import stuffstuff.info.FluidInfo;
@@ -47,6 +48,12 @@ public class ConfigHandler
 			BlockInfo.PLAID_STONE_STAIRS_ID = config.getBlock(BlockInfo.PLAID_STONE_STAIRS_KEY, BlockInfo.PLAID_STONE_STAIRS_DEFAULT).getInt();
 			BlockInfo.PLAID_STONE_BRICK_STAIRS_ID = config.getBlock(BlockInfo.PLAID_STONE_BRICK_STAIRS_KEY, BlockInfo.PLAID_STONE_BRICK_STAIRS_DEFAULT).getInt();
 			BlockInfo.PLAID_PLANK_STAIRS_ID = config.getBlock(BlockInfo.PLAID_PLANK_STAIRS_KEY, BlockInfo.PLAID_PLANK_STAIRS_DEFAULT).getInt();
+			
+			BlockInfo.FUN_FLUIX_BRICK_STAIRS_ID = config.getBlock(BlockInfo.FUN_FLUIX_BRICK_STAIRS_KEY, BlockInfo.FUN_FLUIX_BRICK_STAIRS_DEFAULT).getInt();
+			BlockInfo.RUNNING_FLUIX_BRICK_STAIRS_ID = config.getBlock(BlockInfo.RUNNING_FLUIX_BRICK_STAIRS_KEY, BlockInfo.RUNNING_FLUIX_BRICK_STAIRS_DEFAULT).getInt();
+			BlockInfo.FLUIX_BRICK_STAIRS_ID = config.getBlock(BlockInfo.FLUIX_BRICK_STAIRS_KEY, BlockInfo.FLUIX_BRICK_STAIRS_DEFAULT).getInt();
+			BlockInfo.FINE_FLUIX_BRICK_STAIRS_ID = config.getBlock(BlockInfo.FINE_FLUIX_BRICK_STAIRS_KEY, BlockInfo.FINE_FLUIX_BRICK_STAIRS_DEFAULT).getInt();
+			
 			BlockInfo.STONE_SLAB_ID = config.getBlock(BlockInfo.STONE_SLAB_KEY, BlockInfo.STONE_SLAB_DEFAULT).getInt();
 			BlockInfo.STONE_SLAB_DOUBLE_ID = config.getBlock(BlockInfo.STONE_SLAB_DOUBLE_KEY, BlockInfo.STONE_SLAB_DOUBLE_DEFAULT).getInt();
 			BlockInfo.WOOD_SLAB_ID = config.getBlock(BlockInfo.WOOD_SLAB_KEY, BlockInfo.WOOD_SLAB_DEFAULT).getInt();

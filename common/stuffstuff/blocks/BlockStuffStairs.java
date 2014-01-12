@@ -10,58 +10,55 @@ import net.minecraft.world.IBlockAccess;
 public class BlockStuffStairs extends BlockStairs
 {
 	private Block model;
+	private int modelMeta;
+	private boolean useModelTexture;
 
 	public BlockStuffStairs(int id, Block modelBlock)
 	{
-		this(id, modelBlock, 0);
+		this(id, modelBlock, 0, true);
 	}
 
-	public BlockStuffStairs(int id, Block modelBlock, int modelMeta)
+	/**
+	 * 
+	 * @param id
+	 * @param modelBlock
+	 * @param modelMeta
+	 * @param useModelTexture If this is true, this block's getBlockTexture will use model.getBlockTexture.
+	 * Otherwise, it defaults to {@link Block#getBlockTexture(IBlockAccess, int, int, int, int)}
+	 */
+	public BlockStuffStairs(int id, Block modelBlock, int modelMeta, boolean useModelTexture)
 	{
 		super(id, modelBlock, modelMeta);
 		model = modelBlock;
+		this.modelMeta = modelMeta;
+		this.useModelTexture = useModelTexture;
 
-		setLightOpacity(0);
 		setCreativeTab(modelBlock.getCreativeTabToDisplayOn());
 		setHardness(modelBlock.blockHardness);
 		setResistance(modelBlock.blockResistance / 3.0F);
 		setStepSound(modelBlock.stepSound);
 		setBurnProperties(id, blockFireSpreadSpeed[modelBlock.blockID], blockFlammability[modelBlock.blockID]);
+		slipperiness = model.slipperiness;
 
-		//		Class cl = modelBlock.getClass();
+		int light = lightValue[modelBlock.blockID];
+		setLightValue(light);
+		setLightOpacity(lightOpacity[model.blockID]);
 		setUnlocalizedName(modelBlock.getUnlocalizedName() + "." + modelMeta + "Stairs");
-		//		if (cl.equals(BlockPlaidStone.class))
-		//		{
-		//			setUnlocalizedName(BlockInfo.PLAID_STONE_STAIRS_UNLOCALIZED_NAME);
-		//		}
-		//		else if (cl.equals(BlockPlaidCobblestone.class))
-		//		{
-		//			setUnlocalizedName(BlockInfo.PLAID_COBBLESTONE_STAIRS_UNLOCALIZED_NAME);
-		//		}
-		//		else if (cl.equals(BlockPlaidStoneBrick.class))
-		//		{
-		//			setUnlocalizedName(BlockInfo.PLAID_STONE_BRICK_STAIRS_UNLOCALIZED_NAME);
-		//		}
-		//		else if (cl.equals(BlockPlaidPlank.class))
-		//		{
-		//			setUnlocalizedName(BlockInfo.PLAID_PLANK_STAIRS_UNLOCALIZED_NAME);
-		//		}
-		//		else 
-		//		{
-		//			throw new RuntimeException("Attempted to make a StuffStairs of a non-stuffstuff material");
-		//		}
 	}
 
 	@Override
 	public Icon getIcon(int side, int meta)
 	{
-		return model.getIcon(side, meta);
+		return model.getIcon(side, modelMeta);
 	}
 
 	@Override
 	public Icon getBlockTexture(IBlockAccess world, int x, int y, int z, int side)
 	{
-		return model.getBlockTexture(world, x, y, z, side);
+		if (useModelTexture) 
+			return model.getBlockTexture(world, x, y, z, side);
+		else 
+			return super.getBlockTexture(world, x, y, z, side);
 	}
 
 	@Override

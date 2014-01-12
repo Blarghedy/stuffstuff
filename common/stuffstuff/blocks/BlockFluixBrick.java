@@ -43,7 +43,7 @@ public class BlockFluixBrick extends Block
 	@Override
 	public Icon getIcon(int side, int meta)
 	{
-		return meta % 2 == NORMAL_META ? normal : fine;
+		return meta == FINE_META ? fine : normal;
 	}
 
 	@Override

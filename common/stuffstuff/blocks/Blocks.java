@@ -2,6 +2,9 @@ package stuffstuff.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStairs;
+
+import org.bouncycastle.asn1.eac.BidirectionalMap;
+
 import stuffstuff.blocks.items.ItemFluixBrick;
 import stuffstuff.blocks.items.ItemFunFluix;
 import stuffstuff.blocks.items.ItemPlaidLeaves;
@@ -44,6 +47,8 @@ public class Blocks
 	public static Block blockFunFluix;
 	public static Block blockFluixBrick;
 
+	protected static BidirectionalMap slabs;
+
 	public static void init()
 	{
 		// blockBlockPlacer = new BlockBlockPlacer(BlockInfo.BLOCK_PLACER_ID);
@@ -64,10 +69,14 @@ public class Blocks
 
 		Block[] stoneBlocks = {blockPlaidStone, blockPlaidCobble, blockPlaidStoneBrick};
 		Block[] woodBlocks = {blockPlaidPlank, blockPlaidLog};
-		blockStoneSlab = new BlockStuffSlab(BlockInfo.STONE_SLAB_ID, false, stoneBlocks);
-		blockStoneDoubleSlab = new BlockStuffSlab(BlockInfo.STONE_SLAB_DOUBLE_ID, true, stoneBlocks);
-		blockWoodSlab = new BlockStuffSlab(BlockInfo.WOOD_SLAB_ID, false, woodBlocks);
-		blockWoodDoubleSlab = new BlockStuffSlab(BlockInfo.WOOD_SLAB_DOUBLE_ID, true, woodBlocks);
+		slabs = new BidirectionalMap();
+		slabs.put(BlockInfo.STONE_SLAB_ID, BlockInfo.STONE_SLAB_DOUBLE_ID);
+		slabs.put(BlockInfo.WOOD_SLAB_ID, BlockInfo.WOOD_SLAB_DOUBLE_ID);
+
+		blockStoneSlab = new BlockStuffSlab(BlockInfo.STONE_SLAB_ID, false, stoneBlocks, BlockInfo.STONE_SLAB_DOUBLE_ID);
+		blockStoneDoubleSlab = new BlockStuffSlab(BlockInfo.STONE_SLAB_DOUBLE_ID, true, stoneBlocks, BlockInfo.STONE_SLAB_ID);
+		blockWoodSlab = new BlockStuffSlab(BlockInfo.WOOD_SLAB_ID, false, woodBlocks, BlockInfo.WOOD_SLAB_DOUBLE_ID);
+		blockWoodDoubleSlab = new BlockStuffSlab(BlockInfo.WOOD_SLAB_DOUBLE_ID, true, woodBlocks, BlockInfo.WOOD_SLAB_ID);
 
 		blockFunFluix = new BlockFunFluix(BlockInfo.FUN_FLUIX_ID);
 		blockFluixBrick = new BlockFluixBrick(BlockInfo.FLUIX_BRICK_ID);
@@ -101,6 +110,7 @@ public class Blocks
 		ItemStuffSlab.setSlabs(blockStoneSlab, blockStoneDoubleSlab);
 		GameRegistry.registerBlock(blockStoneSlab, ItemStuffSlab.class, BlockInfo.STONE_SLAB_UNLOCALIZED_NAME);
 		GameRegistry.registerBlock(blockStoneDoubleSlab, ItemStuffSlab.class, BlockInfo.STONE_SLAB_DOUBLE_UNLOCALIZED_NAME);
+		ItemStuffSlab.setSlabs(blockWoodSlab, blockWoodDoubleSlab);
 		GameRegistry.registerBlock(blockWoodSlab, ItemStuffSlab.class, BlockInfo.WOOD_SLAB_UNLOCALIZED_NAME);
 		GameRegistry.registerBlock(blockWoodDoubleSlab, ItemStuffSlab.class, BlockInfo.WOOD_SLAB_DOUBLE_UNLOCALIZED_NAME);
 
@@ -138,6 +148,8 @@ public class Blocks
 
 		LanguageRegistry.addName(blockFunFluix, BlockInfo.FUN_FLUIX_NAME);
 		LanguageRegistry.addName(blockFluixBrick, BlockInfo.FLUIX_BRICK_NAME);
+
+		//		LanguageRegistry.addName(objectToName, name); // slab stuff
 
 		LanguageRegistry.addName(blockPlaidStoneStairs, BlockInfo.PLAID_STONE_STAIRS_NAME);
 		LanguageRegistry.addName(blockPlaidCobblestoneStairs, BlockInfo.PLAID_COBBLESTONE_STAIRS_NAME);

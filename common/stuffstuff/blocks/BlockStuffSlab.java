@@ -12,47 +12,35 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import stuffstuff.StuffStuff;
-import stuffstuff.info.BlockInfo;
 
 public class BlockStuffSlab extends BlockHalfSlab
 {
 	private Block[] modelBlocks;
+	private int singleID, doubleID;
 
-	public BlockStuffSlab(int id, boolean isDouble, Block[] modelBlocks)
+	public BlockStuffSlab(int id, boolean isDouble, Block[] modelBlocks, int otherID)
 	{
 		super(id, isDouble, modelBlocks[0].blockMaterial);
 		this.modelBlocks = modelBlocks;
+		if (isDouble)
+		{
+			this.doubleID = id;
+			this.singleID = otherID;
+		}
+		else
+		{
+			this.singleID = id;
+			this.doubleID = otherID;
+		}
+		
 		setHardness(modelBlocks[0].blockHardness);
-		setCreativeTab(StuffStuff.tabPlaidStuff);
-
-		if (blockID == BlockInfo.STONE_SLAB_ID)
-		{
-			setUnlocalizedName(BlockInfo.STONE_SLAB_UNLOCALIZED_NAME);
-		}
-		else if (blockID == BlockInfo.STONE_SLAB_DOUBLE_ID)
-		{
-			setUnlocalizedName(BlockInfo.STONE_SLAB_DOUBLE_UNLOCALIZED_NAME);
-		}
-		else if (blockID == BlockInfo.WOOD_SLAB_ID)
-		{
-			setUnlocalizedName(BlockInfo.WOOD_SLAB_UNLOCALIZED_NAME);
-		}
-		else if (blockID == BlockInfo.WOOD_SLAB_DOUBLE_ID)
-		{
-			setUnlocalizedName(BlockInfo.WOOD_SLAB_DOUBLE_UNLOCALIZED_NAME);
-		}
-
-		if (blockID == BlockInfo.STONE_SLAB_ID || blockID == BlockInfo.STONE_SLAB_DOUBLE_ID)
-		{
-			setStepSound(Block.soundStoneFootstep);
-		}
-		else // is wood
-		{
-			setBurnProperties(blockID, 5, 20);
-			setResistance(5.0F);
-			setStepSound(Block.soundWoodFootstep);
-		}
+		setCreativeTab(modelBlocks[0].getCreativeTabToDisplayOn());
+		
+		setStepSound(modelBlocks[0].stepSound);
+		setResistance(modelBlocks[0].blockResistance / 2);
+		setBurnProperties(id, blockFireSpreadSpeed[modelBlocks[0].blockID], blockFlammability[modelBlocks[0].blockID]);
+		
+		setUnlocalizedName(modelBlocks[0].getUnlocalizedName() + "Slab");
 	}
 
 	@Override
@@ -79,7 +67,6 @@ public class BlockStuffSlab extends BlockHalfSlab
 	@Override
 	public Icon getBlockTexture(IBlockAccess world, int x, int y, int z, int side)
 	{
-		// TODO check if this works - try slabs placed on the bottoms of things and double slabs
 		Block model = modelBlocks[world.getBlockMetadata(x, y, z) % 8];
 		return model.getBlockTexture(world, x, y, z, side);
 	}
@@ -93,19 +80,7 @@ public class BlockStuffSlab extends BlockHalfSlab
 	@Override
 	public int idDropped(int meta, Random rand, int par3)
 	{
-		if (!isDoubleSlab)
-		{
-			return blockID;
-		}
-		else if (blockID == Blocks.blockStoneDoubleSlab.blockID)
-		{
-			return Blocks.blockStoneSlab.blockID;
-		}
-		else if (blockID == Blocks.blockWoodDoubleSlab.blockID)
-		{
-			return Blocks.blockWoodSlab.blockID;
-		}
-		else return 0;
+		return singleID;
 	}
 
 	@Override
@@ -123,7 +98,7 @@ public class BlockStuffSlab extends BlockHalfSlab
 	@Override
 	public int idPicked(World world, int x, int y, int z)
 	{
-		return super.idPicked(world, x, y, z);
+		return singleID;
 	}
 
 	@Override

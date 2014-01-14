@@ -59,6 +59,8 @@ public class ConfigHandler
 			BlockInfo.WOOD_SLAB_DOUBLE_ID = config.getBlock(BlockInfo.WOOD_SLAB_DOUBLE_KEY, BlockInfo.WOOD_SLAB_DOUBLE_DEFAULT).getInt();
 			BlockInfo.FLUIX_SLAB_ID = config.getBlock(BlockInfo.FLUIX_SLAB_KEY, BlockInfo.FLUIX_SLAB_DEFAULT).getInt();
 			BlockInfo.FLUIX_SLAB_DOUBLE_ID = config.getBlock(BlockInfo.FLUIX_SLAB_DOUBLE_KEY, BlockInfo.FLUIX_SLAB_DOUBLE_DEFAULT).getInt();
+			BlockInfo.LOG_SLAB_ID = config.getBlock(BlockInfo.LOG_SLAB_KEY, BlockInfo.LOG_SLAB_DEFAULT).getInt();
+			BlockInfo.LOG_SLAB_DOUBLE_ID = config.getBlock(BlockInfo.LOG_SLAB_DOUBLE_KEY, BlockInfo.LOG_SLAB_DOUBLE_DEFAULT).getInt();
 
 			BlockInfo.FUN_FLUIX_ID = config.getBlock(BlockInfo.FUN_FLUIX_KEY, BlockInfo.FUN_FLUIX_DEFAULT).getInt();
 			BlockInfo.FLUIX_BRICK_ID = config.getBlock(BlockInfo.FLUIX_BRICK_KEY, BlockInfo.FLUIX_BRICK_DEFAULT).getInt();

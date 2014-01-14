@@ -4,12 +4,15 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockFluid;
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fluids.IFluidBlock;
 
 public class BlockStuffSlab extends BlockHalfSlab
 {
@@ -63,6 +66,8 @@ public class BlockStuffSlab extends BlockHalfSlab
 	@Override
 	public String getFullSlabName(int meta)
 	{
+		meta = meta < modelBlocks.length ? meta : 0;
+
 		return modelBlocks[meta].getLocalizedName() + " Slab";
 	}
 
@@ -80,7 +85,10 @@ public class BlockStuffSlab extends BlockHalfSlab
 	{
 		if (useModelTexture)
 		{
-			Block model = modelBlocks[world.getBlockMetadata(x, y, z) % 8];
+			int meta = world.getBlockMetadata(x, y, z) % 8;
+			meta = meta < modelBlocks.length ? meta : 0;
+
+			Block model = modelBlocks[meta];
 			return model.getBlockTexture(world, x, y, z, side);
 		}
 		else
@@ -93,6 +101,8 @@ public class BlockStuffSlab extends BlockHalfSlab
 	public Icon getIcon(int side, int meta)
 	{
 		meta = meta % 8;
+		meta = meta < modelBlocks.length ? meta : 0;
+
 		if (modelMeta == null)
 			return modelBlocks[meta].getIcon(side, meta);
 		else
@@ -115,6 +125,21 @@ public class BlockStuffSlab extends BlockHalfSlab
 	public int idPicked(World world, int x, int y, int z)
 	{
 		return singleID;
+	}
+
+	@Override
+	public boolean canCollideCheck(int meta, boolean boat)
+	{
+		return modelBlocks[0].canCollideCheck(meta, boat);
+	}
+
+	@Override
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
+	{
+		if (modelBlocks[0] instanceof IFluidBlock || modelBlocks[0] instanceof BlockFluid) 
+			return modelBlocks[0].getCollisionBoundingBoxFromPool(world, x, y, z);
+		else
+			return super.getCollisionBoundingBoxFromPool(world, x, y, z);
 	}
 
 }

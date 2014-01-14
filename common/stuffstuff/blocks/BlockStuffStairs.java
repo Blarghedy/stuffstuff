@@ -49,6 +49,8 @@ public class BlockStuffStairs extends BlockStairs
 		setLightValue(light);
 		setLightOpacity(lightOpacity[model.blockID]);
 		setUnlocalizedName(modelBlock.getUnlocalizedName() + "." + modelMeta + "Stairs");
+
+		// TODO possibly add things to make stairs act even more like their model; for example, make lava stairs burn nearby things
 	}
 
 	@Override

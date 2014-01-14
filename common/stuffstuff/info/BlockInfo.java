@@ -162,6 +162,15 @@ public class BlockInfo
 	public static final String FLUIX_SLAB_DOUBLE_KEY = "fluixSlabDouble";
 	public static final String FLUIX_SLAB_UNLOCALIZED_NAME = "fluixSlab";
 	public static final String FLUIX_SLAB_DOUBLE_UNLOCALIZED_NAME = "fluixSlabDouble";
+	
+	public static int LOG_SLAB_ID;
+	public static int LOG_SLAB_DOUBLE_ID;
+	public static final int LOG_SLAB_DEFAULT = 486;
+	public static final int LOG_SLAB_DOUBLE_DEFAULT = 487;
+	public static final String LOG_SLAB_KEY = "logSlab";
+	public static final String LOG_SLAB_DOUBLE_KEY = "logSlabDouble";
+	public static final String LOG_SLAB_UNLOCALIZED_NAME = "logSlab";
+	public static final String LOG_SLAB_DOUBLE_UNLOCALIZED_NAME = "logSlabDouble";
 
 	public static int FUN_FLUIX_ID;
 	public static final int FUN_FLUIX_DEFAULT = 478;

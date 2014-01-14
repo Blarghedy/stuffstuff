@@ -5,9 +5,7 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHalfSlab;
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
@@ -17,11 +15,30 @@ public class BlockStuffSlab extends BlockHalfSlab
 {
 	private Block[] modelBlocks;
 	private int singleID, doubleID;
+	private boolean useModelTexture;
+	private int[] modelMeta;
 
-	public BlockStuffSlab(int id, boolean isDouble, Block[] modelBlocks, int otherID)
+	public BlockStuffSlab(int id, int otherID, boolean isDouble, Block[] modelBlocks)
+	{
+		this(id, otherID, isDouble, modelBlocks, true, null);
+	}
+
+	/**
+	 * 
+	 * @param id
+	 * @param otherID
+	 * @param isDouble
+	 * @param modelBlocks 
+	 * @param useModelTexture If this is true, this block's getBlockTexture will use model.getBlockTexture.
+	 * Otherwise, it defaults to {@link Block#getBlockTexture(IBlockAccess, int, int, int, int)}
+	 */
+	public BlockStuffSlab(int id, int otherID, boolean isDouble, Block[] modelBlocks, boolean useModelTexture, int[] modelMeta)
 	{
 		super(id, isDouble, modelBlocks[0].blockMaterial);
 		this.modelBlocks = modelBlocks;
+		this.useModelTexture = useModelTexture;
+		this.modelMeta = modelMeta;
+
 		if (isDouble)
 		{
 			this.doubleID = id;
@@ -32,14 +49,14 @@ public class BlockStuffSlab extends BlockHalfSlab
 			this.singleID = id;
 			this.doubleID = otherID;
 		}
-		
+
 		setHardness(modelBlocks[0].blockHardness);
 		setCreativeTab(modelBlocks[0].getCreativeTabToDisplayOn());
-		
+
 		setStepSound(modelBlocks[0].stepSound);
 		setResistance(modelBlocks[0].blockResistance / 2);
 		setBurnProperties(id, blockFireSpreadSpeed[modelBlocks[0].blockID], blockFlammability[modelBlocks[0].blockID]);
-		
+
 		setUnlocalizedName(modelBlocks[0].getUnlocalizedName() + "Slab");
 	}
 
@@ -47,12 +64,6 @@ public class BlockStuffSlab extends BlockHalfSlab
 	public String getFullSlabName(int meta)
 	{
 		return modelBlocks[meta].getLocalizedName() + " Slab";
-	}
-
-	@Override
-	public void registerIcons(IconRegister register)
-	{
-		super.registerIcons(register);
 	}
 
 	@Override
@@ -67,14 +78,25 @@ public class BlockStuffSlab extends BlockHalfSlab
 	@Override
 	public Icon getBlockTexture(IBlockAccess world, int x, int y, int z, int side)
 	{
-		Block model = modelBlocks[world.getBlockMetadata(x, y, z) % 8];
-		return model.getBlockTexture(world, x, y, z, side);
+		if (useModelTexture)
+		{
+			Block model = modelBlocks[world.getBlockMetadata(x, y, z) % 8];
+			return model.getBlockTexture(world, x, y, z, side);
+		}
+		else
+		{
+			return super.getBlockTexture(world, x, y, z, side);
+		}
 	}
 
 	@Override
 	public Icon getIcon(int side, int meta)
 	{
-		return modelBlocks[meta % 8].getIcon(side, meta % 8);
+		meta = meta % 8;
+		if (modelMeta == null)
+			return modelBlocks[meta].getIcon(side, meta);
+		else
+			return modelBlocks[meta].getIcon(side, modelMeta[meta]);
 	}
 
 	@Override
@@ -90,22 +112,9 @@ public class BlockStuffSlab extends BlockHalfSlab
 	}
 
 	@Override
-	public float getExplosionResistance(Entity par1Entity)
-	{
-		return super.getExplosionResistance(par1Entity);
-	}
-
-	@Override
 	public int idPicked(World world, int x, int y, int z)
 	{
 		return singleID;
 	}
-
-	@Override
-	protected ItemStack createStackedBlock(int meta)
-	{
-		return super.createStackedBlock(meta);
-	}
-
 
 }

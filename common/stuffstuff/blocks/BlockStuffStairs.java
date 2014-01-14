@@ -2,16 +2,15 @@ package stuffstuff.blocks;
 
 import java.util.Random;
 
-import stuffstuff.StuffStuff;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFluid;
-import net.minecraft.block.BlockMobSpawner;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.IFluidBlock;
+import stuffstuff.StuffStuff;
 
 public class BlockStuffStairs extends BlockStairs
 {
@@ -78,19 +77,19 @@ public class BlockStuffStairs extends BlockStairs
 	{
 		return meta;
 	}
-	
+
 	@Override
 	public boolean canCollideCheck(int meta, boolean boat)
 	{
 		return model.canCollideCheck(meta, boat);
 	}
-	
+
 	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
 	{
-	    if (model instanceof IFluidBlock || model instanceof BlockFluid) 
-	    	return model.getCollisionBoundingBoxFromPool(world, x, y, z);
-	    else
-	    	return super.getCollisionBoundingBoxFromPool(world, x, y, z);
+		if (model instanceof IFluidBlock || model instanceof BlockFluid) 
+			return model.getCollisionBoundingBoxFromPool(world, x, y, z);
+		else
+			return super.getCollisionBoundingBoxFromPool(world, x, y, z);
 	}
 }

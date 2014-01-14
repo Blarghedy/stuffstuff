@@ -29,6 +29,11 @@ public class Blocks
 	public static Block blockPlaidStone;
 	public static Block blockPlaidDirt;
 	public static Block blockPlaidStoneBrick;
+	public static Block blockFunFluix;
+	public static Block blockFluixBrick;
+	public static Block blockPlaidTallGrass;
+	public static Block blockPlaidGlass;
+
 	public static BlockStairs blockPlaidStoneStairs;
 	public static BlockStairs blockPlaidCobblestoneStairs;
 	public static BlockStairs blockPlaidStoneBrickStairs;
@@ -38,14 +43,12 @@ public class Blocks
 	public static BlockStairs blockFluixBrickStairs;
 	public static BlockStairs blockFineFluixBrickStairs;
 
-	public static Block blockPlaidTallGrass;
-	public static Block blockPlaidGlass;
 	public static BlockStuffSlab blockStoneSlab;
 	public static BlockStuffSlab blockStoneDoubleSlab;
 	public static BlockStuffSlab blockWoodSlab;
 	public static BlockStuffSlab blockWoodDoubleSlab;
-	public static Block blockFunFluix;
-	public static Block blockFluixBrick;
+	public static BlockStuffSlab blockFluixBrickSlab;
+	public static BlockStuffSlab blockFluixBrickDoubleSlab;
 
 	protected static BidirectionalMap slabs;
 
@@ -66,20 +69,20 @@ public class Blocks
 		blockPlaidDirt = new BlockPlaidDirt(BlockInfo.PLAID_DIRT_ID);
 		blockPlaidStoneBrick = new BlockPlaidStoneBrick(BlockInfo.PLAID_STONE_BRICK_ID);
 		blockPlaidGlass = new BlockPlaidGlass(BlockInfo.PLAID_GLASS_ID);
+		blockFunFluix = new BlockFunFluix(BlockInfo.FUN_FLUIX_ID);
+		blockFluixBrick = new BlockFluixBrick(BlockInfo.FLUIX_BRICK_ID);
 
 		Block[] stoneBlocks = {blockPlaidStone, blockPlaidCobble, blockPlaidStoneBrick};
 		Block[] woodBlocks = {blockPlaidPlank, blockPlaidLog};
-		slabs = new BidirectionalMap();
-		slabs.put(BlockInfo.STONE_SLAB_ID, BlockInfo.STONE_SLAB_DOUBLE_ID);
-		slabs.put(BlockInfo.WOOD_SLAB_ID, BlockInfo.WOOD_SLAB_DOUBLE_ID);
+		Block[] fluixBricks = {blockFluixBrick, blockFluixBrick, blockFunFluix, blockFunFluix};
+		int[] fluixBricksMeta = {0, 1, 0, 1};
 
-		blockStoneSlab = new BlockStuffSlab(BlockInfo.STONE_SLAB_ID, false, stoneBlocks, BlockInfo.STONE_SLAB_DOUBLE_ID);
-		blockStoneDoubleSlab = new BlockStuffSlab(BlockInfo.STONE_SLAB_DOUBLE_ID, true, stoneBlocks, BlockInfo.STONE_SLAB_ID);
-		blockWoodSlab = new BlockStuffSlab(BlockInfo.WOOD_SLAB_ID, false, woodBlocks, BlockInfo.WOOD_SLAB_DOUBLE_ID);
-		blockWoodDoubleSlab = new BlockStuffSlab(BlockInfo.WOOD_SLAB_DOUBLE_ID, true, woodBlocks, BlockInfo.WOOD_SLAB_ID);
-
-		blockFunFluix = new BlockFunFluix(BlockInfo.FUN_FLUIX_ID);
-		blockFluixBrick = new BlockFluixBrick(BlockInfo.FLUIX_BRICK_ID);
+		blockStoneSlab = new BlockStuffSlab(BlockInfo.STONE_SLAB_ID, BlockInfo.STONE_SLAB_DOUBLE_ID, false, stoneBlocks);
+		blockStoneDoubleSlab = new BlockStuffSlab(BlockInfo.STONE_SLAB_DOUBLE_ID, BlockInfo.STONE_SLAB_ID, true, stoneBlocks);
+		blockWoodSlab = new BlockStuffSlab(BlockInfo.WOOD_SLAB_ID, BlockInfo.WOOD_SLAB_DOUBLE_ID, false, woodBlocks);
+		blockWoodDoubleSlab = new BlockStuffSlab(BlockInfo.WOOD_SLAB_DOUBLE_ID, BlockInfo.WOOD_SLAB_ID, true, woodBlocks);
+		blockFluixBrickSlab = new BlockStuffSlab(BlockInfo.FLUIX_SLAB_ID, BlockInfo.FLUIX_SLAB_DOUBLE_ID, false, fluixBricks, false, fluixBricksMeta);
+		blockFluixBrickDoubleSlab = new BlockStuffSlab(BlockInfo.FLUIX_SLAB_DOUBLE_ID, BlockInfo.FLUIX_SLAB_ID, true, fluixBricks, false, fluixBricksMeta);
 
 		blockPlaidStoneStairs = new BlockStuffStairs(BlockInfo.PLAID_STONE_STAIRS_ID, blockPlaidStone);
 		blockPlaidCobblestoneStairs = new BlockStuffStairs(BlockInfo.PLAID_COBBLESTONE_STAIRS_ID, blockPlaidCobble);
@@ -91,7 +94,7 @@ public class Blocks
 		blockFluixBrickStairs = new BlockStuffStairs(BlockInfo.FLUIX_BRICK_STAIRS_ID, blockFluixBrick, 0, false);
 		blockFineFluixBrickStairs = new BlockStuffStairs(BlockInfo.FINE_FLUIX_BRICK_STAIRS_ID, blockFluixBrick, 1, false);
 
-		// GameRegistry.registerBlock(blockBlockPlacer, BlockInfo.BLOCK_PLACER_NAME);
+		// register normal blocks
 		GameRegistry.registerBlock(blockPlaidPlank, BlockInfo.PLAID_PLANK_NAME);
 		GameRegistry.registerBlock(blockPlaidLog, ItemPlaidLog.class, BlockInfo.PLAID_LOG_NAME);
 		GameRegistry.registerBlock(blockPlaidSapling, BlockInfo.PLAID_SAPLING_NAME);
@@ -107,16 +110,23 @@ public class Blocks
 		GameRegistry.registerBlock(blockPlaidStoneBrick, BlockInfo.PLAID_STONE_BRICK_NAME);
 		GameRegistry.registerBlock(blockPlaidGlass, BlockInfo.PLAID_GLASS_NAME);
 
+		// register slabs
 		ItemStuffSlab.setSlabs(blockStoneSlab, blockStoneDoubleSlab);
 		GameRegistry.registerBlock(blockStoneSlab, ItemStuffSlab.class, BlockInfo.STONE_SLAB_UNLOCALIZED_NAME);
 		GameRegistry.registerBlock(blockStoneDoubleSlab, ItemStuffSlab.class, BlockInfo.STONE_SLAB_DOUBLE_UNLOCALIZED_NAME);
+
 		ItemStuffSlab.setSlabs(blockWoodSlab, blockWoodDoubleSlab);
 		GameRegistry.registerBlock(blockWoodSlab, ItemStuffSlab.class, BlockInfo.WOOD_SLAB_UNLOCALIZED_NAME);
 		GameRegistry.registerBlock(blockWoodDoubleSlab, ItemStuffSlab.class, BlockInfo.WOOD_SLAB_DOUBLE_UNLOCALIZED_NAME);
 
+		ItemStuffSlab.setSlabs(blockFluixBrickSlab, blockFluixBrickDoubleSlab);
+		GameRegistry.registerBlock(blockFluixBrickSlab, ItemStuffSlab.class, BlockInfo.FLUIX_SLAB_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockFluixBrickDoubleSlab, ItemStuffSlab.class, BlockInfo.FLUIX_SLAB_DOUBLE_UNLOCALIZED_NAME);
+
 		GameRegistry.registerBlock(blockFunFluix, ItemFunFluix.class, BlockInfo.FUN_FLUIX_UNLOCALIZED_NAME);
 		GameRegistry.registerBlock(blockFluixBrick, ItemFluixBrick.class, BlockInfo.FLUIX_BRICK_UNLOCALIZED_NAME);
 
+		// register stairs
 		GameRegistry.registerBlock(blockPlaidStoneStairs, BlockInfo.PLAID_STONE_STAIRS_UNLOCALIZED_NAME);
 		GameRegistry.registerBlock(blockPlaidCobblestoneStairs, BlockInfo.PLAID_COBBLESTONE_STAIRS_UNLOCALIZED_NAME);
 		GameRegistry.registerBlock(blockPlaidStoneBrickStairs, BlockInfo.PLAID_STONE_BRICK_STAIRS_UNLOCALIZED_NAME);
@@ -125,7 +135,6 @@ public class Blocks
 		GameRegistry.registerBlock(blockRunningFluixStairs, BlockInfo.RUNNING_FLUIX_BRICK_STAIRS_UNLOCALIZED_NAME);
 		GameRegistry.registerBlock(blockFluixBrickStairs, BlockInfo.FLUIX_BRICK_STAIRS_UNLOCALIZED_NAME);
 		GameRegistry.registerBlock(blockFineFluixBrickStairs, BlockInfo.FINE_FLUIX_BRICK_STAIRS_NAME);
-
 	}
 
 	public static void addNames()

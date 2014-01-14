@@ -137,21 +137,31 @@ public class BlockInfo
 	public static final String PLAID_GLASS_TEXTURE = "glass_plaid";
 
 	public static int STONE_SLAB_ID;
-	public static int WOOD_SLAB_ID;
 	public static int STONE_SLAB_DOUBLE_ID;
-	public static int WOOD_SLAB_DOUBLE_ID;
 	public static final int STONE_SLAB_DEFAULT = 474;
 	public static final int STONE_SLAB_DOUBLE_DEFAULT = 475;
-	public static final int WOOD_SLAB_DEFAULT = 476;
-	public static final int WOOD_SLAB_DOUBLE_DEFAULT = 477;
 	public static final String STONE_SLAB_KEY = "stuffStoneSlab";
 	public static final String STONE_SLAB_DOUBLE_KEY = "stuffStoneDoubleSlab";
-	public static final String WOOD_SLAB_KEY = "stuffWoodSlab";
-	public static final String WOOD_SLAB_DOUBLE_KEY = "stuffWoodDoubleSlab";
 	public static final String STONE_SLAB_UNLOCALIZED_NAME = "stuffStoneSlab";
 	public static final String STONE_SLAB_DOUBLE_UNLOCALIZED_NAME = "stuffStoneDoubleSlab";
+
+	public static int WOOD_SLAB_ID;
+	public static int WOOD_SLAB_DOUBLE_ID;
+	public static final int WOOD_SLAB_DEFAULT = 476;
+	public static final int WOOD_SLAB_DOUBLE_DEFAULT = 477;
+	public static final String WOOD_SLAB_KEY = "stuffWoodSlab";
+	public static final String WOOD_SLAB_DOUBLE_KEY = "stuffWoodDoubleSlab";
 	public static final String WOOD_SLAB_UNLOCALIZED_NAME = "stuffWoodSlab";
 	public static final String WOOD_SLAB_DOUBLE_UNLOCALIZED_NAME = "stuffDoubleWoodSlab";
+
+	public static int FLUIX_SLAB_ID;
+	public static int FLUIX_SLAB_DOUBLE_ID;
+	public static final int FLUIX_SLAB_DEFAULT = 484;
+	public static final int FLUIX_SLAB_DOUBLE_DEFAULT = 485;
+	public static final String FLUIX_SLAB_KEY = "fluixSlab";
+	public static final String FLUIX_SLAB_DOUBLE_KEY = "fluixSlabDouble";
+	public static final String FLUIX_SLAB_UNLOCALIZED_NAME = "fluixSlab";
+	public static final String FLUIX_SLAB_DOUBLE_UNLOCALIZED_NAME = "fluixSlabDouble";
 
 	public static int FUN_FLUIX_ID;
 	public static final int FUN_FLUIX_DEFAULT = 478;

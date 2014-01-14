@@ -1,5 +1,7 @@
 package stuffstuff.info;
 
+import net.minecraft.block.Block;
+
 public class BlockInfo
 {
 	public static final String TEXTURE_LOCATION = "stuffstuff";
@@ -211,6 +213,54 @@ public class BlockInfo
 	public static final String RUNNING_FLUIX_BRICK_STAIRS_KEY = "stairsRunningFluixBrick";
 	public static final String RUNNING_FLUIX_BRICK_STAIRS_NAME = "Fun Fluix Brick Stairs";
 	public static final String RUNNING_FLUIX_BRICK_STAIRS_UNLOCALIZED_NAME = "stairsRunningFluixBrick";
+	
+	public static int GREEN_PLAID_LOG_STAIRS_ID;
+	public static final int GREEN_PLAID_LOG_STAIRS_DEFAULT = 490;
+	public static final String GREEN_PLAID_LOG_STAIRS_KEY = "plaidLogGreenStairs";
+	public static final String GREEN_PLAID_LOG_STAIRS_NAME = "Green Plaid Log Stairs";
+	public static final String GREEN_PLAID_LOG_STAIRS_UNLOCALIZED_NAME = "plaidLogGreenStairs";
+	
+	public static int RED_PLAID_LOG_STAIRS_ID;
+	public static final int RED_PLAID_LOG_STAIRS_DEFAULT = 491;
+	public static final String RED_PLAID_LOG_STAIRS_KEY = "plaidLogRedStairs";
+	public static final String RED_PLAID_LOG_STAIRS_NAME = "Red Plaid Log Stairs";
+	public static final String RED_PLAID_LOG_STAIRS_UNLOCALIZED_NAME = "plaidLogRedStairs";
+	
+	public static int BLUE_PLAID_LOG_STAIRS_ID;
+	public static final int BLUE_PLAID_LOG_STAIRS_DEFAULT = 492;
+	public static final String BLUE_PLAID_LOG_STAIRS_KEY = "plaidLogBlueStairs";
+	public static final String BLUE_PLAID_LOG_STAIRS_NAME = "Blue Plaid Log Stairs";
+	public static final String BLUE_PLAID_LOG_STAIRS_UNLOCALIZED_NAME = "plaidLogBlueStairs";
+	
+	public static int WHITE_PLAID_LOG_STAIRS_ID;
+	public static final int WHITE_PLAID_LOG_STAIRS_DEFAULT = 493;
+	public static final String WHITE_PLAID_LOG_STAIRS_KEY = "plaidLogWhiteStairs";
+	public static final String WHITE_PLAID_LOG_STAIRS_NAME = "White Plaid Log Stairs";
+	public static final String WHITE_PLAID_LOG_STAIRS_UNLOCALIZED_NAME = "plaidLogWhiteStairs";	
+	
+	public static int OAK_LOG_STAIRS_ID;
+	public static final int OAK_LOG_STAIRS_DEFAULT = 494;
+	public static final String OAK_LOG_STAIRS_KEY = "oakLogStairs";
+	public static final String OAK_LOG_STAIRS_NAME = "Oak Log Stairs";
+	public static final String OAK_LOG_STAIRS_UNLOCALIZED_NAME = "oakLogStairs";	
+	
+	public static int SPRUCE_LOG_STAIRS_ID;
+	public static final int SPRUCE_LOG_STAIRS_DEFAULT = 495;
+	public static final String SPRUCE_LOG_STAIRS_KEY = "spruceLogStairs";
+	public static final String SPRUCE_LOG_STAIRS_NAME = "Spruce Log Stairs";
+	public static final String SPRUCE_LOG_STAIRS_UNLOCALIZED_NAME = "spruceLogStairs";	
+	
+	public static int BIRCH_LOG_STAIRS_ID;
+	public static final int BIRCH_LOG_STAIRS_DEFAULT = 496;
+	public static final String BIRCH_LOG_STAIRS_KEY = "birchLogStairs";
+	public static final String BIRCH_LOG_STAIRS_NAME = "Birch Log Stairs";
+	public static final String BIRCH_LOG_STAIRS_UNLOCALIZED_NAME = "birchLogStairs";	
+	
+	public static int JUNGLE_LOG_STAIRS_ID;
+	public static final int JUNGLE_LOG_STAIRS_DEFAULT = 497;
+	public static final String JUNGLE_LOG_STAIRS_KEY = "jungleLogStairs";
+	public static final String JUNGLE_LOG_STAIRS_NAME = "Jungle Log Stairs";
+	public static final String JUNGLE_LOG_STAIRS_UNLOCALIZED_NAME = "jungleLogStairs";	
 
 	static
 	{

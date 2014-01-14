@@ -47,6 +47,14 @@ public class ConfigHandler
 			BlockInfo.PLAID_STONE_STAIRS_ID = config.getBlock(BlockInfo.PLAID_STONE_STAIRS_KEY, BlockInfo.PLAID_STONE_STAIRS_DEFAULT).getInt();
 			BlockInfo.PLAID_STONE_BRICK_STAIRS_ID = config.getBlock(BlockInfo.PLAID_STONE_BRICK_STAIRS_KEY, BlockInfo.PLAID_STONE_BRICK_STAIRS_DEFAULT).getInt();
 			BlockInfo.PLAID_PLANK_STAIRS_ID = config.getBlock(BlockInfo.PLAID_PLANK_STAIRS_KEY, BlockInfo.PLAID_PLANK_STAIRS_DEFAULT).getInt();
+			BlockInfo.RED_PLAID_LOG_STAIRS_ID = config.getBlock(BlockInfo.RED_PLAID_LOG_STAIRS_KEY, BlockInfo.RED_PLAID_LOG_STAIRS_DEFAULT).getInt();
+			BlockInfo.WHITE_PLAID_LOG_STAIRS_ID = config.getBlock(BlockInfo.WHITE_PLAID_LOG_STAIRS_KEY, BlockInfo.WHITE_PLAID_LOG_STAIRS_DEFAULT).getInt();
+			BlockInfo.BLUE_PLAID_LOG_STAIRS_ID = config.getBlock(BlockInfo.BLUE_PLAID_LOG_STAIRS_KEY, BlockInfo.BLUE_PLAID_LOG_STAIRS_DEFAULT).getInt();
+			BlockInfo.GREEN_PLAID_LOG_STAIRS_ID = config.getBlock(BlockInfo.GREEN_PLAID_LOG_STAIRS_KEY, BlockInfo.GREEN_PLAID_LOG_STAIRS_DEFAULT).getInt();
+			BlockInfo.OAK_LOG_STAIRS_ID = config.getBlock(BlockInfo.OAK_LOG_STAIRS_KEY, BlockInfo.OAK_LOG_STAIRS_DEFAULT).getInt();
+			BlockInfo.BIRCH_LOG_STAIRS_ID = config.getBlock(BlockInfo.BIRCH_LOG_STAIRS_KEY, BlockInfo.BIRCH_LOG_STAIRS_DEFAULT).getInt();
+			BlockInfo.JUNGLE_LOG_STAIRS_ID = config.getBlock(BlockInfo.JUNGLE_LOG_STAIRS_KEY, BlockInfo.JUNGLE_LOG_STAIRS_DEFAULT).getInt();
+			BlockInfo.SPRUCE_LOG_STAIRS_ID = config.getBlock(BlockInfo.SPRUCE_LOG_STAIRS_KEY, BlockInfo.SPRUCE_LOG_STAIRS_DEFAULT).getInt();
 
 			BlockInfo.FUN_FLUIX_BRICK_STAIRS_ID = config.getBlock(BlockInfo.FUN_FLUIX_BRICK_STAIRS_KEY, BlockInfo.FUN_FLUIX_BRICK_STAIRS_DEFAULT).getInt();
 			BlockInfo.RUNNING_FLUIX_BRICK_STAIRS_ID = config.getBlock(BlockInfo.RUNNING_FLUIX_BRICK_STAIRS_KEY, BlockInfo.RUNNING_FLUIX_BRICK_STAIRS_DEFAULT).getInt();

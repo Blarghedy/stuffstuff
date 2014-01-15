@@ -1,7 +1,5 @@
 package stuffstuff.info;
 
-import net.minecraft.block.Block;
-
 public class BlockInfo
 {
 	public static final String TEXTURE_LOCATION = "stuffstuff";
@@ -100,6 +98,36 @@ public class BlockInfo
 	public static final String PLAID_STONE_BRICK_TEXTURE = "stone_brick_plaid";
 	public static final String PLAID_STONE_BRICK_UNLOCALIZED_NAME = "stoneBrickPlaid";
 
+	public static int PLAID_GLASS_ID;
+	public static final int PLAID_GLASS_DEFAULT = 473;
+	public static final String PLAID_GLASS_KEY = "glassPlaid";
+	public static final String PLAID_GLASS_NAME = "Plaid Glass";
+	public static final String PLAID_GLASS_UNLOCALIZED_NAME = "glassPlaid";
+	public static final String PLAID_GLASS_TEXTURE = "glass_plaid";
+
+	public static int FUN_FLUIX_ID;
+	public static final int FUN_FLUIX_DEFAULT = 478;
+	public static final String FUN_FLUIX_KEY = "blockDecorativeFluix";
+	public static final String FUN_FLUIX_NAME = "Fun Fluix Brick";
+	public static final String FUN_FLUIX_UNLOCALIZED_NAME = "blockDecorativeFluix";
+	public static final String FUN_FLUIX_TEXTURE = "fluix_fun_brick";
+	public static final String FUN_FLUIX_SLIDING_TEXTURE = "fluix_fun_brick_sliding";
+
+	public static int FLUIX_BRICK_ID;
+	public static final int FLUIX_BRICK_DEFAULT = 479;
+	public static final String FLUIX_BRICK_KEY = "blockFluixBrick";
+	public static final String FLUIX_BRICK_NAME = "Fluix Brick";
+	public static final String FLUIX_BRICK_UNLOCALIZED_NAME = "blockFluixBrick";
+	public static final String FLUIX_BRICK_TEXTURE = "fluix_brick";
+	public static final String FINE_FLUIX_BRICK_TEXTURE = "fine_fluix_brick";
+	
+	public static int FLUIX_GLASS_ID;
+	public static final int FLUIX_GLASS_DEFAULT = 500;
+	public static final String FLUIX_GLASS_KEY = "blockFluixGlass";
+	public static final String FLUIX_GLASS_NAME = "Fluix Glass";
+	public static final String FLUIX_GLASS_UNLOCALIZED_NAME = "blockFLuixGlass";
+	public static final String FLUIX_GLASS_TEXTURE = "fluix_glass";
+
 	public static int PLAID_STONE_STAIRS_ID;
 	public static final int PLAID_STONE_STAIRS_DEFAULT = 468;
 	public static final String PLAID_STONE_STAIRS_KEY = "stairsPlaidStone";
@@ -130,13 +158,6 @@ public class BlockInfo
 	public static final String PLAID_TALL_GRASS_NAME = "Plaid Tall Grass";
 	public static final String PLAID_TALL_GRASS_UNLOCALIZED_NAME = "tallGrassPlad";
 	public static final String PLAID_TALL_GRASS_TEXTURE = "tall_grass_plaid";
-
-	public static int PLAID_GLASS_ID;
-	public static final int PLAID_GLASS_DEFAULT = 473;
-	public static final String PLAID_GLASS_KEY = "glassPlaid";
-	public static final String PLAID_GLASS_NAME = "Plaid Glass";
-	public static final String PLAID_GLASS_UNLOCALIZED_NAME = "glassPlaid";
-	public static final String PLAID_GLASS_TEXTURE = "glass_plaid";
 
 	public static int STONE_SLAB_ID;
 	public static int STONE_SLAB_DOUBLE_ID;
@@ -173,22 +194,6 @@ public class BlockInfo
 	public static final String LOG_SLAB_DOUBLE_KEY = "logSlabDouble";
 	public static final String LOG_SLAB_UNLOCALIZED_NAME = "logSlab";
 	public static final String LOG_SLAB_DOUBLE_UNLOCALIZED_NAME = "logSlabDouble";
-
-	public static int FUN_FLUIX_ID;
-	public static final int FUN_FLUIX_DEFAULT = 478;
-	public static final String FUN_FLUIX_KEY = "blockDecorativeFluix";
-	public static final String FUN_FLUIX_NAME = "Fun Fluix Brick";
-	public static final String FUN_FLUIX_UNLOCALIZED_NAME = "blockDecorativeFluix";
-	public static final String FUN_FLUIX_TEXTURE = "fluix_fun_brick";
-	public static final String FUN_FLUIX_SLIDING_TEXTURE = "fluix_fun_brick_sliding";
-
-	public static int FLUIX_BRICK_ID;
-	public static final int FLUIX_BRICK_DEFAULT = 479;
-	public static final String FLUIX_BRICK_KEY = "blockFluixBrick";
-	public static final String FLUIX_BRICK_NAME = "Fluix Brick";
-	public static final String FLUIX_BRICK_UNLOCALIZED_NAME = "blockFluixBrick";
-	public static final String FLUIX_BRICK_TEXTURE = "fluix_brick";
-	public static final String FINE_FLUIX_BRICK_TEXTURE = "fine_fluix_brick";
 
 	public static int FLUIX_BRICK_STAIRS_ID;
 	public static final int FLUIX_BRICK_STAIRS_DEFAULT = 480;
@@ -260,7 +265,8 @@ public class BlockInfo
 	public static final int JUNGLE_LOG_STAIRS_DEFAULT = 497;
 	public static final String JUNGLE_LOG_STAIRS_KEY = "jungleLogStairs";
 	public static final String JUNGLE_LOG_STAIRS_NAME = "Jungle Log Stairs";
-	public static final String JUNGLE_LOG_STAIRS_UNLOCALIZED_NAME = "jungleLogStairs";	
+	public static final String JUNGLE_LOG_STAIRS_UNLOCALIZED_NAME = "jungleLogStairs";
+
 
 	static
 	{

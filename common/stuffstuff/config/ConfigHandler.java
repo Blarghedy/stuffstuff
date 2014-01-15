@@ -43,6 +43,8 @@ public class ConfigHandler
 			BlockInfo.PLAID_STONE_BRICK_ID  = config.getBlock(BlockInfo.PLAID_STONE_BRICK_KEY, BlockInfo.PLAID_STONE_BRICK_DEFAULT).getInt();
 			BlockInfo.PLAID_GLASS_ID = config.getBlock(BlockInfo.PLAID_GLASS_KEY, BlockInfo.PLAID_GLASS_DEFAULT).getInt();
 
+			BlockInfo.FLUIX_GLASS_ID = config.getBlock(BlockInfo.FLUIX_GLASS_KEY, BlockInfo.FLUIX_GLASS_DEFAULT).getInt();
+
 			BlockInfo.PLAID_COBBLESTONE_STAIRS_ID = config.getBlock(BlockInfo.PLAID_COBBLESTONE_STAIRS_KEY, BlockInfo.PLAID_COBBLESTONE_STAIRS_DEFAULT).getInt();
 			BlockInfo.PLAID_STONE_STAIRS_ID = config.getBlock(BlockInfo.PLAID_STONE_STAIRS_KEY, BlockInfo.PLAID_STONE_STAIRS_DEFAULT).getInt();
 			BlockInfo.PLAID_STONE_BRICK_STAIRS_ID = config.getBlock(BlockInfo.PLAID_STONE_BRICK_STAIRS_KEY, BlockInfo.PLAID_STONE_BRICK_STAIRS_DEFAULT).getInt();

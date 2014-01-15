@@ -33,6 +33,7 @@ public class Blocks
 	public static Block blockFluixBrick;
 	public static Block blockPlaidTallGrass;
 	public static Block blockPlaidGlass;
+	public static BlockFluixGlass blockFluixGlass;
 
 	public static BlockStairs blockPlaidStoneStairs;
 	public static BlockStairs blockPlaidCobblestoneStairs;
@@ -81,6 +82,7 @@ public class Blocks
 		blockPlaidGlass = new BlockPlaidGlass(BlockInfo.PLAID_GLASS_ID);
 		blockFunFluix = new BlockFunFluix(BlockInfo.FUN_FLUIX_ID);
 		blockFluixBrick = new BlockFluixBrick(BlockInfo.FLUIX_BRICK_ID);
+		blockFluixGlass = new BlockFluixGlass(BlockInfo.FLUIX_GLASS_ID);
 
 		Block[] stoneBlocks = {blockPlaidStone, blockPlaidCobble, blockPlaidStoneBrick};
 		Block[] woodBlocks = {blockPlaidPlank};
@@ -136,6 +138,7 @@ public class Blocks
 
 		GameRegistry.registerBlock(blockFunFluix, ItemFunFluix.class, BlockInfo.FUN_FLUIX_UNLOCALIZED_NAME);
 		GameRegistry.registerBlock(blockFluixBrick, ItemFluixBrick.class, BlockInfo.FLUIX_BRICK_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockFluixGlass, BlockInfo.FLUIX_GLASS_UNLOCALIZED_NAME);
 
 		// register slabs
 		ItemStuffSlab.setSlabs(blockStoneSlab, blockStoneDoubleSlab);

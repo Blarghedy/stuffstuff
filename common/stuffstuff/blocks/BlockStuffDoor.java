@@ -2,7 +2,6 @@ package stuffstuff.blocks;
 
 import java.util.Random;
 
-import stuffstuff.StuffStuff;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -10,6 +9,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import stuffstuff.StuffStuff;
+import stuffstuff.render.Renderers;
 
 public class BlockStuffDoor extends BlockDoor
 {
@@ -59,6 +60,12 @@ public class BlockStuffDoor extends BlockDoor
 	public int idDropped(int par1, Random par2Random, int par3)
 	{
 		return (par1 & 8) != 0 ? 0 : blockID; // this might drop the block and not the item, which might matter
+	}
+
+	@Override
+	public int getRenderType()
+	{
+		return Renderers.stuffDoorTopRenderID;
 	}
 
 	@Override

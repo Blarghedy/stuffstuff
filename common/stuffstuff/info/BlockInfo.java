@@ -266,6 +266,12 @@ public class BlockInfo
 	public static final String JUNGLE_LOG_STAIRS_KEY = "jungleLogStairs";
 	public static final String JUNGLE_LOG_STAIRS_NAME = "Jungle Log Stairs";
 	public static final String JUNGLE_LOG_STAIRS_UNLOCALIZED_NAME = "jungleLogStairs";
+	
+	public static int RUNNING_FLUIX_DOOR_ID;
+	public static final int RUNNING_FLUIX_DOOR_DEFAULT = 498;
+	public static final String RUNNING_FLUIX_DOOR_KEY = "doorRunningFluix";
+	public static final String RUNNING_FLUIX_DOOR_NAME = "Fun Fluix Brick Door";
+	public static final String RUNNING_FLUIX_DOOR_UNLOCALIZED_NAME = "doorRunningFluix";
 
 
 	static

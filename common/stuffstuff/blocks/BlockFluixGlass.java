@@ -9,14 +9,12 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import stuffstuff.StuffStuff;
 import stuffstuff.info.BlockInfo;
-import stuffstuff.info.ParticleInfo;
 import stuffstuff.particles.Particles;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockFluixGlass extends Block
 {
-	public Icon particleIcon;
 
 	public BlockFluixGlass(int id)
 	{
@@ -24,13 +22,27 @@ public class BlockFluixGlass extends Block
 		setCreativeTab(StuffStuff.tabAEStuff);
 		setHardness(1F);
 		setStepSound(soundGlassFootstep);
-		setUnlocalizedName(BlockInfo.PLAID_GLASS_UNLOCALIZED_NAME);
+		setLightOpacity(0);
+		setLightValue(1);
+		setUnlocalizedName(BlockInfo.FLUIX_GLASS_UNLOCALIZED_NAME);
+	}
+	
+	@Override
+	public boolean isOpaqueCube()
+	{
+		return true;
+	}
+	
+	@Override
+	public boolean renderAsNormalBlock()
+	{
+		return false;
 	}
 
 	@Override
 	public void registerIcons(IconRegister register)
 	{
-		particleIcon = register.registerIcon(ParticleInfo.TEXTURE_LOCATION + ":" + ParticleInfo.FLUIX_GLASS_PARTICLE);
+
 	}
 
 	@Override

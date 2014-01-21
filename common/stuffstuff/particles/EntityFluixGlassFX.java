@@ -9,7 +9,6 @@ public class EntityFluixGlassFX extends EntityFX
 	protected EntityFluixGlassFX(World world, double x, double y, double z, double motionX, double motionY, double motionZ)
 	{
 		super (world, x, y, z, motionX, motionY, motionZ);
-		//		setParticleIcon(Blocks.blockFluixGlass.particleIcon);
 
 		float f = this.rand.nextFloat() * 0.1F + 0.8F;
 		particleRed = f * 0.7f;
@@ -18,9 +17,9 @@ public class EntityFluixGlassFX extends EntityFX
 		setParticleTextureIndex(0);
 		setSize(0.04F, 0.04F);
 		particleScale *= this.rand.nextFloat() * 0.6F + 1.9F;
-		motionX = 0.0D;
-		motionY = 1D;
-		motionZ = 0.0D;
+		this.motionX = 0.0D;
+		this.motionY = 0.0D;
+		this.motionZ = 0.0D;
 		prevPosX = this.posX;
 		prevPosY = this.posY;
 		prevPosZ = this.posZ;

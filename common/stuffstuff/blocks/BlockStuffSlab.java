@@ -41,6 +41,8 @@ public class BlockStuffSlab extends BlockHalfSlab
 		this.modelBlocks = modelBlocks;
 		this.useModelTexture = useModelTexture;
 		this.modelMeta = modelMeta;
+		lightValue[id] = lightValue[modelBlocks[0].blockID];
+		slipperiness = modelBlocks[0].slipperiness;
 
 		if (isDouble)
 		{

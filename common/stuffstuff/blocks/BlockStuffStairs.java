@@ -45,8 +45,9 @@ public class BlockStuffStairs extends BlockStairs
 		setBurnProperties(id, blockFireSpreadSpeed[modelBlock.blockID], blockFlammability[modelBlock.blockID]);
 		slipperiness = model.slipperiness;
 
-		int light = lightValue[modelBlock.blockID];
-		setLightValue(light);
+//		int light = lightValue[modelBlock.blockID];
+//		setLightValue(light);
+		lightValue[id] = lightValue[modelBlock.blockID];
 		setLightOpacity(lightOpacity[model.blockID]);
 		setUnlocalizedName(modelBlock.getUnlocalizedName() + "." + modelMeta + "Stairs");
 

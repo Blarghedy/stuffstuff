@@ -1,12 +1,11 @@
 package stuffstuff.render;
 
-import stuffstuff.blocks.BlockStuffDoor;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
-import net.minecraftforge.common.ForgeDirection;
+import stuffstuff.blocks.BlockStuffDoor;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 public class StuffDoorRenderer implements ISimpleBlockRenderingHandler
@@ -68,6 +67,7 @@ public class StuffDoorRenderer implements ISimpleBlockRenderingHandler
 		int mixedBrightness = block.getMixedBrightnessForBlock(world, x, y, z);
 		Icon icon;
 		int orientation = door.getDoorOrientation(world, x, y, z);
+		boolean isDoorOpen = door.isDoorOpen(world, x, y, z);
 
 		icon = renderer.getBlockIcon(block, world, x, y, z, 0);
 		tessellator.setBrightness(renderer.renderMinY > 0.0D ? mixedBrightness : block.getMixedBrightnessForBlock(world, x, y - 1, z));
@@ -82,7 +82,9 @@ public class StuffDoorRenderer implements ISimpleBlockRenderingHandler
 		icon = renderer.getBlockIcon(block, world, x, y, z, 2);
 		tessellator.setBrightness(renderer.renderMinZ > 0.0D ? mixedBrightness : block.getMixedBrightnessForBlock(world, x, y, z - 1));
 		tessellator.setColorOpaque_F(zOpacity, zOpacity, zOpacity);
-		if (orientation == 1 || orientation == 3)
+
+		System.out.println(orientation + " " + isDoorOpen);
+		if (((orientation == 1 || orientation == 3) && !isDoorOpen))// || ((orientation == 0 || orientation == 2) && isDoorOpen))
 		{
 			renderFaceZNeg(block, x, y, z, icon, renderer);
 		}
@@ -94,7 +96,7 @@ public class StuffDoorRenderer implements ISimpleBlockRenderingHandler
 		icon = renderer.getBlockIcon(block, world, x, y, z, 3);
 		tessellator.setBrightness(renderer.renderMaxZ < 1.0D ? mixedBrightness : block.getMixedBrightnessForBlock(world, x, y, z + 1));
 		tessellator.setColorOpaque_F(zOpacity, zOpacity, zOpacity);
-		if (orientation == 1 || orientation == 3)
+		if (((orientation == 1 || orientation == 3) && !isDoorOpen) || ((orientation == 0 || orientation == 2) && isDoorOpen))
 		{
 			renderFaceZPos(block, x, y, z, icon, renderer);
 		}
@@ -106,7 +108,7 @@ public class StuffDoorRenderer implements ISimpleBlockRenderingHandler
 		icon = renderer.getBlockIcon(block, world, x, y, z, 4);
 		tessellator.setBrightness(renderer.renderMinX > 0.0D ? mixedBrightness : block.getMixedBrightnessForBlock(world, x - 1, y, z));
 		tessellator.setColorOpaque_F(xOpacity, xOpacity, xOpacity);
-		if (orientation == 0 || orientation == 2)
+		if (((orientation == 1 || orientation == 3) && isDoorOpen) || ((orientation == 0 || orientation == 2) && !isDoorOpen))
 		{
 			renderFaceXNeg(block, x, y, z, icon, renderer);
 		}
@@ -118,7 +120,8 @@ public class StuffDoorRenderer implements ISimpleBlockRenderingHandler
 		icon = renderer.getBlockIcon(block, world, x, y, z, 5);
 		tessellator.setBrightness(renderer.renderMaxX < 1.0D ? mixedBrightness : block.getMixedBrightnessForBlock(world, x + 1, y, z));
 		tessellator.setColorOpaque_F(xOpacity, xOpacity, xOpacity);
-		if (orientation == 0 || orientation == 2)
+		
+		if (((orientation == 1 || orientation == 3) && isDoorOpen) || ((orientation == 0 || orientation == 2) && !isDoorOpen))
 		{
 			renderFaceXPos(block, x, y, z, icon, renderer);
 		}
@@ -162,43 +165,43 @@ public class StuffDoorRenderer implements ISimpleBlockRenderingHandler
 		double v = minV;
 		double V = maxV;
 
-//		if (renderer.uvRotateEast == 2)
-//		{
-//			minU = icon.getInterpolatedU(renderer.renderMinY * 16.0D);
-//			minV = icon.getInterpolatedV(16.0D - renderer.renderMinX * 16.0D);
-//			maxU = icon.getInterpolatedU(renderer.renderMaxY * 16.0D);
-//			maxV = icon.getInterpolatedV(16.0D - renderer.renderMaxX * 16.0D);
-//			v = minV;
-//			V = maxV;
-//			tmp = minU;
-//			U = maxU;
-//			minV = maxV;
-//			maxV = v;
-//		}
-//		else if (renderer.uvRotateEast == 1)
-//		{
-//			minU = icon.getInterpolatedU(16.0D - renderer.renderMaxY * 16.0D);
-//			minV = icon.getInterpolatedV(renderer.renderMaxX * 16.0D);
-//			maxU = icon.getInterpolatedU(16.0D - renderer.renderMinY * 16.0D);
-//			maxV = icon.getInterpolatedV(renderer.renderMinX * 16.0D);
-//			tmp = maxU;
-//			U = minU;
-//			minU = maxU;
-//			maxU = U;
-//			v = maxV;
-//			V = minV;
-//		}
-//		else if (renderer.uvRotateEast == 3)
-//		{
-//			minU = icon.getInterpolatedU(16.0D - renderer.renderMinX * 16.0D);
-//			maxU = icon.getInterpolatedU(16.0D - renderer.renderMaxX * 16.0D);
-//			minV = icon.getInterpolatedV(renderer.renderMaxY * 16.0D);
-//			maxV = icon.getInterpolatedV(renderer.renderMinY * 16.0D);
-//			tmp = maxU;
-//			U = minU;
-//			v = minV;
-//			V = maxV;
-//		}
+		//		if (renderer.uvRotateEast == 2)
+		//		{
+		//			minU = icon.getInterpolatedU(renderer.renderMinY * 16.0D);
+		//			minV = icon.getInterpolatedV(16.0D - renderer.renderMinX * 16.0D);
+		//			maxU = icon.getInterpolatedU(renderer.renderMaxY * 16.0D);
+		//			maxV = icon.getInterpolatedV(16.0D - renderer.renderMaxX * 16.0D);
+		//			v = minV;
+		//			V = maxV;
+		//			tmp = minU;
+		//			U = maxU;
+		//			minV = maxV;
+		//			maxV = v;
+		//		}
+		//		else if (renderer.uvRotateEast == 1)
+		//		{
+		//			minU = icon.getInterpolatedU(16.0D - renderer.renderMaxY * 16.0D);
+		//			minV = icon.getInterpolatedV(renderer.renderMaxX * 16.0D);
+		//			maxU = icon.getInterpolatedU(16.0D - renderer.renderMinY * 16.0D);
+		//			maxV = icon.getInterpolatedV(renderer.renderMinX * 16.0D);
+		//			tmp = maxU;
+		//			U = minU;
+		//			minU = maxU;
+		//			maxU = U;
+		//			v = maxV;
+		//			V = minV;
+		//		}
+		//		else if (renderer.uvRotateEast == 3)
+		//		{
+		//			minU = icon.getInterpolatedU(16.0D - renderer.renderMinX * 16.0D);
+		//			maxU = icon.getInterpolatedU(16.0D - renderer.renderMaxX * 16.0D);
+		//			minV = icon.getInterpolatedV(renderer.renderMaxY * 16.0D);
+		//			maxV = icon.getInterpolatedV(renderer.renderMinY * 16.0D);
+		//			tmp = maxU;
+		//			U = minU;
+		//			v = minV;
+		//			V = maxV;
+		//		}
 
 		double xx = x + renderer.renderMinX;
 		double XX = x + renderer.renderMaxX;
@@ -268,44 +271,44 @@ public class StuffDoorRenderer implements ISimpleBlockRenderingHandler
 		double u = minU;
 		double V = maxV;
 		double v = minV;
-//
-//		if (renderer.uvRotateWest == 1)
-//		{
-//			minU = icon.getInterpolatedU(renderer.renderMinY * 16.0D);
-//			minV = icon.getInterpolatedV(16.0D - renderer.renderMinX * 16.0D);
-//			maxU = icon.getInterpolatedU(renderer.renderMaxY * 16.0D);
-//			maxV = icon.getInterpolatedV(16.0D - renderer.renderMaxX * 16.0D);
-//			V = maxV;
-//			v = minV;
-//			tmp = minU;
-//			u = maxU;
-//			maxV = minV;
-//			minV = V;
-//		}
-//		else if (renderer.uvRotateWest == 2)
-//		{
-//			minU = icon.getInterpolatedU(16.0D - renderer.renderMaxY * 16.0D);
-//			maxV = icon.getInterpolatedV(renderer.renderMinX * 16.0D);
-//			maxU = icon.getInterpolatedU(16.0D - renderer.renderMinY * 16.0D);
-//			minV = icon.getInterpolatedV(renderer.renderMaxX * 16.0D);
-//			tmp = maxU;
-//			u = minU;
-//			minU = maxU;
-//			maxU = u;
-//			V = minV;
-//			v = maxV;
-//		}
-//		else if (renderer.uvRotateWest == 3)
-//		{
-//			minU = icon.getInterpolatedU(16.0D - renderer.renderMinX * 16.0D);
-//			maxU = icon.getInterpolatedU(16.0D - renderer.renderMaxX * 16.0D);
-//			maxV = icon.getInterpolatedV(renderer.renderMaxY * 16.0D);
-//			minV = icon.getInterpolatedV(renderer.renderMinY * 16.0D);
-//			tmp = maxU;
-//			u = minU;
-//			V = maxV;
-//			v = minV;
-//		}
+		//
+		//		if (renderer.uvRotateWest == 1)
+		//		{
+		//			minU = icon.getInterpolatedU(renderer.renderMinY * 16.0D);
+		//			minV = icon.getInterpolatedV(16.0D - renderer.renderMinX * 16.0D);
+		//			maxU = icon.getInterpolatedU(renderer.renderMaxY * 16.0D);
+		//			maxV = icon.getInterpolatedV(16.0D - renderer.renderMaxX * 16.0D);
+		//			V = maxV;
+		//			v = minV;
+		//			tmp = minU;
+		//			u = maxU;
+		//			maxV = minV;
+		//			minV = V;
+		//		}
+		//		else if (renderer.uvRotateWest == 2)
+		//		{
+		//			minU = icon.getInterpolatedU(16.0D - renderer.renderMaxY * 16.0D);
+		//			maxV = icon.getInterpolatedV(renderer.renderMinX * 16.0D);
+		//			maxU = icon.getInterpolatedU(16.0D - renderer.renderMinY * 16.0D);
+		//			minV = icon.getInterpolatedV(renderer.renderMaxX * 16.0D);
+		//			tmp = maxU;
+		//			u = minU;
+		//			minU = maxU;
+		//			maxU = u;
+		//			V = minV;
+		//			v = maxV;
+		//		}
+		//		else if (renderer.uvRotateWest == 3)
+		//		{
+		//			minU = icon.getInterpolatedU(16.0D - renderer.renderMinX * 16.0D);
+		//			maxU = icon.getInterpolatedU(16.0D - renderer.renderMaxX * 16.0D);
+		//			maxV = icon.getInterpolatedV(renderer.renderMaxY * 16.0D);
+		//			minV = icon.getInterpolatedV(renderer.renderMinY * 16.0D);
+		//			tmp = maxU;
+		//			u = minU;
+		//			V = maxV;
+		//			v = minV;
+		//		}
 
 		double xx = x + renderer.renderMinX;
 		double XX = x + renderer.renderMaxX;
@@ -376,43 +379,43 @@ public class StuffDoorRenderer implements ISimpleBlockRenderingHandler
 		double VV = maxV;
 		double vv = minV;
 
-//		if (renderer.uvRotateNorth == 1)
-//		{
-//			minU = icon.getInterpolatedU(renderer.renderMinY * 16.0D);
-//			maxV = icon.getInterpolatedV(16.0D - renderer.renderMaxZ * 16.0D);
-//			maxU = icon.getInterpolatedU(renderer.renderMaxY * 16.0D);
-//			minV = icon.getInterpolatedV(16.0D - renderer.renderMinZ * 16.0D);
-//			VV = maxV;
-//			vv = minV;
-//			tmp = minU;
-//			uu = maxU;
-//			maxV = minV;
-//			minV = VV;
-//		}
-//		else if (renderer.uvRotateNorth == 2)
-//		{
-//			minU = icon.getInterpolatedU(16.0D - renderer.renderMaxY * 16.0D);
-//			maxV = icon.getInterpolatedV(renderer.renderMinZ * 16.0D);
-//			maxU = icon.getInterpolatedU(16.0D - renderer.renderMinY * 16.0D);
-//			minV = icon.getInterpolatedV(renderer.renderMaxZ * 16.0D);
-//			tmp = maxU;
-//			uu = minU;
-//			minU = maxU;
-//			maxU = uu;
-//			VV = minV;
-//			vv = maxV;
-//		}
-//		else if (renderer.uvRotateNorth == 3)
-//		{
-//			minU = icon.getInterpolatedU(16.0D - renderer.renderMinZ * 16.0D);
-//			maxU = icon.getInterpolatedU(16.0D - renderer.renderMaxZ * 16.0D);
-//			maxV = icon.getInterpolatedV(renderer.renderMaxY * 16.0D);
-//			minV = icon.getInterpolatedV(renderer.renderMinY * 16.0D);
-//			tmp = maxU;
-//			uu = minU;
-//			VV = maxV;
-//			vv = minV;
-//		}
+		//		if (renderer.uvRotateNorth == 1)
+		//		{
+		//			minU = icon.getInterpolatedU(renderer.renderMinY * 16.0D);
+		//			maxV = icon.getInterpolatedV(16.0D - renderer.renderMaxZ * 16.0D);
+		//			maxU = icon.getInterpolatedU(renderer.renderMaxY * 16.0D);
+		//			minV = icon.getInterpolatedV(16.0D - renderer.renderMinZ * 16.0D);
+		//			VV = maxV;
+		//			vv = minV;
+		//			tmp = minU;
+		//			uu = maxU;
+		//			maxV = minV;
+		//			minV = VV;
+		//		}
+		//		else if (renderer.uvRotateNorth == 2)
+		//		{
+		//			minU = icon.getInterpolatedU(16.0D - renderer.renderMaxY * 16.0D);
+		//			maxV = icon.getInterpolatedV(renderer.renderMinZ * 16.0D);
+		//			maxU = icon.getInterpolatedU(16.0D - renderer.renderMinY * 16.0D);
+		//			minV = icon.getInterpolatedV(renderer.renderMaxZ * 16.0D);
+		//			tmp = maxU;
+		//			uu = minU;
+		//			minU = maxU;
+		//			maxU = uu;
+		//			VV = minV;
+		//			vv = maxV;
+		//		}
+		//		else if (renderer.uvRotateNorth == 3)
+		//		{
+		//			minU = icon.getInterpolatedU(16.0D - renderer.renderMinZ * 16.0D);
+		//			maxU = icon.getInterpolatedU(16.0D - renderer.renderMaxZ * 16.0D);
+		//			maxV = icon.getInterpolatedV(renderer.renderMaxY * 16.0D);
+		//			minV = icon.getInterpolatedV(renderer.renderMinY * 16.0D);
+		//			tmp = maxU;
+		//			uu = minU;
+		//			VV = maxV;
+		//			vv = minV;
+		//		}
 
 		double xx = x + renderer.renderMinX;
 		double yy = y + renderer.renderMinY;
@@ -459,60 +462,17 @@ public class StuffDoorRenderer implements ISimpleBlockRenderingHandler
 		double maxV = icon.getInterpolatedV(16.0D - renderer.renderMinY * 16.0D);
 		double tmp;
 
-		if (renderer.renderMinZ < 0.0D || renderer.renderMaxZ > 1.0D)
-		{
-			minU = icon.getMinU();
-			maxU = icon.getMaxU();
-		}
-
-		if (renderer.renderMinY < 0.0D || renderer.renderMaxY > 1.0D)
-		{
-			minV = icon.getMinV();
-			maxV = icon.getMaxV();
-		}
-
-		tmp = maxU;
-		double uu = minU;
-		double vv = minV;
-		double VV = maxV;
-
-//		if (renderer.uvRotateSouth == 2)
-//		{
-//			minU = icon.getInterpolatedU(renderer.renderMinY * 16.0D);
-//			minV = icon.getInterpolatedV(16.0D - renderer.renderMinZ * 16.0D);
-//			maxU = icon.getInterpolatedU(renderer.renderMaxY * 16.0D);
-//			maxV = icon.getInterpolatedV(16.0D - renderer.renderMaxZ * 16.0D);
-//			vv = minV;
-//			VV = maxV;
-//			tmp = minU;
-//			uu = maxU;
-//			minV = maxV;
-//			maxV = vv;
-//		}
-//		else if (renderer.uvRotateSouth == 1)
-//		{
-//			minU = icon.getInterpolatedU(16.0D - renderer.renderMaxY * 16.0D);
-//			minV = icon.getInterpolatedV(renderer.renderMaxZ * 16.0D);
-//			maxU = icon.getInterpolatedU(16.0D - renderer.renderMinY * 16.0D);
-//			maxV = icon.getInterpolatedV(renderer.renderMinZ * 16.0D);
-//			tmp = maxU;
-//			uu = minU;
-//			minU = maxU;
-//			maxU = uu;
-//			vv = maxV;
-//			VV = minV;
-//		}
-//		else if (renderer.uvRotateSouth == 3)
-//		{
-//			minU = icon.getInterpolatedU(16.0D - renderer.renderMinZ * 16.0D);
-//			maxU = icon.getInterpolatedU(16.0D - renderer.renderMaxZ * 16.0D);
-//			minV = icon.getInterpolatedV(renderer.renderMaxY * 16.0D);
-//			maxV = icon.getInterpolatedV(renderer.renderMinY * 16.0D);
-//			tmp = maxU;
-//			uu = minU;
-//			vv = minV;
-//			VV = maxV;
-//		}
+		//		if (renderer.renderMinZ < 0.0D || renderer.renderMaxZ > 1.0D)
+		//		{
+		//			minU = icon.getMinU();
+		//			maxU = icon.getMaxU();
+		//		}
+		//
+		//		if (renderer.renderMinY < 0.0D || renderer.renderMaxY > 1.0D)
+		//		{
+		//			minV = icon.getMinV();
+		//			maxV = icon.getMaxV();
+		//		}
 
 		double XX = x + renderer.renderMaxX;
 		double yy = y + renderer.renderMinY;
@@ -524,23 +484,71 @@ public class StuffDoorRenderer implements ISimpleBlockRenderingHandler
 		{
 			tessellator.setColorOpaque_F(renderer.colorRedTopLeft, renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
 			tessellator.setBrightness(renderer.brightnessTopLeft);
-			tessellator.addVertexWithUV(XX, yy, ZZ, uu, VV);
+			tessellator.addVertexWithUV(XX, yy, ZZ, minU, maxV);
 			tessellator.setColorOpaque_F(renderer.colorRedBottomLeft, renderer.colorGreenBottomLeft, renderer.colorBlueBottomLeft);
 			tessellator.setBrightness(renderer.brightnessBottomLeft);
 			tessellator.addVertexWithUV(XX, yy, zz, maxU, maxV);
 			tessellator.setColorOpaque_F(renderer.colorRedBottomRight, renderer.colorGreenBottomRight, renderer.colorBlueBottomRight);
 			tessellator.setBrightness(renderer.brightnessBottomRight);
-			tessellator.addVertexWithUV(XX, YY, zz, tmp, vv);
+			tessellator.addVertexWithUV(XX, YY, zz, maxU, minV);
 			tessellator.setColorOpaque_F(renderer.colorRedTopRight, renderer.colorGreenTopRight, renderer.colorBlueTopRight);
 			tessellator.setBrightness(renderer.brightnessTopRight);
 			tessellator.addVertexWithUV(XX, YY, ZZ, minU, minV);
 		}
 		else
 		{
-			tessellator.addVertexWithUV(XX, yy, ZZ, uu, VV);
-			tessellator.addVertexWithUV(XX, yy, zz, maxU, maxV);
-			tessellator.addVertexWithUV(XX, YY, zz, tmp, vv);
-			tessellator.addVertexWithUV(XX, YY, ZZ, minU, minV);
+			double zdif = ZZ - zz;
+			double ydif = YY - yy;
+			double udif = maxU - minU;
+			double vdif = maxV - minV;
+
+			/**
+			 * yy, ZZ, minu, maxv
+			 * yy, zz, maxu, maxv
+			 * YY, zz, maxu, minv
+			 * YY, ZZ, minu, minv
+			 */
+			// render top
+			tessellator.addVertexWithUV(XX, yy + ydif * 13.0 / 16, ZZ, 	minU, minV + vdif * 3.0 / 16);
+			tessellator.addVertexWithUV(XX, yy + ydif * 13.0 / 16, zz, 	maxU, minV);
+			tessellator.addVertexWithUV(XX, YY, zz, 					maxU, minV);
+			tessellator.addVertexWithUV(XX, YY, ZZ, 					minU, minV + vdif * 3.0 / 16);
+
+			// render bottom
+			tessellator.addVertexWithUV(XX, yy, ZZ, 					minU, maxV);
+			tessellator.addVertexWithUV(XX, yy, zz, 					maxU, maxV);
+			tessellator.addVertexWithUV(XX, yy + ydif * 5.0 / 16, zz, 	maxU, minV + vdif * 11.0 / 16);
+			tessellator.addVertexWithUV(XX, yy + ydif * 5.0 / 16, ZZ, 	minU, minV + vdif * 11.0 / 16);
+
+			// render middle horizontal
+			tessellator.addVertexWithUV(XX, yy + ydif * 8.0 / 16, zz + zdif * 13.0 / 16, 	minU + udif * 3.0 / 16, minV + vdif * 8.0 / 16);
+			tessellator.addVertexWithUV(XX, yy + ydif * 8.0 / 16, zz + zdif * 3.0 / 16, 	minU + udif * 13.0 / 16, minV + vdif * 8.0 / 16);
+			tessellator.addVertexWithUV(XX, yy + ydif * 10.0 / 16, zz + zdif * 3.0 / 16, 	minU + udif * 13.0 / 16, minV + vdif * 6.0 / 16);
+			tessellator.addVertexWithUV(XX, yy + ydif * 10.0 / 16, zz + zdif * 13.0 / 16, 	minU + udif * 3.0 / 16, minV + vdif * 6.0 / 16);
+
+			// render left vertical
+			tessellator.addVertexWithUV(XX, yy + ydif * 5.0 / 16, zz + zdif * 16.0 / 16, 	minU + udif * 0.0 / 16, minV + vdif * 11.0 / 16);
+			tessellator.addVertexWithUV(XX, yy + ydif * 5.0 / 16, zz + zdif * 13.0 / 16, 	minU + udif * 3.0 / 16, minV + vdif * 11.0 / 16);
+			tessellator.addVertexWithUV(XX, yy + ydif * 13.0 / 16, zz + zdif * 13.0 / 16, 	minU + udif * 3.0 / 16, minV + vdif * 3.0 / 16);
+			tessellator.addVertexWithUV(XX, yy + ydif * 13.0 / 16, zz + zdif * 16.0 / 16, 	minU + udif * 0.0 / 16, minV + vdif * 3.0 / 16);
+
+			// render right vertical
+			tessellator.addVertexWithUV(XX, yy + ydif * 5.0 / 16, zz + zdif * 3.0 / 16, 	minU + udif * 13.0 / 16, minV + vdif * 11.0 / 16);
+			tessellator.addVertexWithUV(XX, yy + ydif * 5.0 / 16, zz + zdif * 0.0 / 16, 	minU + udif * 16.0 / 16, minV + vdif * 11.0 / 16);
+			tessellator.addVertexWithUV(XX, yy + ydif * 13.0 / 16, zz + zdif * 0.0 / 16, 	minU + udif * 16.0 / 16, minV + vdif * 3.0 / 16);
+			tessellator.addVertexWithUV(XX, yy + ydif * 13.0 / 16, zz + zdif * 3.0 / 16, 	minU + udif * 13.0 / 16, minV + vdif * 3.0 / 16);
+
+			// middle top vertical
+			tessellator.addVertexWithUV(XX, yy + ydif * 10.0 / 16, zz + zdif * 9.0 / 16, 	minU + udif * 7.0 / 16, minV + vdif * 6.0 / 16);
+			tessellator.addVertexWithUV(XX, yy + ydif * 10.0 / 16, zz + zdif * 7.0 / 16, 	minU + udif * 9.0 / 16, minV + vdif * 6.0 / 16);
+			tessellator.addVertexWithUV(XX, yy + ydif * 13.0 / 16, zz + zdif * 7.0 / 16, 	minU + udif * 9.0 / 16, minV + vdif * 3.0 / 16);
+			tessellator.addVertexWithUV(XX, yy + ydif * 13.0 / 16, zz + zdif * 9.0 / 16, 	minU + udif * 7.0 / 16, minV + vdif * 3.0 / 16);
+
+			// middle bottom vertical
+			tessellator.addVertexWithUV(XX, yy + ydif * 5.0 / 16, zz + zdif * 9.0 / 16, 	minU + udif * 7.0 / 16, minV + vdif * 11.0 / 16);
+			tessellator.addVertexWithUV(XX, yy + ydif * 5.0 / 16, zz + zdif * 7.0 / 16, 	minU + udif * 9.0 / 16, minV + vdif * 11.0 / 16);
+			tessellator.addVertexWithUV(XX, yy + ydif * 8.0 / 16, zz + zdif * 7.0 / 16, 	minU + udif * 9.0 / 16, minV + vdif * 9.0 / 16);
+			tessellator.addVertexWithUV(XX, yy + ydif * 8.0 / 16, zz + zdif * 9.0 / 16, 	minU + udif * 7.0 / 16, minV + vdif * 9.0 / 16);
 		}
 	}
 

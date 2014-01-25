@@ -65,7 +65,7 @@ public class BlockStuffDoor extends BlockDoor
 	@Override
 	public int getRenderType()
 	{
-		return Renderers.stuffDoorTopRenderID;
+		return Renderers.stuffDoorRenderID;
 	}
 
 	@Override

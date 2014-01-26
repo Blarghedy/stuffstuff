@@ -203,21 +203,58 @@ public class StuffDoorRenderer implements ISimpleBlockRenderingHandler
 		}
 		else
 		{
-			tessellator.addVertexWithUV(xx, YY, ZZ, minU, maxV);
-			tessellator.addVertexWithUV(xx, yy, ZZ, minU, minV);
-			tessellator.addVertexWithUV(XX, yy, ZZ, maxU, minV);
-			tessellator.addVertexWithUV(XX, YY, ZZ, maxU, maxV);
+			double xdif = XX - xx;
+			double ydif = YY - yy;
+			double udif = maxU - minU;
+			double vdif = maxV - minV;
+
+			// render top
+			tessellator.addVertexWithUV(xx, YY, ZZ, 					minU, maxV);
+			tessellator.addVertexWithUV(xx, yy + ydif * 13.0 / 16, ZZ, 	minU, minV + vdif * 13.0 / 16);
+			tessellator.addVertexWithUV(XX, yy + ydif * 13.0 / 16, ZZ, 	maxU, minV + vdif * 13.0 / 16);
+			tessellator.addVertexWithUV(XX, YY, ZZ, 					maxU, maxV);
+
+			// render bottom
+			tessellator.addVertexWithUV(xx, yy + ydif * 5.0 / 16, ZZ, 	minU, minV + vdif * 5.0 / 16);
+			tessellator.addVertexWithUV(xx, yy, ZZ, 					minU, minV);
+			tessellator.addVertexWithUV(XX, yy, ZZ, 					maxU, minV);
+			tessellator.addVertexWithUV(XX, yy + ydif * 5.0 / 16, ZZ, 	maxU, minV + vdif * 5.0 / 16);
+
+			// render middle horizontal 
+			tessellator.addVertexWithUV(xx + xdif * 3.0 / 16, yy + ydif * 10.0 / 16, ZZ, 	minU + udif * 3.0 / 16, minV + vdif * 10.0 / 16);
+			tessellator.addVertexWithUV(xx + xdif * 3.0 / 16, yy + ydif * 8.0 / 16, ZZ, 	minU + udif * 3.0 / 16, minV + vdif * 8.0 / 16);
+			tessellator.addVertexWithUV(xx + xdif * 13.0 / 16, yy + ydif * 8.0 / 16, ZZ, 	minU + udif * 13.0 / 16, minV + vdif * 8.0 / 16);
+			tessellator.addVertexWithUV(xx + xdif * 13.0 / 16, yy + ydif * 10.0 / 16, ZZ, 	minU + udif * 13.0 / 16, minV + vdif * 10.0 / 16);
+
+			// render left vertical
+			tessellator.addVertexWithUV(xx + xdif * 0.0 / 16, yy + ydif * 13.0 / 16, ZZ, 	minU + udif * 0.0 / 16, minV + vdif * 13.0 / 16);
+			tessellator.addVertexWithUV(xx + xdif * 0.0 / 16, yy + ydif * 5.0 / 16, ZZ, 	minU + udif * 0.0 / 16, minV + vdif * 5.0 / 16);
+			tessellator.addVertexWithUV(xx + xdif * 3.0 / 16, yy + ydif * 5.0 / 16, ZZ, 	minU + udif * 3.0 / 16, minV + vdif * 5.0 / 16);
+			tessellator.addVertexWithUV(xx + xdif * 3.0 / 16, yy + ydif * 13.0 / 16, ZZ, 	minU + udif * 3.0 / 16, minV + vdif * 13.0 / 16);
+
+			// render right vertical
+			tessellator.addVertexWithUV(xx + xdif * 13.0 / 16, yy + ydif * 13.0 / 16, ZZ, 	minU + udif * 13.0 / 16, minV + vdif * 13.0 / 16);
+			tessellator.addVertexWithUV(xx + xdif * 13.0 / 16, yy + ydif * 5.0 / 16, ZZ, 	minU + udif * 13.0 / 16, minV + vdif * 5.0 / 16);
+			tessellator.addVertexWithUV(xx + xdif * 16.0 / 16, yy + ydif * 5.0 / 16, ZZ, 	minU + udif * 16.0 / 16, minV + vdif * 5.0 / 16);
+			tessellator.addVertexWithUV(xx + xdif * 16.0 / 16, yy + ydif * 13.0 / 16, ZZ, 	minU + udif * 16.0 / 16, minV + vdif * 13.0 / 16);
+
+			// middle top vertical
+			tessellator.addVertexWithUV(xx + xdif * 7.0 / 16, yy + ydif * 13.0 / 16, ZZ, 	minU + udif * 7.0 / 16, minV + vdif * 13.0 / 16);
+			tessellator.addVertexWithUV(xx + xdif * 7.0 / 16, yy + ydif * 10.0 / 16, ZZ, 	minU + udif * 7.0 / 16, minV + vdif * 10.0 / 16);
+			tessellator.addVertexWithUV(xx + xdif * 9.0 / 16, yy + ydif * 10.0 / 16, ZZ, 	minU + udif * 9.0 / 16, minV + vdif * 10.0 / 16);
+			tessellator.addVertexWithUV(xx + xdif * 9.0 / 16, yy + ydif * 13.0 / 16, ZZ, 	minU + udif * 9.0 / 16, minV + vdif * 13.0 / 16);
+
+			// middle bottom vertical
+			tessellator.addVertexWithUV(xx + xdif * 7.0 / 16, yy + ydif * 8.0 / 16, ZZ, 	minU + udif * 7.0 / 16, minV + vdif * 8.0 / 16);
+			tessellator.addVertexWithUV(xx + xdif * 7.0 / 16, yy + ydif * 5.0 / 16, ZZ, 	minU + udif * 7.0 / 16, minV + vdif * 5.0 / 16);
+			tessellator.addVertexWithUV(xx + xdif * 9.0 / 16, yy + ydif * 5.0 / 16, ZZ, 	minU + udif * 9.0 / 16, minV + vdif * 5.0 / 16);
+			tessellator.addVertexWithUV(xx + xdif * 9.0 / 16, yy + ydif * 8.0 / 16, ZZ, 	minU + udif * 9.0 / 16, minV + vdif * 8.0 / 16);
 		}
 	}
 
 	public void renderFaceXNeg(Block block, double x, double y, double z, Icon icon, RenderBlocks renderer)
 	{
 		Tessellator tessellator = Tessellator.instance;
-
-		//		double minU = icon.getInterpolatedU(renderer.renderMinZ * 16.0D);
-		//		double maxU = icon.getInterpolatedU(renderer.renderMaxZ * 16.0D);
-		//		double maxV = icon.getInterpolatedV(16.0D - renderer.renderMaxY * 16.0D);
-		//		double minV = icon.getInterpolatedV(16.0D - renderer.renderMinY * 16.0D);
 
 		double minU = icon.getInterpolatedU(renderer.renderMinZ * 16.0D);
 		double maxU = icon.getInterpolatedU(renderer.renderMaxZ * 16.0D);

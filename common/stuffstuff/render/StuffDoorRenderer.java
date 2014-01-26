@@ -451,28 +451,10 @@ public class StuffDoorRenderer implements ISimpleBlockRenderingHandler
 	{
 		Tessellator tessellator = Tessellator.instance;
 
-		if (renderer.hasOverrideBlockTexture())
-		{
-			icon = renderer.overrideBlockTexture;
-		}
-
 		double minU = icon.getInterpolatedU(renderer.renderMinZ * 16.0D);
 		double maxU = icon.getInterpolatedU(renderer.renderMaxZ * 16.0D);
 		double minV = icon.getInterpolatedV(16.0D - renderer.renderMaxY * 16.0D);
 		double maxV = icon.getInterpolatedV(16.0D - renderer.renderMinY * 16.0D);
-		double tmp;
-
-		//		if (renderer.renderMinZ < 0.0D || renderer.renderMaxZ > 1.0D)
-		//		{
-		//			minU = icon.getMinU();
-		//			maxU = icon.getMaxU();
-		//		}
-		//
-		//		if (renderer.renderMinY < 0.0D || renderer.renderMaxY > 1.0D)
-		//		{
-		//			minV = icon.getMinV();
-		//			maxV = icon.getMaxV();
-		//		}
 
 		double XX = x + renderer.renderMaxX;
 		double yy = y + renderer.renderMinY;

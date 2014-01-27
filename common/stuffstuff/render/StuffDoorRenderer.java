@@ -332,15 +332,15 @@ public class StuffDoorRenderer implements ISimpleBlockRenderingHandler
 
 			// render top
 			tessellator.addVertexWithUV(XX, YY, ZZ, 					maxU, minV);
-			tessellator.addVertexWithUV(XX, YY, zz, 					minU, minV + vdif * 3.0 / 16);
+			tessellator.addVertexWithUV(XX, YY, zz, 					minU, minV);
 			tessellator.addVertexWithUV(XX, yy + ydif * 13.0 / 16, zz, 	minU, minV + vdif * 3.0 / 16);
-			tessellator.addVertexWithUV(XX, yy + ydif * 13.0 / 16, ZZ, 	maxU, minV);
+			tessellator.addVertexWithUV(XX, yy + ydif * 13.0 / 16, ZZ, 	maxU, minV + vdif * 3.0 / 16);
 
 			// render bottom
-			tessellator.addVertexWithUV(XX, yy + ydif * 5.0 / 16, ZZ, 	maxU, maxV);
-			tessellator.addVertexWithUV(XX, yy + ydif * 5.0 / 16, zz, 	minU, maxV);
-			tessellator.addVertexWithUV(XX, yy, zz, 					minU, minV + vdif * 11.0 / 16);
-			tessellator.addVertexWithUV(XX, yy, ZZ, 					maxU, minV + vdif * 11.0 / 16);
+			tessellator.addVertexWithUV(XX, yy + ydif * 5.0 / 16, ZZ, 	maxU, minV + vdif * 11.0 / 16);
+			tessellator.addVertexWithUV(XX, yy + ydif * 5.0 / 16, zz, 	minU, minV + vdif * 11.0 / 16);
+			tessellator.addVertexWithUV(XX, yy, zz, 					minU, maxV);
+			tessellator.addVertexWithUV(XX, yy, ZZ, 					maxU, maxV);
 
 			// render middle horizontal 
 			tessellator.addVertexWithUV(XX, yy + ydif * 10.0 / 16, zz + zdif * 13.0 / 16, 	minU + udif * 13.0 / 16, minV + vdif * 6.0 / 16);
@@ -419,9 +419,9 @@ public class StuffDoorRenderer implements ISimpleBlockRenderingHandler
 			 */
 			// render top
 			tessellator.addVertexWithUV(XX, yy + ydif * 13.0 / 16, ZZ, 	minU, minV + vdif * 3.0 / 16);
-			tessellator.addVertexWithUV(XX, yy + ydif * 13.0 / 16, zz, 	maxU, minV);
+			tessellator.addVertexWithUV(XX, yy + ydif * 13.0 / 16, zz, 	maxU, minV + vdif * 3.0 / 16);
 			tessellator.addVertexWithUV(XX, YY, zz, 					maxU, minV);
-			tessellator.addVertexWithUV(XX, YY, ZZ, 					minU, minV + vdif * 3.0 / 16);
+			tessellator.addVertexWithUV(XX, YY, ZZ, 					minU, minV);
 
 			// render bottom
 			tessellator.addVertexWithUV(XX, yy, ZZ, 					minU, maxV);

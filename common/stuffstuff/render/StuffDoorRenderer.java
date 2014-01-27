@@ -20,7 +20,6 @@ public class StuffDoorRenderer implements ISimpleBlockRenderingHandler
 	@Override
 	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer)
 	{
-		//		renderer.renderBlockDoor(block, x, y, z);
 		renderBlockStuffDoor(world, block, x, y, z, renderer);
 		return false;
 	}
@@ -164,10 +163,52 @@ public class StuffDoorRenderer implements ISimpleBlockRenderingHandler
 		}
 		else
 		{
-			tessellator.addVertexWithUV(xx, YY, zz, maxU, minV);
-			tessellator.addVertexWithUV(XX, YY, zz, minU, minV);
-			tessellator.addVertexWithUV(XX, yy, zz, minU, maxV);
-			tessellator.addVertexWithUV(xx, yy, zz, maxU, maxV);
+			double xdif = XX - xx;
+			double ydif = YY - yy;
+			double udif = maxU - minU;
+			double vdif = maxV - minV;
+
+			// render top
+			tessellator.addVertexWithUV(xx, YY, zz, 					maxU, minV);
+			tessellator.addVertexWithUV(XX, YY, zz, 					minU, minV);
+			tessellator.addVertexWithUV(XX, yy + ydif * 13.0 / 16, zz, 	minU, minV + vdif * 3.0 / 16);
+			tessellator.addVertexWithUV(xx, yy + ydif * 13.0 / 16, zz, 	maxU, minV + vdif * 3.0 / 16);
+
+			// render bottom
+			tessellator.addVertexWithUV(xx, yy + ydif * 5.0 / 16, zz, 	maxU, minV + vdif * 11.0 / 16);
+			tessellator.addVertexWithUV(XX, yy + ydif * 5.0 / 16, zz, 	minU, minV + vdif * 11.0 / 16);
+			tessellator.addVertexWithUV(XX, yy, zz, 					minU, maxV);
+			tessellator.addVertexWithUV(xx, yy, zz, 					maxU, maxV);
+
+			// render middle horizontal 
+			tessellator.addVertexWithUV(xx + xdif * 3.0 / 16, yy + ydif * 10.0 / 16, zz, 	minU + udif * 13.0 / 16, minV + vdif * 6.0 / 16);
+			tessellator.addVertexWithUV(xx + xdif * 13.0 / 16, yy + ydif * 10.0 / 16, zz, 	minU + udif * 3.0 / 16, minV + vdif * 6.0 / 16);
+			tessellator.addVertexWithUV(xx + xdif * 13.0 / 16, yy + ydif * 8.0 / 16, zz, 	minU + udif * 3.0 / 16, minV + vdif * 8.0 / 16);
+			tessellator.addVertexWithUV(xx + xdif * 3.0 / 16, yy + ydif * 8.0 / 16, zz, 	minU + udif * 13.0 / 16, minV + vdif * 8.0 / 16);
+
+			// render left vertical
+			tessellator.addVertexWithUV(xx + xdif * 13.0 / 16, yy + ydif * 13.0 / 16, zz, 	minU + udif * 3.0 / 16, minV + vdif * 3.0 / 16);
+			tessellator.addVertexWithUV(xx + xdif * 16.0 / 16, yy + ydif * 13.0 / 16, zz, 	minU + udif * 0.0 / 16, minV + vdif * 3.0 / 16);
+			tessellator.addVertexWithUV(xx + xdif * 16.0 / 16, yy + ydif * 5.0 / 16, zz, 	minU + udif * 0.0 / 16, minV + vdif * 11.0 / 16);
+			tessellator.addVertexWithUV(xx + xdif * 13.0 / 16, yy + ydif * 5.0 / 16, zz, 	minU + udif * 3.0 / 16, minV + vdif * 11.0 / 16);
+
+			// render right vertical
+			tessellator.addVertexWithUV(xx + xdif * 0.0 / 16, yy + ydif * 13.0 / 16, zz, 	minU + udif * 16.0 / 16, minV + vdif * 3.0 / 16);
+			tessellator.addVertexWithUV(xx + xdif * 3.0 / 16, yy + ydif * 13.0 / 16, zz, 	minU + udif * 13.0 / 16, minV + vdif * 3.0 / 16);
+			tessellator.addVertexWithUV(xx + xdif * 3.0 / 16, yy + ydif * 5.0 / 16, zz, 	minU + udif * 13.0 / 16, minV + vdif * 11.0 / 16);
+			tessellator.addVertexWithUV(xx + xdif * 0.0 / 16, yy + ydif * 5.0 / 16, zz, 	minU + udif * 16.0 / 16, minV + vdif * 11.0 / 16);
+
+			// middle top vertical
+			tessellator.addVertexWithUV(xx + xdif * 7.0 / 16, yy + ydif * 13.0 / 16, zz, 	minU + udif * 9.0 / 16, minV + vdif * 3.0 / 16);
+			tessellator.addVertexWithUV(xx + xdif * 9.0 / 16, yy + ydif * 13.0 / 16, zz, 	minU + udif * 7.0 / 16, minV + vdif * 3.0 / 16);
+			tessellator.addVertexWithUV(xx + xdif * 9.0 / 16, yy + ydif * 10.0 / 16, zz, 	minU + udif * 7.0 / 16, minV + vdif * 6.0 / 16);
+			tessellator.addVertexWithUV(xx + xdif * 7.0 / 16, yy + ydif * 10.0 / 16, zz, 	minU + udif * 9.0 / 16, minV + vdif * 6.0 / 16);
+
+			// middle bottom vertical
+			tessellator.addVertexWithUV(xx + xdif * 7.0 / 16, yy + ydif * 8.0 / 16, zz, 	minU + udif * 9.0 / 16, minV + vdif * 8.0 / 16);
+			tessellator.addVertexWithUV(xx + xdif * 9.0 / 16, yy + ydif * 8.0 / 16, zz, 	minU + udif * 7.0 / 16, minV + vdif * 8.0 / 16);
+			tessellator.addVertexWithUV(xx + xdif * 9.0 / 16, yy + ydif * 5.0 / 16, zz, 	minU + udif * 7.0 / 16, minV + vdif * 11.0 / 16);
+			tessellator.addVertexWithUV(xx + xdif * 7.0 / 16, yy + ydif * 5.0 / 16, zz, 	minU + udif * 9.0 / 16, minV + vdif * 11.0 / 16);
 		}
 	}
 

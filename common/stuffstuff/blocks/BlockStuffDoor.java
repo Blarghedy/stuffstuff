@@ -44,8 +44,8 @@ public class BlockStuffDoor extends BlockDoor
 		setResistance(modelBlock.blockResistance / 3.0F);
 		setStepSound(modelBlock.stepSound);
 		setBurnProperties(id, blockFireSpreadSpeed[modelBlock.blockID], blockFlammability[modelBlock.blockID]);
-		setLightOpacity(lightOpacity[modelBlock.blockID]);
 		setCreativeTab(StuffStuff.tabStuffStuff);
+		setLightOpacity(0);
 
 		setUnlocalizedName(modelBlock.getUnlocalizedName() + "." + modelMeta + ".Door");
 	}

@@ -131,7 +131,7 @@ public class BlockStuffDoorRenderer implements ISimpleBlockRenderingHandler
 		return true;
 	}
 
-	public void renderFaceZNeg(Block block, double x, double y, double z, Icon icon, RenderBlocks renderer)
+	public static void renderFaceZNeg(Block block, double x, double y, double z, Icon icon, RenderBlocks renderer)
 	{
 		Tessellator tessellator = Tessellator.instance;
 
@@ -212,7 +212,7 @@ public class BlockStuffDoorRenderer implements ISimpleBlockRenderingHandler
 		}
 	}
 
-	public void renderFaceZPos(Block block, double x, double y, double z, Icon icon, RenderBlocks renderer)
+	public static void renderFaceZPos(Block block, double x, double y, double z, Icon icon, RenderBlocks renderer)
 	{
 		Tessellator tessellator = Tessellator.instance;
 
@@ -293,7 +293,7 @@ public class BlockStuffDoorRenderer implements ISimpleBlockRenderingHandler
 		}
 	}
 
-	public void renderFaceXNeg(Block block, double x, double y, double z, Icon icon, RenderBlocks renderer)
+	public static void renderFaceXNeg(Block block, double x, double y, double z, Icon icon, RenderBlocks renderer)
 	{
 		Tessellator tessellator = Tessellator.instance;
 
@@ -374,7 +374,7 @@ public class BlockStuffDoorRenderer implements ISimpleBlockRenderingHandler
 		}
 	}
 
-	public void renderFaceXPos(Block block, double x, double y, double z, Icon icon, RenderBlocks renderer)
+	public static void renderFaceXPos(Block block, double x, double y, double z, Icon icon, RenderBlocks renderer)
 	{
 		Tessellator tessellator = Tessellator.instance;
 

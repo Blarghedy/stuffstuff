@@ -25,6 +25,11 @@ public class ItemStuffDoor extends ItemBlock //ItemDoor
 		setCreativeTab(modelDoor.getCreativeTabToDisplayOn());
 	}
 
+	public BlockStuffDoor getModel()
+	{
+		return modelDoor;
+	}
+
 	@Override
 	public boolean onItemUse(ItemStack itemstack, EntityPlayer player, World world, int x, int y, int z, int side, float hitx, float hity, float hitz)
 	{

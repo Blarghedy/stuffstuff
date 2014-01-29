@@ -1,4 +1,4 @@
-package stuffstuff.render;
+package stuffstuff.client.render;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
@@ -8,7 +8,7 @@ import net.minecraft.world.IBlockAccess;
 import stuffstuff.blocks.BlockStuffDoor;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
-public class StuffDoorRenderer implements ISimpleBlockRenderingHandler
+public class BlockStuffDoorRenderer implements ISimpleBlockRenderingHandler
 {
 
 	@Override

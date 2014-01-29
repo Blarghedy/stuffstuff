@@ -14,9 +14,9 @@ import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import stuffstuff.StuffStuff;
 import stuffstuff.blocks.PlaidColor;
+import stuffstuff.client.render.Renderers;
 import stuffstuff.info.FluidInfo;
 import stuffstuff.potions.Potions;
-import stuffstuff.render.Renderers;
 
 public class BlockFluidPlaidWater extends BlockFluidClassic
 {

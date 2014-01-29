@@ -10,7 +10,7 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import stuffstuff.StuffStuff;
-import stuffstuff.render.Renderers;
+import stuffstuff.client.render.Renderers;
 
 public class BlockStuffDoor extends BlockDoor
 {

@@ -1,15 +1,11 @@
-package stuffstuff.blocks;
+package stuffstuff.blocks.stairs;
 
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockFluid;
 import net.minecraft.block.BlockStairs;
-import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
-import net.minecraftforge.fluids.IFluidBlock;
 import stuffstuff.StuffStuff;
 
 public class BlockStuffStairs extends BlockStairs
@@ -44,9 +40,7 @@ public class BlockStuffStairs extends BlockStairs
 		setStepSound(modelBlock.stepSound);
 		setBurnProperties(id, blockFireSpreadSpeed[modelBlock.blockID], blockFlammability[modelBlock.blockID]);
 		slipperiness = model.slipperiness;
-
-//		int light = lightValue[modelBlock.blockID];
-//		setLightValue(light);
+		
 		lightValue[id] = lightValue[modelBlock.blockID];
 		setLightOpacity(lightOpacity[model.blockID]);
 		setUnlocalizedName(modelBlock.getUnlocalizedName() + "." + modelMeta + "Stairs");
@@ -86,13 +80,9 @@ public class BlockStuffStairs extends BlockStairs
 	{
 		return model.canCollideCheck(meta, boat);
 	}
-
-	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
+	
+	public Block getModel()
 	{
-		if (model instanceof IFluidBlock || model instanceof BlockFluid) 
-			return model.getCollisionBoundingBoxFromPool(world, x, y, z);
-		else
-			return super.getCollisionBoundingBoxFromPool(world, x, y, z);
+		return model;
 	}
 }

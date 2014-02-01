@@ -3,7 +3,7 @@ package stuffstuff.blocks.items;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemSlab;
 import net.minecraft.item.ItemStack;
-import stuffstuff.blocks.BlockStuffSlab;
+import stuffstuff.blocks.slabs.BlockStuffSlab;
 
 public class ItemStuffSlab extends ItemSlab
 {

@@ -1,4 +1,4 @@
-package stuffstuff.blocks;
+package stuffstuff.blocks.slabs;
 
 import java.util.List;
 import java.util.Random;
@@ -144,4 +144,8 @@ public class BlockStuffSlab extends BlockHalfSlab
 			return super.getCollisionBoundingBoxFromPool(world, x, y, z);
 	}
 
+	public Block[] getModels()
+	{
+		return modelBlocks;
+	}
 }

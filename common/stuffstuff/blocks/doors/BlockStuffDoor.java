@@ -1,4 +1,4 @@
-package stuffstuff.blocks;
+package stuffstuff.blocks.doors;
 
 import java.util.Random;
 
@@ -123,7 +123,7 @@ public class BlockStuffDoor extends BlockDoor
 			return super.getCollisionBoundingBoxFromPool(world, x, y, z);
 	}
 
-	public Block getModelBlock()
+	public Block getModel()
 	{
 		return modelBlock;
 	}

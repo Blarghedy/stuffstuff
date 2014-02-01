@@ -6,7 +6,7 @@ import net.minecraft.item.ItemDoor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import stuffstuff.blocks.BlockStuffDoor;
+import stuffstuff.blocks.doors.BlockStuffDoor;
 
 public class ItemStuffDoor extends ItemBlock //ItemDoor
 {

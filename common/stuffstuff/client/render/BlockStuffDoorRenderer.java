@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
-import stuffstuff.blocks.BlockStuffDoor;
+import stuffstuff.blocks.doors.BlockStuffDoor;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 public class BlockStuffDoorRenderer implements ISimpleBlockRenderingHandler

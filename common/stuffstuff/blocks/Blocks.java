@@ -5,6 +5,7 @@ import net.minecraft.block.BlockStairs;
 
 import org.bouncycastle.asn1.eac.BidirectionalMap;
 
+import stuffstuff.blocks.doors.BlockStuffDoor;
 import stuffstuff.blocks.items.ItemFluixBrick;
 import stuffstuff.blocks.items.ItemFunFluix;
 import stuffstuff.blocks.items.ItemPlaidLeaves;
@@ -12,6 +13,8 @@ import stuffstuff.blocks.items.ItemPlaidLog;
 import stuffstuff.blocks.items.ItemPlaidTallGrass;
 import stuffstuff.blocks.items.ItemStuffDoor;
 import stuffstuff.blocks.items.ItemStuffSlab;
+import stuffstuff.blocks.slabs.BlockStuffSlab;
+import stuffstuff.blocks.stairs.BlockStuffStairs;
 import stuffstuff.info.BlockInfo;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;

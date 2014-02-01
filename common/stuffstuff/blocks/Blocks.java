@@ -61,7 +61,7 @@ public class Blocks
 	public static BlockStuffSlab blockFluixBrickDoubleSlab;
 	public static BlockStuffSlab blockLogSlab;
 	public static BlockStuffSlab blockLogDoubleSlab;
-	
+
 	public static BlockStuffDoor blockRunningFluixDoor;
 
 	protected static BidirectionalMap slabs;
@@ -122,7 +122,7 @@ public class Blocks
 		blockSpruceLogStairs = new BlockStuffStairs(BlockInfo.SPRUCE_LOG_STAIRS_ID, Block.wood, 1, false);
 		blockBirchLogStairs = new BlockStuffStairs(BlockInfo.BIRCH_LOG_STAIRS_ID, Block.wood, 2, false);
 		blockJungleLogStairs = new BlockStuffStairs(BlockInfo.JUNGLE_LOG_STAIRS_ID, Block.wood, 3, false);
-		
+
 		blockRunningFluixDoor = new BlockStuffDoor(BlockInfo.RUNNING_FLUIX_DOOR_ID, blockFunFluix, 1, false);
 
 		// register normal blocks
@@ -179,9 +179,8 @@ public class Blocks
 		GameRegistry.registerBlock(blockBirchLogStairs, BlockInfo.BIRCH_LOG_STAIRS_UNLOCALIZED_NAME);
 		GameRegistry.registerBlock(blockSpruceLogStairs, BlockInfo.SPRUCE_LOG_STAIRS_UNLOCALIZED_NAME);
 		GameRegistry.registerBlock(blockJungleLogStairs, BlockInfo.JUNGLE_LOG_STAIRS_UNLOCALIZED_NAME);
-		
+
 		// register doors
-//		GameRegistry.registerBlock(blockRunningFluixDoor, BlockInfo.RUNNING_FLUIX_DOOR_UNLOCALIZED_NAME);
 		ItemStuffDoor.setDoor(blockRunningFluixDoor);
 		GameRegistry.registerBlock(blockRunningFluixDoor, ItemStuffDoor.class, BlockInfo.RUNNING_FLUIX_DOOR_UNLOCALIZED_NAME);
 

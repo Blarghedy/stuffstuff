@@ -4,11 +4,14 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoor;
+import net.minecraft.block.BlockFluid;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fluids.IFluidBlock;
 import stuffstuff.StuffStuff;
 import stuffstuff.client.render.Renderers;
 
@@ -103,6 +106,21 @@ public class BlockStuffDoor extends BlockDoor
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
 	{
 		return super.onBlockActivated(par1World, par2, par3, par4, par5EntityPlayer, par6, par7, par8, par9);
+	}
+
+	@Override
+	public boolean canCollideCheck(int meta, boolean boat)
+	{
+		return modelBlock.canCollideCheck(meta, boat);
+	}
+
+	@Override
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
+	{
+		if (modelBlock instanceof IFluidBlock || modelBlock instanceof BlockFluid) 
+			return modelBlock.getCollisionBoundingBoxFromPool(world, x, y, z);
+		else
+			return super.getCollisionBoundingBoxFromPool(world, x, y, z);
 	}
 
 	public Block getModelBlock()

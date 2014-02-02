@@ -62,6 +62,11 @@ public class ConfigHandler
 			BlockInfo.RUNNING_FLUIX_BRICK_STAIRS_ID = config.getBlock(BlockInfo.RUNNING_FLUIX_BRICK_STAIRS_KEY, BlockInfo.RUNNING_FLUIX_BRICK_STAIRS_DEFAULT).getInt();
 			BlockInfo.FLUIX_BRICK_STAIRS_ID = config.getBlock(BlockInfo.FLUIX_BRICK_STAIRS_KEY, BlockInfo.FLUIX_BRICK_STAIRS_DEFAULT).getInt();
 			BlockInfo.FINE_FLUIX_BRICK_STAIRS_ID = config.getBlock(BlockInfo.FINE_FLUIX_BRICK_STAIRS_KEY, BlockInfo.FINE_FLUIX_BRICK_STAIRS_DEFAULT).getInt();
+			BlockInfo.LAVA_STAIRS_ID = config.getBlock(BlockInfo.LAVA_STAIRS_KEY, BlockInfo.LAVA_STAIRS_DEFAULT).getInt();
+			BlockInfo.WATER_STAIRS_ID = config.getBlock(BlockInfo.WATER_STAIRS_KEY, BlockInfo.WATER_STAIRS_DEFAULT).getInt();
+			BlockInfo.REDSTONE_STAIRS_ID = config.getBlock(BlockInfo.REDSTONE_STAIRS_KEY, BlockInfo.REDSTONE_STAIRS_DEFAULT).getInt();
+			BlockInfo.SILVERFISH_STAIRS_ID = config.getBlock(BlockInfo.SILVERFISH_STAIRS_KEY, BlockInfo.SILVERFISH_STAIRS_DEFAULT).getInt();
+			BlockInfo.IRON_ORE_STAIRS_ID = config.getBlock(BlockInfo.IRON_ORE_STAIRS_KEY, BlockInfo.IRON_ORE_STAIRS_DEFAULT).getInt();
 
 			BlockInfo.STONE_SLAB_ID = config.getBlock(BlockInfo.STONE_SLAB_KEY, BlockInfo.STONE_SLAB_DEFAULT).getInt();
 			BlockInfo.STONE_SLAB_DOUBLE_ID = config.getBlock(BlockInfo.STONE_SLAB_DOUBLE_KEY, BlockInfo.STONE_SLAB_DOUBLE_DEFAULT).getInt();
@@ -71,11 +76,23 @@ public class ConfigHandler
 			BlockInfo.FLUIX_SLAB_DOUBLE_ID = config.getBlock(BlockInfo.FLUIX_SLAB_DOUBLE_KEY, BlockInfo.FLUIX_SLAB_DOUBLE_DEFAULT).getInt();
 			BlockInfo.LOG_SLAB_ID = config.getBlock(BlockInfo.LOG_SLAB_KEY, BlockInfo.LOG_SLAB_DEFAULT).getInt();
 			BlockInfo.LOG_SLAB_DOUBLE_ID = config.getBlock(BlockInfo.LOG_SLAB_DOUBLE_KEY, BlockInfo.LOG_SLAB_DOUBLE_DEFAULT).getInt();
+			BlockInfo.WATER_SLAB_ID = config.getBlock(BlockInfo.WATER_SLAB_KEY, BlockInfo.WATER_SLAB_DEFAULT).getInt();
+			BlockInfo.WATER_SLAB_DOUBLE_ID = config.getBlock(BlockInfo.WATER_SLAB_DOUBLE_KEY, BlockInfo.WATER_SLAB_DOUBLE_DEFAULT).getInt();
+			BlockInfo.LAVA_SLAB_ID = config.getBlock(BlockInfo.LAVA_SLAB_KEY, BlockInfo.LAVA_SLAB_DEFAULT).getInt();
+			BlockInfo.LAVA_SLAB_DOUBLE_ID = config.getBlock(BlockInfo.LAVA_SLAB_DOUBLE_KEY, BlockInfo.LAVA_SLAB_DOUBLE_DEFAULT).getInt();
+			BlockInfo.REDSTONE_SLAB_ID = config.getBlock(BlockInfo.REDSTONE_SLAB_KEY, BlockInfo.REDSTONE_SLAB_DEFAULT).getInt();
+			BlockInfo.REDSTONE_SLAB_DOUBLE_ID = config.getBlock(BlockInfo.REDSTONE_SLAB_DOUBLE_KEY, BlockInfo.REDSTONE_SLAB_DOUBLE_DEFAULT).getInt();
+			BlockInfo.SILVERFISH_SLAB_ID = config.getBlock(BlockInfo.SILVERFISH_SLAB_KEY, BlockInfo.SILVERFISH_SLAB_DEFAULT).getInt();
+			BlockInfo.SILVERFISH_SLAB_DOUBLE_ID = config.getBlock(BlockInfo.SILVERFISH_SLAB_DOUBLE_KEY, BlockInfo.SILVERFISH_SLAB_DOUBLE_DEFAULT).getInt();
+
+			BlockInfo.RUNNING_FLUIX_DOOR_ID = config.getBlock(BlockInfo.RUNNING_FLUIX_DOOR_KEY, BlockInfo.RUNNING_FLUIX_DOOR_DEFAULT).getInt();
+			BlockInfo.WATER_DOOR_ID = config.getBlock(BlockInfo.WATER_DOOR_KEY, BlockInfo.WATER_DOOR_DEFAULT).getInt();
+			BlockInfo.LAVA_DOOR_ID = config.getBlock(BlockInfo.LAVA_DOOR_KEY, BlockInfo.LAVA_DOOR_DEFAULT).getInt();
+			BlockInfo.IRON_ORE_DOOR_ID = config.getBlock(BlockInfo.IRON_ORE_DOOR_KEY, BlockInfo.IRON_ORE_DOOR_DEFAULT).getInt();
+			BlockInfo.DIAMOND_DOOR_ID = config.getBlock(BlockInfo.DIAMOND_DOOR_KEY, BlockInfo.DIAMOND_DOOR_DEFAULT).getInt();
 
 			BlockInfo.FUN_FLUIX_ID = config.getBlock(BlockInfo.FUN_FLUIX_KEY, BlockInfo.FUN_FLUIX_DEFAULT).getInt();
 			BlockInfo.FLUIX_BRICK_ID = config.getBlock(BlockInfo.FLUIX_BRICK_KEY, BlockInfo.FLUIX_BRICK_DEFAULT).getInt();
-			
-			BlockInfo.RUNNING_FLUIX_DOOR_ID = config.getBlock(BlockInfo.RUNNING_FLUIX_DOOR_KEY, BlockInfo.RUNNING_FLUIX_DOOR_DEFAULT).getInt();
 
 			FluidInfo.PLAID_WATER_ID = config.getBlock(FluidInfo.PLAID_WATER_KEY, FluidInfo.PLAID_WATER_DEFAULT).getInt();
 

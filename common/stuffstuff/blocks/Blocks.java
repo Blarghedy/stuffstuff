@@ -5,6 +5,8 @@ import net.minecraft.block.BlockStairs;
 
 import org.bouncycastle.asn1.eac.BidirectionalMap;
 
+import stuffstuff.blocks.doors.BlockFluidStuffDoor;
+import stuffstuff.blocks.doors.BlockLavaStuffDoor;
 import stuffstuff.blocks.doors.BlockStuffDoor;
 import stuffstuff.blocks.items.ItemFluixBrick;
 import stuffstuff.blocks.items.ItemFunFluix;
@@ -13,7 +15,15 @@ import stuffstuff.blocks.items.ItemPlaidLog;
 import stuffstuff.blocks.items.ItemPlaidTallGrass;
 import stuffstuff.blocks.items.ItemStuffDoor;
 import stuffstuff.blocks.items.ItemStuffSlab;
+import stuffstuff.blocks.slabs.BlockFluidStuffSlab;
+import stuffstuff.blocks.slabs.BlockLavaStuffSlab;
+import stuffstuff.blocks.slabs.BlockRedstoneStuffSlab;
+import stuffstuff.blocks.slabs.BlockSilverfishStuffSlab;
 import stuffstuff.blocks.slabs.BlockStuffSlab;
+import stuffstuff.blocks.stairs.BlockFluidStuffStairs;
+import stuffstuff.blocks.stairs.BlockLavaStuffStairs;
+import stuffstuff.blocks.stairs.BlockRedstoneStuffStairs;
+import stuffstuff.blocks.stairs.BlockSilverfishStuffStairs;
 import stuffstuff.blocks.stairs.BlockStuffStairs;
 import stuffstuff.info.BlockInfo;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -55,6 +65,11 @@ public class Blocks
 	public static BlockStairs blockBirchLogStairs;
 	public static BlockStairs blockSpruceLogStairs;
 	public static BlockStairs blockJungleLogStairs;
+	public static BlockStairs blockLavaStairs;
+	public static BlockStairs blockWaterStairs;
+	public static BlockStairs blockRedstoneStairs;
+	public static BlockStairs blockIronOreStairs;
+	public static BlockStairs blockSilverfishStairs;
 
 	public static BlockStuffSlab blockStoneSlab;
 	public static BlockStuffSlab blockStoneDoubleSlab;
@@ -64,8 +79,20 @@ public class Blocks
 	public static BlockStuffSlab blockFluixBrickDoubleSlab;
 	public static BlockStuffSlab blockLogSlab;
 	public static BlockStuffSlab blockLogDoubleSlab;
+	public static BlockStuffSlab blockWaterSlab;
+	public static BlockStuffSlab blockWaterDoubleSlab;
+	public static BlockStuffSlab blockLavaSlab;
+	public static BlockStuffSlab blockLavaDoubleSlab;
+	public static BlockStuffSlab blockRedstoneSlab;
+	public static BlockStuffSlab blockRedstoneDoubleSlab;
+	public static BlockStuffSlab blockSilverfishSlab;
+	public static BlockStuffSlab blockSilverfishDoubleSlab;
 
 	public static BlockStuffDoor blockRunningFluixDoor;
+	public static BlockStuffDoor blockWaterDoor;
+	public static BlockStuffDoor blockLavaDoor;
+	public static BlockStuffDoor blockIronOreDoor;
+	public static BlockStuffDoor blockDiamondDoor;
 
 	protected static BidirectionalMap slabs;
 
@@ -96,6 +123,10 @@ public class Blocks
 		int[] logsMeta = {0, 1, 2, 3, 0, 1, 2, 3};
 		Block[] fluixBricks = {blockFluixBrick, blockFluixBrick, blockFunFluix, blockFunFluix};
 		int[] fluixBricksMeta = {0, 1, 0, 1};
+		Block[] redstone = {Block.blockRedstone};
+		Block[] water = {Block.waterStill};
+		Block[] lava = {Block.lavaStill};
+		Block[] silverfish = {Block.silverfish, Block.cobblestoneMossy};
 
 		blockStoneSlab = new BlockStuffSlab(BlockInfo.STONE_SLAB_ID, BlockInfo.STONE_SLAB_DOUBLE_ID, false, stoneBlocks);
 		blockStoneDoubleSlab = new BlockStuffSlab(BlockInfo.STONE_SLAB_DOUBLE_ID, BlockInfo.STONE_SLAB_ID, true, stoneBlocks);
@@ -105,6 +136,14 @@ public class Blocks
 		blockFluixBrickDoubleSlab = new BlockStuffSlab(BlockInfo.FLUIX_SLAB_DOUBLE_ID, BlockInfo.FLUIX_SLAB_ID, true, fluixBricks, false, fluixBricksMeta);
 		blockLogSlab = new BlockStuffSlab(BlockInfo.LOG_SLAB_ID, BlockInfo.LOG_SLAB_DOUBLE_ID, false, logBlocks, false, logsMeta);
 		blockLogDoubleSlab = new BlockStuffSlab(BlockInfo.LOG_SLAB_DOUBLE_ID, BlockInfo.LOG_SLAB_ID, true, logBlocks, false, logsMeta);
+		blockRedstoneSlab = new BlockRedstoneStuffSlab(BlockInfo.REDSTONE_SLAB_ID, BlockInfo.REDSTONE_SLAB_DOUBLE_ID, false, redstone, false, null);
+		blockRedstoneDoubleSlab = new BlockRedstoneStuffSlab(BlockInfo.REDSTONE_SLAB_DOUBLE_ID, BlockInfo.REDSTONE_SLAB_ID, true, redstone, false, null);
+		blockWaterSlab = new BlockFluidStuffSlab(BlockInfo.WATER_SLAB_ID, BlockInfo.WATER_SLAB_DOUBLE_ID, false, water, false, null);
+		blockWaterDoubleSlab = new BlockFluidStuffSlab(BlockInfo.WATER_SLAB_DOUBLE_ID, BlockInfo.WATER_SLAB_ID, true, water, false, null);
+		blockLavaSlab = new BlockLavaStuffSlab(BlockInfo.LAVA_SLAB_ID, BlockInfo.LAVA_SLAB_DOUBLE_ID, false, lava, false, null);
+		blockLavaDoubleSlab = new BlockLavaStuffSlab(BlockInfo.LAVA_SLAB_DOUBLE_ID, BlockInfo.LAVA_SLAB_ID, true, lava, false, null);
+		blockSilverfishSlab = new BlockSilverfishStuffSlab(BlockInfo.SILVERFISH_SLAB_ID, BlockInfo.SILVERFISH_SLAB_DOUBLE_ID, false, silverfish, false, null);
+		blockSilverfishDoubleSlab = new BlockSilverfishStuffSlab(BlockInfo.SILVERFISH_SLAB_DOUBLE_ID, BlockInfo.SILVERFISH_SLAB_ID, true, silverfish, false, null);
 
 		blockPlaidStoneStairs = new BlockStuffStairs(BlockInfo.PLAID_STONE_STAIRS_ID, blockPlaidStone);
 		blockPlaidCobblestoneStairs = new BlockStuffStairs(BlockInfo.PLAID_COBBLESTONE_STAIRS_ID, blockPlaidCobble);
@@ -126,7 +165,17 @@ public class Blocks
 		blockBirchLogStairs = new BlockStuffStairs(BlockInfo.BIRCH_LOG_STAIRS_ID, Block.wood, 2, false);
 		blockJungleLogStairs = new BlockStuffStairs(BlockInfo.JUNGLE_LOG_STAIRS_ID, Block.wood, 3, false);
 
+		blockWaterStairs = new BlockFluidStuffStairs(BlockInfo.WATER_STAIRS_ID, Block.waterStill, 0, false);
+		blockLavaStairs = new BlockLavaStuffStairs(BlockInfo.LAVA_STAIRS_ID, Block.lavaStill, 0, false);
+		blockRedstoneStairs = new BlockRedstoneStuffStairs(BlockInfo.REDSTONE_STAIRS_ID, Block.blockRedstone, 0, false);
+		blockSilverfishStairs = new BlockSilverfishStuffStairs(BlockInfo.SILVERFISH_STAIRS_ID, Block.silverfish, 0, false);
+		blockIronOreStairs = new BlockStuffStairs(BlockInfo.IRON_ORE_STAIRS_ID, Block.oreIron);
+
 		blockRunningFluixDoor = new BlockStuffDoor(BlockInfo.RUNNING_FLUIX_DOOR_ID, blockFunFluix, 1, false);
+		blockWaterDoor = new BlockFluidStuffDoor(BlockInfo.WATER_DOOR_ID, Block.waterStill, 0, false);
+		blockLavaDoor = new BlockLavaStuffDoor(BlockInfo.LAVA_DOOR_ID, Block.lavaStill, 0, false);
+		blockDiamondDoor = new BlockStuffDoor(BlockInfo.DIAMOND_DOOR_ID, Block.blockDiamond);
+		blockIronOreDoor = new BlockStuffDoor(BlockInfo.IRON_ORE_DOOR_ID, Block.oreIron);
 
 		// register normal blocks
 		GameRegistry.registerBlock(blockPlaidPlank, BlockInfo.PLAID_PLANK_NAME);
@@ -165,6 +214,22 @@ public class Blocks
 		GameRegistry.registerBlock(blockLogSlab, ItemStuffSlab.class, BlockInfo.LOG_SLAB_UNLOCALIZED_NAME);
 		GameRegistry.registerBlock(blockLogDoubleSlab, ItemStuffSlab.class, BlockInfo.LOG_SLAB_DOUBLE_UNLOCALIZED_NAME);
 
+		ItemStuffSlab.setSlabs(blockRedstoneSlab, blockRedstoneDoubleSlab);
+		GameRegistry.registerBlock(blockRedstoneSlab, ItemStuffSlab.class, BlockInfo.REDSTONE_SLAB_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockRedstoneDoubleSlab, ItemStuffSlab.class, BlockInfo.REDSTONE_SLAB_DOUBLE_UNLOCALIZED_NAME);
+
+		ItemStuffSlab.setSlabs(blockWaterSlab, blockWaterDoubleSlab);
+		GameRegistry.registerBlock(blockWaterSlab, ItemStuffSlab.class, BlockInfo.WATER_SLAB_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockWaterDoubleSlab, ItemStuffSlab.class, BlockInfo.WATER_SLAB_DOUBLE_UNLOCALIZED_NAME);
+
+		ItemStuffSlab.setSlabs(blockLavaSlab, blockLavaDoubleSlab);
+		GameRegistry.registerBlock(blockLavaSlab, ItemStuffSlab.class, BlockInfo.LAVA_SLAB_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockLavaDoubleSlab, ItemStuffSlab.class, BlockInfo.LAVA_SLAB_DOUBLE_UNLOCALIZED_NAME);
+
+		ItemStuffSlab.setSlabs(blockSilverfishSlab, blockSilverfishDoubleSlab);
+		GameRegistry.registerBlock(blockSilverfishSlab, ItemStuffSlab.class, BlockInfo.SILVERFISH_SLAB_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockSilverfishDoubleSlab, ItemStuffSlab.class, BlockInfo.SILVERFISH_SLAB_DOUBLE_UNLOCALIZED_NAME);
+
 		// register stairs
 		GameRegistry.registerBlock(blockPlaidStoneStairs, BlockInfo.PLAID_STONE_STAIRS_UNLOCALIZED_NAME);
 		GameRegistry.registerBlock(blockPlaidCobblestoneStairs, BlockInfo.PLAID_COBBLESTONE_STAIRS_UNLOCALIZED_NAME);
@@ -182,11 +247,27 @@ public class Blocks
 		GameRegistry.registerBlock(blockBirchLogStairs, BlockInfo.BIRCH_LOG_STAIRS_UNLOCALIZED_NAME);
 		GameRegistry.registerBlock(blockSpruceLogStairs, BlockInfo.SPRUCE_LOG_STAIRS_UNLOCALIZED_NAME);
 		GameRegistry.registerBlock(blockJungleLogStairs, BlockInfo.JUNGLE_LOG_STAIRS_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockWaterStairs, BlockInfo.WATER_STAIRS_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockLavaStairs, BlockInfo.LAVA_STAIRS_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockRedstoneStairs, BlockInfo.REDSTONE_STAIRS_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockSilverfishStairs, BlockInfo.SILVERFISH_STAIRS_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockIronOreStairs, BlockInfo.IRON_ORE_STAIRS_UNLOCALIZED_NAME);
 
 		// register doors
 		ItemStuffDoor.setDoor(blockRunningFluixDoor);
 		GameRegistry.registerBlock(blockRunningFluixDoor, ItemStuffDoor.class, BlockInfo.RUNNING_FLUIX_DOOR_UNLOCALIZED_NAME);
 
+		ItemStuffDoor.setDoor(blockWaterDoor);
+		GameRegistry.registerBlock(blockWaterDoor, ItemStuffDoor.class, BlockInfo.WATER_DOOR_UNLOCALIZED_NAME);
+
+		ItemStuffDoor.setDoor(blockLavaDoor);
+		GameRegistry.registerBlock(blockLavaDoor, ItemStuffDoor.class, BlockInfo.LAVA_DOOR_UNLOCALIZED_NAME);
+
+		ItemStuffDoor.setDoor(blockDiamondDoor);
+		GameRegistry.registerBlock(blockDiamondDoor, ItemStuffDoor.class, BlockInfo.DIAMOND_DOOR_UNLOCALIZED_NAME);
+
+		ItemStuffDoor.setDoor(blockIronOreDoor);
+		GameRegistry.registerBlock(blockIronOreDoor, ItemStuffDoor.class, BlockInfo.IRON_ORE_DOOR_UNLOCALIZED_NAME);
 	}
 
 	public static void addNames()

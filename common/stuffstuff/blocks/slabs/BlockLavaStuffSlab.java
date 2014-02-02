@@ -10,6 +10,7 @@ public class BlockLavaStuffSlab extends BlockFluidStuffSlab
 	public BlockLavaStuffSlab(int id, int otherID, boolean isDouble, Block[] modelBlocks, boolean useModelTexture, int[] modelMeta)
 	{
 		super(id, otherID, isDouble, modelBlocks, useModelTexture, modelMeta);
+		this.setTickRandomly(true);
 	}
 
 	@Override

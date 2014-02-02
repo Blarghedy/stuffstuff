@@ -10,6 +10,7 @@ public class BlockLavaStuffDoor extends BlockFluidStuffDoor
 	public BlockLavaStuffDoor(int id, Block modelBlock, int modelMeta, boolean useModelTexture)
 	{
 		super(id, modelBlock, modelMeta, useModelTexture);
+		this.setTickRandomly(true);
 	}
 
 	public void updateTick(World world, int x, int y, int z, Random rand)

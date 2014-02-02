@@ -86,8 +86,10 @@ public class BlockStuffDoor extends BlockDoor
 	@Override
 	public Icon getBlockTexture(IBlockAccess world, int x, int y, int z, int side)
 	{
-		//	    return modelBlock.getBlockTexture(world, x, y, z, side);
-		return getIcon(side, modelMeta);
+		if (useModelTexture) 
+			return modelBlock.getBlockTexture(world, x, y, z, side);
+		else 
+			return getIcon(side, modelMeta);
 	}
 
 	@Override

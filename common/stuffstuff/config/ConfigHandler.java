@@ -90,6 +90,7 @@ public class ConfigHandler
 			BlockInfo.LAVA_DOOR_ID = config.getBlock(BlockInfo.LAVA_DOOR_KEY, BlockInfo.LAVA_DOOR_DEFAULT).getInt();
 			BlockInfo.IRON_ORE_DOOR_ID = config.getBlock(BlockInfo.IRON_ORE_DOOR_KEY, BlockInfo.IRON_ORE_DOOR_DEFAULT).getInt();
 			BlockInfo.DIAMOND_DOOR_ID = config.getBlock(BlockInfo.DIAMOND_DOOR_KEY, BlockInfo.DIAMOND_DOOR_DEFAULT).getInt();
+			BlockInfo.PLAID_PLANK_DOOR_ID = config.getBlock(BlockInfo.PLAID_PLANK_DOOR_KEY, BlockInfo.PLAID_PLANK_DOOR_DEFAULT).getInt();
 
 			BlockInfo.FUN_FLUIX_ID = config.getBlock(BlockInfo.FUN_FLUIX_KEY, BlockInfo.FUN_FLUIX_DEFAULT).getInt();
 			BlockInfo.FLUIX_BRICK_ID = config.getBlock(BlockInfo.FLUIX_BRICK_KEY, BlockInfo.FLUIX_BRICK_DEFAULT).getInt();

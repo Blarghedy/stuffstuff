@@ -93,12 +93,12 @@ public class Blocks
 	public static BlockStuffDoor blockLavaDoor;
 	public static BlockStuffDoor blockIronOreDoor;
 	public static BlockStuffDoor blockDiamondDoor;
+	public static BlockStuffDoor blockPlaidPlankDoor;
 
 	protected static BidirectionalMap slabs;
 
 	public static void init()
 	{
-		// blockBlockPlacer = new BlockBlockPlacer(BlockInfo.BLOCK_PLACER_ID);
 		blockPlaidPlank = new BlockPlaidPlank(BlockInfo.PLAID_PLANK_ID);
 		blockPlaidLog = new BlockPlaidLog(BlockInfo.PLAID_LOG_ID);
 		blockPlaidSapling = new BlockPlaidSapling(BlockInfo.PLAID_SAPLING_ID);
@@ -176,6 +176,7 @@ public class Blocks
 		blockLavaDoor = new BlockLavaStuffDoor(BlockInfo.LAVA_DOOR_ID, Block.lavaStill, 0, false);
 		blockDiamondDoor = new BlockStuffDoor(BlockInfo.DIAMOND_DOOR_ID, Block.blockDiamond);
 		blockIronOreDoor = new BlockStuffDoor(BlockInfo.IRON_ORE_DOOR_ID, Block.oreIron);
+		blockPlaidPlankDoor = new BlockStuffDoor(BlockInfo.PLAID_PLANK_DOOR_ID, blockPlaidPlank, 0, true);
 
 		// register normal blocks
 		GameRegistry.registerBlock(blockPlaidPlank, BlockInfo.PLAID_PLANK_NAME);
@@ -268,6 +269,9 @@ public class Blocks
 
 		ItemStuffDoor.setDoor(blockIronOreDoor);
 		GameRegistry.registerBlock(blockIronOreDoor, ItemStuffDoor.class, BlockInfo.IRON_ORE_DOOR_UNLOCALIZED_NAME);
+
+		ItemStuffDoor.setDoor(blockPlaidPlankDoor);
+		GameRegistry.registerBlock(blockPlaidPlankDoor, ItemStuffDoor.class, BlockInfo.PLAID_PLANK_DOOR_UNLOCALIZED_NAME);
 	}
 
 	public static void addNames()

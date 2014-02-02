@@ -363,6 +363,12 @@ public class BlockInfo
 	public static final String DIAMOND_DOOR_NAME = "Diamond Door";
 	public static final String DIAMOND_DOOR_UNLOCALIZED_NAME = "doorDiamond";
 
+	public static int PLAID_PLANK_DOOR_ID;
+	public static final int PLAID_PLANK_DOOR_DEFAULT = 605;
+	public static final String PLAID_PLANK_DOOR_KEY = "doorPlaidPlank";
+	public static final String PLAID_PLANK_DOOR_NAME = "Plaid Plank Door";
+	public static final String PLAID_PLANK_DOOR_UNLOCALIZED_NAME = "doorPlaidPlank";
+
 	static
 	{
 		PLAID_PLANK_TEXTURES = new String[PLAID_HEIGHT][];

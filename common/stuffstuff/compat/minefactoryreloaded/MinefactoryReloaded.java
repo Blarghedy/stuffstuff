@@ -1,6 +1,6 @@
 package stuffstuff.compat.minefactoryreloaded;
 
-import stuffstuff.info.ModInfo;
+import stuffstuff.stuffstuff.info.ModInfo;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;

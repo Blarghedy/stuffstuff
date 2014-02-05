@@ -30,6 +30,8 @@ import cpw.mods.fml.common.network.NetworkMod;
 @NetworkMod(channels = { ModInfo.CHANNEL }, clientSideRequired = true, serverSideRequired = false, packetHandler = PacketHandler.class)
 public class StuffStuff
 {
+	// TODO change core Stuff Stuff stuff to StuffStuffCore
+
 	public static CreativeTabs tabStuffStuff = new TabStuffStuff("StuffStuff");
 	public static CreativeTabs tabPlaidStuff = new TabPlaidStuff("Plaid Stuff");
 

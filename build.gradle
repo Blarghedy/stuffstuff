@@ -1,3 +1,4 @@
+// stuffstuff
 buildscript {
     repositories {
         mavenCentral()
@@ -10,33 +11,45 @@ buildscript {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.0-SNAPSHOT'
     }
 }
-apply plugin: 'java'
+
 apply plugin: 'forge'
 targetCompatibility = JavaVersion.VERSION_1_6
 sourceCompatibility = 1.6
 
-minecraft{version = "1.6.4-9.11.1.964"}
-version = "0.0.1" // Set the mod version, is appended to the end of the jar name
-archivesBaseName = project.projectDir.name // Set the jar name as the project root folder name
-// Optional: change the project structure
-//sourceSets.main{
-//	java{
-//		srcDirs 'src' // set the source folder as the /src subfolder
-//	}
-//    resources{
-//		srcDirs 'resources' // set the resources folder as the /resources subfolder
-//	}
-//}
+// define the properties file
+ext.configFile = file "build.properties"
+
+configFile.withReader {
+    // read config.  it shall from now on be referenced as simply config or as project.config
+    def prop = new Properties()
+    prop.load(it)
+    ext.config = new ConfigSlurper().parse prop
+}
+
+group = "blarghedy.stuffstuff"
+version = config.mod_version
+archivesBaseName = "StuffStuff"
+
+minecraft {
+    version = config.minecraft_version + "-" + config.forge_version
+    assetDir = "run/assets"
+}
+
+version = "${config.minecraft_version}-${config.mod_version}.${System.getenv().BUILD_NUMBER}"
+
 processResources {
-    // replace stuff in mcmod.info, nothing else
+    // replace stuff in the files we want.
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
-        // replace $version and $mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
+        include 'version.properties'
+
+        // replaces
+        expand 'version': project.config.mod_version, 'buildnumber': "${System.getenv().BUILD_NUMBER}"
     }
 
-    // copy everything else, thats not the mcmod.info
+    // copy everything else, thats we didnt do before
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
+        exclude 'version.properties'
     }
 }

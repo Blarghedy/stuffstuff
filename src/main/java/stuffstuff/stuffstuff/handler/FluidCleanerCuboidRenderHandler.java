@@ -46,7 +46,7 @@ public class FluidCleanerCuboidRenderHandler implements ITickHandler
 					{
 						FluidCleanerBase cleaner = (FluidCleanerBase)itemStack.getItem();
 						int charge = cleaner.getCharge(itemStack);
-						float partialTicks = (float)tickData[0];
+						float partialTicks = (Float)tickData[0];
 						renderCleanerCuboid(minecraft, player, itemStack, partialTicks, charge); // TODO look into partialTicks
 					}
 				}

@@ -1,0 +1,36 @@
+[
+{
+  "modid": "stuffstuff",
+  "name": "Stuff Stuff",
+  "version": "0.0.1",
+  "mcversion": "1.6.4",
+  "description": "Stuff...",
+  "credits": "Sure",
+  "url": "lolnope",
+  "updateUrl": "nopeagain",
+  "authors": [ "Blarghedy" ],
+  "parent":"",
+  "screenshots": [],
+  "dependencies": [
+     "mod_MinecraftForge"
+  ]
+},
+{
+  "modid": "aestuff",
+  "name": "AE Stuff",
+  "version": "0.0.1",
+  "mcversion": "1.6.4",
+  "description": "AE Stuff...",
+  "credits": "Sure",
+  "url": "lolnope",
+  "updateUrl": "nopeagain",
+  "authors": [ "Blarghedy" ],
+  "parent":"",
+  "screenshots": [],
+  "requiredMods": ["poopnuggets"],
+  "dependencies": [
+     "mod_MinecraftForge",
+	 "appliedergistics2"
+  ]
+}
+]

@@ -2,20 +2,19 @@ package stuffstuff.aestuff.items;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
-import stuffstuff.aestuff.AEStuff;
-import stuffstuff.aestuff.parts.PartStuff;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import appeng.api.AEApi;
-import appeng.api.parts.IPart;
-import appeng.api.parts.IPartItem;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import stuffstuff.aestuff.AEStuff;
+import stuffstuff.aestuff.parts.PartStuff;
+import appeng.api.AEApi;
+import appeng.api.parts.IPart;
+import appeng.api.parts.IPartItem;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemStuffPart extends Item implements IPartItem
 {
@@ -24,6 +23,11 @@ public class ItemStuffPart extends Item implements IPartItem
 	public static void registerPart(Class<? extends PartStuff> part)
 	{
 		parts.add(part);
+	}
+
+	public static int getID(Class<? extends PartStuff> part)
+	{
+		return parts.indexOf(part);
 	}
 
 	public ItemStuffPart(int id)
@@ -70,10 +74,8 @@ public class ItemStuffPart extends Item implements IPartItem
 		{
 			e.printStackTrace();
 		}
-		finally
-		{
-			return null; // TODO probably should return something else here
-		}
+		return null; // TODO probably should return something else here
+
 	}
 
 	/**

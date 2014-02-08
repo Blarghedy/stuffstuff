@@ -31,6 +31,7 @@ public class ConfigHandler
 			BlockInfo.RUNNING_FLUIX_BRICK_STAIRS_ID = config.getBlock(BlockInfo.RUNNING_FLUIX_BRICK_STAIRS_KEY, BlockInfo.RUNNING_FLUIX_BRICK_STAIRS_DEFAULT).getInt();
 			BlockInfo.FLUIX_BRICK_STAIRS_ID = config.getBlock(BlockInfo.FLUIX_BRICK_STAIRS_KEY, BlockInfo.FLUIX_BRICK_STAIRS_DEFAULT).getInt();
 			BlockInfo.FINE_FLUIX_BRICK_STAIRS_ID = config.getBlock(BlockInfo.FINE_FLUIX_BRICK_STAIRS_KEY, BlockInfo.FINE_FLUIX_BRICK_STAIRS_DEFAULT).getInt();
+			BlockInfo.FLUIX_STAIRS_ID = config.getBlock(BlockInfo.FLUIX_STAIRS_KEY, BlockInfo.FLUIX_STAIRS_DEFAULT).getInt();
 
 			// slabs
 			BlockInfo.FLUIX_SLAB_ID = config.getBlock(BlockInfo.FLUIX_SLAB_KEY, BlockInfo.FLUIX_SLAB_DEFAULT).getInt();

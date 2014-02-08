@@ -60,9 +60,16 @@ public class BlockInfo
 	public static final String RUNNING_FLUIX_BRICK_STAIRS_NAME = "Fun Fluix Brick Stairs";
 	public static final String RUNNING_FLUIX_BRICK_STAIRS_UNLOCALIZED_NAME = "stairsRunningFluixBrick";
 
+	public static int FLUIX_STAIRS_ID;
+	public static final int FLUIX_STAIRS_DEFAULT = 421;
+	public static final String FLUIX_STAIRS_KEY = "Fluix Stairs";
+	public static final String FLUIX_STAIRS_NAME = "Fluix Stairs";
+	public static final String FLUIX_STAIRS_UNLOCALIZED_NAME = "stairsFluix";
+
 	public static int RUNNING_FLUIX_DOOR_ID;
 	public static final int RUNNING_FLUIX_DOOR_DEFAULT = 600;
 	public static final String RUNNING_FLUIX_DOOR_KEY = "doorRunningFluix";
 	public static final String RUNNING_FLUIX_DOOR_NAME = "Fun Fluix Brick Door";
 	public static final String RUNNING_FLUIX_DOOR_UNLOCALIZED_NAME = "doorRunningFluix";
+
 }

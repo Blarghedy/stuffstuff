@@ -7,6 +7,7 @@ import stuffstuff.aestuff.creative.TabAEStuff;
 import stuffstuff.aestuff.fluids.FluidsAEStuff;
 import stuffstuff.aestuff.info.ModInfo;
 import stuffstuff.aestuff.items.ItemsAEStuff;
+import stuffstuff.aestuff.parts.Parts;
 import stuffstuff.aestuff.proxy.CommonProxy;
 import stuffstuff.stuffstuff.StuffStuff;
 import stuffstuff.stuffstuff.client.interfaces.GuiHandler;
@@ -52,6 +53,7 @@ public class AEStuff
 			FluidsAEStuff.init();
 			ItemsAEStuff.init();
 			BlocksAEStuff.init();
+			Parts.init();
 
 			proxy.initSounds();
 			proxy.initRenderer();

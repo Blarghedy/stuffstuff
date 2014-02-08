@@ -18,7 +18,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemStuffPart extends Item implements IPartItem
 {
-	private static ArrayList<Class<? extends PartStuff>> parts;
+	private static ArrayList<Class<? extends PartStuff>> parts = new ArrayList<Class<? extends PartStuff>>();
 
 	public static void registerPart(Class<? extends PartStuff> part)
 	{
@@ -40,7 +40,10 @@ public class ItemStuffPart extends Item implements IPartItem
 	@Override
 	public void getSubItems(int id, CreativeTabs tab, List list)
 	{
-		super.getSubItems(id, tab, list);
+		for (int i = 0; i < parts.size(); i++)
+		{
+			list.add(new ItemStack(id, 1, i));
+		}
 	}
 
 	@Override

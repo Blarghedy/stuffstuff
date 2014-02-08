@@ -161,10 +161,7 @@ public abstract class PartStuff implements IPart, IGridHost, IActionHost
 	}
 
 	@Override
-	public void getBoxes(IPartCollsionHelper helper)
-	{
-
-	}
+	public abstract void getBoxes(IPartCollsionHelper helper);
 
 	@Override
 	public boolean onActivate(EntityPlayer player, Vec3 pos)

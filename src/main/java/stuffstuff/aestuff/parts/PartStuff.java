@@ -142,6 +142,7 @@ public abstract class PartStuff implements IPart, IGridHost, IActionHost
 	public void addToWorld()
 	{
 		gridBlock = new StuffGridBlock(tile.xCoord, tile.yCoord, tile.zCoord, this);
+		gridBlock.setMachineRepresentation(this.getItemStack(PartItemStack.Network));
 		node = AEApi.instance().createGridNode(gridBlock);
 		onNeighborChanged();
 	}

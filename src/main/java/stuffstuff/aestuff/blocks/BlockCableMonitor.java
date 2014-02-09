@@ -1,44 +1,27 @@
 package stuffstuff.aestuff.blocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
-import net.minecraftforge.common.ForgeDirection;
-import appeng.api.networking.IGridHost;
-import appeng.api.networking.IGridNode;
-import appeng.api.util.AECableType;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 
-public class BlockCableMonitor extends Block implements IGridHost
+public class BlockCableMonitor extends Block implements ITileEntityProvider
 {
 
 	public BlockCableMonitor(int par1, Material par2Material)
-    {
-	    super(par1, par2Material);
-	    // TODO Auto-generated constructor stub
-    }
-	
+	{
+		super(par1, par2Material);
+	}
+
 	/**
-	 * {@link IGridHost} implementation
+	 * {@link ITileEntityProvider} implementation
 	 */
 
 	@Override
-    public IGridNode getGridNode(ForgeDirection dir)
-    {
-//	    return AEApi.instance().createGridNode(MyIGridBlock);
+	public TileEntity createNewTileEntity(World world)
+	{
 		return null;
-    }
-
-	@Override
-    public AECableType getCableConnectionType(ForgeDirection dir)
-    {
-	    // TODO Auto-generated method stub
-	    return null;
-    }
-
-	@Override
-    public void securityBreak()
-    {
-	    // TODO Auto-generated method stub
-	    
-    }
+	}
 
 }

@@ -10,8 +10,8 @@ import stuffstuff.stuffstuff.info.GuiInfo;
 import stuffstuff.stuffstuff.info.ModInfo;
 import stuffstuff.stuffstuff.inventory.ContainerFluidCleanerBase;
 import stuffstuff.stuffstuff.items.FluidCleanerBase;
-import stuffstuff.stuffstuff.items.Items;
-import stuffstuff.stuffstuff.network.PacketHandler;
+import stuffstuff.stuffstuff.items.ItemsStuff;
+import stuffstuff.stuffstuff.network.StuffPacketHandler;
 
 public class GuiFluidCleanerBase extends GuiBase
 {
@@ -60,13 +60,13 @@ public class GuiFluidCleanerBase extends GuiBase
 	{
 		if (chargeRect.mouseInButton(this, x, y))
 		{
-			chargeRect.drawString(this, x, y, "Charge: " + Items.itemBlockPlacer.getCharge(itemstack) + "\nClick to edit.");
+			chargeRect.drawString(this, x, y, "Charge: " + ItemsStuff.itemBlockPlacer.getCharge(itemstack) + "\nClick to edit.");
 		}
 
 		if (powerRect.mouseInButton(this, x, y))
 		{
 			// TODO add color coding for when power is low
-			powerRect.drawString(this, x, y, "Power: " + Items.itemBlockPlacer.getStuffPower(itemstack) + " / " + Items.itemBlockPlacer.getMaxStuffPower());
+			powerRect.drawString(this, x, y, "Power: " + ItemsStuff.itemBlockPlacer.getStuffPower(itemstack) + " / " + ItemsStuff.itemBlockPlacer.getMaxStuffPower());
 		}
 	}
 
@@ -80,7 +80,7 @@ public class GuiFluidCleanerBase extends GuiBase
 		{
 			int charge = (int)(chargeRect.getRelativeMouseY(this, x, y) * 10 + .5);
 			item.setCharge(itemstack, (short)charge);
-			PacketHandler.sendGuiPacket(CHARGE_RECT_INDEX, (byte)charge);
+			StuffPacketHandler.sendGuiPacket(CHARGE_RECT_INDEX, (byte)charge);
 		}
 	}
 }

@@ -18,7 +18,7 @@ public class GuiHandler implements IGuiHandler
 
 	public GuiHandler()
 	{
-		NetworkRegistry.instance().registerGuiHandler(StuffStuff.instance, this);
+		NetworkRegistry.INSTANCE.registerGuiHandler(StuffStuff.instance, this);
 	}
 
 	@Override
@@ -74,12 +74,12 @@ public class GuiHandler implements IGuiHandler
 						return new GuiFluidCleanerBase(player.inventory, itemstack);
 				}
 				break;
-		// TileEntity te = world.getBlockTileEntity(x, y, z);
-		// if (te != null && te instanceof TileEntityMachine)
-		// {
-		// return new GuiMachine(player.inventory, (TileEntityMachine)te);
-		// }
-		// break;
+				// TileEntity te = world.getBlockTileEntity(x, y, z);
+				// if (te != null && te instanceof TileEntityMachine)
+				// {
+				// return new GuiMachine(player.inventory, (TileEntityMachine)te);
+				// }
+				// break;
 		}
 		return null;
 	}

@@ -1,7 +1,7 @@
 package stuffstuff.aestuff.tileentities;
 
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import stuffstuff.aestuff.gridblocks.StuffGridBlock;
 import appeng.api.networking.IGridHost;
 import appeng.api.networking.IGridNode;

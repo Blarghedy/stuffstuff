@@ -1,11 +1,11 @@
 package stuffstuff.stuffstuff.items;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import stuffstuff.stuffstuff.StuffStuff;
 import stuffstuff.stuffstuff.config.MiscConfig;
@@ -24,21 +24,20 @@ public class ItemBlockPlacer extends Item implements IChargeable, IKeyBound, IBl
 	public static final int NO_TARGET = -1;
 	public static final String TARGET_BLOCK_KEY = "ss target";
 
-	public ItemBlockPlacer(int id)
+	public ItemBlockPlacer()
 	{
-		super(id);
 		setCreativeTab(StuffStuff.tabStuffStuff);
 		setUnlocalizedName(ItemInfo.BLOCK_PLACER_UNLOCALIZED_NAME);
 	}
 
 	@Override
-	public void registerIcons(IconRegister register)
+	public void registerIcons(IIconRegister register)
 	{
 		itemIcon = register.registerIcon(ItemInfo.TEXTURE_LOCATION + ":" + ItemInfo.BLOCK_PLACER_ICON);
 	}
 
 	@Override
-	public Icon getIconIndex(ItemStack itemstack)
+	public IIcon getIconIndex(ItemStack itemstack)
 	{
 		// TODO Auto-generated method stub
 		return super.getIconIndex(itemstack);

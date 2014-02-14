@@ -1,13 +1,14 @@
 package stuffstuff.stuffstuff.blocks.items;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 
 public class ItemPlaidLeaves extends ItemBlock
 {
 
-	public ItemPlaidLeaves(int id)
+	public ItemPlaidLeaves(Block block)
 	{
-		super(id);
+		super(block);
 		setHasSubtypes(true);
 	}
 

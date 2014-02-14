@@ -3,32 +3,41 @@ package stuffstuff.stuffstuff.blocks;
 import java.util.List;
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
+import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.common.util.ForgeDirection;
 import stuffstuff.stuffstuff.StuffStuff;
 import stuffstuff.stuffstuff.info.BlockInfo;
 import stuffstuff.stuffstuff.worldgen.WorldGenPlaidTrees;
 
 public class BlockPlaidSapling extends BlockSapling
 {
-	private Icon[] icons;
+	private IIcon[] icons;
 
-	public BlockPlaidSapling(int id)
+	public BlockPlaidSapling()
 	{
-		super(id);
 		this.setCreativeTab(StuffStuff.tabPlaidStuff);
 		setHardness(0.0F);
-		setStepSound(soundGrassFootstep);
-		setUnlocalizedName(BlockInfo.PLAID_SAPLING_UNLOCALIZED_NAME);
+		setStepSound(soundTypeGrass);
 	}
 
 	@Override
-	public Icon getIcon(int side, int meta)
+	public String getUnlocalizedName()
+	{
+		return BlockInfo.PLAID_SAPLING_UNLOCALIZED_NAME;
+	}
+
+	@Override
+	public IIcon getIcon(int side, int meta)
 	{
 		if (meta >= icons.length)
 			return icons[0];
@@ -37,9 +46,9 @@ public class BlockPlaidSapling extends BlockSapling
 	}
 
 	@Override
-	public void registerIcons(IconRegister register)
+	public void registerBlockIcons(IIconRegister register)
 	{
-		icons = new Icon[BlockInfo.PLAID_SAPLING_TEXTURES.length];
+		icons = new IIcon[BlockInfo.PLAID_SAPLING_TEXTURES.length];
 
 		for (int i = 0; i < BlockInfo.PLAID_SAPLING_TEXTURES.length; i++)
 		{
@@ -48,11 +57,11 @@ public class BlockPlaidSapling extends BlockSapling
 	}
 
 	@Override
-	public void getSubBlocks(int id, CreativeTabs tabs, List list)
+	public void getSubBlocks(Item item, CreativeTabs tabs, List list)
 	{
 		for (int i = 0; i < BlockInfo.PLAID_SAPLING_TEXTURES.length; i++)
 		{
-			list.add(new ItemStack(id, 1, i));
+			list.add(new ItemStack(item, 1, i));
 		}
 	}
 
@@ -63,8 +72,9 @@ public class BlockPlaidSapling extends BlockSapling
 	}
 
 	@Override
-	public void growTree(World world, int x, int y, int z, Random rand)
+	public void func_149878_d(World world, int x, int y, int z, Random rand)
 	{
+		// was growTree
 		if (world.isRemote)
 			return;
 
@@ -72,18 +82,21 @@ public class BlockPlaidSapling extends BlockSapling
 		boolean grew = new WorldGenPlaidTrees().growTree(world, rand, x, y, z);
 		if (!grew)
 		{
-			world.setBlock(x, y, z, blockID, 0, 4);
+			world.setBlock(x, y, z, this, 0, 4);
 		}
 	}
 
 	@Override
-	protected boolean canThisPlantGrowOnThisBlockID(int blockID)
+	public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection direction, IPlantable plantable)
 	{
-		return blockID == Blocks.blockPlaidGrass.blockID || super.canThisPlantGrowOnThisBlockID(blockID);
+		// previously canThisPlantGrowOnThisBlockID(Block block)
+		Block block = world.getBlock(x, y, z);
+
+		return block == BlocksStuff.blockPlaidGrass || super.canSustainPlant(world, x, y, z, direction, plantable);
 	}
 
 	@Override
-	public EnumPlantType getPlantType(World world, int x, int y, int z)
+	public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z)
 	{
 		return EnumPlantType.Plains;
 	}

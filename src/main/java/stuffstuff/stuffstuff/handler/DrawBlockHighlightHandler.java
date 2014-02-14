@@ -1,11 +1,10 @@
 package stuffstuff.stuffstuff.handler;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.util.EnumMovingObjectType;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.DrawBlockHighlightEvent;
-import net.minecraftforge.common.ForgeDirection;
-import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraftforge.common.util.ForgeDirection;
 
 import org.lwjgl.opengl.GL11;
 
@@ -17,12 +16,13 @@ import stuffstuff.stuffstuff.items.ItemBlockPlacer;
 import stuffstuff.stuffstuff.items.interfaces.IBlockPlaceMode;
 import stuffstuff.stuffstuff.items.interfaces.IChargeable;
 import cpw.mods.fml.client.FMLClientHandler;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class DrawBlockHighlightHandler
 {
 	// Thanks Pahimar!
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onDrawBlockHighlightEvent(DrawBlockHighlightEvent event)
 	{
 
@@ -32,7 +32,7 @@ public class DrawBlockHighlightHandler
 		{
 			if (event.currentItem.getItem() instanceof ItemBlockPlacer)
 			{
-				if (event.target.typeOfHit == EnumMovingObjectType.TILE)
+				if (event.target.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK) // TODO check this
 				{
 					if (Minecraft.isGuiEnabled() && minecraft.inGameHasFocus)
 					{
@@ -117,7 +117,7 @@ public class DrawBlockHighlightHandler
 
 		switch (sideHit)
 		{
-		// TODO this SERIOUSLY needs tidied up
+			// TODO this SERIOUSLY needs tidied up
 			case UP:
 			{
 				xScale = chargeLevel + 0.025F;
@@ -176,16 +176,16 @@ public class DrawBlockHighlightHandler
 			}
 			case NORTH:
 			{ // - z
-			// System.out.printf("up %b down %b straight %b \n", RotationHelper.pointsUp(pitch), RotationHelper.pointsDown(pitch), RotationHelper.pointsStraight(pitch));
+				// System.out.printf("up %b down %b straight %b \n", RotationHelper.pointsUp(pitch), RotationHelper.pointsDown(pitch), RotationHelper.pointsStraight(pitch));
 				xScale = chargeLevel + 0.025F;
 				yScale = chargeLevel + 0.025F;
 				zScale = zScale + (blockPlaceMode == BlockPlaceMode.PILLAR ? 4 * chargeLevel + .025F : 0);
 				xShift = 0;
 				zShift = -zShift - (blockPlaceMode == BlockPlaceMode.CREATION/*
-																			 * ||
-																			 * (blockPlaceMode == BlockPlaceMode.PROJECTION && RotationHelper.pointsStraight(pitch)) &&
-																			 * facingDirection == ForgeDirection.SOUTH
-																			 */? 1 : 0) + (blockPlaceMode == BlockPlaceMode.PILLAR ? 2 * chargeLevel : 0);
+				 * ||
+				 * (blockPlaceMode == BlockPlaceMode.PROJECTION && RotationHelper.pointsStraight(pitch)) &&
+				 * facingDirection == ForgeDirection.SOUTH
+				 */? 1 : 0) + (blockPlaceMode == BlockPlaceMode.PILLAR ? 2 * chargeLevel : 0);
 				if (blockPlaceMode == BlockPlaceMode.PROJECTION)
 				{
 					if (RotationHelper.pointsDown(pitch) || RotationHelper.pointsUp(pitch))
@@ -211,10 +211,10 @@ public class DrawBlockHighlightHandler
 				zScale = zScale - (blockPlaceMode == BlockPlaceMode.PILLAR ? 4 * chargeLevel + .025F : 0);
 				xShift = 0;
 				zShift = zShift + (blockPlaceMode == BlockPlaceMode.CREATION /*
-																			 * ||
-																			 * (blockPlaceMode == BlockPlaceMode.PROJECTION && RotationHelper.pointsStraight(pitch)) &&
-																			 * facingDirection == ForgeDirection.NORTH
-																			 */? 1 : 0) - (blockPlaceMode == BlockPlaceMode.PILLAR ? 2 * chargeLevel - 1 : 0);
+				 * ||
+				 * (blockPlaceMode == BlockPlaceMode.PROJECTION && RotationHelper.pointsStraight(pitch)) &&
+				 * facingDirection == ForgeDirection.NORTH
+				 */? 1 : 0) - (blockPlaceMode == BlockPlaceMode.PILLAR ? 2 * chargeLevel - 1 : 0);
 				if (blockPlaceMode == BlockPlaceMode.PROJECTION)
 				{
 					if (RotationHelper.pointsDown(pitch) || RotationHelper.pointsUp(pitch))
@@ -241,10 +241,10 @@ public class DrawBlockHighlightHandler
 				yShift = 0;
 				zShift = 0;
 				xShift = xShift + (blockPlaceMode == BlockPlaceMode.CREATION /*
-																			 * ||
-																			 * (blockPlaceMode == BlockPlaceMode.PROJECTION && RotationHelper.pointsStraight(pitch)) &&
-																			 * facingDirection == ForgeDirection.WEST
-																			 */? 1 : 0) - (blockPlaceMode == BlockPlaceMode.PILLAR ? 2 * chargeLevel : 0);
+				 * ||
+				 * (blockPlaceMode == BlockPlaceMode.PROJECTION && RotationHelper.pointsStraight(pitch)) &&
+				 * facingDirection == ForgeDirection.WEST
+				 */? 1 : 0) - (blockPlaceMode == BlockPlaceMode.PILLAR ? 2 * chargeLevel : 0);
 
 				if (blockPlaceMode == BlockPlaceMode.PROJECTION)
 				{
@@ -270,10 +270,10 @@ public class DrawBlockHighlightHandler
 				yScale = chargeLevel + 0.025F;
 				zScale = chargeLevel + 0.025F;
 				xShift = -xShift - (blockPlaceMode == BlockPlaceMode.CREATION /*
-																			 * ||
-																			 * (blockPlaceMode == BlockPlaceMode.PROJECTION && RotationHelper.pointsStraight(pitch)) &&
-																			 * facingDirection == ForgeDirection.EAST
-																			 */? 1 : 0) + (blockPlaceMode == BlockPlaceMode.PILLAR ? 2 * chargeLevel : 0);
+				 * ||
+				 * (blockPlaceMode == BlockPlaceMode.PROJECTION && RotationHelper.pointsStraight(pitch)) &&
+				 * facingDirection == ForgeDirection.EAST
+				 */? 1 : 0) + (blockPlaceMode == BlockPlaceMode.PILLAR ? 2 * chargeLevel : 0);
 				yShift = 0;
 				zShift = 0;
 				if (blockPlaceMode == BlockPlaceMode.PROJECTION)

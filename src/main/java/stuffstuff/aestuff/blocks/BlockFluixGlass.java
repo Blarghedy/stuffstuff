@@ -4,8 +4,9 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.util.Icon;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.init.Blocks;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import stuffstuff.aestuff.AEStuff;
 import stuffstuff.aestuff.info.BlockInfo;
@@ -16,23 +17,28 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockFluixGlass extends Block
 {
 
-	public BlockFluixGlass(int id)
+	public BlockFluixGlass()
 	{
-		super(id, Material.glass);
+		super(Material.glass);
 		setCreativeTab(AEStuff.tabAEStuff);
 		setHardness(1F);
-		setStepSound(soundGlassFootstep);
+		setStepSound(soundTypeGlass);
 		setLightOpacity(0);
-		setLightValue(1);
-		setUnlocalizedName(BlockInfo.FLUIX_GLASS_UNLOCALIZED_NAME);
+		lightValue = 15;
 	}
-	
+
+	@Override
+	public String getUnlocalizedName()
+	{
+		return BlockInfo.FLUIX_GLASS_UNLOCALIZED_NAME;
+	}
+
 	@Override
 	public boolean isOpaqueCube()
 	{
 		return true;
 	}
-	
+
 	@Override
 	public boolean renderAsNormalBlock()
 	{
@@ -40,15 +46,15 @@ public class BlockFluixGlass extends Block
 	}
 
 	@Override
-	public void registerIcons(IconRegister register)
+	public void registerBlockIcons(IIconRegister register)
 	{
 
 	}
 
 	@Override
-	public Icon getIcon(int side, int meta)
+	public IIcon getIcon(int side, int meta)
 	{
-		return Block.glass.getIcon(side, meta);
+		return Blocks.glass.getIcon(side, meta);
 	}
 
 	@Override

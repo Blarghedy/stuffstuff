@@ -2,7 +2,7 @@ package appeng.api.storage;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import appeng.api.implementations.tiles.IChestOrDrive;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -38,7 +38,7 @@ public interface ICellHandler
 	 *         examples and colors.
 	 */
 	@SideOnly(Side.CLIENT)
-	Icon getTopTexture();
+	IIcon getTopTexture();
 
 	/**
 	 * 

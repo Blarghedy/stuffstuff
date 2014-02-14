@@ -1,7 +1,7 @@
 package appeng.api.parts;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
+import io.netty.buffer.ByteBuf;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Random;
@@ -15,7 +15,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import appeng.api.networking.IGridNode;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -77,6 +77,13 @@ public interface IPart
 	void renderDynamic(double x, double y, double z, IPartRenderHelper rh, RenderBlocks renderer);
 
 	/**
+	 * return true only if your part require dynamic rendering, must be consistent.
+	 * 
+	 * @return true to enable renderDynamic
+	 */
+	boolean requireDynamicRender();
+
+	/**
 	 * @return if the bus has a solid side, and you can place random stuff on it like torches or levers
 	 */
 	boolean isSolid();
@@ -135,7 +142,7 @@ public interface IPart
 	 * @param data
 	 * @throws IOException
 	 */
-	void writeToStream(DataOutputStream data) throws IOException;
+	void writeToStream(ByteBuf data) throws IOException;
 
 	/**
 	 * read data from bus packet.
@@ -144,7 +151,7 @@ public interface IPart
 	 * @return true will re-draw the part.
 	 * @throws IOException
 	 */
-	boolean readFromStream(DataInputStream data) throws IOException;
+	boolean readFromStream(ByteBuf data) throws IOException;
 
 	/**
 	 * get the Grid Node for the Bus, be sure your IGridBlock is NOT isWorldAccessable, if it is your going to cause

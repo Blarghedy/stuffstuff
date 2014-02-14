@@ -1,5 +1,6 @@
 package stuffstuff.stuffstuff.blocks.items;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemDoor;
@@ -18,9 +19,9 @@ public class ItemStuffDoor extends ItemBlock //ItemDoor
 		door = targetDoor;
 	}
 
-	public ItemStuffDoor(int id)
+	public ItemStuffDoor(Block block)
 	{
-		super(id);
+		super(block);
 		this.modelDoor = door;
 		setCreativeTab(modelDoor.getCreativeTabToDisplayOn());
 	}

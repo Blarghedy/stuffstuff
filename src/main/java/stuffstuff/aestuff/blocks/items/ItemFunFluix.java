@@ -1,13 +1,14 @@
 package stuffstuff.aestuff.blocks.items;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 
 public class ItemFunFluix extends ItemBlock
 {
 
-	public ItemFunFluix(int id)
+	public ItemFunFluix(Block block)
 	{
-		super(id);
+		super(block);
 		setHasSubtypes(true);
 	}
 

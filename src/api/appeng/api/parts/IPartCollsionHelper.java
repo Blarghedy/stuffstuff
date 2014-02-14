@@ -1,6 +1,6 @@
 package appeng.api.parts;
 
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 
 public interface IPartCollsionHelper
 {

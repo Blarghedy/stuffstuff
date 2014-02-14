@@ -1,14 +1,14 @@
 package stuffstuff.stuffstuff.player;
 
+import ibxm.Player;
 import net.minecraft.client.Minecraft;
-import cpw.mods.fml.common.network.Player;
 
 public class NotificationHelper
 {
 	// TODO add color coding and something like a "StuffStuff: " prefix
 	public static void notifySelf(String message)
 	{
-		Minecraft.getMinecraft().thePlayer.addChatMessage(message);
+		Minecraft.getMinecraft().thePlayer.sendChatMessage(message);
 	}
 
 	// TODO this whole module I guess

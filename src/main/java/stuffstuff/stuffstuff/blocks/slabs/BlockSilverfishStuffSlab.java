@@ -6,9 +6,9 @@ import net.minecraft.world.World;
 
 public class BlockSilverfishStuffSlab extends BlockStuffSlab
 {
-	public BlockSilverfishStuffSlab(int id, int otherID, boolean isDouble, Block[] modelBlocks, boolean useModelTexture, int[] modelMeta)
+	public BlockSilverfishStuffSlab(boolean isDouble, Block[] modelBlocks, boolean useModelTexture, int[] modelMeta)
 	{
-		super(id, otherID, isDouble, modelBlocks, useModelTexture, modelMeta);
+		super(isDouble, modelBlocks, useModelTexture, modelMeta);
 	}
 
 	@Override

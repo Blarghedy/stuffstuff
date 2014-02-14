@@ -2,35 +2,51 @@ package stuffstuff.stuffstuff.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.util.Icon;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import stuffstuff.stuffstuff.StuffStuff;
 import stuffstuff.stuffstuff.info.BlockInfo;
 
 public class BlockPlaidPlank extends Block
 {
-	private Icon[][] icons;
+	private IIcon[][] icons;
 
-	public BlockPlaidPlank(int id)
+	public BlockPlaidPlank()
 	{
-		super(id, Material.wood);
+		super(Material.wood);
 		setCreativeTab(StuffStuff.tabPlaidStuff);
 		setHardness(2F);
-		setStepSound(soundWoodFootstep);
-		setUnlocalizedName(BlockInfo.PLAID_PLANK_UNLOCALIZED_NAME);
-		setBurnProperties(id, 5, 20);
+		setStepSound(soundTypeWood);
 	}
 
 	@Override
-	public Icon getIcon(int side, int meta)
+	public String getUnlocalizedName()
+	{
+		return BlockInfo.PLAID_PLANK_UNLOCALIZED_NAME;
+	}
+
+	@Override
+	public int getFlammability(IBlockAccess world, int x, int y, int z, ForgeDirection face)
+	{
+		return 5;
+	}
+
+	@Override
+	public int getFireSpreadSpeed(IBlockAccess world, int x, int y, int z, ForgeDirection face)
+	{
+		return 20;
+	}
+
+	@Override
+	public IIcon getIcon(int side, int meta)
 	{
 		return icons[0][0];
 	}
 
 	@Override
-	public Icon getBlockTexture(IBlockAccess blockAccess, int x, int y, int z, int side)
+	public IIcon getIcon(IBlockAccess blockAccess, int x, int y, int z, int side)
 	{
 		ForgeDirection face = ForgeDirection.getOrientation(side);
 		int modx;
@@ -61,12 +77,12 @@ public class BlockPlaidPlank extends Block
 	}
 
 	@Override
-	public void registerIcons(IconRegister register)
+	public void registerBlockIcons(IIconRegister register)
 	{
-		icons = new Icon[BlockInfo.PLAID_HEIGHT][];
+		icons = new IIcon[BlockInfo.PLAID_HEIGHT][];
 		for (int i = 0; i < BlockInfo.PLAID_HEIGHT; i++)
 		{
-			icons[i] = new Icon[BlockInfo.PLAID_WIDTH];
+			icons[i] = new IIcon[BlockInfo.PLAID_WIDTH];
 
 			for (int j = 0; j < BlockInfo.PLAID_WIDTH; j++)
 			{

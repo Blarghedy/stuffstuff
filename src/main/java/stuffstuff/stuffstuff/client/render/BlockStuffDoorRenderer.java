@@ -3,7 +3,7 @@ package stuffstuff.stuffstuff.client.render;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import stuffstuff.stuffstuff.blocks.doors.BlockStuffDoor;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
@@ -23,9 +23,8 @@ public class BlockStuffDoorRenderer implements ISimpleBlockRenderingHandler
 		renderBlockStuffDoor(world, block, x, y, z, renderer);
 		return false;
 	}
-
 	@Override
-	public boolean shouldRender3DInInventory()
+	public boolean shouldRender3DInInventory(int modelId)
 	{
 		return false;
 	}
@@ -49,12 +48,12 @@ public class BlockStuffDoorRenderer implements ISimpleBlockRenderingHandler
 
 		if ((meta & 8) != 0)
 		{
-			if (world.getBlockId(x, y - 1, z) != block.blockID)
+			if (world.getBlock(x, y - 1, z) != block)
 			{
 				return false;
 			}
 		}
-		else if (world.getBlockId(x, y + 1, z) != block.blockID)
+		else if (world.getBlock(x, y + 1, z) != block)
 		{
 			return false;
 		}
@@ -64,9 +63,9 @@ public class BlockStuffDoorRenderer implements ISimpleBlockRenderingHandler
 		float zOpacity = 0.8F;
 		float xOpacity = 0.6F;
 		int mixedBrightness = block.getMixedBrightnessForBlock(world, x, y, z);
-		Icon icon;
-		int orientation = door.getDoorOrientation(world, x, y, z);
-		boolean isDoorOpen = door.isDoorOpen(world, x, y, z);
+		IIcon icon;
+		int orientation = door.func_150013_e(world, x, y, z);
+		boolean isDoorOpen = door.func_150015_f(world, x, y, z);
 
 		icon = renderer.getBlockIcon(block, world, x, y, z, 0);
 		tessellator.setBrightness(renderer.renderMinY > 0.0D ? mixedBrightness : block.getMixedBrightnessForBlock(world, x, y - 1, z));
@@ -131,7 +130,7 @@ public class BlockStuffDoorRenderer implements ISimpleBlockRenderingHandler
 		return true;
 	}
 
-	public static void renderFaceZNeg(Block block, double x, double y, double z, Icon icon, RenderBlocks renderer)
+	public static void renderFaceZNeg(Block block, double x, double y, double z, IIcon icon, RenderBlocks renderer)
 	{
 		Tessellator tessellator = Tessellator.instance;
 
@@ -212,7 +211,7 @@ public class BlockStuffDoorRenderer implements ISimpleBlockRenderingHandler
 		}
 	}
 
-	public static void renderFaceZPos(Block block, double x, double y, double z, Icon icon, RenderBlocks renderer)
+	public static void renderFaceZPos(Block block, double x, double y, double z, IIcon icon, RenderBlocks renderer)
 	{
 		Tessellator tessellator = Tessellator.instance;
 
@@ -293,7 +292,7 @@ public class BlockStuffDoorRenderer implements ISimpleBlockRenderingHandler
 		}
 	}
 
-	public static void renderFaceXNeg(Block block, double x, double y, double z, Icon icon, RenderBlocks renderer)
+	public static void renderFaceXNeg(Block block, double x, double y, double z, IIcon icon, RenderBlocks renderer)
 	{
 		Tessellator tessellator = Tessellator.instance;
 
@@ -374,7 +373,7 @@ public class BlockStuffDoorRenderer implements ISimpleBlockRenderingHandler
 		}
 	}
 
-	public static void renderFaceXPos(Block block, double x, double y, double z, Icon icon, RenderBlocks renderer)
+	public static void renderFaceXPos(Block block, double x, double y, double z, IIcon icon, RenderBlocks renderer)
 	{
 		Tessellator tessellator = Tessellator.instance;
 

@@ -1,8 +1,7 @@
 package stuffstuff.stuffstuff.proxy;
 
+import net.minecraftforge.common.MinecraftForge;
 import stuffstuff.stuffstuff.StuffStuff;
-import cpw.mods.fml.common.registry.TickRegistry;
-import cpw.mods.fml.relauncher.Side;
 
 public class CommonProxy
 {
@@ -22,7 +21,7 @@ public class CommonProxy
 		// MinecraftForge.EVENT_BUS.register(StuffStuff.itemBlockPlacerHandler);
 
 		// TODO does this need to be here or in client?
-		TickRegistry.registerTickHandler(StuffStuff.itemBlockPlacerHandler, Side.SERVER);
+		MinecraftForge.EVENT_BUS.register(StuffStuff.itemBlockPlacerHandler);
 	}
 
 	public void setKeyBinding(String name, int value)

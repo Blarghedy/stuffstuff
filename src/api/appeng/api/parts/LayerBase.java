@@ -1,6 +1,6 @@
 package appeng.api.parts;
 
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 
 /**
  * All Layers must extends this, this get part implementation is provided to interface with the parts, however a real

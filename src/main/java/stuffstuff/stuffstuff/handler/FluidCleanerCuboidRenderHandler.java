@@ -1,55 +1,45 @@
 package stuffstuff.stuffstuff.handler;
 
-import java.util.EnumSet;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 
 import org.lwjgl.opengl.GL11;
 
 import stuffstuff.stuffstuff.handler.helper.QuadHelper;
 import stuffstuff.stuffstuff.info.ItemInfo;
-import stuffstuff.stuffstuff.info.ModInfo;
 import stuffstuff.stuffstuff.items.FluidCleanerBase;
 import cpw.mods.fml.client.FMLClientHandler;
-import cpw.mods.fml.common.ITickHandler;
-import cpw.mods.fml.common.TickType;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.TickEvent;
 
-public class FluidCleanerCuboidRenderHandler implements ITickHandler
+public class FluidCleanerCuboidRenderHandler
 {
 	// Thanks Pahimar!
 
-	@Override
-	public void tickStart(EnumSet<TickType> type, Object... tickData)
-	{
-
-	}
-
-	@Override
-	public void tickEnd(EnumSet<TickType> type, Object... tickData)
+	@SubscribeEvent
+	public void tickEnd(TickEvent.RenderTickEvent e)
 	{
 
 		Minecraft minecraft = FMLClientHandler.instance().getClient();
 		EntityPlayer player = minecraft.thePlayer;
 		ItemStack itemStack = null;
-		if (type.contains(TickType.RENDER))
+
+		if (player != null)
 		{
-			if (player != null)
+			itemStack = player.inventory.getCurrentItem();
+			if (Minecraft.isGuiEnabled() && minecraft.inGameHasFocus)
 			{
-				itemStack = player.inventory.getCurrentItem();
-				if (Minecraft.isGuiEnabled() && minecraft.inGameHasFocus)
+				if (itemStack != null && itemStack.getItem() instanceof FluidCleanerBase)
 				{
-					if (itemStack != null && itemStack.getItem() instanceof FluidCleanerBase)
-					{
-						FluidCleanerBase cleaner = (FluidCleanerBase)itemStack.getItem();
-						int charge = cleaner.getCharge(itemStack);
-						float partialTicks = (Float)tickData[0];
-						renderCleanerCuboid(minecraft, player, itemStack, partialTicks, charge); // TODO look into partialTicks
-					}
+					FluidCleanerBase cleaner = (FluidCleanerBase)itemStack.getItem();
+					int charge = cleaner.getCharge(itemStack);
+					float partialTicks = e.renderTickTime; // TODO double check that this worked
+					renderCleanerCuboid(minecraft, player, itemStack, partialTicks, charge); 
 				}
+
 			}
 		}
 	}
@@ -92,18 +82,6 @@ public class FluidCleanerCuboidRenderHandler implements ITickHandler
 
 		GL11.glEnable(GL11.GL_CULL_FACE);
 		GL11.glDepthMask(true);
-	}
-
-	@Override
-	public EnumSet<TickType> ticks()
-	{
-		return EnumSet.of(TickType.CLIENT, TickType.RENDER);
-	}
-
-	@Override
-	public String getLabel()
-	{
-		return ModInfo.NAME + ": " + this.getClass().getSimpleName();
 	}
 
 }

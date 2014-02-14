@@ -6,12 +6,15 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
 import stuffstuff.stuffstuff.StuffStuff;
 import stuffstuff.stuffstuff.info.BlockInfo;
 import cpw.mods.fml.relauncher.Side;
@@ -19,25 +22,41 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockPlaidLeaves extends BlockLeaves
 {
-	private Icon[] icons;
-	private Icon[] opaqueIcons;
+	private IIcon[] icons;
+	private IIcon[] opaqueIcons;
 
-	public BlockPlaidLeaves(int id)
+	public BlockPlaidLeaves()
 	{
-		super(id);
 		setCreativeTab(StuffStuff.tabPlaidStuff);
 		setLightOpacity(1);
-		setStepSound(soundGrassFootstep);
+		setStepSound(soundTypeGrass);
 		setHardness(.2F);
-		setBurnProperties(id, 30, 60);
+	}
+
+	@Override
+	public String[] func_150125_e()
+	{
+		// TODO this
+		// get texture name?  Seems to be used in ItemLeaves
+		return new String[] {"naughtyleaves"};
+	}
+
+	@Override
+	public int getFlammability(IBlockAccess world, int x, int y, int z, ForgeDirection face)
+	{
+		return Blocks.leaves.getFlammability(world, x, y, z, face);
+	}
+
+	@Override
+	public int getFireSpreadSpeed(IBlockAccess world, int x, int y, int z, ForgeDirection face)
+	{
+		return Blocks.leaves.getFireSpreadSpeed(world, x, y, z, face);
 	}
 
 	@Override
 	public boolean isOpaqueCube()
 	{
-		// If the vanilla leaves are opaque, we want to render opaque as well.
-		// This basically lets me be lazy and not determine this myself.
-		return Block.leaves.isOpaqueCube();
+		return Blocks.leaves.isOpaqueCube();
 	}
 
 	@Override
@@ -47,10 +66,10 @@ public class BlockPlaidLeaves extends BlockLeaves
 	}
 
 	@Override
-	public void registerIcons(IconRegister register)
+	public void registerBlockIcons(IIconRegister register)
 	{
-		icons = new Icon[BlockInfo.PLAID_LEAVES_TEXTURES.length];
-		opaqueIcons = new Icon[BlockInfo.PLAID_OPAQUE_LEAVES_TEXTURES.length];
+		icons = new IIcon[BlockInfo.PLAID_LEAVES_TEXTURES.length];
+		opaqueIcons = new IIcon[BlockInfo.PLAID_OPAQUE_LEAVES_TEXTURES.length];
 
 		for (int i = 0; i < BlockInfo.PLAID_LEAVES_TEXTURES.length; i++)
 		{
@@ -60,13 +79,13 @@ public class BlockPlaidLeaves extends BlockLeaves
 	}
 
 	@Override
-	public Icon getIcon(int side, int meta)
+	public IIcon getIcon(int side, int meta)
 	{
 		return isOpaqueCube() ? opaqueIcons[meta & 3] : icons[meta & 3];
 	}
 
 	@Override
-	public void getSubBlocks(int id, CreativeTabs tab, List list)
+	public void getSubBlocks(Item block, CreativeTabs tab, List list)
 	{
 		for (int i = 0; i < BlockInfo.PLAID_LEAVES_TEXTURES.length; i++)
 		{
@@ -75,13 +94,13 @@ public class BlockPlaidLeaves extends BlockLeaves
 	}
 
 	@Override
-	public void breakBlock(World world, int x, int y, int z, int id, int meta)
+	public void breakBlock(World world, int x, int y, int z, Block block, int meta)
 	{
-		super.breakBlock(world, x, y, z, id, meta);
+		super.breakBlock(world, x, y, z, block, meta);
 	}
 
 	@Override
-	public boolean isLeaves(World world, int x, int y, int z)
+	public boolean isLeaves(IBlockAccess world, int x, int y, int z)
 	{
 		return true;
 	}
@@ -99,9 +118,9 @@ public class BlockPlaidLeaves extends BlockLeaves
 	}
 
 	@Override
-	public int idDropped(int meta, Random rand, int a)
+	public Item getItemDropped(int meta, Random rand, int a)
 	{
-		return Blocks.blockPlaidSapling.blockID;
+		return Item.getItemFromBlock(BlocksStuff.blockPlaidSapling);
 	}
 
 	@Override
@@ -115,13 +134,13 @@ public class BlockPlaidLeaves extends BlockLeaves
 	{
 		if (!world.isRemote)
 		{
-			ArrayList<ItemStack> items = getBlockDropped(world, x, y, z, meta, par7);
+			ArrayList<ItemStack> items = getDrops(world, x, y, z, meta, par7);
 
 			for (ItemStack item : items)
 			{
 				if (world.rand.nextFloat() <= chance)
 				{
-					this.dropBlockAsItem_do(world, x, y, z, item);
+					dropBlockAsItem(world, x, y, z, item);
 				}
 			}
 		}

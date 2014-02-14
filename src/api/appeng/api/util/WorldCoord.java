@@ -1,7 +1,7 @@
 package appeng.api.util;
 
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 
 /**
  * Represents a relative coordinate, either relative to another object, or

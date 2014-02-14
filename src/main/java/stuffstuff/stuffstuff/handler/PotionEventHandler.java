@@ -2,10 +2,10 @@ package stuffstuff.stuffstuff.handler;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityClientPlayerMP;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
-import net.minecraftforge.common.ForgeDirection;
-import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 
 import org.lwjgl.opengl.GL11;
@@ -14,10 +14,11 @@ import stuffstuff.stuffstuff.blocks.PlaidColor;
 import stuffstuff.stuffstuff.handler.helper.QuadHelper;
 import stuffstuff.stuffstuff.info.PotionInfo;
 import stuffstuff.stuffstuff.potions.Potions;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class PotionEventHandler
 {
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onEntityUpdate(LivingUpdateEvent event)
 	{
 		if (event.entityLiving.isPotionActive(Potions.potionPlaid))
@@ -29,7 +30,7 @@ public class PotionEventHandler
 		}
 	}
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void renderPlaidOverlayHandler(RenderWorldLastEvent event)
 	{
 		EntityClientPlayerMP player = Minecraft.getMinecraft().thePlayer;
@@ -68,7 +69,7 @@ public class PotionEventHandler
 				{
 					for (int k = -cubeDistance; k < cubeDistance + 1; k++)
 					{
-						if (player.worldObj.getBlockId(intx + i, inty + j, intz + k) != 0) continue;
+						if (player.worldObj.getBlock(intx + i, inty + j, intz + k) != Blocks.air) continue;
 
 						rloc = Potions.potionCubes[PlaidColor.getPlaidColorFromPos(intx + i, inty + j, intz + k).ordinal()];
 						pri = priorityLevel(intx + i, inty + j, intz + k);

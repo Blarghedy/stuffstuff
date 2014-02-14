@@ -1,6 +1,6 @@
 package appeng.api.networking;
 
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 
 /**
  * Access to AE's internal grid connections.

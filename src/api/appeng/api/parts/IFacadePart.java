@@ -4,7 +4,9 @@ import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Used Internally.
@@ -37,6 +39,7 @@ public interface IFacadePart
 	 * @param busBounds
 	 * @param b
 	 */
+	@SideOnly(Side.CLIENT)
 	void renderStatic(int x, int y, int z, IPartRenderHelper instance, RenderBlocks renderer, IFacadeContainer fc, AxisAlignedBB busBounds, boolean renderStilt);
 
 	/**
@@ -45,6 +48,7 @@ public interface IFacadePart
 	 * @param instance
 	 * @param renderer
 	 */
+	@SideOnly(Side.CLIENT)
 	void renderInventory(IPartRenderHelper instance, RenderBlocks renderer);
 
 	/**

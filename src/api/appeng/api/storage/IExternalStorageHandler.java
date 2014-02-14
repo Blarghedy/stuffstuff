@@ -1,7 +1,7 @@
 package appeng.api.storage;
 
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 
 /**
  * A Registration Record for {@link IExternalStorageRegistry}

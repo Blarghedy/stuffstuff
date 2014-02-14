@@ -46,7 +46,7 @@ public interface IMEInventory<StackType extends IAEStack>
 	 *            the IItemList the results will be written too
 	 * @return returns same list that was passed in, is passed out
 	 */
-	public IItemList<StackType> getAvailableItems(IItemList out);
+	public IItemList<StackType> getAvailableItems(IItemList<StackType> out);
 
 	/**
 	 * @return the type of channel your handler should be part of

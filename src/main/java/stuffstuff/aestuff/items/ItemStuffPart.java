@@ -30,19 +30,18 @@ public class ItemStuffPart extends Item implements IPartItem
 		return parts.indexOf(part);
 	}
 
-	public ItemStuffPart(int id)
+	public ItemStuffPart()
 	{
-		super(id);
 		setCreativeTab(AEStuff.tabAEStuff);
 		AEApi.instance().partHelper().setItemBusRenderer(this);
 	}
 
 	@Override
-	public void getSubItems(int id, CreativeTabs tab, List list)
+	public void getSubItems(Item item, CreativeTabs tab, List list)
 	{
 		for (int i = 0; i < parts.size(); i++)
 		{
-			list.add(new ItemStack(id, 1, i));
+			list.add(new ItemStack(item, 1, i));
 		}
 	}
 

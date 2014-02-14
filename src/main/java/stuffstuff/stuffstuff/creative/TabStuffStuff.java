@@ -1,8 +1,9 @@
 package stuffstuff.stuffstuff.creative;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import stuffstuff.stuffstuff.items.Items;
+import stuffstuff.stuffstuff.items.ItemsStuff;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -16,15 +17,14 @@ public class TabStuffStuff extends CreativeTabs
 	@Override
 	public ItemStack getIconItemStack()
 	{
-		return new ItemStack(Items.itemBlockPlacer, 1, 0);
+		return new ItemStack(ItemsStuff.itemBlockPlacer, 1, 0);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int getTabIconItemIndex()
+	public Item getTabIconItem()
 	{
-		// TODO this
-		return super.getTabIconItemIndex();
+		return ItemsStuff.itemBlockPlacer;
 	}
 
 }

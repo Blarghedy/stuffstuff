@@ -2,10 +2,10 @@ package stuffstuff.stuffstuff.items;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
@@ -16,9 +16,8 @@ import stuffstuff.stuffstuff.player.NotificationHelper;
 public class ItemFluidCleaner extends FluidCleanerBase
 {
 
-	public ItemFluidCleaner(int id)
+	public ItemFluidCleaner()
 	{
-		super(id);
 		setUnlocalizedName(ItemInfo.FLUID_CLEANER_UNLOCALIZED_NAME);
 	}
 
@@ -76,19 +75,19 @@ public class ItemFluidCleaner extends FluidCleanerBase
 	}
 
 	@Override
-	public void registerIcons(IconRegister par1IconRegister)
+	public void registerIcons(IIconRegister par1IconRegister)
 	{
 		super.registerIcons(par1IconRegister);
 	}
 
 	@Override
-	public Icon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
+	public IIcon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
 	{
 		return super.getIcon(stack, renderPass, player, usingItem, useRemaining);
 	}
 
 	@Override
-	public Icon getIconIndex(ItemStack par1ItemStack)
+	public IIcon getIconIndex(ItemStack par1ItemStack)
 	{
 		return super.getIconIndex(par1ItemStack);
 	}

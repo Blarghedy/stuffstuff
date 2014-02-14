@@ -34,9 +34,8 @@ public abstract class FluidCleanerBase extends Item implements IFluidContainerIt
 	// TODO: look into making some of these methods private. Probably don't need public canAcceptFluid, for example
 	// TODO: Might be a good idea to abstract this a bit further. Make an interface and a helper class, rather than requiring this as a super class
 
-	public FluidCleanerBase(int id)
+	public FluidCleanerBase()
 	{
-		super(id);
 		this.setHasSubtypes(true);
 		itemstacks = new ArrayList<ItemStack>();
 
@@ -49,16 +48,16 @@ public abstract class FluidCleanerBase extends Item implements IFluidContainerIt
 	}
 
 	@Override
-	public String getItemDisplayName(ItemStack par1ItemStack)
+	public String getItemStackDisplayName(ItemStack itemstack)
 	{
-		String fname = getFluidName(par1ItemStack);
+		String fname = getFluidName(itemstack);
 		return (fname == null || fname.equals("") ? "Empty" : StringHelper.upperFirst(fname)) + " " + getItemName(); // ItemInfo.FLUID_CLEANER_NAME; //this.getUnlocalizedName();
 	}
 
 	public abstract String getItemName();
 
 	@Override
-	public void getSubItems(int par1, CreativeTabs tabs, List list)
+	public void getSubItems(Item item, CreativeTabs tabs, List list)
 	{
 		list.addAll(itemstacks);
 	}
@@ -153,8 +152,8 @@ public abstract class FluidCleanerBase extends Item implements IFluidContainerIt
 		NBTTagCompound fluidTag = null;
 
 		if (tag == null || !tag.hasKey("fluid") || // no tags or fluid not in tag yet
-		(fluidTag = tag.getCompoundTag("fluid")) == null || // null is stored as a fluid
-		(fluid = FluidStack.loadFluidStackFromNBT(fluidTag)) == null) // an invalid fluid somehow
+				(fluidTag = tag.getCompoundTag("fluid")) == null || // null is stored as a fluid
+				(fluid = FluidStack.loadFluidStackFromNBT(fluidTag)) == null) // an invalid fluid somehow
 		{
 			fill = Math.min(capacity, resource.amount);
 		}

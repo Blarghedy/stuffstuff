@@ -1,7 +1,7 @@
 package stuffstuff.aestuff.parts;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
+import io.netty.buffer.ByteBuf;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Random;
@@ -15,7 +15,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import stuffstuff.aestuff.gridblocks.StuffGridBlock;
 import stuffstuff.aestuff.items.ItemStuffPart;
 import stuffstuff.aestuff.items.ItemsAEStuff;
@@ -115,10 +115,10 @@ public abstract class PartStuff implements IPart, IGridHost, IActionHost
 	}
 
 	@Override
-	public abstract void writeToStream(DataOutputStream data) throws IOException;
+	public abstract void writeToStream(ByteBuf data) throws IOException;
 
 	@Override
-	public abstract boolean readFromStream(DataInputStream data) throws IOException;
+	public abstract boolean readFromStream(ByteBuf data) throws IOException;
 
 	@Override
 	public IGridNode getGridNode()
@@ -201,6 +201,12 @@ public abstract class PartStuff implements IPart, IGridHost, IActionHost
 	public boolean canBePlacedOn(BusSupport what)
 	{
 		return what != BusSupport.NO_PARTS;
+	}
+
+	@Override
+	public boolean requireDynamicRender()
+	{
+		return false;
 	}
 
 	/**

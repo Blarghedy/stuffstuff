@@ -1,6 +1,6 @@
 package appeng.api.util;
 
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 
 /**
  * Nearly all of AE's Tile Entities implement IOrientable.

@@ -12,8 +12,8 @@ import stuffstuff.stuffstuff.info.ModInfo;
 import stuffstuff.stuffstuff.inventory.ContainerItemBlockPlacer;
 import stuffstuff.stuffstuff.items.BlockPlaceMode;
 import stuffstuff.stuffstuff.items.ItemBlockPlacer;
-import stuffstuff.stuffstuff.items.Items;
-import stuffstuff.stuffstuff.network.PacketHandler;
+import stuffstuff.stuffstuff.items.ItemsStuff;
+import stuffstuff.stuffstuff.network.StuffPacketHandler;
 
 public class GuiItemBlockPlacer extends GuiBase
 {
@@ -61,9 +61,9 @@ public class GuiItemBlockPlacer extends GuiBase
 		int mode = item.getBlockPlaceMode(itemstack).getMode();
 		buttons[mode].draw(this, 176, 70);
 		// TODO possibly make a getChargePercent or something in IChargeable? This is kinda awkward
-		double charge = Items.itemBlockPlacer.getChargePercent(itemstack);
+		double charge = ItemsStuff.itemBlockPlacer.getChargePercent(itemstack);
 		chargeRect.draw(this, 176, 10, charge);
-		double power = Items.itemBlockPlacer.getStuffPowerPercent(itemstack);
+		double power = ItemsStuff.itemBlockPlacer.getStuffPowerPercent(itemstack);
 		powerRect.draw(this, 186, 10, power);
 	}
 
@@ -80,13 +80,13 @@ public class GuiItemBlockPlacer extends GuiBase
 
 		if (chargeRect.mouseInButton(this, x, y))
 		{
-			chargeRect.drawString(this, x, y, "Charge: " + Items.itemBlockPlacer.getCharge(itemstack) + "\nClick to edit.");
+			chargeRect.drawString(this, x, y, "Charge: " + ItemsStuff.itemBlockPlacer.getCharge(itemstack) + "\nClick to edit.");
 		}
 
 		if (powerRect.mouseInButton(this, x, y))
 		{
 			// TODO add color coding for when power is low
-			powerRect.drawString(this, x, y, "Power: " + Items.itemBlockPlacer.getStuffPower(itemstack) + " / " + Items.itemBlockPlacer.getMaxStuffPower());
+			powerRect.drawString(this, x, y, "Power: " + ItemsStuff.itemBlockPlacer.getStuffPower(itemstack) + " / " + ItemsStuff.itemBlockPlacer.getMaxStuffPower());
 		}
 	}
 
@@ -100,16 +100,16 @@ public class GuiItemBlockPlacer extends GuiBase
 		{
 			if (b.mouseInButton(this, x, y))
 			{
-				Items.itemBlockPlacer.setBlockPlaceMode(itemstack, BlockPlaceMode.fromInt(b.getIndex()));
-				PacketHandler.sendGuiPacket((byte)b.getIndex(), (byte)-1);
+				ItemsStuff.itemBlockPlacer.setBlockPlaceMode(itemstack, BlockPlaceMode.fromInt(b.getIndex()));
+				StuffPacketHandler.sendGuiPacket((byte)b.getIndex(), (byte)-1);
 			}
 		}
 
 		if (chargeRect.mouseInButton(this, x, y))
 		{
 			int charge = (int)(chargeRect.getRelativeMouseY(this, x, y) * 10 + .5);
-			Items.itemBlockPlacer.setCharge(itemstack, (short)charge);
-			PacketHandler.sendGuiPacket(CHARGE_RECT_INDEX, (byte)charge);
+			ItemsStuff.itemBlockPlacer.setCharge(itemstack, (short)charge);
+			StuffPacketHandler.sendGuiPacket(CHARGE_RECT_INDEX, (byte)charge);
 		}
 	}
 }

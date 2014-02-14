@@ -27,6 +27,6 @@ public abstract class GuiBase extends GuiContainer
 
 	public void drawHoverString(List list, int x, int y)
 	{
-		drawHoveringText(list, x - 3, y, fontRenderer);
+		drawHoveringText(list, x - 3, y, fontRendererObj);
 	}
 }

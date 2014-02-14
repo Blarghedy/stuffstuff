@@ -1,74 +1,63 @@
 package stuffstuff.stuffstuff.handler;
 
-import java.util.EnumSet;
-
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import stuffstuff.stuffstuff.handler.helper.KeyBindingHelper;
-import stuffstuff.stuffstuff.info.ModInfo;
 import stuffstuff.stuffstuff.items.interfaces.IKeyBound;
-import stuffstuff.stuffstuff.network.PacketHandler;
+import stuffstuff.stuffstuff.network.StuffPacketHandler;
 import cpw.mods.fml.client.FMLClientHandler;
-import cpw.mods.fml.client.registry.KeyBindingRegistry;
-import cpw.mods.fml.common.TickType;
+import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.common.gameevent.InputEvent.KeyInputEvent;
 
-public class KeyBindingHandler extends KeyBindingRegistry.KeyHandler
+public class KeyBindingHandler
 {
+	KeyBinding[] bindings;
+
 	public KeyBindingHandler()
 	{
-		super(KeyBindingHelper.gatherKeyBindings(), KeyBindingHelper.gatherIsRepeating());
-	}
+		bindings = KeyBindingHelper.gatherKeyBindings();
+		boolean[] isRepeating = KeyBindingHelper.gatherIsRepeating(); // TODO do I need this?
 
-	@Override
-	public String getLabel()
-	{
-		return ModInfo.NAME + ": " + this.getClass().getSimpleName();
-	}
-
-	@Override
-	public void keyDown(EnumSet<TickType> types, KeyBinding kb, boolean tickEnd, boolean isRepeat)
-	{
-		// Only operate at the end of the tick
-		if (tickEnd)
+		for (KeyBinding binding : bindings)
 		{
-			// If we are not in a GUI of any kind, continue execution
-			if (FMLClientHandler.instance().getClient().inGameHasFocus)
-			{
-				EntityPlayer player = FMLClientHandler.instance().getClient().thePlayer;
-				if (player != null)
-				{
-					ItemStack currentItem = FMLClientHandler.instance().getClient().thePlayer.getCurrentEquippedItem();
+			ClientRegistry.registerKeyBinding(binding);
+		}
+	}
 
-					if (currentItem != null)
+	public void keyDown(KeyInputEvent e)
+	{
+		// TODO check to see if we can make this only operate on tick ends.  Probably not.
+		// If we are not in a GUI of any kind, continue execution
+		if (FMLClientHandler.instance().getClient().inGameHasFocus)
+		{
+			EntityPlayer player = FMLClientHandler.instance().getClient().thePlayer;
+			if (player != null)
+			{
+				ItemStack currentItem = FMLClientHandler.instance().getClient().thePlayer.getCurrentEquippedItem();
+
+				if (currentItem != null)
+				{
+					if (currentItem.getItem() instanceof IKeyBound)
 					{
-						if (currentItem.getItem() instanceof IKeyBound)
+						// TODO Pahimar had the client sided stuff, but I'm not sure I want to. Look into that.
+						// if (!KeyBindingHelper.isClientSided(kb.keyDescription)) {
+						// // TODO networking stuff yay... gotta tell the server to increase charge and stuff here
+						// // PacketDispatcher.sendPacketToServer(PacketTypeHandler.populatePacket(new PacketKeyPressed(kb.keyDescription)));
+						for (KeyBinding key : bindings)
 						{
-							// TODO Pahimar had the client sided stuff, but I'm not sure I want to. Look into that.
-							// if (!KeyBindingHelper.isClientSided(kb.keyDescription)) {
-							// // TODO networking stuff yay... gotta tell the server to increase charge and stuff here
-							// // PacketDispatcher.sendPacketToServer(PacketTypeHandler.populatePacket(new PacketKeyPressed(kb.keyDescription)));
-							PacketHandler.sendKeyPacket(kb.keyDescription);
-							// }
-							// else {
-							// ((IKeyBound) currentItem.getItem()).doKeyBindingAction(player, currentItem, kb.keyDescription);
-							// }
+							if (key.isPressed())
+							{
+								StuffPacketHandler.sendKeyPacket(key.getKeyDescription());
+							}
 						}
+						// }
+						// else {
+						// ((IKeyBound) currentItem.getItem()).doKeyBindingAction(player, currentItem, kb.keyDescription);
+						// }
 					}
 				}
 			}
 		}
-	}
-
-	@Override
-	public void keyUp(EnumSet<TickType> types, KeyBinding kb, boolean tickEnd)
-	{
-
-	}
-
-	@Override
-	public EnumSet<TickType> ticks()
-	{
-		return EnumSet.of(TickType.CLIENT);
 	}
 }

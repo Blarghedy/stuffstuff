@@ -1,13 +1,13 @@
 package stuffstuff.stuffstuff.client.render;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockFluid;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.fluids.BlockFluidClassic;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 public class PlaidFluidRenderer implements ISimpleBlockRenderingHandler
@@ -42,12 +42,12 @@ public class PlaidFluidRenderer implements ISimpleBlockRenderingHandler
 			float f6 = 0.6F;
 			double d0 = 0.0D;
 			double d1 = 1.0D;
-			Material material = block.blockMaterial;
+			Material material = block.getMaterial();
 			int meta = blockAccess.getBlockMetadata(x, y, z);
-			double d2 = renderer.getFluidHeight(x, y, z, material);
-			double d3 = renderer.getFluidHeight(x, y, z + 1, material);
-			double d4 = renderer.getFluidHeight(x + 1, y, z + 1, material);
-			double d5 = renderer.getFluidHeight(x + 1, y, z, material);
+			double d2 = renderer.getLiquidHeight(x, y, z, material);
+			double d3 = renderer.getLiquidHeight(x, y, z + 1, material);
+			double d4 = renderer.getLiquidHeight(x + 1, y, z + 1, material);
+			double d5 = renderer.getLiquidHeight(x + 1, y, z, material);
 			double d6 = 0.0010000000474974513D;
 			float f7;
 			float f8;
@@ -57,14 +57,14 @@ public class PlaidFluidRenderer implements ISimpleBlockRenderingHandler
 			{
 				flag2 = true;
 				// Icon icon = this.getBlockIconFromSideAndMetadata(par1Block, 1, meta);
-				Icon icon = block.getBlockTexture(blockAccess, x, y, z, 1);
+				IIcon icon = block.getIcon(blockAccess, x, y, z, 1);
 
-				float f10 = (float)BlockFluid.getFlowDirection(blockAccess, x, y, z, material);
+				float f10 = (float)BlockFluidClassic.getFlowDirection(blockAccess, x, y, z);
 
 				if (f10 > -999.0F)
 				{
 					// icon = this.getBlockIconFromSideAndMetadata(par1Block, 2, meta);
-					icon = block.getBlockTexture(blockAccess, x, y, z, 2);
+					icon = block.getIcon(blockAccess, x, y, z, 2);
 				}
 
 				d2 -= d6;
@@ -120,7 +120,7 @@ public class PlaidFluidRenderer implements ISimpleBlockRenderingHandler
 				tessellator.setBrightness(block.getMixedBrightnessForBlock(blockAccess, x, y - 1, z));
 				float f11 = 1.0F;
 				tessellator.setColorOpaque_F(f3 * f11, f3 * f11, f3 * f11);
-				Icon tmpIcon = block.getBlockTexture(blockAccess, x, y, z, 0);
+				IIcon tmpIcon = block.getIcon(blockAccess, x, y, z, 0);
 				renderer.renderFaceYNeg(block, x, y + d6, z, tmpIcon); // this.getBlockIconFromSide(par1Block, 0));
 				flag2 = true;
 			}
@@ -151,7 +151,7 @@ public class PlaidFluidRenderer implements ISimpleBlockRenderingHandler
 				}
 
 				// Icon icon1 = this.getBlockIconFromSideAndMetadata(par1Block, j1 + 2, meta);
-				Icon icon1 = block.getBlockTexture(blockAccess, x, y, z, j1 + 2);
+				IIcon icon1 = block.getIcon(blockAccess, x, y, z, j1 + 2);
 
 				if (renderer.renderAllFaces || aboolean[j1])
 				{
@@ -232,17 +232,15 @@ public class PlaidFluidRenderer implements ISimpleBlockRenderingHandler
 	}
 
 	@Override
-	public boolean shouldRender3DInInventory()
+	public int getRenderId()
 	{
-		// TODO Auto-generated method stub
-		return false;
+		return 0;
 	}
 
 	@Override
-	public int getRenderId()
+	public boolean shouldRender3DInInventory(int modelId)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		return false;
 	}
 
 }

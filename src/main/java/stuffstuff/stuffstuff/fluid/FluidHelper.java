@@ -1,6 +1,7 @@
 package stuffstuff.stuffstuff.fluid;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -20,12 +21,12 @@ public class FluidHelper
 	{
 		// TODO: figure out if this whole nonsense is even remotely necessary
 		// There's got to be a better helper method that does all this for me
-		int blockID = world.getBlockId(x, y, z);
-		if (blockID == Block.waterMoving.blockID || blockID == Block.lavaMoving.blockID)
+		Block block = world.getBlock(x, y, z);
+		if (block == Blocks.flowing_water || block == Blocks.flowing_lava)
 			return true;
-		else if (blockID == Block.waterStill.blockID || blockID == Block.lavaStill.blockID)
+		else if (block == Blocks.water || block == Blocks.lava)
 			return false;
-		Block block = Block.blocksList[blockID];
+
 		IFluidBlock fluidblock = null;
 		if (block != null && block instanceof IFluidBlock)
 		{
@@ -41,24 +42,24 @@ public class FluidHelper
 
 	public static boolean isFluid(World world, int x, int y, int z)
 	{ // TODO: Figure out if this is necessary too.
-		int id = world.getBlockId(x, y, z);
-		Block block = Block.blocksList[id];
+		Block block = world.getBlock(x, y, z);
+
 		if (block == null)
 			return false;
 		else
-			return block instanceof IFluidBlock || id == Block.waterMoving.blockID || id == Block.waterStill.blockID || id == Block.lavaMoving.blockID || id == Block.lavaStill.blockID;
+			return block instanceof IFluidBlock || block == Blocks.flowing_water || block == Blocks.water || block == Blocks.flowing_lava || block == Blocks.lava;
 	}
 
 	public static boolean isFluid(World world, int x, int y, int z, Fluid fluid)
 	{ // TODO: refactor this all into a helper module for easier later refactoring
-		int id = world.getBlockId(x, y, z);
-		if (Block.blocksList[id] == null)
+		Block block = world.getBlock(x, y, z);
+		if (block == null)
 			return false;
 		else if (fluid.equals(FluidRegistry.LAVA))
-			return id == Block.lavaMoving.blockID || id == Block.lavaStill.blockID;
+			return block == Blocks.lava || block == Blocks.flowing_lava;
 		else if (fluid.equals(FluidRegistry.WATER))
-			return id == Block.waterMoving.blockID || id == Block.waterStill.blockID;
+			return block == Blocks.water || block == Blocks.flowing_water;
 		else
-			return id == fluid.getBlockID();
+			return block == fluid.getBlock();
 	}
 }

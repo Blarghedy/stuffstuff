@@ -4,37 +4,39 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.util.Icon;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
-import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.common.util.ForgeDirection;
 import stuffstuff.stuffstuff.StuffStuff;
 import stuffstuff.stuffstuff.info.BlockInfo;
 
 public class BlockPlaidGrass extends Block
 {
-	private Icon[] sideIcons;
-	private Icon[] topIcons;
-	private Icon sideSnowIcon;
+	private IIcon[] sideIcons;
+	private IIcon[] topIcons;
+	private IIcon sideSnowIcon;
 
-	public BlockPlaidGrass(int id)
+	public BlockPlaidGrass()
 	{
-		super(id, Material.grass);
+		super(Material.grass);
 		setCreativeTab(StuffStuff.tabPlaidStuff);
-		setStepSound(soundGrassFootstep);
+		setStepSound(soundTypeGrass);
 		setHardness(.7F);
-		setUnlocalizedName(BlockInfo.PLAID_GRASS_UNLOCALIZED_NAME);
+		setBlockName(BlockInfo.PLAID_GRASS_UNLOCALIZED_NAME);
 		setTickRandomly(true);
 	}
 
 	@Override
-	public void registerIcons(IconRegister register)
+	public void registerBlockIcons(IIconRegister register)
 	{
-		sideIcons = new Icon[BlockInfo.PLAID_GRASS_SIDE_TEXTURES.length];
-		topIcons = new Icon[BlockInfo.PLAID_GRASS_TOP_TEXTURES.length];
+		sideIcons = new IIcon[BlockInfo.PLAID_GRASS_SIDE_TEXTURES.length];
+		topIcons = new IIcon[BlockInfo.PLAID_GRASS_TOP_TEXTURES.length];
 
 		sideSnowIcon = register.registerIcon(BlockInfo.TEXTURE_LOCATION + ":" + BlockInfo.PLAID_GRASS_SIDE_SNOW_TEXTURE);
 
@@ -50,7 +52,7 @@ public class BlockPlaidGrass extends Block
 	}
 
 	@Override
-	public Icon getIcon(int side, int meta)
+	public IIcon getIcon(int side, int meta)
 	{
 		ForgeDirection face = ForgeDirection.getOrientation(side);
 		if (face == ForgeDirection.UP)
@@ -60,7 +62,7 @@ public class BlockPlaidGrass extends Block
 	}
 
 	@Override
-	public Icon getBlockTexture(IBlockAccess blockAccess, int x, int y, int z, int side)
+	public IIcon getIcon(IBlockAccess blockAccess, int x, int y, int z, int side)
 	{
 		ForgeDirection face = ForgeDirection.getOrientation(side);
 		PlaidColor color = PlaidColor.getPlaidColorFromPos(x, y, z);
@@ -70,9 +72,9 @@ public class BlockPlaidGrass extends Block
 			case UP:
 				return topIcons[color.ordinal()];
 			case DOWN: // just need vanilla dirt texture
-				return Block.grass.getBlockTexture(blockAccess, x, y, z, side);
+				return Blocks.grass.getIcon(blockAccess, x, y, z, side);
 			default: // all 4 sides
-				Material mat = blockAccess.getBlockMaterial(x, y + 1, z);
+				Material mat = blockAccess.getBlock(x, y + 1, z).getMaterial();
 				if (mat == Material.snow || mat == Material.craftedSnow)
 					return sideSnowIcon;
 				else
@@ -87,7 +89,7 @@ public class BlockPlaidGrass extends Block
 		{
 			if (world.getBlockLightValue(x, y + 1, z) < 4 && world.getBlockLightOpacity(x, y + 1, z) > 2)
 			{
-				world.setBlock(x, y, z, Blocks.blockPlaidDirt.blockID);
+				world.setBlock(x, y, z, BlocksStuff.blockPlaidDirt);
 			}
 			else if (world.getBlockLightValue(x, y + 1, z) > 9)
 			{
@@ -114,24 +116,23 @@ public class BlockPlaidGrass extends Block
 				// We really need a way to encourage it to grow up/down, so this does that.
 				newy = y + rand.nextInt(3) - 1;
 
-				if ((world.getBlockId(newx, newy, newz) == Block.dirt.blockID || world.getBlockId(newx, newy, newz) == Blocks.blockPlaidDirt.blockID) && world.getBlockLightValue(newx, newy + 1, newz) > 3 && world.getBlockLightOpacity(newx, newy + 1, newz) < 3)
+				if ((world.getBlock(newx, newy, newz) == Blocks.dirt || world.getBlock(newx, newy, newz) == BlocksStuff.blockPlaidDirt) && world.getBlockLightValue(newx, newy + 1, newz) > 3 && world.getBlockLightOpacity(newx, newy + 1, newz) < 3)
 				{
-					world.setBlock(newx, newy, newz, Blocks.blockPlaidGrass.blockID);
+					world.setBlock(newx, newy, newz, BlocksStuff.blockPlaidGrass);
 				}
 			}
 		}
 	}
 
 	@Override
-	public int idDropped(int par1, Random par2Random, int par3)
+	public Item getItemDropped(int par1, Random rand, int par3)
 	{
-		return Blocks.blockPlaidDirt.idDropped(0, par2Random, par3);
+		return Item.getItemFromBlock(BlocksStuff.blockPlaidDirt);
 	}
 
 	@Override
-	public boolean canSustainPlant(World world, int x, int y, int z, ForgeDirection direction, IPlantable plant)
+	public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection direction, IPlantable plant)
 	{
-		int plantID = plant.getPlantID(world, x, y + 1, z);
 		EnumPlantType plantType = plant.getPlantType(world, x, y + 1, z);
 
 		if (plantType == EnumPlantType.Plains)
@@ -149,6 +150,6 @@ public class BlockPlaidGrass extends Block
 	@Override
 	public void onPlantGrow(World world, int x, int y, int z, int sourceX, int sourceY, int sourceZ)
 	{
-		world.setBlock(x, y, z, Blocks.blockPlaidDirt.blockID);
+		world.setBlock(x, y, z, BlocksStuff.blockPlaidDirt);
 	}
 }

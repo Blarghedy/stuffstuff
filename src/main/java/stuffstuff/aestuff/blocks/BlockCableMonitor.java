@@ -9,9 +9,9 @@ import net.minecraft.world.World;
 public class BlockCableMonitor extends Block implements ITileEntityProvider
 {
 
-	public BlockCableMonitor(int par1, Material par2Material)
+	public BlockCableMonitor(Material material)
 	{
-		super(par1, par2Material);
+		super(material);
 	}
 
 	/**
@@ -19,8 +19,9 @@ public class BlockCableMonitor extends Block implements ITileEntityProvider
 	 */
 
 	@Override
-	public TileEntity createNewTileEntity(World world)
+	public TileEntity createNewTileEntity(World world, int meta)
 	{
+		// TODO Auto-generated method stub
 		return null;
 	}
 

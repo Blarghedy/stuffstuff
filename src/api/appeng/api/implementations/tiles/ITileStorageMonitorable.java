@@ -1,6 +1,6 @@
 package appeng.api.implementations.tiles;
 
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import appeng.api.storage.IStorageMonitorable;
 
 /**

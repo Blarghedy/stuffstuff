@@ -1,25 +1,29 @@
 package stuffstuff.stuffstuff.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.BlockTallGrass;
+import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
 import stuffstuff.stuffstuff.StuffStuff;
 import stuffstuff.stuffstuff.info.BlockInfo;
-import net.minecraft.block.BlockTallGrass;
-import net.minecraft.util.Icon;
-import net.minecraft.world.IBlockAccess;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockPlaidTallGrass extends BlockTallGrass
 {
-	public BlockPlaidTallGrass(int id)
+	public BlockPlaidTallGrass()
 	{
-		super(id);
 		setCreativeTab(StuffStuff.tabPlaidStuff);
-		setUnlocalizedName(BlockInfo.PLAID_TALL_GRASS_UNLOCALIZED_NAME);
-		setStepSound(soundGrassFootstep);
+		setStepSound(soundTypeGrass);
 	}
 
 	@Override
-	public Icon getIcon(int par1, int par2)
+	public String getUnlocalizedName()
+	{
+		return BlockInfo.PLAID_TALL_GRASS_UNLOCALIZED_NAME;
+	}
+
+	@Override
+	public IIcon getIcon(int par1, int par2)
 	{
 		// use the actual grass icon instead of the shrub, etc.
 		return super.getIcon(par1, 1);

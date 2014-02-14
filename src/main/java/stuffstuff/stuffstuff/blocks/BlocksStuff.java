@@ -2,9 +2,7 @@ package stuffstuff.stuffstuff.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStairs;
-
-import org.bouncycastle.asn1.eac.BidirectionalMap;
-
+import net.minecraft.init.Blocks;
 import stuffstuff.stuffstuff.blocks.doors.BlockFluidStuffDoor;
 import stuffstuff.stuffstuff.blocks.doors.BlockLavaStuffDoor;
 import stuffstuff.stuffstuff.blocks.doors.BlockStuffDoor;
@@ -25,9 +23,8 @@ import stuffstuff.stuffstuff.blocks.stairs.BlockSilverfishStuffStairs;
 import stuffstuff.stuffstuff.blocks.stairs.BlockStuffStairs;
 import stuffstuff.stuffstuff.info.BlockInfo;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 
-public class Blocks
+public class BlocksStuff
 {
 	// public static Block blockBlockPlacer;
 	public static Block blockPlaidPlank;
@@ -83,75 +80,73 @@ public class Blocks
 	public static BlockStuffDoor blockDiamondDoor;
 	public static BlockStuffDoor blockPlaidPlankDoor;
 
-	protected static BidirectionalMap slabs;
-
 	public static void init()
 	{
-		blockPlaidPlank = new BlockPlaidPlank(BlockInfo.PLAID_PLANK_ID);
-		blockPlaidLog = new BlockPlaidLog(BlockInfo.PLAID_LOG_ID);
-		blockPlaidSapling = new BlockPlaidSapling(BlockInfo.PLAID_SAPLING_ID);
-		blockPlaidGrass = new BlockPlaidGrass(BlockInfo.PLAID_GRASS_ID);
-		blockPlaidLeaves = new BlockPlaidLeaves(BlockInfo.PLAID_LEAVES_ID);
-		blockPlaidTallGrass = new BlockPlaidTallGrass(BlockInfo.PLAID_TALL_GRASS_ID);
+		blockPlaidPlank = new BlockPlaidPlank();
+		blockPlaidLog = new BlockPlaidLog();
+		blockPlaidSapling = new BlockPlaidSapling();
+		blockPlaidGrass = new BlockPlaidGrass();
+		blockPlaidLeaves = new BlockPlaidLeaves();
+		blockPlaidTallGrass = new BlockPlaidTallGrass();
 
-		blockPlaidSand = new BlockPlaidSand(BlockInfo.PLAID_SAND_ID);
-		blockPlaidGravel = new BlockPlaidGravel(BlockInfo.PLAID_GRAVEL_ID);
-		blockPlaidCobble = new BlockPlaidCobblestone(BlockInfo.PLAID_COBBLESTONE_ID);
-		blockPlaidStone = new BlockPlaidStone(BlockInfo.PLAID_STONE_ID);
-		blockPlaidDirt = new BlockPlaidDirt(BlockInfo.PLAID_DIRT_ID);
-		blockPlaidStoneBrick = new BlockPlaidStoneBrick(BlockInfo.PLAID_STONE_BRICK_ID);
-		blockPlaidGlass = new BlockPlaidGlass(BlockInfo.PLAID_GLASS_ID);
+		blockPlaidSand = new BlockPlaidSand();
+		blockPlaidGravel = new BlockPlaidGravel();
+		blockPlaidCobble = new BlockPlaidCobblestone();
+		blockPlaidStone = new BlockPlaidStone();
+		blockPlaidDirt = new BlockPlaidDirt();
+		blockPlaidStoneBrick = new BlockPlaidStoneBrick();
+		blockPlaidGlass = new BlockPlaidGlass();
 
 		Block[] stoneBlocks = {blockPlaidStone, blockPlaidCobble, blockPlaidStoneBrick};
 		Block[] woodBlocks = {blockPlaidPlank};
-		Block[] logBlocks = {blockPlaidLog, blockPlaidLog, blockPlaidLog, blockPlaidLog, Block.wood, Block.wood, Block.wood, Block.wood};
+		Block[] logBlocks = {blockPlaidLog, blockPlaidLog, blockPlaidLog, blockPlaidLog, Blocks.log, Blocks.log, Blocks.log, Blocks.log};
 		int[] logsMeta = {0, 1, 2, 3, 0, 1, 2, 3};
-		Block[] redstone = {Block.blockRedstone};
-		Block[] water = {Block.waterStill};
-		Block[] lava = {Block.lavaStill};
-		Block[] silverfish = {Block.silverfish, Block.cobblestoneMossy};
+		Block[] redstone = {Blocks.redstone_block};
+		Block[] water = {Blocks.water};
+		Block[] lava = {Blocks.lava};
+		Block[] silverfish = {Blocks.monster_egg, Blocks.mossy_cobblestone};
 
-		blockStoneSlab = new BlockStuffSlab(BlockInfo.STONE_SLAB_ID, BlockInfo.STONE_SLAB_DOUBLE_ID, false, stoneBlocks);
-		blockStoneDoubleSlab = new BlockStuffSlab(BlockInfo.STONE_SLAB_DOUBLE_ID, BlockInfo.STONE_SLAB_ID, true, stoneBlocks);
-		blockWoodSlab = new BlockStuffSlab(BlockInfo.WOOD_SLAB_ID, BlockInfo.WOOD_SLAB_DOUBLE_ID, false, woodBlocks);
-		blockWoodDoubleSlab = new BlockStuffSlab(BlockInfo.WOOD_SLAB_DOUBLE_ID, BlockInfo.WOOD_SLAB_ID, true, woodBlocks);
-		blockLogSlab = new BlockStuffSlab(BlockInfo.LOG_SLAB_ID, BlockInfo.LOG_SLAB_DOUBLE_ID, false, logBlocks, false, logsMeta);
-		blockLogDoubleSlab = new BlockStuffSlab(BlockInfo.LOG_SLAB_DOUBLE_ID, BlockInfo.LOG_SLAB_ID, true, logBlocks, false, logsMeta);
-		blockRedstoneSlab = new BlockRedstoneStuffSlab(BlockInfo.REDSTONE_SLAB_ID, BlockInfo.REDSTONE_SLAB_DOUBLE_ID, false, redstone, false, null);
-		blockRedstoneDoubleSlab = new BlockRedstoneStuffSlab(BlockInfo.REDSTONE_SLAB_DOUBLE_ID, BlockInfo.REDSTONE_SLAB_ID, true, redstone, false, null);
-		blockWaterSlab = new BlockFluidStuffSlab(BlockInfo.WATER_SLAB_ID, BlockInfo.WATER_SLAB_DOUBLE_ID, false, water, false, null);
-		blockWaterDoubleSlab = new BlockFluidStuffSlab(BlockInfo.WATER_SLAB_DOUBLE_ID, BlockInfo.WATER_SLAB_ID, true, water, false, null);
-		blockLavaSlab = new BlockLavaStuffSlab(BlockInfo.LAVA_SLAB_ID, BlockInfo.LAVA_SLAB_DOUBLE_ID, false, lava, false, null);
-		blockLavaDoubleSlab = new BlockLavaStuffSlab(BlockInfo.LAVA_SLAB_DOUBLE_ID, BlockInfo.LAVA_SLAB_ID, true, lava, false, null);
-		blockSilverfishSlab = new BlockSilverfishStuffSlab(BlockInfo.SILVERFISH_SLAB_ID, BlockInfo.SILVERFISH_SLAB_DOUBLE_ID, false, silverfish, false, null);
-		blockSilverfishDoubleSlab = new BlockSilverfishStuffSlab(BlockInfo.SILVERFISH_SLAB_DOUBLE_ID, BlockInfo.SILVERFISH_SLAB_ID, true, silverfish, false, null);
+		blockStoneSlab = new BlockStuffSlab(false, stoneBlocks);
+		blockStoneDoubleSlab = new BlockStuffSlab(true, stoneBlocks);
+		blockWoodSlab = new BlockStuffSlab(false, woodBlocks);
+		blockWoodDoubleSlab = new BlockStuffSlab(true, woodBlocks);
+		blockLogSlab = new BlockStuffSlab(false, logBlocks, false, logsMeta);
+		blockLogDoubleSlab = new BlockStuffSlab(true, logBlocks, false, logsMeta);
+		blockRedstoneSlab = new BlockRedstoneStuffSlab(false, redstone, false, null);
+		blockRedstoneDoubleSlab = new BlockRedstoneStuffSlab(true, redstone, false, null);
+		blockWaterSlab = new BlockFluidStuffSlab(false, water, false, null);
+		blockWaterDoubleSlab = new BlockFluidStuffSlab(true, water, false, null);
+		blockLavaSlab = new BlockLavaStuffSlab(false, lava, false, null);
+		blockLavaDoubleSlab = new BlockLavaStuffSlab(true, lava, false, null);
+		blockSilverfishSlab = new BlockSilverfishStuffSlab(false, silverfish, false, null);
+		blockSilverfishDoubleSlab = new BlockSilverfishStuffSlab(true, silverfish, false, null);
 
-		blockPlaidStoneStairs = new BlockStuffStairs(BlockInfo.PLAID_STONE_STAIRS_ID, blockPlaidStone);
-		blockPlaidCobblestoneStairs = new BlockStuffStairs(BlockInfo.PLAID_COBBLESTONE_STAIRS_ID, blockPlaidCobble);
-		blockPlaidStoneBrickStairs = new BlockStuffStairs(BlockInfo.PLAID_STONE_BRICK_STAIRS_ID, blockPlaidStoneBrick);
-		blockPlaidPlankStairs = new BlockStuffStairs(BlockInfo.PLAID_PLANK_STAIRS_ID, blockPlaidPlank);
+		blockPlaidStoneStairs = new BlockStuffStairs(blockPlaidStone);
+		blockPlaidCobblestoneStairs = new BlockStuffStairs(blockPlaidCobble);
+		blockPlaidStoneBrickStairs = new BlockStuffStairs(blockPlaidStoneBrick);
+		blockPlaidPlankStairs = new BlockStuffStairs(blockPlaidPlank);
 
-		blockBluePlaidLogStairs = new BlockStuffStairs(BlockInfo.BLUE_PLAID_LOG_STAIRS_ID, blockPlaidLog, 0, false);
-		blockGreenPlaidLogStairs = new BlockStuffStairs(BlockInfo.GREEN_PLAID_LOG_STAIRS_ID, blockPlaidLog, 1, false);
-		blockRedPlaidLogStairs = new BlockStuffStairs(BlockInfo.RED_PLAID_LOG_STAIRS_ID, blockPlaidLog, 2, false);
-		blockWhitePlaidLogStairs = new BlockStuffStairs(BlockInfo.WHITE_PLAID_LOG_STAIRS_ID, blockPlaidLog, 3, false);
+		blockBluePlaidLogStairs = new BlockStuffStairs(blockPlaidLog, 0, false);
+		blockGreenPlaidLogStairs = new BlockStuffStairs(blockPlaidLog, 1, false);
+		blockRedPlaidLogStairs = new BlockStuffStairs(blockPlaidLog, 2, false);
+		blockWhitePlaidLogStairs = new BlockStuffStairs(blockPlaidLog, 3, false);
 
-		blockOakLogStairs = new BlockStuffStairs(BlockInfo.OAK_LOG_STAIRS_ID, Block.wood, 0, false);
-		blockSpruceLogStairs = new BlockStuffStairs(BlockInfo.SPRUCE_LOG_STAIRS_ID, Block.wood, 1, false);
-		blockBirchLogStairs = new BlockStuffStairs(BlockInfo.BIRCH_LOG_STAIRS_ID, Block.wood, 2, false);
-		blockJungleLogStairs = new BlockStuffStairs(BlockInfo.JUNGLE_LOG_STAIRS_ID, Block.wood, 3, false);
+		blockOakLogStairs = new BlockStuffStairs(Blocks.log, 0, false);
+		blockSpruceLogStairs = new BlockStuffStairs(Blocks.log, 1, false);
+		blockBirchLogStairs = new BlockStuffStairs(Blocks.log, 2, false);
+		blockJungleLogStairs = new BlockStuffStairs(Blocks.log, 3, false);
 
-		blockWaterStairs = new BlockFluidStuffStairs(BlockInfo.WATER_STAIRS_ID, Block.waterStill, 0, false);
-		blockLavaStairs = new BlockLavaStuffStairs(BlockInfo.LAVA_STAIRS_ID, Block.lavaStill, 0, false);
-		blockRedstoneStairs = new BlockRedstoneStuffStairs(BlockInfo.REDSTONE_STAIRS_ID, Block.blockRedstone, 0, false);
-		blockSilverfishStairs = new BlockSilverfishStuffStairs(BlockInfo.SILVERFISH_STAIRS_ID, Block.silverfish, 0, false);
-		blockIronOreStairs = new BlockStuffStairs(BlockInfo.IRON_ORE_STAIRS_ID, Block.oreIron);
+		blockWaterStairs = new BlockFluidStuffStairs(Blocks.water, 0, false);
+		blockLavaStairs = new BlockLavaStuffStairs(Blocks.lava, 0, false);
+		blockRedstoneStairs = new BlockRedstoneStuffStairs(Blocks.redstone_block, 0, false);
+		blockSilverfishStairs = new BlockSilverfishStuffStairs(Blocks.monster_egg, 0, false);
+		blockIronOreStairs = new BlockStuffStairs(Blocks.iron_ore);
 
-		blockWaterDoor = new BlockFluidStuffDoor(BlockInfo.WATER_DOOR_ID, Block.waterStill, 0, false);
-		blockLavaDoor = new BlockLavaStuffDoor(BlockInfo.LAVA_DOOR_ID, Block.lavaStill, 0, false);
-		blockDiamondDoor = new BlockStuffDoor(BlockInfo.DIAMOND_DOOR_ID, Block.blockDiamond);
-		blockIronOreDoor = new BlockStuffDoor(BlockInfo.IRON_ORE_DOOR_ID, Block.oreIron);
-		blockPlaidPlankDoor = new BlockStuffDoor(BlockInfo.PLAID_PLANK_DOOR_ID, blockPlaidPlank, 0, true);
+		blockWaterDoor = new BlockFluidStuffDoor(Blocks.water, 0, false);
+		blockLavaDoor = new BlockLavaStuffDoor(Blocks.lava, 0, false);
+		blockDiamondDoor = new BlockStuffDoor(Blocks.diamond_block);
+		blockIronOreDoor = new BlockStuffDoor(Blocks.iron_ore);
+		blockPlaidPlankDoor = new BlockStuffDoor(blockPlaidPlank, 0, true);
 
 		// register normal blocks
 		GameRegistry.registerBlock(blockPlaidPlank, BlockInfo.PLAID_PLANK_NAME);
@@ -236,28 +231,25 @@ public class Blocks
 
 	public static void addNames()
 	{
-		// LanguageRegistry.addName(blockBlockPlacer, BlockInfo.BLOCK_PLACER_NAME);
-		LanguageRegistry.addName(blockPlaidPlank, BlockInfo.PLAID_PLANK_NAME);
-		LanguageRegistry.addName(blockPlaidLog, BlockInfo.PLAID_LOG_NAME);
-		LanguageRegistry.addName(blockPlaidSapling, BlockInfo.PLAID_SAPLING_NAME);
-		LanguageRegistry.addName(blockPlaidGrass, BlockInfo.PLAID_GRASS_NAME);
-		LanguageRegistry.addName(blockPlaidLeaves, BlockInfo.PLAID_LEAVES_NAME);
-		LanguageRegistry.addName(blockPlaidTallGrass, BlockInfo.PLAID_TALL_GRASS_NAME);
-
-		LanguageRegistry.addName(blockPlaidSand, BlockInfo.PLAID_SAND_NAME);
-		LanguageRegistry.addName(blockPlaidGravel, BlockInfo.PLAID_GRAVEL_NAME);
-		LanguageRegistry.addName(blockPlaidCobble, BlockInfo.PLAID_COBBLESTONE_NAME);
-		LanguageRegistry.addName(blockPlaidStone, BlockInfo.PLAID_STONE_NAME);
-		LanguageRegistry.addName(blockPlaidDirt, BlockInfo.PLAID_DIRT_NAME);
-		LanguageRegistry.addName(blockPlaidStoneBrick, BlockInfo.PLAID_STONE_BRICK_NAME);
-		LanguageRegistry.addName(blockPlaidGlass, BlockInfo.PLAID_GLASS_NAME);
-
-		//		LanguageRegistry.addName(objectToName, name); // slab stuff
-
-		LanguageRegistry.addName(blockPlaidStoneStairs, BlockInfo.PLAID_STONE_STAIRS_NAME);
-		LanguageRegistry.addName(blockPlaidCobblestoneStairs, BlockInfo.PLAID_COBBLESTONE_STAIRS_NAME);
-		LanguageRegistry.addName(blockPlaidStoneBrickStairs, BlockInfo.PLAID_STONE_BRICK_STAIRS_NAME);
-		LanguageRegistry.addName(blockPlaidPlankStairs, BlockInfo.PLAID_PLANK_NAME);
+		//		LanguageRegistry.addName(blockPlaidPlank, BlockInfo.PLAID_PLANK_NAME);
+		//		LanguageRegistry.addName(blockPlaidLog, BlockInfo.PLAID_LOG_NAME);
+		//		LanguageRegistry.addName(blockPlaidSapling, BlockInfo.PLAID_SAPLING_NAME);
+		//		LanguageRegistry.addName(blockPlaidGrass, BlockInfo.PLAID_GRASS_NAME);
+		//		LanguageRegistry.addName(blockPlaidLeaves, BlockInfo.PLAID_LEAVES_NAME);
+		//		LanguageRegistry.addName(blockPlaidTallGrass, BlockInfo.PLAID_TALL_GRASS_NAME);
+		//
+		//		LanguageRegistry.addName(blockPlaidSand, BlockInfo.PLAID_SAND_NAME);
+		//		LanguageRegistry.addName(blockPlaidGravel, BlockInfo.PLAID_GRAVEL_NAME);
+		//		LanguageRegistry.addName(blockPlaidCobble, BlockInfo.PLAID_COBBLESTONE_NAME);
+		//		LanguageRegistry.addName(blockPlaidStone, BlockInfo.PLAID_STONE_NAME);
+		//		LanguageRegistry.addName(blockPlaidDirt, BlockInfo.PLAID_DIRT_NAME);
+		//		LanguageRegistry.addName(blockPlaidStoneBrick, BlockInfo.PLAID_STONE_BRICK_NAME);
+		//		LanguageRegistry.addName(blockPlaidGlass, BlockInfo.PLAID_GLASS_NAME);
+		//
+		//		LanguageRegistry.addName(blockPlaidStoneStairs, BlockInfo.PLAID_STONE_STAIRS_NAME);
+		//		LanguageRegistry.addName(blockPlaidCobblestoneStairs, BlockInfo.PLAID_COBBLESTONE_STAIRS_NAME);
+		//		LanguageRegistry.addName(blockPlaidStoneBrickStairs, BlockInfo.PLAID_STONE_BRICK_STAIRS_NAME);
+		//		LanguageRegistry.addName(blockPlaidPlankStairs, BlockInfo.PLAID_PLANK_NAME);
 	}
 
 	public static void registerRecipes()

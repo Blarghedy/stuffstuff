@@ -1,33 +1,38 @@
 package stuffstuff.stuffstuff.blocks;
 
-import stuffstuff.stuffstuff.StuffStuff;
-import stuffstuff.stuffstuff.info.BlockInfo;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.util.Icon;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.util.IIcon;
+import stuffstuff.stuffstuff.StuffStuff;
+import stuffstuff.stuffstuff.info.BlockInfo;
 
 public class BlockPlaidStoneBrick extends Block
 {
 
-	public BlockPlaidStoneBrick(int id)
+	public BlockPlaidStoneBrick()
 	{
-		super(id, Material.rock);
+		super(Material.rock);
 		setCreativeTab(StuffStuff.tabPlaidStuff);
 		setHardness(1.5F);
 		setResistance(10);
-		setStepSound(soundStoneFootstep);
-		setUnlocalizedName(BlockInfo.PLAID_STONE_BRICK_UNLOCALIZED_NAME);
+		setStepSound(soundTypeStone);
 	}
-	
+
 	@Override
-	public void registerIcons(IconRegister register)
+	public String getUnlocalizedName()
+	{
+		return BlockInfo.PLAID_STONE_BRICK_UNLOCALIZED_NAME;
+	}
+
+	@Override
+	public void registerBlockIcons(IIconRegister register)
 	{
 		blockIcon = register.registerIcon(BlockInfo.TEXTURE_LOCATION + ":" + BlockInfo.PLAID_STONE_BRICK_TEXTURE);
 	}
-	
+
 	@Override
-	public Icon getIcon(int par1, int par2)
+	public IIcon getIcon(int par1, int par2)
 	{
 		return blockIcon;
 	}

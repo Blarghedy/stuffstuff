@@ -16,9 +16,9 @@ public class ItemStuffSlab extends ItemSlab
 		doubleSlab = doub;
 	}
 
-	public ItemStuffSlab(int id)
+	public ItemStuffSlab(Block block)
 	{
-		super(id, singleSlab, doubleSlab, id == doubleSlab.blockID);
+		super(block, singleSlab, doubleSlab, block == doubleSlab);
 	}
 
 	@Override
@@ -30,8 +30,8 @@ public class ItemStuffSlab extends ItemSlab
 	@Override
 	public String getUnlocalizedName(ItemStack itemStack)
 	{
-		BlockStuffSlab slab = (BlockStuffSlab)Block.blocksList[itemStack.itemID];
+		BlockStuffSlab slab = (BlockStuffSlab)Block.getBlockFromItem(itemStack.getItem());
 
-		return super.getUnlocalizedName() + "." + new StringBuilder().append(slab.getFullSlabName(itemStack.getItemDamage())).toString();
+		return super.getUnlocalizedName() + "." + new StringBuilder().append(slab.func_150002_b(itemStack.getItemDamage())).toString();
 	}
 }

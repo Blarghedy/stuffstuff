@@ -1,26 +1,26 @@
 package stuffstuff.stuffstuff.items.handler;
 
 import java.util.ArrayList;
-import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.PriorityQueue;
 
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.common.DimensionManager;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import stuffstuff.stuffstuff.helper.PQNode;
 import stuffstuff.stuffstuff.helper.PQNodeComparitor;
 import stuffstuff.stuffstuff.helper.Point;
 import stuffstuff.stuffstuff.info.ItemInfo;
-import stuffstuff.stuffstuff.info.ModInfo;
 import stuffstuff.stuffstuff.items.BlockPlaceMode;
 import stuffstuff.stuffstuff.items.ItemBlockPlacer;
-import stuffstuff.stuffstuff.items.Items;
-import cpw.mods.fml.common.ITickHandler;
-import cpw.mods.fml.common.TickType;
+import stuffstuff.stuffstuff.items.ItemsStuff;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.TickEvent;
 
-public class ItemBlockPlacerHandler implements ITickHandler
+public class ItemBlockPlacerHandler
 {
 	private HashMap<ItemStack, PriorityQueue<PQNode>> map;
 
@@ -136,24 +136,23 @@ public class ItemBlockPlacerHandler implements ITickHandler
 						{
 							priority += inDepth * 15;
 						}
-						queue.add(new PQNode(priority, new Point(i + offsetX * inDepth, j + offsetY * inDepth, k + offsetZ * inDepth, dimID), Items.itemBlockPlacer.getBlockPlaceMode(itemstack)));
+						queue.add(new PQNode(priority, new Point(i + offsetX * inDepth, j + offsetY * inDepth, k + offsetZ * inDepth, dimID), ItemsStuff.itemBlockPlacer.getBlockPlaceMode(itemstack)));
 					}
 				}
 			}
 		}
 	}
 
-	/**
-	 * {@link ITickHandler} implementation
-	 */
-	@Override
-	public void tickStart(EnumSet<TickType> type, Object... tickData)
-	{
+	//	@Override
+	//	public void tickStart(EnumSet<TickType> type, Object... tickData)
+	//	{
+	//
+	//	}
 
-	}
 
-	@Override
-	public void tickEnd(EnumSet<TickType> type, Object... tickData)
+	@SubscribeEvent
+	public void tickEnd(TickEvent.ClientTickEvent e)
+	//	public void tickEnd(EnumSet<TickType> type, Object... tickData)
 	{
 		ArrayList<ItemStack> delQueue = new ArrayList<ItemStack>();
 		World world;
@@ -185,16 +184,16 @@ public class ItemBlockPlacerHandler implements ITickHandler
 					case PROJECTION:
 					case PILLAR:
 					case EXTENSION:
-						int blockID = world.getBlockId(node.point.x, node.point.y, node.point.z);
-						if (blockID == 0)
+						Block block = world.getBlock(node.point.x, node.point.y, node.point.z);
+						if (block == null || block == Blocks.air)
 						{
-							world.setBlock(node.point.x, node.point.y, node.point.z, 1);
+							world.setBlock(node.point.x, node.point.y, node.point.z, Blocks.stone, 0, 2);
 						}
 						break;
 					case REPLACE:
 						// int blockID = world.getBlockId(node.point.x, node.point.y, node.point.z);
 						// if (blockID == 0)
-						world.setBlock(node.point.x, node.point.y, node.point.z, 1);
+						world.setBlock(node.point.x, node.point.y, node.point.z, Blocks.stone, 0, 2);
 
 				}
 				i++;
@@ -208,17 +207,17 @@ public class ItemBlockPlacerHandler implements ITickHandler
 		}
 	}
 
-	@Override
-	public EnumSet<TickType> ticks()
-	{
-		// TODO server this nonsense
-		return EnumSet.of(TickType.CLIENT);
-	}
+	//	@Override
+	//	public EnumSet<TickType> ticks()
+	//	{
+	//		// TODO server this nonsense
+	//		return EnumSet.of(TickType.CLIENT);
+	//	}
 
-	@Override
-	public String getLabel()
-	{
-		return ModInfo.ID + ": " + this.getClass().getSimpleName();
-	}
+	//	@Override
+	//	public String getLabel()
+	//	{
+	//		return ModInfo.ID + ": " + this.getClass().getSimpleName();
+	//	}
 
 }

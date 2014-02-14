@@ -4,38 +4,45 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.util.Icon;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.item.Item;
+import net.minecraft.util.IIcon;
 import stuffstuff.stuffstuff.StuffStuff;
 import stuffstuff.stuffstuff.info.BlockInfo;
 
 public class BlockPlaidStone extends Block
 {
-	public BlockPlaidStone(int id)
+	public BlockPlaidStone()
 	{
-		super(id, Material.rock);
+		super(Material.rock);
 		setCreativeTab(StuffStuff.tabPlaidStuff);
 		setHardness(1.5F);
 		setResistance(10);
-		setStepSound(soundStoneFootstep);
-		setUnlocalizedName(BlockInfo.PLAID_STONE_UNLOCALIZED_NAME);
+		setStepSound(soundTypeStone);
 	}
 
 	@Override
-	public Icon getIcon(int par1, int par2)
+	public String getUnlocalizedName()
+	{
+		// TODO Auto-generated method stub
+		return BlockInfo.PLAID_STONE_UNLOCALIZED_NAME;
+	}
+
+	@Override
+	public IIcon getIcon(int par1, int par2)
 	{
 		return blockIcon;
 	}
 
 	@Override
-	public void registerIcons(IconRegister register)
+	public void registerBlockIcons(IIconRegister register)
 	{
 		blockIcon = register.registerIcon(BlockInfo.TEXTURE_LOCATION + ":" + BlockInfo.PLAID_STONE_TEXTURE);
 	}
-	
+
 	@Override
-	public int idDropped(int par1, Random par2Random, int par3)
+	public Item getItemDropped(int par1, Random par2Random, int par3)
 	{
-		return Blocks.blockPlaidCobble.idDropped(0, par2Random, par3);
+		return BlocksStuff.blockPlaidCobble.getItemDropped(0, par2Random, par3);
 	}
 }

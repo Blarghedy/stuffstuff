@@ -13,9 +13,6 @@ import stuffstuff.stuffstuff.handler.PotionEventHandler;
 import stuffstuff.stuffstuff.handler.RenderWorldLastHandler;
 import stuffstuff.stuffstuff.handler.TextureStitchEventHandler;
 import stuffstuff.stuffstuff.handler.helper.KeyBindingHelper;
-import cpw.mods.fml.client.registry.KeyBindingRegistry;
-import cpw.mods.fml.common.registry.TickRegistry;
-import cpw.mods.fml.relauncher.Side;
 
 public class ClientProxy extends CommonProxy
 {
@@ -36,8 +33,7 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void registerHandlers()
 	{
-		KeyBindingRegistry.registerKeyBinding(new KeyBindingHandler());
-
+		MinecraftForge.EVENT_BUS.register(new KeyBindingHandler());
 		MinecraftForge.EVENT_BUS.register(new DrawBlockHighlightHandler());
 		MinecraftForge.EVENT_BUS.register(new RenderWorldLastHandler());
 		MinecraftForge.EVENT_BUS.register(new SoundHandler());
@@ -46,15 +42,15 @@ public class ClientProxy extends CommonProxy
 		MinecraftForge.EVENT_BUS.register(new BucketEventHandler());
 		MinecraftForge.EVENT_BUS.register(new TextureStitchEventHandler());
 		MinecraftForge.EVENT_BUS.register(new Achievements());
+		MinecraftForge.EVENT_BUS.register(StuffStuff.itemBlockPlacerHandler);
 
-		TickRegistry.registerTickHandler(StuffStuff.itemBlockPlacerHandler, Side.CLIENT);
 		System.out.println("Client handlers registered.");
 	}
 
 	@Override
 	public void setKeyBinding(String name, int value)
 	{
-		KeyBindingHelper.addKeyBinding(name, value);
+		KeyBindingHelper.addKeyBinding(name, value, "Stuff Stuff Keys");
 		KeyBindingHelper.addIsRepeating(false);
 	}
 }

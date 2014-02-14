@@ -1,6 +1,7 @@
 package appeng.api.storage;
 
-import java.io.DataInputStream;
+import io.netty.buffer.ByteBuf;
+
 import java.io.IOException;
 
 import net.minecraft.item.ItemStack;
@@ -9,6 +10,7 @@ import appeng.api.networking.energy.IEnergySource;
 import appeng.api.networking.security.BaseActionSource;
 import appeng.api.storage.data.IAEFluidStack;
 import appeng.api.storage.data.IAEItemStack;
+import appeng.api.storage.data.IAEStack;
 import appeng.api.storage.data.IItemList;
 
 public interface IStorageHelper
@@ -33,7 +35,7 @@ public interface IStorageHelper
 	/**
 	 * @return a new instance of {@link IItemList}
 	 */
-	IItemList createItemList();
+	<T extends IAEStack> IItemList<T> createItemList();
 
 	/**
 	 * Read a AE Item Stack from a byte stream, returns a AE item stack or null.
@@ -42,21 +44,19 @@ public interface IStorageHelper
 	 * @return
 	 * @throws IOException
 	 */
-	IAEItemStack readItemFromPacket(DataInputStream input) throws IOException;
+	IAEItemStack readItemFromPacket(ByteBuf input) throws IOException;
 
 	/**
-	 * Read a AE Fluid Stack from a byte stream, returns a AE fluid stack or
-	 * null.
+	 * Read a AE Fluid Stack from a byte stream, returns a AE fluid stack or null.
 	 * 
 	 * @param input
 	 * @return
 	 * @throws IOException
 	 */
-	IAEFluidStack readFluidFromPacket(DataInputStream input) throws IOException;
+	IAEFluidStack readFluidFromPacket(ByteBuf input) throws IOException;
 
 	/**
-	 * use energy from energy, to remove request items from cell, at the request
-	 * of src.
+	 * use energy from energy, to remove request items from cell, at the request of src.
 	 * 
 	 * @param energy
 	 * @param cell

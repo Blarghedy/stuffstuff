@@ -12,9 +12,9 @@ import stuffstuff.stuffstuff.player.NotificationHelper;
 public class ItemFluidSmoother extends FluidCleanerBase
 {
 
-	public ItemFluidSmoother(int id)
+	public ItemFluidSmoother()
 	{
-		super(id);
+
 	}
 
 	@Override
@@ -45,7 +45,7 @@ public class ItemFluidSmoother extends FluidCleanerBase
 							if (FluidHelper.isFlowingFluid(world, startx + i, starty + j, startz + k, fluid.getFluid()))
 							{
 								world.setBlockToAir(startx + i, starty + j, startz + k);
-								world.setBlock(startx + i, starty + j, startz + k, fluid.getFluid().getBlockID());
+								world.setBlock(startx + i, starty + j, startz + k, fluid.getFluid().getBlock());
 							}
 						}
 					}

@@ -6,9 +6,9 @@ import net.minecraft.world.IBlockAccess;
 public class BlockRedstoneStuffStairs extends BlockStuffStairs
 {
 
-	public BlockRedstoneStuffStairs(int id, Block modelBlock, int modelMeta, boolean useModelTexture)
+	public BlockRedstoneStuffStairs(Block modelBlock, int modelMeta, boolean useModelTexture)
 	{
-		super(id, modelBlock, modelMeta, useModelTexture);
+		super(modelBlock, modelMeta, useModelTexture);
 	}
 
 	@Override

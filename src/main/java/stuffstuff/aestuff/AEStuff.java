@@ -11,7 +11,6 @@ import stuffstuff.aestuff.parts.Parts;
 import stuffstuff.aestuff.proxy.CommonProxy;
 import stuffstuff.stuffstuff.StuffStuff;
 import stuffstuff.stuffstuff.client.interfaces.GuiHandler;
-import stuffstuff.stuffstuff.network.PacketHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -20,10 +19,9 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkMod;
 
 @Mod(modid = ModInfo.ID, name = ModInfo.NAME, version = ModInfo.VERSION, dependencies = "required-after:stuffstuff;after:appliedenergistics2")
-@NetworkMod(channels = { ModInfo.CHANNEL }, clientSideRequired = true, serverSideRequired = false, packetHandler = PacketHandler.class)
+//@NetworkMod(channels = { ModInfo.CHANNEL }, clientSideRequired = true, serverSideRequired = false, packetHandler = PacketHandler.class)
 public class AEStuff
 {
 	public static CreativeTabs tabAEStuff;

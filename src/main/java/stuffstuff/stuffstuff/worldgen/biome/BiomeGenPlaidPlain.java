@@ -2,14 +2,15 @@ package stuffstuff.stuffstuff.worldgen.biome;
 
 import java.util.Random;
 
-import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeDecorator;
 import net.minecraft.world.biome.BiomeGenPlains;
+import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraft.world.gen.feature.WorldGenLiquids;
 import net.minecraft.world.gen.feature.WorldGenTallGrass;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import stuffstuff.stuffstuff.blocks.Blocks;
+import stuffstuff.stuffstuff.blocks.BlocksStuff;
 import stuffstuff.stuffstuff.fluid.Fluids;
 import stuffstuff.stuffstuff.worldgen.WorldGenPlaidTrees;
 
@@ -21,8 +22,8 @@ public class BiomeGenPlaidPlain extends BiomeGenPlains
 		super(id);
 		setBiomeName("Plaid Plain");
 		//
-		topBlock = (byte)Blocks.blockPlaidGrass.blockID;
-		fillerBlock = (byte)Blocks.blockPlaidDirt.blockID;
+		topBlock = BlocksStuff.blockPlaidGrass;
+		fillerBlock = BlocksStuff.blockPlaidDirt;
 
 		// this.field_76754_C = 5169201; // what
 		// this.minHeight = 0.1F;
@@ -48,7 +49,7 @@ public class BiomeGenPlaidPlain extends BiomeGenPlains
 			x = chunk_X + rand.nextInt(16) + 8;
 			y = rand.nextInt(rand.nextInt(120) + 8);
 			z = chunk_Z + rand.nextInt(16) + 8;
-			new WorldGenLiquids(Fluids.blockFluidPlaidWater.blockID).generate(world, rand, x, y, z);
+			new WorldGenLiquids(Fluids.blockFluidPlaidWater).generate(world, rand, x, y, z);
 		}
 		for (x = chunk_X; x < chunk_X + 16; x++)
 		{
@@ -63,13 +64,13 @@ public class BiomeGenPlaidPlain extends BiomeGenPlains
 					}
 					for (y = ytop; y > 0; y--)
 					{
-						if (world.getBlockId(x, y, z) == Block.stone.blockID)
+						if (world.getBlock(x, y, z) == Blocks.stone)
 						{
-							world.setBlock(x, y, z, Blocks.blockPlaidStone.blockID, 0, 2); // 2 so it doesn't update but sends to client
+							world.setBlock(x, y, z, BlocksStuff.blockPlaidStone, 0, 2); // 2 so it doesn't update but sends to client
 						}
-						else if (world.getBlockId(x, y, z) == Block.waterMoving.blockID || world.getBlockId(x, y, z) == Block.waterStill.blockID)
+						else if (world.getBlock(x, y, z) == Blocks.flowing_water || world.getBlock(x, y, z) == Blocks.water)
 						{
-							world.setBlock(x, y, z, Fluids.blockFluidPlaidWater.blockID, 0, 3);
+							world.setBlock(x, y, z, Fluids.blockFluidPlaidWater, 0, 3);
 						}
 
 					}
@@ -81,18 +82,19 @@ public class BiomeGenPlaidPlain extends BiomeGenPlains
 	@Override
 	public BiomeDecorator createBiomeDecorator()
 	{
-		return new BiomeDecoratorPlaidPlain(this);
+		return new BiomeDecoratorPlaidPlain();
 	}
 
 	@Override
-	public WorldGenerator getRandomWorldGenForTrees(Random par1Random)
+	public WorldGenAbstractTree func_150567_a(Random rand)
 	{
+		// was getRandomWorldGenForTrees I think
 		return worldGeneratorTrees;
 	}
 
 	@Override
 	public WorldGenerator getRandomWorldGenForGrass(Random rand)
 	{
-		return new WorldGenTallGrass(Blocks.blockPlaidTallGrass.blockID, 0);
+		return new WorldGenTallGrass(BlocksStuff.blockPlaidTallGrass, 0);
 	}
 }

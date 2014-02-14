@@ -2,11 +2,13 @@ package stuffstuff.stuffstuff.blocks.items;
 
 import java.util.List;
 
-import stuffstuff.stuffstuff.blocks.BlockPlaidTallGrass;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockTallGrass;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import stuffstuff.stuffstuff.blocks.BlockPlaidTallGrass;
 
 public class ItemPlaidTallGrass extends ItemBlock
 {
@@ -20,9 +22,9 @@ public class ItemPlaidTallGrass extends ItemBlock
 	 * {@link ItemBlock} to add subtypes or extend functionality in some 
 	 * other way.  For example, see {@link ItemPlaidLeaves}.
 	 */
-	public ItemPlaidTallGrass(int par1)
+	public ItemPlaidTallGrass(Block block)
 	{
-		super(par1);
+		super(block);
 		setHasSubtypes(false);
 	}
 
@@ -33,7 +35,7 @@ public class ItemPlaidTallGrass extends ItemBlock
 	}
 
 	@Override
-	public void getSubItems(int par1, CreativeTabs par2CreativeTabs, List par3List)
+	public void getSubItems(Item item, CreativeTabs par2CreativeTabs, List par3List)
 	{
 		par3List.add(new ItemStack(this));
 	}

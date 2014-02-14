@@ -9,57 +9,37 @@ import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.Ev
 import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType.LAPIS;
 import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType.REDSTONE;
 import net.minecraft.world.biome.BiomeDecorator;
-import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraft.world.gen.feature.WorldGenSand;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.OreGenEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
-import stuffstuff.stuffstuff.blocks.Blocks;
+import stuffstuff.stuffstuff.blocks.BlocksStuff;
 
 public class BiomeDecoratorPlaidPlain extends BiomeDecorator
 {
 	private WorldGenMinable plaidStoneGen;
 
-	public BiomeDecoratorPlaidPlain(BiomeGenBase biome)
+	public BiomeDecoratorPlaidPlain()
 	{
-		super(biome);
+		super();
 		// TODO need a custom sand generator
 
 		// plaidStoneGen = new WorldGenMinable(Blocks.blockPlaidStone.blockID, 500, Block.stone.blockID);
 
-		sandGen = new WorldGenSand(7, Blocks.blockPlaidSand.blockID);
-		gravelAsSandGen = new WorldGenSand(6, Blocks.blockPlaidGravel.blockID);
-		dirtGen = new WorldGenMinable(Blocks.blockPlaidDirt.blockID, 32);
-		gravelGen = new WorldGenMinable(Blocks.blockPlaidGravel.blockID, 32);
-		// this.coalGen = new WorldGenMinable(Block.oreCoal.blockID, 16);
-		// this.ironGen = new WorldGenMinable(Block.oreIron.blockID, 8);
-		// this.goldGen = new WorldGenMinable(Block.oreGold.blockID, 8);
-		// this.redstoneGen = new WorldGenMinable(Block.oreRedstone.blockID, 7);
-		// this.diamondGen = new WorldGenMinable(Block.oreDiamond.blockID, 7);
-		// this.lapisGen = new WorldGenMinable(Block.oreLapis.blockID, 6);
+		sandGen = new WorldGenSand(BlocksStuff.blockPlaidSand, 7);
+		gravelAsSandGen = new WorldGenSand(BlocksStuff.blockPlaidGravel, 6);
+		dirtGen = new WorldGenMinable(BlocksStuff.blockPlaidDirt, 32);
+		gravelGen = new WorldGenMinable(BlocksStuff.blockPlaidGravel, 32);
 		generateLakes = false;
-		this.biome = biome;
-		// this.plantYellowGen = new WorldGenFlowers(Block.plantYellow.blockID);
-		// this.plantRedGen = new WorldGenFlowers(Block.plantRed.blockID);
-		// this.mushroomBrownGen = new WorldGenFlowers(Block.mushroomBrown.blockID);
-		// this.mushroomRedGen = new WorldGenFlowers(Block.mushroomRed.blockID);
-		// this.bigMushroomGen = new WorldGenBigMushroom();
-		// this.reedGen = new WorldGenReed();
-		// this.cactusGen = new WorldGenCactus();
-		// this.waterlilyGen = new WorldGenWaterlily();
-		// this.flowersPerChunk = 2;
-		// this.grassPerChunk = 1;
-		// this.sandPerChunk = 1;
-		// this.sandPerChunk2 = 3;
-		// this.clayPerChunk = 1;
+		//		this.biome = biome;
 	}
 
-	@Override
-	protected void decorate()
-	{
-		super.decorate();
-	}
+	//	@Override
+	//	protected void decorate()
+	//	{
+	//		super.decorate();
+	//	}
 
 	@Override
 	protected void generateOres()

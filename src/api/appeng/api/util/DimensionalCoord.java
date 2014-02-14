@@ -20,7 +20,7 @@ public class DimensionalCoord extends WorldCoord
 
 	public DimensionalCoord(TileEntity s) {
 		super( s );
-		w = s.worldObj;
+		w = s.getWorldObj();
 		dimId = w.provider.dimensionId;
 	}
 

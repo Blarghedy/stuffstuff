@@ -1,12 +1,12 @@
 package stuffstuff.stuffstuff.client.sounds;
 
 import net.minecraftforge.client.event.sound.SoundLoadEvent;
-import net.minecraftforge.event.ForgeSubscribe;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class SoundHandler
 {
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onSoundLoad(SoundLoadEvent event)
 	{
 
@@ -29,6 +29,7 @@ public class SoundHandler
 
 	private void addSound(SoundLoadEvent e, Sounds s)
 	{
-		e.manager.soundPoolSounds.addSound(Sounds.SOUNDS_LOCATION + s.getName() + ".ogg");
+		// TODO add sounds back
+//		e.manager.soundPoolSounds.addSound(Sounds.SOUNDS_LOCATION + s.getName() + ".ogg");
 	}
 }

@@ -4,86 +4,101 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockFluid;
-import net.minecraft.block.BlockHalfSlab;
+import net.minecraft.block.BlockLiquid;
+import net.minecraft.block.BlockSlab;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.IFluidBlock;
 
-public class BlockStuffSlab extends BlockHalfSlab
+public class BlockStuffSlab extends BlockSlab
 {
 	private Block[] modelBlocks;
-	private int singleID, doubleID;
+	private Block singleBlock, doubleBlock;
 	private boolean useModelTexture;
 	private int[] modelMeta;
 
-	public BlockStuffSlab(int id, int otherID, boolean isDouble, Block[] modelBlocks)
+	public BlockStuffSlab(boolean isDouble, Block[] modelBlocks)
 	{
-		this(id, otherID, isDouble, modelBlocks, true, null);
+		this(isDouble, modelBlocks, true, null);
 	}
 
 	/**
 	 * 
-	 * @param id
-	 * @param otherID
+	 * @param other
 	 * @param isDouble
 	 * @param modelBlocks 
 	 * @param useModelTexture If this is true, this block's getBlockTexture will use model.getBlockTexture.
 	 * Otherwise, it defaults to {@link Block#getBlockTexture(IBlockAccess, int, int, int, int)}
 	 */
-	public BlockStuffSlab(int id, int otherID, boolean isDouble, Block[] modelBlocks, boolean useModelTexture, int[] modelMeta)
+	public BlockStuffSlab(boolean isDouble, Block[] modelBlocks, boolean useModelTexture, int[] modelMeta)
 	{
-		super(id, isDouble, modelBlocks[0].blockMaterial);
+		super(isDouble, modelBlocks[0].getMaterial());
 		this.modelBlocks = modelBlocks;
 		this.useModelTexture = useModelTexture;
 		this.modelMeta = modelMeta;
-		lightValue[id] = lightValue[modelBlocks[0].blockID];
+		lightValue = modelBlocks[0].getLightValue();
 		slipperiness = modelBlocks[0].slipperiness;
 
-		if (isDouble)
-		{
-			this.doubleID = id;
-			this.singleID = otherID;
-		}
-		else
-		{
-			this.singleID = id;
-			this.doubleID = otherID;
-		}
-
-		setHardness(modelBlocks[0].blockHardness);
 		setCreativeTab(modelBlocks[0].getCreativeTabToDisplayOn());
 
 		setStepSound(modelBlocks[0].stepSound);
-		setResistance(modelBlocks[0].blockResistance / 2);
-		setBurnProperties(id, blockFireSpreadSpeed[modelBlocks[0].blockID], blockFlammability[modelBlocks[0].blockID]);
-
-		setUnlocalizedName(modelBlocks[0].getUnlocalizedName() + "Slab");
 	}
 
-	@Override
-	public String getFullSlabName(int meta)
+	public void setOther(BlockStuffSlab other)
 	{
-		meta = meta < modelBlocks.length ? meta : 0;
-
-		return modelBlocks[meta].getLocalizedName() + " Slab";
-	}
-
-	@Override
-	public void getSubBlocks(int id, CreativeTabs tabs, List list)
-	{
-		for (int i = 0; i < modelBlocks.length; ++i) 
+		if (opaque)
 		{
-			list.add(new ItemStack(blockID, 1, i));
+			this.doubleBlock = this;
+			this.singleBlock = other;
+		}
+		else
+		{
+			this.singleBlock = this;
+			this.doubleBlock = other;
 		}
 	}
 
 	@Override
-	public Icon getBlockTexture(IBlockAccess world, int x, int y, int z, int side)
+	public String getUnlocalizedName()
+	{
+		return modelBlocks[0].getUnlocalizedName() + "Slab";
+	}
+
+	@Override
+	public int getFireSpreadSpeed(IBlockAccess world, int x, int y, int z, ForgeDirection face)
+	{
+		return modelBlocks[0].getFireSpreadSpeed(world, x, y, z, face);
+	}
+
+	public int getFlammability(IBlockAccess world, int x, int y, int z, ForgeDirection face) 
+	{
+		return modelBlocks[0].getFlammability(world, x, y, z, face);
+	}
+
+	@Override
+	public float getBlockHardness(World world, int x, int y, int z)
+	{
+		float blockHardness = modelBlocks[0].getBlockHardness(world, x, y, z);
+		return (opaque ? blockHardness : blockHardness / 2);
+	}
+
+	@Override
+	public void getSubBlocks(Item item, CreativeTabs tabs, List list)
+	{
+		for (int i = 0; i < modelBlocks.length; ++i) 
+		{
+			list.add(new ItemStack(this, 1, i));
+		}
+	}
+
+	@Override
+	public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side)
 	{
 		if (useModelTexture)
 		{
@@ -91,16 +106,16 @@ public class BlockStuffSlab extends BlockHalfSlab
 			meta = meta < modelBlocks.length ? meta : 0;
 
 			Block model = modelBlocks[meta];
-			return model.getBlockTexture(world, x, y, z, side);
+			return model.getIcon(world, x, y, z, side);
 		}
 		else
 		{
-			return super.getBlockTexture(world, x, y, z, side);
+			return super.getIcon(world, x, y, z, side);
 		}
 	}
 
 	@Override
-	public Icon getIcon(int side, int meta)
+	public IIcon getIcon(int side, int meta)
 	{
 		meta = meta % 8;
 		meta = meta < modelBlocks.length ? meta : 0;
@@ -112,21 +127,15 @@ public class BlockStuffSlab extends BlockHalfSlab
 	}
 
 	@Override
-	public int idDropped(int meta, Random rand, int par3)
+	public Item getItemDropped(int meta, Random rand, int par3)
 	{
-		return singleID;
+		return Item.getItemFromBlock(singleBlock);
 	}
 
 	@Override
-	public float getBlockHardness(World world, int x, int y, int z)
+	public Item getItem(World world, int x, int y, int z)
 	{
-		return (isDoubleSlab ? blockHardness : blockHardness / 2);
-	}
-
-	@Override
-	public int idPicked(World world, int x, int y, int z)
-	{
-		return singleID;
+		return Item.getItemFromBlock(singleBlock);
 	}
 
 	@Override
@@ -138,7 +147,7 @@ public class BlockStuffSlab extends BlockHalfSlab
 	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
 	{
-		if (modelBlocks[0] instanceof IFluidBlock || modelBlocks[0] instanceof BlockFluid) 
+		if (modelBlocks[0] instanceof IFluidBlock || modelBlocks[0] instanceof BlockLiquid) 
 			return modelBlocks[0].getCollisionBoundingBoxFromPool(world, x, y, z);
 		else
 			return super.getCollisionBoundingBoxFromPool(world, x, y, z);
@@ -147,5 +156,26 @@ public class BlockStuffSlab extends BlockHalfSlab
 	public Block[] getModels()
 	{
 		return modelBlocks;
+	}
+
+	//	@Override
+	//	public String getFullSlabName(int meta)
+	//	{
+	//		meta = meta < modelBlocks.length ? meta : 0;
+	//
+	//		return modelBlocks[meta].getLocalizedName() + " Slab";
+	//	}
+
+	/**
+	 * {@link BlockSlab} implementation
+	 */
+
+	@Override
+	public String func_150002_b(int meta)
+	{
+		// possibly getFullSlabName?
+		meta = meta < modelBlocks.length ? meta : 0;
+
+		return modelBlocks[meta].getLocalizedName() + " Slab";
 	}
 }

@@ -5,11 +5,11 @@ import net.minecraft.stats.Achievement;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.AchievementPage;
-import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.EntityEvent;
-import stuffstuff.stuffstuff.blocks.Blocks;
+import stuffstuff.stuffstuff.blocks.BlocksStuff;
 import stuffstuff.stuffstuff.info.AchievementInfo;
 import stuffstuff.stuffstuff.worldgen.biome.BiomeGenPlaidPlain;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class Achievements
 {
@@ -21,8 +21,8 @@ public class Achievements
 
 	public static void init()
 	{
-		plaidBiome = new Achievement(AchievementInfo.PLAID_BIOME_ID, AchievementInfo.PLAID_BIOME_NAME, 0, 0, Blocks.blockPlaidLog, null).registerAchievement();
-		plaidBiome2 = new Achievement(AchievementInfo.PLAID_BIOME2_ID, AchievementInfo.PLAID_BIOME2_NAME, 0, 1, Blocks.blockPlaidGrass, plaidBiome).registerAchievement();
+		plaidBiome = new Achievement(AchievementInfo.PLAID_BIOME_ID, AchievementInfo.PLAID_BIOME_NAME, 0, 0, BlocksStuff.blockPlaidLog, null).registerStat();
+		plaidBiome2 = new Achievement(AchievementInfo.PLAID_BIOME2_ID, AchievementInfo.PLAID_BIOME2_NAME, 0, 1, BlocksStuff.blockPlaidGrass, plaidBiome).registerStat();
 
 		achievements = new Achievement[] {plaidBiome, plaidBiome2};
 		page = new AchievementPage("Stuff Stuff", achievements);
@@ -30,7 +30,7 @@ public class Achievements
 		AchievementPage.registerAchievementPage(page);
 	}
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void chunkEntered(EntityEvent.EnteringChunk event)
 	{
 		if (event.entity != null && event.entity instanceof EntityPlayer)

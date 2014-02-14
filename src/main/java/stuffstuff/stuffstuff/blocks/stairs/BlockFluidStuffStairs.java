@@ -7,9 +7,9 @@ import net.minecraft.world.World;
 public class BlockFluidStuffStairs extends BlockStuffStairs
 {
 
-	public BlockFluidStuffStairs(int id, Block modelBlock, int modelMeta, boolean useModelTexture)
+	public BlockFluidStuffStairs(Block modelBlock, int modelMeta, boolean useModelTexture)
 	{
-		super(id, modelBlock, modelMeta, useModelTexture);
+		super(modelBlock, modelMeta, useModelTexture);
 	}
 
 	@Override

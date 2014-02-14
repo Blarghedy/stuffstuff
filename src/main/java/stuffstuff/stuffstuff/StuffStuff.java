@@ -4,16 +4,16 @@ import java.io.File;
 
 import net.minecraft.creativetab.CreativeTabs;
 import stuffstuff.stuffstuff.achievements.Achievements;
-import stuffstuff.stuffstuff.blocks.Blocks;
+import stuffstuff.stuffstuff.blocks.BlocksStuff;
 import stuffstuff.stuffstuff.client.interfaces.GuiHandler;
 import stuffstuff.stuffstuff.config.ConfigHandler;
 import stuffstuff.stuffstuff.creative.TabPlaidStuff;
 import stuffstuff.stuffstuff.creative.TabStuffStuff;
 import stuffstuff.stuffstuff.fluid.Fluids;
 import stuffstuff.stuffstuff.info.ModInfo;
-import stuffstuff.stuffstuff.items.Items;
+import stuffstuff.stuffstuff.items.ItemsStuff;
 import stuffstuff.stuffstuff.items.handler.ItemBlockPlacerHandler;
-import stuffstuff.stuffstuff.network.PacketHandler;
+import stuffstuff.stuffstuff.network.StuffPacketHandler;
 import stuffstuff.stuffstuff.potions.Potions;
 import stuffstuff.stuffstuff.proxy.CommonProxy;
 import stuffstuff.stuffstuff.worldgen.Biomes;
@@ -24,10 +24,10 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.FMLEventChannel;
+import cpw.mods.fml.common.network.NetworkRegistry;
 
 @Mod(modid = ModInfo.ID, name = ModInfo.NAME, version = ModInfo.VERSION)
-@NetworkMod(channels = { ModInfo.CHANNEL }, clientSideRequired = true, serverSideRequired = false, packetHandler = PacketHandler.class)
 public class StuffStuff
 {
 	// TODO change core Stuff Stuff stuff to StuffStuffCore
@@ -44,6 +44,7 @@ public class StuffStuff
 	public static CommonProxy proxy;
 
 	public static File stuffstuffConfig;
+	public static FMLEventChannel channel;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent e)
@@ -51,28 +52,30 @@ public class StuffStuff
 		stuffstuffConfig = e.getSuggestedConfigurationFile();
 		ConfigHandler.init(stuffstuffConfig);
 		Fluids.init();
-		Items.init();
-		Blocks.init();
+		ItemsStuff.init();
+		BlocksStuff.init();
 		Biomes.init();
 		Potions.init();
 		Achievements.init();
 
 		itemBlockPlacerHandler = new ItemBlockPlacerHandler();
+		channel = NetworkRegistry.INSTANCE.newEventDrivenChannel(ModInfo.CHANNEL);
+		channel.register(new StuffPacketHandler());
 
 		proxy.initSounds();
 		proxy.initRenderer();
 		proxy.registerHandlers();
 
-		Items.addNames();
-		Blocks.addNames();
+		ItemsStuff.addNames();
+		BlocksStuff.addNames();
 		Fluids.addNames();
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent e)
 	{
-		Items.registerRecipes();
-		Blocks.registerTileEntities();
+		ItemsStuff.registerRecipes();
+		BlocksStuff.registerTileEntities();
 		new GuiHandler();
 	}
 

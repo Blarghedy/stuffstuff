@@ -1,18 +1,17 @@
 package stuffstuff.stuffstuff.fluid;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Blocks;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.BlockFluidClassic;
-import stuffstuff.stuffstuff.StuffStuff;
 import stuffstuff.stuffstuff.blocks.PlaidColor;
 import stuffstuff.stuffstuff.client.render.Renderers;
 import stuffstuff.stuffstuff.info.FluidInfo;
@@ -20,16 +19,21 @@ import stuffstuff.stuffstuff.potions.Potions;
 
 public class BlockFluidPlaidWater extends BlockFluidClassic
 {
-	private Icon[] stillIcons;
-	private Icon[] flowingIcons;
-	private Icon stillIcon;
-	private Icon flowingIcon;
+	private IIcon[] stillIcons;
+	private IIcon[] flowingIcons;
+	private IIcon stillIcon;
+	private IIcon flowingIcon;
 
-	public BlockFluidPlaidWater(int id)
+	public BlockFluidPlaidWater()
 	{
-		super(id, Fluids.fluidPlaidWater, Material.water);
-		setUnlocalizedName(FluidInfo.PLAID_WATER_UNLOCALIZED_NAME);
-//		setCreativeTab(StuffStuff.tabPlaidStuff);
+		super(Fluids.fluidPlaidWater, Material.water);
+		//		setCreativeTab(StuffStuff.tabPlaidStuff);
+	}
+
+	@Override
+	public String getUnlocalizedName()
+	{
+		return FluidInfo.PLAID_WATER_UNLOCALIZED_NAME;
 	}
 
 	@Override
@@ -45,13 +49,13 @@ public class BlockFluidPlaidWater extends BlockFluidClassic
 	}
 
 	@Override
-	public void registerIcons(IconRegister register)
+	public void registerBlockIcons(IIconRegister register)
 	{
 		stillIcon = register.registerIcon(FluidInfo.TEXTURE_LOCATION + ":" + FluidInfo.PLAID_WATER_STILL_TEXTURE);
 		flowingIcon = register.registerIcon(FluidInfo.TEXTURE_LOCATION + ":" + FluidInfo.PLAID_WATER_FLOWING_TEXTURE);
-		
-		stillIcons = new Icon[FluidInfo.PLAID_WATER_STILL_TEXTURES.length];
-		flowingIcons = new Icon[FluidInfo.PLAID_WATER_MOVING_TEXTURES.length];
+
+		stillIcons = new IIcon[FluidInfo.PLAID_WATER_STILL_TEXTURES.length];
+		flowingIcons = new IIcon[FluidInfo.PLAID_WATER_MOVING_TEXTURES.length];
 
 		for (int i = 0; i < stillIcons.length; i++)
 		{
@@ -59,19 +63,19 @@ public class BlockFluidPlaidWater extends BlockFluidClassic
 			flowingIcons[i] = register.registerIcon(FluidInfo.TEXTURE_LOCATION + ":" + FluidInfo.PLAID_WATER_MOVING_TEXTURES[i]);
 		}
 	}
-	
-	public Icon getStillIcon()
+
+	public IIcon getStillIcon()
 	{
 		return stillIcon;
 	}
-	
-	public Icon getFlowingIcon()
+
+	public IIcon getFlowingIcon()
 	{
 		return flowingIcon;
 	}
 
 	@Override
-	public Icon getIcon(int side, int meta)
+	public IIcon getIcon(int side, int meta)
 	{
 		ForgeDirection face = ForgeDirection.getOrientation(side);
 		switch (face)
@@ -92,11 +96,11 @@ public class BlockFluidPlaidWater extends BlockFluidClassic
 	}
 
 	@Override
-	public Icon getBlockTexture(IBlockAccess blockAccess, int x, int y, int z, int side)
+	public IIcon getIcon(IBlockAccess blockAccess, int x, int y, int z, int side)
 	{
 		ForgeDirection face = ForgeDirection.getOrientation(side);
 		PlaidColor color = PlaidColor.getPlaidColorFromPos(x, y, z);
-		Icon[] icons;
+		IIcon[] icons;
 		if (face == ForgeDirection.UP || face == ForgeDirection.DOWN)
 		{
 			icons = stillIcons;
@@ -112,19 +116,19 @@ public class BlockFluidPlaidWater extends BlockFluidClassic
 	@Override
 	protected boolean canFlowInto(IBlockAccess world, int x, int y, int z)
 	{
-		return world.getBlockId(x, y, z) == Block.waterStill.blockID || world.getBlockId(x, y, z) == Block.waterMoving.blockID ? false : super.canFlowInto(world, x, y, z);
+		return world.getBlock(x, y, z) == Blocks.water || world.getBlock(x, y, z) == Blocks.flowing_water ? false : super.canFlowInto(world, x, y, z);
 	}
 
 	@Override
 	public boolean canDisplace(IBlockAccess world, int x, int y, int z)
 	{
-		return world.getBlockMaterial(x, y, z).isLiquid() ? false : super.canDisplace(world, x, y, z);
+		return world.getBlock(x, y, z).getMaterial().isLiquid() ? false : super.canDisplace(world, x, y, z);
 	}
 
 	@Override
 	public boolean displaceIfPossible(World world, int x, int y, int z)
 	{
-		return world.getBlockMaterial(x, y, z).isLiquid() ? false : super.displaceIfPossible(world, x, y, z);
+		return world.getBlock(x, y, z).getMaterial().isLiquid() ? false : super.displaceIfPossible(world, x, y, z);
 	}
 
 	@Override

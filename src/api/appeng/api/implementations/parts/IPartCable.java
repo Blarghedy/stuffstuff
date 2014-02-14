@@ -2,7 +2,7 @@ package appeng.api.implementations.parts;
 
 import java.util.EnumSet;
 
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import appeng.api.networking.IGridHost;
 import appeng.api.parts.BusSupport;
 import appeng.api.parts.IPart;

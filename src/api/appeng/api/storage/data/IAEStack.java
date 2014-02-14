@@ -1,6 +1,7 @@
 package appeng.api.storage.data;
 
-import java.io.DataOutputStream;
+import io.netty.buffer.ByteBuf;
+
 import java.io.IOException;
 
 import net.minecraft.nbt.NBTTagCompound;
@@ -137,7 +138,7 @@ public interface IAEStack<StackType extends IAEStack>
 	 * @param data
 	 * @throws IOException
 	 */
-	void writeToPacket(DataOutputStream data) throws IOException;
+	void writeToPacket(ByteBuf data) throws IOException;
 
 	/**
 	 * Clone the Item / Fluid Stack

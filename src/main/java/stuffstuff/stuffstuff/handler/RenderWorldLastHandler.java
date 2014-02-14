@@ -5,8 +5,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
-import net.minecraftforge.common.ForgeDirection;
-import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraftforge.common.util.ForgeDirection;
 
 import org.lwjgl.opengl.GL11;
 
@@ -14,11 +13,12 @@ import stuffstuff.stuffstuff.handler.helper.QuadHelper;
 import stuffstuff.stuffstuff.info.ItemInfo;
 import stuffstuff.stuffstuff.items.FluidCleanerBase;
 import cpw.mods.fml.client.FMLClientHandler;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class RenderWorldLastHandler
 {
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onDrawBlockHighlightEvent(RenderWorldLastEvent event)
 	{
 		Minecraft minecraft = FMLClientHandler.instance().getClient();

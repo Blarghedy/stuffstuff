@@ -1,7 +1,7 @@
 package stuffstuff.aestuff.parts;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
+import io.netty.buffer.ByteBuf;
+
 import java.io.IOException;
 
 import net.minecraft.client.renderer.RenderBlocks;
@@ -16,8 +16,6 @@ import appeng.api.parts.IPartRenderHelper;
 
 public class PartBufferedExport extends PartStuff implements IGridTickable
 {
-
-
 	public PartBufferedExport()
 	{
 
@@ -67,14 +65,16 @@ public class PartBufferedExport extends PartStuff implements IGridTickable
 	}
 
 	@Override
-	public void writeToStream(DataOutputStream data) throws IOException
+	public void writeToStream(ByteBuf data) throws IOException
 	{
+		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public boolean readFromStream(DataInputStream data) throws IOException
+	public boolean readFromStream(ByteBuf data) throws IOException
 	{
+		// TODO Auto-generated method stub
 		return false;
 	}
 

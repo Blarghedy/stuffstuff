@@ -1,8 +1,9 @@
 package stuffstuff.aestuff.creative;
 
-import stuffstuff.aestuff.blocks.BlocksAEStuff;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import stuffstuff.aestuff.blocks.BlocksAEStuff;
 
 public class TabAEStuff extends CreativeTabs
 {
@@ -15,5 +16,11 @@ public class TabAEStuff extends CreativeTabs
 	public ItemStack getIconItemStack()
 	{
 		return new ItemStack(BlocksAEStuff.blockFunFluix, 1, 1);
+	}
+
+	@Override
+	public Item getTabIconItem()
+	{
+		return Item.getItemFromBlock(BlocksAEStuff.blockFunFluix);
 	}
 }

@@ -13,7 +13,6 @@ import stuffstuff.stuffstuff.blocks.stairs.BlockStuffStairs;
 import appeng.api.AEApi;
 import appeng.api.IAppEngApi;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class BlocksAEStuff
 {
@@ -36,23 +35,23 @@ public class BlocksAEStuff
 	{
 		IAppEngApi ae = AEApi.instance();
 
-		blockFunFluix = new BlockFunFluix(BlockInfo.FUN_FLUIX_ID);
-		blockFluixBrick = new BlockFluixBrick(BlockInfo.FLUIX_BRICK_ID);
-		blockFluixGlass = new BlockFluixGlass(BlockInfo.FLUIX_GLASS_ID);
+		blockFunFluix = new BlockFunFluix();
+		blockFluixBrick = new BlockFluixBrick();
+		blockFluixGlass = new BlockFluixGlass();
 
 		Block[] fluixBricks = {BlocksAEStuff.blockFluixBrick, BlocksAEStuff.blockFluixBrick, BlocksAEStuff.blockFunFluix, BlocksAEStuff.blockFunFluix};
 		int[] fluixBricksMeta = {0, 1, 0, 1};
 
-		blockFluixBrickSlab = new BlockStuffSlab(BlockInfo.FLUIX_SLAB_ID, BlockInfo.FLUIX_SLAB_DOUBLE_ID, false, fluixBricks, false, fluixBricksMeta);
-		blockFluixBrickDoubleSlab = new BlockStuffSlab(BlockInfo.FLUIX_SLAB_DOUBLE_ID, BlockInfo.FLUIX_SLAB_ID, true, fluixBricks, false, fluixBricksMeta);
+		blockFluixBrickSlab = new BlockStuffSlab(false, fluixBricks, false, fluixBricksMeta);
+		blockFluixBrickDoubleSlab = new BlockStuffSlab(true, fluixBricks, false, fluixBricksMeta);
 
-		blockFunFluixStairs = new BlockStuffStairs(BlockInfo.FUN_FLUIX_BRICK_STAIRS_ID, BlocksAEStuff.blockFunFluix, 0, false);
-		blockRunningFluixStairs = new BlockStuffStairs(BlockInfo.RUNNING_FLUIX_BRICK_STAIRS_ID, BlocksAEStuff.blockFunFluix, 1, false);
-		blockFluixBrickStairs = new BlockStuffStairs(BlockInfo.FLUIX_BRICK_STAIRS_ID, BlocksAEStuff.blockFluixBrick, 0, false);
-		blockFineFluixBrickStairs = new BlockStuffStairs(BlockInfo.FINE_FLUIX_BRICK_STAIRS_ID, BlocksAEStuff.blockFluixBrick, 1, false);
-		blockFluixStairs = new BlockStuffStairs(BlockInfo.FLUIX_STAIRS_ID, ae.blocks().blockFluix.block());
+		blockFunFluixStairs = new BlockStuffStairs(BlocksAEStuff.blockFunFluix, 0, false);
+		blockRunningFluixStairs = new BlockStuffStairs(BlocksAEStuff.blockFunFluix, 1, false);
+		blockFluixBrickStairs = new BlockStuffStairs(BlocksAEStuff.blockFluixBrick, 0, false);
+		blockFineFluixBrickStairs = new BlockStuffStairs(BlocksAEStuff.blockFluixBrick, 1, false);
+		blockFluixStairs = new BlockStuffStairs(ae.blocks().blockFluix.block());
 
-		blockRunningFluixDoor = new BlockStuffDoor(BlockInfo.RUNNING_FLUIX_DOOR_ID, BlocksAEStuff.blockFunFluix, 1, false);
+		blockRunningFluixDoor = new BlockStuffDoor(BlocksAEStuff.blockFunFluix, 1, false);
 
 		// register blocks
 		GameRegistry.registerBlock(blockFunFluix, ItemFunFluix.class, BlockInfo.FUN_FLUIX_UNLOCALIZED_NAME);
@@ -78,13 +77,13 @@ public class BlocksAEStuff
 
 	public static void addNames()
 	{
-		LanguageRegistry.addName(blockFunFluix, BlockInfo.FUN_FLUIX_NAME);
-		LanguageRegistry.addName(blockFluixBrick, BlockInfo.FLUIX_BRICK_NAME);
-
-		LanguageRegistry.addName(blockFunFluixStairs, BlockInfo.FUN_FLUIX_BRICK_STAIRS_NAME);
-		LanguageRegistry.addName(blockRunningFluixStairs, BlockInfo.RUNNING_FLUIX_BRICK_STAIRS_NAME);
-		LanguageRegistry.addName(blockFluixBrickStairs, BlockInfo.FLUIX_BRICK_STAIRS_NAME);
-		LanguageRegistry.addName(blockFineFluixBrickStairs, BlockInfo.FINE_FLUIX_BRICK_STAIRS_NAME);
+		//		LanguageRegistry.addName(blockFunFluix, BlockInfo.FUN_FLUIX_NAME);
+		//		LanguageRegistry.addName(blockFluixBrick, BlockInfo.FLUIX_BRICK_NAME);
+		//
+		//		LanguageRegistry.addName(blockFunFluixStairs, BlockInfo.FUN_FLUIX_BRICK_STAIRS_NAME);
+		//		LanguageRegistry.addName(blockRunningFluixStairs, BlockInfo.RUNNING_FLUIX_BRICK_STAIRS_NAME);
+		//		LanguageRegistry.addName(blockFluixBrickStairs, BlockInfo.FLUIX_BRICK_STAIRS_NAME);
+		//		LanguageRegistry.addName(blockFineFluixBrickStairs, BlockInfo.FINE_FLUIX_BRICK_STAIRS_NAME);
 	}
 
 	public static void registerTileEntities()

@@ -143,13 +143,6 @@ public class ItemBlockPlacerHandler
 		}
 	}
 
-	//	@Override
-	//	public void tickStart(EnumSet<TickType> type, Object... tickData)
-	//	{
-	//
-	//	}
-
-
 	@SubscribeEvent
 	public void tickEnd(TickEvent.ClientTickEvent e)
 	//	public void tickEnd(EnumSet<TickType> type, Object... tickData)
@@ -206,18 +199,4 @@ public class ItemBlockPlacerHandler
 			map.remove(itemstack);
 		}
 	}
-
-	//	@Override
-	//	public EnumSet<TickType> ticks()
-	//	{
-	//		// TODO server this nonsense
-	//		return EnumSet.of(TickType.CLIENT);
-	//	}
-
-	//	@Override
-	//	public String getLabel()
-	//	{
-	//		return ModInfo.ID + ": " + this.getClass().getSimpleName();
-	//	}
-
 }

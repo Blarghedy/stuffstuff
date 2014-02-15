@@ -24,8 +24,6 @@ public class BiomeDecoratorPlaidPlain extends BiomeDecorator
 		super();
 		// TODO need a custom sand generator
 
-		// plaidStoneGen = new WorldGenMinable(Blocks.blockPlaidStone.blockID, 500, Block.stone.blockID);
-
 		sandGen = new WorldGenSand(BlocksStuff.blockPlaidSand, 7);
 		gravelAsSandGen = new WorldGenSand(BlocksStuff.blockPlaidGravel, 6);
 		dirtGen = new WorldGenMinable(BlocksStuff.blockPlaidDirt, 32);
@@ -77,6 +75,5 @@ public class BiomeDecoratorPlaidPlain extends BiomeDecorator
 			this.genStandardOre2(1, lapisGen, 16, 16);
 		}
 		MinecraftForge.ORE_GEN_BUS.post(new OreGenEvent.Post(currentWorld, randomGenerator, chunk_X, chunk_Z));
-		// super.generateOres();
 	}
 }

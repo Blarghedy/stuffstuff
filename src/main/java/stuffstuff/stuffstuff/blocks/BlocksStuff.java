@@ -7,7 +7,7 @@ import stuffstuff.stuffstuff.blocks.doors.BlockFluidStuffDoor;
 import stuffstuff.stuffstuff.blocks.doors.BlockLavaStuffDoor;
 import stuffstuff.stuffstuff.blocks.doors.BlockStuffDoor;
 import stuffstuff.stuffstuff.blocks.items.ItemPlaidLeaves;
-import stuffstuff.stuffstuff.blocks.items.ItemPlaidLog;
+import stuffstuff.stuffstuff.blocks.items.ItemStuffLog;
 import stuffstuff.stuffstuff.blocks.items.ItemPlaidTallGrass;
 import stuffstuff.stuffstuff.blocks.items.ItemStuffDoor;
 import stuffstuff.stuffstuff.blocks.items.ItemStuffSlab;
@@ -85,15 +85,14 @@ public class BlocksStuff
 		blockPlaidPlank = new BlockPlaidPlank();
 		blockPlaidLog = new BlockPlaidLog();
 		blockPlaidSapling = new BlockPlaidSapling();
+		blockPlaidDirt = new BlockPlaidDirt();
 		blockPlaidGrass = new BlockPlaidGrass();
 		blockPlaidLeaves = new BlockPlaidLeaves();
 		blockPlaidTallGrass = new BlockPlaidTallGrass();
-
 		blockPlaidSand = new BlockPlaidSand();
 		blockPlaidGravel = new BlockPlaidGravel();
 		blockPlaidCobble = new BlockPlaidCobblestone();
 		blockPlaidStone = new BlockPlaidStone();
-		blockPlaidDirt = new BlockPlaidDirt();
 		blockPlaidStoneBrick = new BlockPlaidStoneBrick();
 		blockPlaidGlass = new BlockPlaidGlass();
 
@@ -150,7 +149,7 @@ public class BlocksStuff
 
 		// register normal blocks
 		GameRegistry.registerBlock(blockPlaidPlank, BlockInfo.PLAID_PLANK_NAME);
-		GameRegistry.registerBlock(blockPlaidLog, ItemPlaidLog.class, BlockInfo.PLAID_LOG_NAME);
+		GameRegistry.registerBlock(blockPlaidLog, ItemStuffLog.class, BlockInfo.PLAID_LOG_NAME);
 		GameRegistry.registerBlock(blockPlaidSapling, BlockInfo.PLAID_SAPLING_NAME);
 		GameRegistry.registerBlock(blockPlaidGrass, BlockInfo.PLAID_GRASS_NAME);
 		GameRegistry.registerBlock(blockPlaidLeaves, ItemPlaidLeaves.class, BlockInfo.PLAID_LEAVES_NAME);

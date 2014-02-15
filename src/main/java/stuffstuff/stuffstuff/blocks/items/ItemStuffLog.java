@@ -3,9 +3,9 @@ package stuffstuff.stuffstuff.blocks.items;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 
-public class ItemPlaidLog extends ItemBlock
+public class ItemStuffLog extends ItemBlock
 {
-	public ItemPlaidLog(Block block)
+	public ItemStuffLog(Block block)
 	{
 		super(block);
 		setHasSubtypes(true);

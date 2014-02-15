@@ -1,20 +1,15 @@
 package stuffstuff.stuffstuff.blocks;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
 import stuffstuff.stuffstuff.StuffStuff;
 import stuffstuff.stuffstuff.info.BlockInfo;
 
-public class BlockPlaidDirt extends Block
+public class BlockPlaidDirt extends BlockStuffDirt
 {
 	public BlockPlaidDirt()
 	{
-		super(Material.ground);
 		setCreativeTab(StuffStuff.tabPlaidStuff);
-		setHardness(.5F);
-		setStepSound(soundTypeGravel);
 	}
 
 	@Override

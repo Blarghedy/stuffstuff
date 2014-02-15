@@ -18,7 +18,6 @@ import stuffstuff.stuffstuff.blocks.BlocksStuff;
 
 public class BiomeDecoratorPlaidPlain extends BiomeDecorator
 {
-	private WorldGenMinable plaidStoneGen;
 
 	public BiomeDecoratorPlaidPlain()
 	{

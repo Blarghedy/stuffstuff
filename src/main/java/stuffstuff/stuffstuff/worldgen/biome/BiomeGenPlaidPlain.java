@@ -21,22 +21,12 @@ public class BiomeGenPlaidPlain extends BiomeGenPlains
 	{
 		super(id);
 		setBiomeName("Plaid Plain");
-		//
+
 		topBlock = BlocksStuff.blockPlaidGrass;
 		fillerBlock = BlocksStuff.blockPlaidDirt;
 
-		// this.field_76754_C = 5169201; // what
-		// this.minHeight = 0.1F;
-		// this.maxHeight = 0.3F;
-		// this.temperature = 0.5F;
-		// this.rainfall = 0.5F;
-		// this.waterColorMultiplier = 16777215;
-		//
 		worldGeneratorTrees = new WorldGenPlaidTrees(false);
 		theBiomeDecorator.treesPerChunk = 1;
-		// this.worldGeneratorBigTree = new WorldGenBigTree(false);
-		// // this.worldGeneratorForest = new WorldGenForest(false);
-		// // this.worldGeneratorSwamp = new WorldGenSwamp();
 	}
 
 	@Override

@@ -30,7 +30,7 @@ public class Potions
 
 	public static void addNames()
 	{
-		LanguageRegistry.addName(potionPlaid, PotionInfo.PLAID_NAME);
+//		LanguageRegistry.addName(potionPlaid, PotionInfo.PLAID_NAME);
 	}
 
 	private static void modifyAccess()

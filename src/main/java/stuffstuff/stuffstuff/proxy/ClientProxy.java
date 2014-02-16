@@ -13,6 +13,7 @@ import stuffstuff.stuffstuff.handler.PotionEventHandler;
 import stuffstuff.stuffstuff.handler.RenderWorldLastHandler;
 import stuffstuff.stuffstuff.handler.TextureStitchEventHandler;
 import stuffstuff.stuffstuff.handler.helper.KeyBindingHelper;
+import stuffstuff.stuffstuff.worldgen.BiomeEventHandler;
 
 public class ClientProxy extends CommonProxy
 {
@@ -43,6 +44,7 @@ public class ClientProxy extends CommonProxy
 		MinecraftForge.EVENT_BUS.register(new TextureStitchEventHandler());
 		MinecraftForge.EVENT_BUS.register(new Achievements());
 		MinecraftForge.EVENT_BUS.register(StuffStuff.itemBlockPlacerHandler);
+		MinecraftForge.TERRAIN_GEN_BUS.register(new BiomeEventHandler());
 
 		System.out.println("Client handlers registered.");
 	}

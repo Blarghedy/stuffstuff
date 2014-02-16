@@ -11,6 +11,7 @@ import net.minecraft.world.gen.feature.WorldGenLiquids;
 import net.minecraft.world.gen.feature.WorldGenTallGrass;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import stuffstuff.stuffstuff.blocks.BlocksStuff;
+import stuffstuff.stuffstuff.blocks.items.ItemBiomeTeleporter;
 import stuffstuff.stuffstuff.fluid.Fluids;
 import stuffstuff.stuffstuff.worldgen.WorldGenPlaidTrees;
 
@@ -27,6 +28,7 @@ public class BiomeGenPlaidPlain extends BiomeGenPlains
 
 		worldGeneratorTrees = new WorldGenPlaidTrees(false);
 		theBiomeDecorator.treesPerChunk = 1;
+		ItemBiomeTeleporter.addBiome(this);
 	}
 
 	@Override

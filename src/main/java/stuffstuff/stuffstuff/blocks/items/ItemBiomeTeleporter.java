@@ -11,32 +11,38 @@ import net.minecraft.world.WorldServer;
 import net.minecraft.world.biome.BiomeGenBase;
 import stuffstuff.stuffstuff.StuffStuff;
 import stuffstuff.stuffstuff.player.NotificationHelper;
-import stuffstuff.stuffstuff.worldgen.Biomes;
 
 public class ItemBiomeTeleporter extends Item
 {
-	public static ArrayList<BiomeGenBase> biomesToFind = new ArrayList<BiomeGenBase>();
-	
+	private static ArrayList<BiomeGenBase> biomesToFind = new ArrayList<BiomeGenBase>();
+
+	public static void addBiome(BiomeGenBase biome)
+	{
+		if (!biomesToFind.contains(biome)) biomesToFind.add(biome);
+	}
+
+	public static void removeBiome(BiomeGenBase biome)
+	{
+		if (biomesToFind.contains(biome)) biomesToFind.remove(biome);
+	}
+
 	public ItemBiomeTeleporter()
 	{
 		setUnlocalizedName("biomeTeleporter");
 		setCreativeTab(StuffStuff.tabStuffStuff);
 	}
-	
+
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player)
 	{
 		if (!world.isRemote)
 		{
-			biomesToFind.add(Biomes.plaidPlainsBiome);
 			ChunkPosition chunk = ((WorldServer)world).provider.worldChunkMgr.findBiomePosition(player.chunkCoordX, player.chunkCoordZ, 2048, biomesToFind, world.rand);
 			NotificationHelper.notifySelf("Looking for " + biomesToFind);
-			NotificationHelper.notifySelf("Found " + chunk);
-			
+			NotificationHelper.notifySelf("Found " + chunk.chunkPosX + " " + chunk.chunkPosZ);
+
 			if (chunk == null) return itemstack;
-			player.posX = chunk.chunkPosX;
-			player.posY = 100;
-			player.posZ = chunk.chunkPosZ;
+			player.setPositionAndUpdate(chunk.chunkPosX, 100, chunk.chunkPosZ);
 		}
 		return itemstack;
 	}

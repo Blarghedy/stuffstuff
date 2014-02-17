@@ -28,7 +28,7 @@ public class BiomeGenPlaidPlain extends BiomeGenPlains
 
 		worldGeneratorTrees = new WorldGenPlaidTrees(false);
 		theBiomeDecorator.treesPerChunk = 1;
-		ItemBiomeTeleporter.addBiome(this);
+//		ItemBiomeTeleporter.addBiome(this);
 	}
 
 	@Override

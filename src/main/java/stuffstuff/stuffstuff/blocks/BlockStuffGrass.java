@@ -3,6 +3,7 @@ package stuffstuff.stuffstuff.blocks;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockGrass;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Blocks;
@@ -86,7 +87,7 @@ public abstract class BlockStuffGrass extends Block
 	@Override
 	public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection direction, IPlantable plant)
 	{
-		EnumPlantType plantType = plant.getPlantType(world, x, y + 1, z);
+		EnumPlantType plantType = plant.getPlantType(world, x, y - 1, z);
 
 		if (plantType == EnumPlantType.Plains)
 			return true;

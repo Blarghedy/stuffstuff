@@ -7,9 +7,9 @@ import stuffstuff.stuffstuff.blocks.doors.BlockFluidStuffDoor;
 import stuffstuff.stuffstuff.blocks.doors.BlockLavaStuffDoor;
 import stuffstuff.stuffstuff.blocks.doors.BlockStuffDoor;
 import stuffstuff.stuffstuff.blocks.items.ItemPlaidLeaves;
-import stuffstuff.stuffstuff.blocks.items.ItemStuffLog;
 import stuffstuff.stuffstuff.blocks.items.ItemPlaidTallGrass;
 import stuffstuff.stuffstuff.blocks.items.ItemStuffDoor;
+import stuffstuff.stuffstuff.blocks.items.ItemStuffLog;
 import stuffstuff.stuffstuff.blocks.items.ItemStuffSlab;
 import stuffstuff.stuffstuff.blocks.slabs.BlockFluidStuffSlab;
 import stuffstuff.stuffstuff.blocks.slabs.BlockLavaStuffSlab;
@@ -40,6 +40,8 @@ public class BlocksStuff
 	public static Block blockPlaidStoneBrick;
 	public static Block blockPlaidTallGrass;
 	public static Block blockPlaidGlass;
+
+	public static Block blockStuffTallGrass;
 
 	public static BlockStairs blockPlaidStoneStairs;
 	public static BlockStairs blockPlaidCobblestoneStairs;
@@ -95,6 +97,8 @@ public class BlocksStuff
 		blockPlaidStone = new BlockPlaidStone();
 		blockPlaidStoneBrick = new BlockPlaidStoneBrick();
 		blockPlaidGlass = new BlockPlaidGlass();
+
+		blockStuffTallGrass = new BlockStuffTallGrass();
 
 		Block[] stoneBlocks = {blockPlaidStone, blockPlaidCobble, blockPlaidStoneBrick};
 		Block[] woodBlocks = {blockPlaidPlank};
@@ -162,6 +166,8 @@ public class BlocksStuff
 		GameRegistry.registerBlock(blockPlaidDirt, BlockInfo.PLAID_DIRT_NAME);
 		GameRegistry.registerBlock(blockPlaidStoneBrick, BlockInfo.PLAID_STONE_BRICK_NAME);
 		GameRegistry.registerBlock(blockPlaidGlass, BlockInfo.PLAID_GLASS_NAME);
+
+		GameRegistry.registerBlock(blockStuffTallGrass, BlockInfo.TALL_GRASS_NAME);
 
 		// register slabs
 		ItemStuffSlab.setSlabs(blockStoneSlab, blockStoneDoubleSlab);

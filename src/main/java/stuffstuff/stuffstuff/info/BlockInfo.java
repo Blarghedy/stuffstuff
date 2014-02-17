@@ -6,6 +6,10 @@ public class BlockInfo
 
 	public static final String PLACER_KEY = "blockPlacer";
 
+	public static final String TALL_GRASS_KEY = "tallGrass";
+	public static final String TALL_GRASS_NAME = "Tall Grass";
+	public static final String TALL_GRASS_UNLOCALIZED_NAME = "tallGrass";
+
 	public static final String PLACER_UNLOCALIZED_NAME = "blockBlockPlacer";
 	public static final String PLACER_NAME = "Block Placer";
 	public static final String PLACER_FACING = "blockPlacerFacing";

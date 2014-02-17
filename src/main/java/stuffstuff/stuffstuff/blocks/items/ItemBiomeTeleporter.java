@@ -39,9 +39,13 @@ public class ItemBiomeTeleporter extends Item
 		{
 			ChunkPosition chunk = ((WorldServer)world).provider.worldChunkMgr.findBiomePosition(player.chunkCoordX, player.chunkCoordZ, 2048, biomesToFind, world.rand);
 			NotificationHelper.notifySelf("Looking for " + biomesToFind);
+			if (chunk == null) 
+			{
+				NotificationHelper.notifySelf("Found no valid biomes");
+				return itemstack;
+			}
 			NotificationHelper.notifySelf("Found " + chunk.chunkPosX + " " + chunk.chunkPosZ);
 
-			if (chunk == null) return itemstack;
 			player.setPositionAndUpdate(chunk.chunkPosX, 100, chunk.chunkPosZ);
 		}
 		return itemstack;

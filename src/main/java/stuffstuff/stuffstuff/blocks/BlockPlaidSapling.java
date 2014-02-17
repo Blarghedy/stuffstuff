@@ -86,14 +86,14 @@ public class BlockPlaidSapling extends BlockSapling
 		}
 	}
 
-	@Override
-	public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection direction, IPlantable plantable)
-	{
-		// previously canThisPlantGrowOnThisBlockID(Block block)
-		Block block = world.getBlock(x, y, z);
-
-		return block == BlocksStuff.blockPlaidGrass || super.canSustainPlant(world, x, y, z, direction, plantable);
-	}
+//	@Override
+//	public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection direction, IPlantable plantable)
+//	{
+//		// previously canThisPlantGrowOnThisBlockID(Block block)
+//		Block block = world.getBlock(x, y, z);
+//
+//		return block == BlocksStuff.blockPlaidGrass || super.canSustainPlant(world, x, y, z, direction, plantable);
+//	}
 
 	@Override
 	public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z)

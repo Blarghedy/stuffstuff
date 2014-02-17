@@ -8,6 +8,7 @@ import stuffstuff.holidaystuff.fluids.FluidsHolidayStuff;
 import stuffstuff.holidaystuff.info.ModInfo;
 import stuffstuff.holidaystuff.items.ItemsHolidayStuff;
 import stuffstuff.holidaystuff.proxy.CommonProxy;
+import stuffstuff.holidaystuff.worldgen.Biomes;
 import stuffstuff.stuffstuff.StuffStuff;
 import stuffstuff.stuffstuff.client.interfaces.GuiHandler;
 import cpw.mods.fml.common.Loader;
@@ -49,6 +50,7 @@ public class HolidayStuff
 			FluidsHolidayStuff.init();
 			ItemsHolidayStuff.init();
 			BlocksHolidayStuff.init();
+			Biomes.init();
 
 			proxy.initSounds();
 			proxy.initRenderer();

@@ -1,4 +1,4 @@
-package stuffstuff.holidaystuff.blocks;
+package stuffstuff.holidaystuff.blocks.halloween;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -6,6 +6,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.util.ForgeDirection;
 import stuffstuff.holidaystuff.HolidayStuff;
+import stuffstuff.holidaystuff.blocks.BlocksHolidayStuff;
 import stuffstuff.holidaystuff.info.BlockInfo;
 import stuffstuff.stuffstuff.blocks.BlockStuffGrass;
 

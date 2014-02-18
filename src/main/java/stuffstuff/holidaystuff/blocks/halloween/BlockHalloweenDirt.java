@@ -1,4 +1,4 @@
-package stuffstuff.holidaystuff.blocks;
+package stuffstuff.holidaystuff.blocks.halloween;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;

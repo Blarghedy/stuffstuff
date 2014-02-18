@@ -1,6 +1,9 @@
 package stuffstuff.holidaystuff.blocks;
 
 import net.minecraft.block.Block;
+import stuffstuff.holidaystuff.blocks.halloween.BlockHalloweenDirt;
+import stuffstuff.holidaystuff.blocks.halloween.BlockHalloweenGrass;
+import stuffstuff.holidaystuff.blocks.halloween.BlockHalloweenLog;
 import stuffstuff.holidaystuff.info.BlockInfo;
 import stuffstuff.stuffstuff.blocks.items.ItemStuffLog;
 import cpw.mods.fml.common.registry.GameRegistry;

@@ -10,6 +10,5 @@ public class FluidPlaidWater extends Fluid
 	{
 		super(fluidName);
 		setUnlocalizedName(FluidInfo.PLAID_WATER_UNLOCALIZED_NAME);
-//		setBlockID(FluidInfo.PLAID_WATER_ID);
 	}
 }

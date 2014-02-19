@@ -6,7 +6,6 @@ import java.lang.reflect.Modifier;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 import stuffstuff.stuffstuff.info.PotionInfo;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class Potions
 {
@@ -30,7 +29,7 @@ public class Potions
 
 	public static void addNames()
 	{
-//		LanguageRegistry.addName(potionPlaid, PotionInfo.PLAID_NAME);
+		//		LanguageRegistry.addName(potionPlaid, PotionInfo.PLAID_NAME);
 	}
 
 	private static void modifyAccess()
@@ -49,7 +48,7 @@ public class Potions
 					modfield.setInt(f, f.getModifiers() & ~Modifier.FINAL);
 
 					potionTypes = (Potion[])f.get(null);
-					final Potion[] newPotionTypes = new Potion[256];
+					final Potion[] newPotionTypes = new Potion[potionTypes.length + 5];
 					System.arraycopy(potionTypes, 0, newPotionTypes, 0, potionTypes.length);
 					f.set(null, newPotionTypes);
 				}

@@ -1,23 +1,20 @@
 package stuffstuff.stuffstuff.fluid;
 
-import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.Blocks;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.fluids.BlockFluidClassic;
 import stuffstuff.stuffstuff.blocks.PlaidColor;
 import stuffstuff.stuffstuff.client.render.Renderers;
 import stuffstuff.stuffstuff.info.FluidInfo;
 import stuffstuff.stuffstuff.potions.Potions;
 
-public class BlockFluidPlaidWater extends BlockFluidClassic
+public class BlockFluidPlaidWater extends BlockStuffFluid
 {
 	private IIcon[] stillIcons;
 	private IIcon[] flowingIcons;
@@ -26,7 +23,7 @@ public class BlockFluidPlaidWater extends BlockFluidClassic
 
 	public BlockFluidPlaidWater()
 	{
-		super(Fluids.fluidPlaidWater, Material.water);
+		super(Fluids.fluidPlaidWater);
 		//		setCreativeTab(StuffStuff.tabPlaidStuff);
 	}
 
@@ -34,12 +31,6 @@ public class BlockFluidPlaidWater extends BlockFluidClassic
 	public String getUnlocalizedName()
 	{
 		return FluidInfo.PLAID_WATER_UNLOCALIZED_NAME;
-	}
-
-	@Override
-	public boolean renderAsNormalBlock()
-	{
-		return super.renderAsNormalBlock();
 	}
 
 	@Override
@@ -64,11 +55,13 @@ public class BlockFluidPlaidWater extends BlockFluidClassic
 		}
 	}
 
+	@Override
 	public IIcon getStillIcon()
 	{
 		return stillIcon;
 	}
 
+	@Override
 	public IIcon getFlowingIcon()
 	{
 		return flowingIcon;
@@ -114,30 +107,10 @@ public class BlockFluidPlaidWater extends BlockFluidClassic
 	}
 
 	@Override
-	protected boolean canFlowInto(IBlockAccess world, int x, int y, int z)
-	{
-		return world.getBlock(x, y, z) == Blocks.water || world.getBlock(x, y, z) == Blocks.flowing_water ? false : super.canFlowInto(world, x, y, z);
-	}
-
-	@Override
-	public boolean canDisplace(IBlockAccess world, int x, int y, int z)
-	{
-		return world.getBlock(x, y, z).getMaterial().isLiquid() ? false : super.canDisplace(world, x, y, z);
-	}
-
-	@Override
-	public boolean displaceIfPossible(World world, int x, int y, int z)
-	{
-		return world.getBlock(x, y, z).getMaterial().isLiquid() ? false : super.displaceIfPossible(world, x, y, z);
-	}
-
-	@Override
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
 	{
-		// if(entity instanceof EntityPlayer || entity instanceof EntityMob || entity instanceof EntityCreature)
 		if (entity instanceof EntityLivingBase)
 		{
-			// ent.addPotionEffect(new PotionEffect(Potion.poison.id, 12 * 20, 0));
 			EntityLivingBase ent = (EntityLivingBase)entity;
 			ent.addPotionEffect(new PotionEffect(Potion.invisibility.id, 5 * 20, 0));
 			ent.addPotionEffect(new PotionEffect(Potions.potionPlaid.id, 5 * 20, 0));

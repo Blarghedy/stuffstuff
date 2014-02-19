@@ -189,7 +189,7 @@ public class BlockHalloweenLog extends BlockStuffLog
 	{
 		return false;
 	}
-	
+
 	@Override
 	public boolean isNormalCube()
 	{

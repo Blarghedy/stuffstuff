@@ -4,8 +4,6 @@ public class FluidInfo
 {
 	public static final String TEXTURE_LOCATION = "stuffstuff";
 
-	public static int PLAID_WATER_ID;
-	public static final int PLAID_WATER_DEFAULT = 4000;
 	public static final String PLAID_WATER_KEY = "waterPlaid";
 	public static final String PLAID_WATER_NAME = "Plaid Water";
 	public static final String PLAID_WATER_UNLOCALIZED_NAME = "waterPlaid";

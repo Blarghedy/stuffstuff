@@ -7,7 +7,7 @@ public class PotionInfo
 	public static final String TEXTURE_LOCATION = "stuffstuff";
 
 	public static int PLAID_ID;
-	public static final int PLAID_DEFAULT = 50;
+	public static final int PLAID_DEFAULT = 32;
 	public static final String PLAID_NAME = "Plaid Potion";
 	public static final String PLAID_POTION_NAME = "Plaid Vision";
 	public static final String PLAID_KEY = "potionPlaid";

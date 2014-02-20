@@ -3,6 +3,7 @@ package stuffstuff.holidaystuff.fluids;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
 import net.minecraftforge.fluids.Fluid;
+import stuffstuff.holidaystuff.HolidayStuff;
 import stuffstuff.holidaystuff.info.FluidInfo;
 import stuffstuff.stuffstuff.fluid.BlockStuffFluid;
 
@@ -12,6 +13,7 @@ public class BlockFluidChocolate extends BlockStuffFluid
 	public BlockFluidChocolate(Fluid fluid)
 	{
 		super(fluid);
+		setCreativeTab(HolidayStuff.tabHolidayStuff);
 	}
 
 	/**

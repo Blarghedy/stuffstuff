@@ -3,7 +3,6 @@ package stuffstuff.stuffstuff.blocks;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockGrass;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Blocks;
@@ -20,7 +19,7 @@ public abstract class BlockStuffGrass extends Block
 {
 	protected Block dirtBlock;
 	protected IIcon sideIcon, topIcon;
-	
+
 	public BlockStuffGrass()
 	{
 		super(Material.grass);
@@ -30,22 +29,22 @@ public abstract class BlockStuffGrass extends Block
 		setTickRandomly(true);
 		dirtBlock = Blocks.dirt;
 	}
-	
+
 	@Override
 	public abstract String getUnlocalizedName();
-	
+
 	@Override
 	public abstract void registerBlockIcons(IIconRegister register);
-	
+
 	@Override
 	public abstract IIcon getIcon(int side, int meta);
-	
+
 	@Override
 	public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side)
 	{
 		return getIcon(side, 0);
 	}
-	
+
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random rand)
 	{

@@ -17,7 +17,7 @@ public class BiomeGenHalloweenForest extends BiomeGenBase
 		topBlock = BlocksHolidayStuff.blockHalloweenGrass;
 		fillerBlock = BlocksHolidayStuff.blockHalloweenDirt;
 
-//		worldGeneratorTrees = new WorldGenPlaidTrees(false);
+		worldGeneratorTrees = new WorldGenHalloweenTrees(false);
 //		theBiomeDecorator.treesPerChunk = 1;
 		ItemBiomeTeleporter.addBiome(this);
     }

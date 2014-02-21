@@ -17,6 +17,7 @@ public class BlockHalloweenGrass extends BlockStuffGrass
 	public BlockHalloweenGrass()
 	{
 		setCreativeTab(HolidayStuff.tabHolidayStuff);
+		dirtBlock = BlocksHolidayStuff.blockHalloweenDirt;
 	}
 
 	@Override

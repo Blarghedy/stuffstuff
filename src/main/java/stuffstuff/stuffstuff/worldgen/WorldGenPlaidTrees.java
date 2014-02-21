@@ -5,13 +5,12 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.WorldGenTrees;
 import net.minecraftforge.common.util.ForgeDirection;
 import stuffstuff.stuffstuff.blocks.BlockPlaidSapling;
 import stuffstuff.stuffstuff.blocks.BlocksStuff;
 import stuffstuff.stuffstuff.blocks.PlaidColor;
 
-public class WorldGenPlaidTrees extends WorldGenTrees
+public class WorldGenPlaidTrees extends WorldGenStuffTrees
 {
 	public WorldGenPlaidTrees(boolean doBlockNotify)
 	{
@@ -34,7 +33,7 @@ public class WorldGenPlaidTrees extends WorldGenTrees
 				;
 			}
 
-			boolean grew = growTree(world, random, x, y + 1, z);
+			growTree(world, random, x, y + 1, z);
 
 			x += random.nextInt(16) - 8;
 			z += random.nextInt(16) - 8;
@@ -50,7 +49,6 @@ public class WorldGenPlaidTrees extends WorldGenTrees
 
 		if (y >= 1 && y + treeHeight + 1 <= worldHeight)
 		{
-			Block blockId;
 			int xOffset;
 			int yOffset;
 			int zOffset;

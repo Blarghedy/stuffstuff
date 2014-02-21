@@ -10,6 +10,7 @@ public class FluidCandyCane extends Fluid
 	{
 		super(fluidName);
 		setUnlocalizedName(FluidInfo.CANDY_CANE_UNLOCALIZED_NAME);
+		setLuminosity(16);
 	}
 
 }

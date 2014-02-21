@@ -12,7 +12,7 @@ public class FluidChocolate extends Fluid
 		setUnlocalizedName(FluidInfo.CHOCOLATE_UNLOCALIZED_NAME);
 		setTemperature(305);
 		setDensity(641);
-		setViscosity(60000);
+		setViscosity(40000);
 	}
 
 }

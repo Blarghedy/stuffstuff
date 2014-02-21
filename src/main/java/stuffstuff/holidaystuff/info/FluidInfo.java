@@ -12,7 +12,7 @@ public class FluidInfo
 	public static final String CANDY_CANE_KEY = "candyCane";
 	public static final String CANDY_CANE_NAME = "Molten Candy Cane";
 	public static final String CANDY_CANE_UNLOCALIZED_NAME = "candyCane";
-	public static final String CANDY_CANE_TEXTURE = "candy_cane";
+	public static final String CANDY_CANE_TEXTURE = "molten_candy_cane";
 
 	public static final String EGG_NOG_KEY = "eggNog";
 	public static final String EGG_NOG_NAME = "Egg Nog";

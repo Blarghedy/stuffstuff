@@ -29,7 +29,7 @@ public class BlockFluidEggNog extends BlockStuffFluid
 	@Override
 	public void registerBlockIcons(IIconRegister register)
 	{
-		register.registerIcon(FluidInfo.TEXTURE_LOCATION + ":" + FluidInfo.EGG_NOG_TEXTURE);
+		blockIcon = register.registerIcon(FluidInfo.TEXTURE_LOCATION + ":" + FluidInfo.EGG_NOG_TEXTURE);
 	}
 
 	@Override

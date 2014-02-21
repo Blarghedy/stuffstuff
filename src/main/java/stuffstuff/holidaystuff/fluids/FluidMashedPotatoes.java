@@ -10,6 +10,7 @@ public class FluidMashedPotatoes extends Fluid
 	{
 		super(fluidName);
 		setUnlocalizedName(FluidInfo.MASHED_POTATOES_UNLOCALIZED_NAME);
+		setViscosity(100000);
 	}
 
 }

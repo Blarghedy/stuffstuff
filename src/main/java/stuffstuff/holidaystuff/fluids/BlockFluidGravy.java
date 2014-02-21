@@ -29,7 +29,7 @@ public class BlockFluidGravy extends BlockStuffFluid
 	@Override
 	public void registerBlockIcons(IIconRegister register)
 	{
-		blockIcon = register.registerIcon(FluidInfo.GRAVY_TEXTURE);
+		blockIcon = register.registerIcon(FluidInfo.TEXTURE_LOCATION + ":" + FluidInfo.GRAVY_TEXTURE);
 	}
 
 	@Override

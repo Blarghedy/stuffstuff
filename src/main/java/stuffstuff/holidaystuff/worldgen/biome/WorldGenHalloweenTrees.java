@@ -2,9 +2,11 @@ package stuffstuff.holidaystuff.worldgen.biome;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import stuffstuff.holidaystuff.blocks.BlocksHolidayStuff;
+import stuffstuff.stuffstuff.blocks.BlockStuffLog;
 import stuffstuff.stuffstuff.worldgen.WorldGenStuffTrees;
 
 public class WorldGenHalloweenTrees extends WorldGenStuffTrees
@@ -40,7 +42,8 @@ public class WorldGenHalloweenTrees extends WorldGenStuffTrees
 	{
 		int height;
 		RootGen rootGen;
-
+		LogGen logGen;
+		
 		y--;
 
 		for (ForgeDirection direction : ForgeDirection.VALID_DIRECTIONS)
@@ -52,9 +55,10 @@ public class WorldGenHalloweenTrees extends WorldGenStuffTrees
 
 		height = 6 + rand.nextInt(4);
 
-		for (int i = 0; i < height; i++)
+		for (ForgeDirection direction : ForgeDirection.VALID_DIRECTIONS)
 		{
-
+			logGen = new LogGen(world, x, y, z, direction, 4, rand);
+			logGen.generate();
 		}
 		world.setBlock(x, y + 1, z, BlocksHolidayStuff.blockHalloweenLog);
 		return true;
@@ -62,58 +66,105 @@ public class WorldGenHalloweenTrees extends WorldGenStuffTrees
 
 	private class LogGen
 	{
-		private int x, y, z;
+		private int worldX, worldY, worldZ;
+		private int curX, curY, curZ;
 		private int width;
-		ForgeDirection direction;
+		ForgeDirection wholeLogOrientation;
+		ForgeDirection facing;
 		Random rand;
 		World world;
+		private BlockStuffLog log;
 
 		public LogGen(World world, int x, int y, int z, ForgeDirection direction, int width, Random rand)
 		{
 			this.world = world;
-			this.x = x;
-			this.y = y;
-			this.z = z;
-			this.direction = direction;
+			this.worldX = x;
+			this.worldY = y;
+			this.worldZ = z;
+			this.wholeLogOrientation = direction;
+			this.facing = direction;
 			this.width = width;
 			this.rand = rand;
+			log = (BlockStuffLog)BlocksHolidayStuff.blockHalloweenLog;
+			curX = 0;
+			curY = 0;
+			curZ = 0;
 		}
 
 		public void generate()
 		{
-			
-		}
-		
-		public void goToNextBlock()
-		{
-			goToNextBlock(Direction.FORWARD);
-		}
-		
-		public void goToNextBlock(Direction way)
-		{
-			switch (direction)
+			for (int i = 1; i < 6; i++)
 			{
-				case NORTH:
-					z--;
-					break;
-				case SOUTH:
-					z++;
-					break;
-				case EAST:
-					x++;
-					break;
-				case WEST:
-					x--;
-					break;
-				case UP:
-					y++;
-					break;
-				case DOWN:
-					y--;
+				setLogAt(i, 0, 0, 0);
 			}
 		}
-		
-		
+
+		void setLogAt(int x, int y, int z, int meta)
+		{
+			switch(wholeLogOrientation)
+			{
+				case NORTH:
+					world.setBlock(worldX + x, worldY + y, worldZ + z, log, meta, 2);
+					break;
+				case SOUTH:
+					world.setBlock(worldX - x, worldY + y, worldZ - z, log, meta, 2);
+					break;
+				case EAST:
+					world.setBlock(worldX - z, worldY + y, worldZ - x, log, meta, 2);
+					break;
+				case WEST:
+					world.setBlock(worldX + z, worldY + y, worldZ + x, log, meta, 2);
+					break;
+				case UP:
+					world.setBlock(worldX + x, worldY + z, worldZ - y, log, meta, 2);
+					break;
+				case DOWN:
+					world.setBlock(worldX - x, worldY - z, worldZ + y, log, meta, 2);
+			}
+		}
+
+		public int getMetaAt(int x, int y, int z)
+		{
+			switch(wholeLogOrientation)
+			{
+				case NORTH:
+					return world.getBlockMetadata(worldX + x, worldY + y, worldZ + z);
+				case SOUTH:
+					return world.getBlockMetadata(worldX - x, worldY + y, worldZ - z);
+				case EAST:
+					return world.getBlockMetadata(worldX - z, worldY + y, worldZ - x);
+				case WEST:
+					return world.getBlockMetadata(worldX + z, worldY + y, worldZ + x);
+				case UP:
+					return world.getBlockMetadata(worldX + x, worldY + z, worldZ - y);
+				case DOWN:
+					return world.getBlockMetadata(worldX - x, worldY - z, worldZ + y);
+				default:
+					return 0;
+			}
+		}
+
+		public Block getBlockAt(int x, int y, int z)
+		{
+			switch(wholeLogOrientation)
+			{
+				case NORTH:
+					return world.getBlock(worldX + x, worldY + y, worldZ + z);
+				case SOUTH:
+					return world.getBlock(worldX - x, worldY + y, worldZ - z);
+				case EAST:
+					return world.getBlock(worldX - z, worldY + y, worldZ - x);
+				case WEST:
+					return world.getBlock(worldX + z, worldY + y, worldZ + x);
+				case UP:
+					return world.getBlock(worldX + x, worldY + z, worldZ - y);
+				case DOWN:
+					return world.getBlock(worldX - x, worldY - z, worldZ + y);
+				default:
+					return null;
+			}
+		}
+
 	}
 
 	private class RootGen extends LogGen
@@ -129,11 +180,11 @@ public class WorldGenHalloweenTrees extends WorldGenStuffTrees
 			int length = rand.nextInt(5);
 			for (int i = 0; i < length; i++)
 			{
-//				world.setBlockMetadataWithNotify(par1, par2, par3, par4, par5)
+				//				world.setBlockMetadataWithNotify(par1, par2, par3, par4, par5)
 			}
 		}
 	}
-	
+
 	private enum Direction
 	{
 		RIGHT, LEFT, UP, DOWN, FORWARD, BACK;

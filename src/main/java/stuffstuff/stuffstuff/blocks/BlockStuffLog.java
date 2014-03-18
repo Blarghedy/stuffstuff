@@ -57,12 +57,21 @@ public abstract class BlockStuffLog extends BlockLog
 		world.setBlockMetadataWithNotify(x, y, z, meta, 2);
 		return meta;
 	}
-	
+
 	public int setNonOrientationMeta(World world, int x, int y, int z, int meta)
 	{
 		meta = meta & 3; // strip meta that would affect orientation
 		ForgeDirection orientation = getOrientation(world, x, y, z);
 		meta = meta | getIntForOrientation(orientation);
+		world.setBlockMetadataWithNotify(x, y, z, meta, 2);
+		return meta;
+	}
+	
+	public int setOrientationAndMeta(World world, int x, int y, int z, ForgeDirection orientation, int meta)
+	{
+		orientation = getValidOrientation(orientation);
+		meta = meta & 3; // isolate non-directional meta
+		meta = meta | getIntForOrientation(orientation); // fill in orientation meta
 		world.setBlockMetadataWithNotify(x, y, z, meta, 2);
 		return meta;
 	}

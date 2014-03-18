@@ -4,7 +4,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.BiomeManager;
-import stuffstuff.holidaystuff.worldgen.biome.BiomeGenHalloweenForest;
+import stuffstuff.holidaystuff.worldgen.biome.halloween.BiomeGenHalloweenForest;
 import stuffstuff.stuffstuff.worldgen.BiomeEventHandler;
 import stuffstuff.stuffstuff.worldgen.BiomeEventHandler.EnumBiomeType;
 

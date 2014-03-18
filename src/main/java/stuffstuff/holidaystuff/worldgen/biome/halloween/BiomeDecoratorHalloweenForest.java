@@ -1,4 +1,4 @@
-package stuffstuff.holidaystuff.worldgen.biome;
+package stuffstuff.holidaystuff.worldgen.biome.halloween;
 
 import net.minecraft.world.biome.BiomeDecorator;
 

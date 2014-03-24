@@ -27,4 +27,9 @@ public class BlockInfo
 	public static final String HALLOWEEN_PLANK_UNLOCALIZED_NAME = "plankHalloween";
 	public static final String HALLOWEEN_PLANK_TEXTURE = "halloween_log";
 
+	public static final String HALLOWEEN_SAPLING_KEY = "halloweenPlaid";
+	public static final String HALLOWEEN_SAPLING_NAME = "Halloween Sapling";
+	public static final String HALLOWEEN_SAPLING_UNLOCALIZED_NAME = "saplingHalloween";
+	public static final String HALLOWEEN_SAPLING_TEXTURE = "halloween_sapling";
+
 }

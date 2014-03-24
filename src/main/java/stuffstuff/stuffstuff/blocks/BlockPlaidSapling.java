@@ -3,7 +3,6 @@ package stuffstuff.stuffstuff.blocks;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -13,8 +12,6 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
-import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.common.util.ForgeDirection;
 import stuffstuff.stuffstuff.StuffStuff;
 import stuffstuff.stuffstuff.info.BlockInfo;
 import stuffstuff.stuffstuff.worldgen.WorldGenPlaidTrees;
@@ -85,15 +82,6 @@ public class BlockPlaidSapling extends BlockSapling
 			world.setBlock(x, y, z, this, 0, 4);
 		}
 	}
-
-//	@Override
-//	public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection direction, IPlantable plantable)
-//	{
-//		// previously canThisPlantGrowOnThisBlockID(Block block)
-//		Block block = world.getBlock(x, y, z);
-//
-//		return block == BlocksStuff.blockPlaidGrass || super.canSustainPlant(world, x, y, z, direction, plantable);
-//	}
 
 	@Override
 	public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z)

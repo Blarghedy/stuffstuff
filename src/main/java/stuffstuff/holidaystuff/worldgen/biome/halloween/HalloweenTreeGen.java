@@ -25,32 +25,32 @@ public class HalloweenTreeGen extends StuffTreeGenBase
 		BlockHalloweenLog log = (BlockHalloweenLog)BlocksHolidayStuff.blockHalloweenLog;
 		float branchRatio = .3f;
 		int height = maxDepth / 3;
-		float logSpawnChance;
+		float logSpawnWeight = .5f;
 		ForgeDirection leanDirection = ForgeDirection.EAST;
-		float leanWeight = .5f;
+//		float leanWeight = .5f;
 		int currentLean = 0;
-		float leanChance;
 
 		// fill in the trunk, dealing with lean, and push some branch locations to the stack
 		for (int i = 0; i < height; i++)
 		{
-			leanChance = world.rand.nextFloat();
-			if (leanChance > leanWeight / height && false)
-			{
-				currentLean++;
-			}
-
-			System.out.println("Setting block at " + x + " " + y + " " + z);
-			world.setBlock(startx + currentLean * leanDirection.offsetX + orientation.offsetX, 
+			// TODO fix lean
+//			if (world.rand.nextFloat() / 2 > (i + 1) * leanWeight / height)
+//			{
+//				currentLean++;
+//			}
+			
+			world.setBlock(startx + currentLean * leanDirection.offsetX, 
 					starty + i, 
-					startz + currentLean * leanDirection.offsetZ + orientation.offsetZ, 
+					startz + currentLean * leanDirection.offsetZ, 
 					log);
 			log.setOrientation(world, x, y, z, ForgeDirection.UP);
-			logSpawnChance = world.rand.nextFloat();
 
-			if (logSpawnChance > i * 2.0f / height)
+			if (world.rand.nextFloat() < i * 2.0f / height && world.rand.nextFloat() > logSpawnWeight)
 			{
-				orientation = ForgeDirection.getOrientation(4 * world.rand.nextInt() + 2);
+				int next = world.rand.nextInt() + 2;
+				next = world.rand.nextInt(4) + 2;
+				orientation = ForgeDirection.getOrientation(next);
+				System.out.println(orientation + " " + next);
 				primaryOrientation = orientation;
 				x = startx + currentLean * leanDirection.offsetX + orientation.offsetX;
 				y = starty + i;
@@ -59,7 +59,6 @@ public class HalloweenTreeGen extends StuffTreeGenBase
 			}
 		}
 
-		if (true) return;
 		while (!stackIsEmpty())
 		{
 			popFromStack(); // overwrite current x, y, z, orientation, currentWidth
@@ -101,13 +100,13 @@ public class HalloweenTreeGen extends StuffTreeGenBase
 				else if (targetDirection == primaryOrientation.getOpposite())
 				{
 					// we want to mostly avoid going backward or the tree ends up becoming a bush
-					if (world.rand.nextFloat() < .8) 
+					if (world.rand.nextFloat() > .4) 
 						continue; 
 				}
 				else if (targetDirection == ForgeDirection.DOWN)
 				{
 					// likewise, we want to avoid going down most of the time
-					if (world.rand.nextFloat() < .5)
+					if (world.rand.nextFloat() > .3)
 						continue;
 				}
 

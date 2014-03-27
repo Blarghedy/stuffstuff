@@ -37,7 +37,7 @@ public class WorldGenHalloweenTrees extends WorldGenStuffTrees
 	@Override
 	public boolean growTree(World world, Random rand, int x, int y, int z)
 	{
-		HalloweenTreeGen treeGen = new HalloweenTreeGen(world, x, y, z, 10);
+		HalloweenTreeGen treeGen = new HalloweenTreeGen(world, x, y, z, 10, 3);
 //		treeGen.genTree();
 		return true;
 	}

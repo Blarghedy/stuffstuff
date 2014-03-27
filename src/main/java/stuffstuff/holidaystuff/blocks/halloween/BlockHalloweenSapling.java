@@ -43,7 +43,7 @@ public class BlockHalloweenSapling extends BlockSapling
 	public void func_149878_d(World world, int x, int y, int z, Random rand)
 	{
 		// was growTree
-		HalloweenTreeGen treeGen = new HalloweenTreeGen(world, x, y, z, 30);
+		HalloweenTreeGen treeGen = new HalloweenTreeGen(world, x, y, z, 10, 3);
 		treeGen.genTree();
 	}
 

@@ -148,14 +148,19 @@ public class HalloweenTreeGen extends StuffTreeGenBase
 					continue;
 				}
 
-				if (currentLength < maxLength)
+				for (int i = 0; i < maxLength; i++)
 				{
-					x = logx + targetDirection.offsetX;
-					y = logy + targetDirection.offsetY;
-					z = logz + targetDirection.offsetZ;
-					pushToStack();
+//					if (world.rand.nextFloat() < .10)
+//					{
+//						break;
+//					}
+//					else
+					{
+						log.setOrientationAndMeta(world, x, y, z, orientation, 4 - currentWidth);
+					}
 				}
-				else if (world.rand.nextFloat() < branchRatio)
+				
+				if (world.rand.nextFloat() < branchRatio)
 				{
 					x = logx + targetDirection.offsetX;
 					y = logy + targetDirection.offsetY;
@@ -164,6 +169,15 @@ public class HalloweenTreeGen extends StuffTreeGenBase
 					currentLength = 0;
 					pushToStack();
 				}
+
+				//	if (currentLength < maxLength)
+				//	{
+				//		x = logx + targetDirection.offsetX;
+				//		y = logy + targetDirection.offsetY;
+				//		z = logz + targetDirection.offsetZ;
+				//		pushToStack();
+				//	}
+				//	else 
 			}
 		}
 	}

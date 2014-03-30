@@ -48,7 +48,7 @@ public abstract class StuffTreeGenBase
 
 	public abstract void genTree();
 
-	protected void pushToStack()
+	protected void pushToQueue()
 	{
 		push(x);
 		push(y);
@@ -57,23 +57,23 @@ public abstract class StuffTreeGenBase
 		push(orientation.ordinal());
 	}
 
-	protected void popFromStack()
+	protected void popFromQueue()
 	{
-		orientation = ForgeDirection.getOrientation(pop());
-		depth = pop();
-		z = pop();
-		y = pop();
 		x = pop();
+		y = pop();
+		z = pop();
+		depth = pop();
+		orientation = ForgeDirection.getOrientation(pop());
 	}
 
 	protected void push(int n)
 	{
-		list.push(n);
+		list.add(n);
 	}
 
 	protected int pop()
 	{
-		return list.pop();
+		return list.poll();
 	}
 
 	protected int peek()

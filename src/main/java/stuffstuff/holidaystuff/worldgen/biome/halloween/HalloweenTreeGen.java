@@ -25,12 +25,14 @@ public class HalloweenTreeGen extends StuffTreeGenBase
 	public void genTree()
 	{
 		BlockHalloweenLog log = (BlockHalloweenLog)BlocksHolidayStuff.blockHalloweenLog;
-		float branchRatio = .3f;
 		int height = maxDepth / 3;
+		ForgeDirection leanDirection = ForgeDirection.EAST;
+		
+		float branchRatio = .2f;
 		float logSpawnWeight = .5f;
 		float chanceToGoBackward = .2f;
 		float chanceToGoDown = .2f;
-		ForgeDirection leanDirection = ForgeDirection.EAST;
+		
 		//		float leanWeight = .5f;
 		int currentLean = 0;
 		boolean hasLog = false;
@@ -62,7 +64,7 @@ public class HalloweenTreeGen extends StuffTreeGenBase
 				x = startx + currentLean * leanDirection.offsetX + orientation.offsetX;
 				y = starty + i;
 				z = startz + currentLean * leanDirection.offsetZ + orientation.offsetZ;
-				pushToStack();
+				pushToQueue();
 			}
 		}
 
@@ -76,12 +78,12 @@ public class HalloweenTreeGen extends StuffTreeGenBase
 			x = startx + currentLean * leanDirection.offsetX + orientation.offsetX;
 			y = starty + height;
 			z = startz + currentLean * leanDirection.offsetZ + orientation.offsetZ;
-			pushToStack();
+			pushToQueue();
 		}
 
 		while (!stackIsEmpty())
 		{
-			popFromStack(); // overwrite current x, y, z, orientation, currentWidth
+			popFromQueue(); // overwrite current x, y, z, orientation, currentWidth
 			depth++;
 
 			int logx = x;
@@ -154,7 +156,7 @@ public class HalloweenTreeGen extends StuffTreeGenBase
 					currentWidth = currentWidth / 2;
 				}
 
-				// If currentWidth is too low, don't do anything here.
+				// If currentWidth is too low, don't do anything on this branch.
 				if (currentWidth < 4)
 				{
 					continue;
@@ -166,28 +168,27 @@ public class HalloweenTreeGen extends StuffTreeGenBase
 					y = logy + targetDirection.offsetY;
 					z = logz + targetDirection.offsetZ;
 					orientation = targetDirection;
-					pushToStack();
+					pushToQueue();
 				}
 			}
 		}
 	}
 
 	@Override
-	protected void pushToStack()
+	protected void pushToQueue()
 	{
-		super.pushToStack();
+		super.pushToQueue();
 
 		push(currentWidth);
 		push(primaryOrientation.ordinal());
 	}
 
 	@Override
-	protected void popFromStack()
+	protected void popFromQueue()
 	{
-		primaryOrientation = ForgeDirection.getOrientation(pop());
+		super.popFromQueue();
 		currentWidth = pop();
-
-		super.popFromStack();
+		primaryOrientation = ForgeDirection.getOrientation(pop());
 	}
 
 }

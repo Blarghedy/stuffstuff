@@ -39,7 +39,27 @@ public class BlockHalloweenLog extends BlockStuffLog
 
 	public int getWidth(int meta)
 	{
+		// meta	output
+		// 0	16
+		// 1	12
+		// 2	8
+		// 3	4
+		// 4	16
 		return 16 - 4 * (meta % 4);
+	}
+
+	/**
+	 * 
+	 * @param world
+	 * @param x
+	 * @param y
+	 * @param z
+	 * @param width int; should be 4, 8, or 16
+	 */
+	public void setWidth(World world, int x, int y, int z, int width)
+	{
+		if (width < 0 || width > 16) width = 16;
+		setNonOrientationMeta(world, x, y, z, 4 - width / 4);
 	}
 
 	public float getWidthAsPercent(int meta)

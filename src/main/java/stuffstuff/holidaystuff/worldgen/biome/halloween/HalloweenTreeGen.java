@@ -10,7 +10,6 @@ import stuffstuff.stuffstuff.worldgen.StuffTreeGenBase;
 public class HalloweenTreeGen extends StuffTreeGenBase
 {
 	private int currentWidth;
-	private int currentLength;
 	private int maxLength;
 	private ForgeDirection primaryOrientation;
 
@@ -18,8 +17,7 @@ public class HalloweenTreeGen extends StuffTreeGenBase
 	{
 		super(world, x, y, z, maxDepth);
 		this.maxLength = maxLength;
-		currentWidth = 4;
-		currentLength = 0;
+		currentWidth = 8;
 		primaryOrientation = ForgeDirection.NORTH;
 	}
 
@@ -30,18 +28,21 @@ public class HalloweenTreeGen extends StuffTreeGenBase
 		float branchRatio = .3f;
 		int height = maxDepth / 3;
 		float logSpawnWeight = .5f;
+		float chanceToGoBackward = .2f;
+		float chanceToGoDown = .2f;
 		ForgeDirection leanDirection = ForgeDirection.EAST;
 		//		float leanWeight = .5f;
 		int currentLean = 0;
+		boolean hasLog = false;
 
 		// fill in the trunk, dealing with lean, and push some branch locations to the stack
 		for (int i = 0; i < height; i++)
 		{
 			// TODO fix lean
-			//			if (world.rand.nextFloat() / 2 > (i + 1) * leanWeight / height)
-			//			{
-			//				currentLean++;
-			//			}
+			//	if (world.rand.nextFloat() / 2 > (i + 1) * leanWeight / height)
+			//	{
+			//		currentLean++;
+			//	}
 
 			world.setBlock(startx + currentLean * leanDirection.offsetX, 
 					starty + i, 
@@ -49,8 +50,10 @@ public class HalloweenTreeGen extends StuffTreeGenBase
 					log);
 			log.setOrientation(world, x, y, z, ForgeDirection.UP);
 
-			if (world.rand.nextFloat() < i * 2.0f / height && world.rand.nextFloat() > logSpawnWeight)
+			if (i > height / 3 && world.rand.nextFloat() < i * 2.0f / height && world.rand.nextFloat() > logSpawnWeight)
 			{
+				hasLog = true;
+
 				int next = world.rand.nextInt() + 2;
 				next = world.rand.nextInt(4) + 2;
 				orientation = ForgeDirection.getOrientation(next);
@@ -63,38 +66,61 @@ public class HalloweenTreeGen extends StuffTreeGenBase
 			}
 		}
 
+		if (!hasLog)
+		{
+			int next;
+			next = world.rand.nextInt(4) + 2;
+			orientation = ForgeDirection.getOrientation(next);
+
+			primaryOrientation = orientation;
+			x = startx + currentLean * leanDirection.offsetX + orientation.offsetX;
+			y = starty + height;
+			z = startz + currentLean * leanDirection.offsetZ + orientation.offsetZ;
+			pushToStack();
+		}
+
 		while (!stackIsEmpty())
 		{
 			popFromStack(); // overwrite current x, y, z, orientation, currentWidth
 			depth++;
-			currentLength++;
 
 			int logx = x;
 			int logy = y;
 			int logz = z;
 			ForgeDirection oldOrientation = orientation;
 			int oldWidth = currentWidth;
-			Block blockAtLocation = world.getBlock(x, y, z);
+			boolean keepGoingIGuess = true;
 
-			if (blockAtLocation.canBeReplacedByLeaves(world, logx, logy, logz))
+			for (int i = 0; i < maxLength; i++)
 			{
-				world.setBlock(x, y, z, log);
-			}
-			else if (blockAtLocation == log)
-			{
-				int metaAtLocation = world.getBlockMetadata(logx, logy, logz);
-				if (log.getWidth(metaAtLocation) / 4 <= currentWidth)
+				Block blockAtLocation = world.getBlock(x, y, z);
+				log.setOrientationAndMeta(world, x, y, z, orientation, currentWidth);
+
+				if (blockAtLocation.canBeReplacedByLeaves(world, logx, logy, logz))
 				{
-					// At this point we're apparently trying to grow a small branch  
-					// through a big branch and we want to avoid that, so continue
-					continue; 
+					world.setBlock(x, y, z, log);
 				}
+				else if (blockAtLocation == log)
+				{
+					int metaAtLocation = world.getBlockMetadata(logx, logy, logz);
+					// log.getWidth(0) / 4 -> 4
+					if (log.getWidth(metaAtLocation) <= currentWidth)
+					{
+						// At this point we're apparently trying to grow a small branch  
+						// through a big branch and we want to avoid that, so continue
+						keepGoingIGuess = false; // good programming practice. I promise.
+						continue; 
+					}
+				}
+
+				// At this point, we're either overriding a smaller branch or filling in 
+				// something that can be replaced by a log, so set the orientation
+				// and width.
+				log.setOrientation(world, x, y, z, orientation);
+				log.setWidth(world, logx, logy, logz, currentWidth);
 			}
 
-			// At this point, we're either overriding a smaller branch or filling in 
-			// something that can be replaced by a log, so set the orientation
-			// and width.
-			log.setOrientationAndMeta(world, x, y, z, orientation, 4 - currentWidth);
+			if (!keepGoingIGuess) continue;
 
 			for (ForgeDirection targetDirection : ForgeDirection.VALID_DIRECTIONS)
 			{
@@ -105,79 +131,43 @@ public class HalloweenTreeGen extends StuffTreeGenBase
 				{
 					continue;
 				}
-				else if (targetDirection == primaryOrientation.getOpposite())
-				{
-					// we want to mostly avoid going backward or the tree ends up becoming a bush
-					if (world.rand.nextFloat() > .2) 
-						continue; 
-				}
 				else if (targetDirection == ForgeDirection.DOWN)
 				{
 					// likewise, we want to avoid going down most of the time
-					if (world.rand.nextFloat() > .1)
+					if (world.rand.nextFloat() < chanceToGoDown)
 						continue;
 				}
+				else if (targetDirection == primaryOrientation.getOpposite())
+				{
+					// we want to mostly avoid going backward or the tree ends up becoming a bush
+					if (world.rand.nextFloat() < chanceToGoBackward) 
+						continue; 
+				}
 
-				// So now we're branching in the direction of targetDirection
+				// Now we're branching in the direction of targetDirection
 
 				// Set the width and decrease it if necessary
 				currentWidth = oldWidth;
 				if (world.rand.nextFloat() < getDepth() * 1.0 / getMaxDepth())
 				{
-					// if currentWidth is 4, set it to 2.  If it is 2, set it to 1.
-					// If it is 1, we would set it to 0, but instead just continue
-					// with the next iteration of the loop anyway.
-					switch (currentWidth)
-					{
-						case 4:
-							currentWidth = 2;
-							break;
-						case 2:
-							currentWidth = 1;
-							break;
-						case 1:
-						case 0:
-						default:
-							continue;
-					}
+					// Decrement currentWidth.  Valid values are 16, 8, and 4.
+					currentWidth = currentWidth / 2;
 				}
 
-				if (currentWidth == 0)
+				// If currentWidth is too low, don't do anything here.
+				if (currentWidth < 4)
 				{
-					System.out.println("THIS SHOULDN'T HAPPEN");
 					continue;
 				}
 
-				for (int i = 0; i < maxLength; i++)
-				{
-//					if (world.rand.nextFloat() < .10)
-//					{
-//						break;
-//					}
-//					else
-					{
-						log.setOrientationAndMeta(world, x, y, z, orientation, 4 - currentWidth);
-					}
-				}
-				
 				if (world.rand.nextFloat() < branchRatio)
 				{
 					x = logx + targetDirection.offsetX;
 					y = logy + targetDirection.offsetY;
 					z = logz + targetDirection.offsetZ;
 					orientation = targetDirection;
-					currentLength = 0;
 					pushToStack();
 				}
-
-				//	if (currentLength < maxLength)
-				//	{
-				//		x = logx + targetDirection.offsetX;
-				//		y = logy + targetDirection.offsetY;
-				//		z = logz + targetDirection.offsetZ;
-				//		pushToStack();
-				//	}
-				//	else 
 			}
 		}
 	}
@@ -186,10 +176,8 @@ public class HalloweenTreeGen extends StuffTreeGenBase
 	protected void pushToStack()
 	{
 		super.pushToStack();
-		System.out.println(x + " " + y + " " + z + " " + primaryOrientation + " " + currentLength + " " + currentWidth);
 
 		push(currentWidth);
-		push(currentLength);
 		push(primaryOrientation.ordinal());
 	}
 
@@ -197,7 +185,6 @@ public class HalloweenTreeGen extends StuffTreeGenBase
 	protected void popFromStack()
 	{
 		primaryOrientation = ForgeDirection.getOrientation(pop());
-		currentLength = pop();
 		currentWidth = pop();
 
 		super.popFromStack();

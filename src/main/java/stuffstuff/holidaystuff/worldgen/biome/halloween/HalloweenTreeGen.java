@@ -27,12 +27,12 @@ public class HalloweenTreeGen extends StuffTreeGenBase
 		BlockHalloweenLog log = (BlockHalloweenLog)BlocksHolidayStuff.blockHalloweenLog;
 		int height = maxDepth / 3;
 		ForgeDirection leanDirection = ForgeDirection.EAST;
-		
+
 		float branchRatio = .2f;
 		float logSpawnWeight = .5f;
 		float chanceToGoBackward = .2f;
 		float chanceToGoDown = .2f;
-		
+
 		//		float leanWeight = .5f;
 		int currentLean = 0;
 		boolean hasLog = false;
@@ -46,7 +46,8 @@ public class HalloweenTreeGen extends StuffTreeGenBase
 			//		currentLean++;
 			//	}
 
-			world.setBlock(startx + currentLean * leanDirection.offsetX, 
+			world.setBlock(
+					startx + currentLean * leanDirection.offsetX, 
 					starty + i, 
 					startz + currentLean * leanDirection.offsetZ, 
 					log);
@@ -56,34 +57,32 @@ public class HalloweenTreeGen extends StuffTreeGenBase
 			{
 				hasLog = true;
 
-				int next = world.rand.nextInt() + 2;
-				next = world.rand.nextInt(4) + 2;
-				orientation = ForgeDirection.getOrientation(next);
+				// randomly choose NORTH, SOUTH, EAST, or WEST
+				orientation = ForgeDirection.getOrientation(world.rand.nextInt(4) + 2);
 
 				primaryOrientation = orientation;
 				x = startx + currentLean * leanDirection.offsetX + orientation.offsetX;
 				y = starty + i;
 				z = startz + currentLean * leanDirection.offsetZ + orientation.offsetZ;
-				pushToQueue();
+				enQueue();
 			}
 		}
 
 		if (!hasLog)
 		{
-			int next;
-			next = world.rand.nextInt(4) + 2;
-			orientation = ForgeDirection.getOrientation(next);
+			// randomly choose NORTH, SOUTH, EAST, or WEST
+			orientation = ForgeDirection.getOrientation(world.rand.nextInt(4) + 2);
 
 			primaryOrientation = orientation;
 			x = startx + currentLean * leanDirection.offsetX + orientation.offsetX;
-			y = starty + height;
+			y = starty + height - 1;
 			z = startz + currentLean * leanDirection.offsetZ + orientation.offsetZ;
-			pushToQueue();
+			enQueue();
 		}
 
 		while (!stackIsEmpty())
 		{
-			popFromQueue(); // overwrite current x, y, z, orientation, currentWidth
+			deQueue(); // overwrite current x, y, z, orientation, currentWidth
 			depth++;
 
 			int logx = x;
@@ -96,7 +95,7 @@ public class HalloweenTreeGen extends StuffTreeGenBase
 			for (int i = 0; i < maxLength; i++)
 			{
 				Block blockAtLocation = world.getBlock(x, y, z);
-				log.setOrientationAndMeta(world, x, y, z, orientation, currentWidth);
+//				log.setOrientationAndMeta(world, x, y, z, orientation, currentWidth);
 
 				if (blockAtLocation.canBeReplacedByLeaves(world, logx, logy, logz))
 				{
@@ -105,24 +104,30 @@ public class HalloweenTreeGen extends StuffTreeGenBase
 				else if (blockAtLocation == log)
 				{
 					int metaAtLocation = world.getBlockMetadata(logx, logy, logz);
-					// log.getWidth(0) / 4 -> 4
-					if (log.getWidth(metaAtLocation) <= currentWidth)
+
+					if (log.getWidth(metaAtLocation) >= currentWidth)
 					{
 						// At this point we're apparently trying to grow a small branch  
-						// through a big branch and we want to avoid that, so continue
+						// through a big branch and we want to avoid that, so break
 						keepGoingIGuess = false; // good programming practice. I promise.
-						continue; 
+						break;
 					}
 				}
+				else
+				{
+					// We can't grow the log through this block so break
+					keepGoingIGuess = false;
+					break;
+				}
 
-				// At this point, we're either overriding a smaller branch or filling in 
-				// something that can be replaced by a log, so set the orientation
-				// and width.
 				log.setOrientation(world, x, y, z, orientation);
 				log.setWidth(world, logx, logy, logz, currentWidth);
 			}
 
 			if (!keepGoingIGuess) continue;
+
+			// Keep track of whether or not we enqueue the next segment
+			boolean continuedLog = false;
 
 			for (ForgeDirection targetDirection : ForgeDirection.VALID_DIRECTIONS)
 			{
@@ -168,25 +173,40 @@ public class HalloweenTreeGen extends StuffTreeGenBase
 					y = logy + targetDirection.offsetY;
 					z = logz + targetDirection.offsetZ;
 					orientation = targetDirection;
-					pushToQueue();
+					continuedLog = true;
+					enQueue();
 				}
+			}
+
+			// If we didn't continue the log we need to do so here
+			if (!continuedLog && currentWidth >= 4)
+			{
+				orientation = ForgeDirection.UNKNOWN;
+				while ((orientation != oldOrientation && orientation != oldOrientation.getOpposite()) || orientation == ForgeDirection.UNKNOWN)
+				{
+					orientation = ForgeDirection.getOrientation(world.rand.nextInt(5) + 1);
+				}
+
+				x = logx + orientation.offsetX;
+				y = logy + orientation.offsetY;
+				z = logz + orientation.offsetZ;
+				enQueue();
 			}
 		}
 	}
 
 	@Override
-	protected void pushToQueue()
+	protected void enQueue()
 	{
-		super.pushToQueue();
-
+		super.enQueue();
 		push(currentWidth);
 		push(primaryOrientation.ordinal());
 	}
 
 	@Override
-	protected void popFromQueue()
+	protected void deQueue()
 	{
-		super.popFromQueue();
+		super.deQueue();
 		currentWidth = pop();
 		primaryOrientation = ForgeDirection.getOrientation(pop());
 	}

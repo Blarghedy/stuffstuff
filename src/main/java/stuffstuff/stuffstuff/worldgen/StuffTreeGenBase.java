@@ -48,7 +48,7 @@ public abstract class StuffTreeGenBase
 
 	public abstract void genTree();
 
-	protected void pushToQueue()
+	protected void enQueue()
 	{
 		push(x);
 		push(y);
@@ -57,7 +57,7 @@ public abstract class StuffTreeGenBase
 		push(orientation.ordinal());
 	}
 
-	protected void popFromQueue()
+	protected void deQueue()
 	{
 		x = pop();
 		y = pop();

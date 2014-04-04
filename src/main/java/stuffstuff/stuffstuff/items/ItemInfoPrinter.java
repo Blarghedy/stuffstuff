@@ -5,6 +5,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import stuffstuff.stuffstuff.StuffStuff;
 import stuffstuff.stuffstuff.info.ItemInfo;
@@ -42,17 +43,102 @@ public class ItemInfoPrinter extends Item
 			setTarget(itemstack, index, x, y, z);
 			index = index == 0 ? 1 : 0;
 			setTargetIndex(itemstack, index);
+			String targetUnlocalizedName = getTargetBlock(itemstack);
+			
 			if (index == 0)
 			{
 				int minx, miny, minz;
 				int maxx, maxy, maxz;
+				int tmp;
+				minx = getTargetX(itemstack, 0);
+				maxx = getTargetX(itemstack, 1);
+				if (minx > maxx) 
+				{
+					tmp = minx;
+					minx = maxx;
+					maxx = tmp;
+				}
+				miny = getTargetY(itemstack, 0);
+				maxy = getTargetY(itemstack, 1);
+				if (miny > maxy) 
+				{
+					tmp = miny;
+					miny = maxy;
+					maxy = tmp;
+				}
+				minz = getTargetZ(itemstack, 0);
+				maxz = getTargetZ(itemstack, 1);
+				if (minz > maxz) 
+				{
+					tmp = minz;
+					minz = maxz;
+					maxz = tmp;
+				}
 				
+				System.out.println("Searching for " + targetUnlocalizedName);
+				int count = 0;
+				
+				for (int i = minx; i < maxx; i++)
+				{
+					for (int j = miny; j < maxy; j++)
+					{
+						for (int k = minz; k < maxz; k++)
+						{
+							String unlocalizedName = world.getBlock(i, j, k).getUnlocalizedName();
+							if (unlocalizedName.equals(targetUnlocalizedName))
+							{
+								count++;
+								System.out.println(i + " " + j + " " + k + " " + world.getBlockMetadata(i, j, k));
+							}
+						}
+					}
+				}
+				
+				System.out.println("Found " + count + " indexes of " + targetUnlocalizedName);
 			}
 		}
-		
+
 		return true;
 	}
-	
+
+	private void setNBTTag(ItemStack itemstack, String tag, int value)
+	{
+		NBTTagCompound stackTagCompound = getStackTagCompound(itemstack);
+		stackTagCompound.setInteger(tag, value);
+	}
+
+	private void setNBTTag(ItemStack itemstack, String tag, String value)
+	{
+		NBTTagCompound stackTagCompound = getStackTagCompound(itemstack);
+		stackTagCompound.setString(tag, value);		
+	}
+
+	private int getIntFromNBT(ItemStack itemstack, String tag)
+	{
+		NBTTagCompound stackTagCompound = getStackTagCompound(itemstack);
+		if (stackTagCompound.hasKey(tag))
+		{
+			return stackTagCompound.getInteger(tag);
+		}
+		else
+		{
+			return Integer.MAX_VALUE;
+		}
+	}
+
+	private String getStringFromNBT(ItemStack itemstack, String tag)
+	{
+		NBTTagCompound stackTagCompound = getStackTagCompound(itemstack);
+		return stackTagCompound.getString(tag);
+	}
+
+	private NBTTagCompound getStackTagCompound(ItemStack itemstack)
+	{
+		if (itemstack.stackTagCompound == null) 
+			itemstack.stackTagCompound = new NBTTagCompound();
+		return itemstack.stackTagCompound;
+	}
+
 	/**
 	 * Set the 'center' of the zone.  This can be any block, but for
 	 * trees this is where the sapling originally was.
@@ -64,39 +150,46 @@ public class ItemInfoPrinter extends Item
 		// just set it as a target at index 2
 		setTarget(itemstack, 2, x, y, z);
 	}
-	
+
 	public void setTargetBlock(ItemStack itemstack, Block block)
 	{
-		
+		setNBTTag(itemstack, "targetUnlocalized", block.getUnlocalizedName());
 	}
-	
+
+	public String getTargetBlock(ItemStack itemstack)
+	{
+		return getStringFromNBT(itemstack, "targetUnlocalized");
+	}
+
 	public int getTargetIndex(ItemStack itemstack)
 	{
-		return 0;
+		return getIntFromNBT(itemstack, "targetIndex");
 	}
-	
+
 	public void setTargetIndex(ItemStack itemstack, int index)
 	{
-		
+		setNBTTag(itemstack, "targetIndex", index);
 	}
-	
+
 	public void setTarget(ItemStack itemstack, int index, int x, int y, int z)
 	{
-		
+		setNBTTag(itemstack, "xtarget" + index, x);
+		setNBTTag(itemstack, "ytarget" + index, y);
+		setNBTTag(itemstack, "ztarget" + index, z);
 	}
-	
-	public void getTargetX(ItemStack itemstack, int index)
+
+	public int getTargetX(ItemStack itemstack, int index)
 	{
-		
+		return getIntFromNBT(itemstack, "xtarget" + index);
 	}
-	
-	public void getTargetY(ItemStack itemstack, int index)
+
+	public int getTargetY(ItemStack itemstack, int index)
 	{
-		
+		return getIntFromNBT(itemstack, "ytarget" + index);
 	}
-	
-	public void getTargetZ(ItemStack itemstack, int index)
+
+	public int getTargetZ(ItemStack itemstack, int index)
 	{
-		
+		return getIntFromNBT(itemstack, "ztarget" + index);
 	}
 }

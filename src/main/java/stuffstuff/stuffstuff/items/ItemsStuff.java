@@ -19,6 +19,7 @@ public class ItemsStuff
 	public static ItemBlockPlacer itemBlockPlacer;
 	public static ItemBucketPlaid itemBucketPlaid;
 	public static Item itemBiomeTeleporter;
+	public static Item itemInfoPrinter;
 
 	public static void init()
 	{
@@ -27,12 +28,14 @@ public class ItemsStuff
 		itemBlockPlacer = new ItemBlockPlacer();
 		itemBucketPlaid = new ItemBucketPlaid(Fluids.blockFluidPlaidWater);
 		itemBiomeTeleporter = new ItemBiomeTeleporter();
+		itemInfoPrinter = new ItemInfoPrinter();
 
 		GameRegistry.registerItem(itemFluidCleaner, ItemInfo.FLUID_CLEANER_NAME);
 		GameRegistry.registerItem(itemFluidSmoother, ItemInfo.FLUID_SMOOTHER_NAME);
 		GameRegistry.registerItem(itemBlockPlacer, ItemInfo.BLOCK_PLACER_NAME);
 		GameRegistry.registerItem(itemBucketPlaid, ItemInfo.BUCKET_PLAID_NAME);
 		GameRegistry.registerItem(itemBiomeTeleporter, "Biome Teleporter");
+		GameRegistry.registerItem(itemInfoPrinter, ItemInfo.INFO_PRINTER_NAME);
 
 		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack(Fluids.fluidPlaidWater.getName(), FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(itemBucketPlaid), new ItemStack(Items.bucket));
 	}

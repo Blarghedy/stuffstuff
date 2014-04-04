@@ -36,6 +36,7 @@ public class ItemInfoPrinter extends Item
 			Block block = world.getBlock(x, y, z);
 			setCenter(itemstack, x, y, z);
 			setTargetBlock(itemstack, block);
+			System.out.println("Setting center to " + x + " " + y + " " + z + " " + block.getUnlocalizedName());
 		}
 		else
 		{
@@ -75,14 +76,19 @@ public class ItemInfoPrinter extends Item
 					maxz = tmp;
 				}
 
+				if (maxx == Integer.MAX_VALUE || maxy == Integer.MAX_VALUE || maxz == Integer.MAX_VALUE)
+				{
+					return true;
+				}
+
 				System.out.println("Searching for " + targetUnlocalizedName);
 				int count = 0;
 
-				for (int i = minx; i < maxx; i++)
+				for (int i = minx; i <= maxx; i++)
 				{
-					for (int j = miny; j < maxy; j++)
+					for (int j = miny; j <= maxy; j++)
 					{
-						for (int k = minz; k < maxz; k++)
+						for (int k = minz; k <= maxz; k++)
 						{
 							String unlocalizedName = world.getBlock(i, j, k).getUnlocalizedName();
 							if (unlocalizedName.equals(targetUnlocalizedName))

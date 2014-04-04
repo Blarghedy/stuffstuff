@@ -44,7 +44,7 @@ public class ItemInfoPrinter extends Item
 			index = index == 0 ? 1 : 0;
 			setTargetIndex(itemstack, index);
 			String targetUnlocalizedName = getTargetBlock(itemstack);
-			
+
 			if (index == 0)
 			{
 				int minx, miny, minz;
@@ -74,10 +74,10 @@ public class ItemInfoPrinter extends Item
 					minz = maxz;
 					maxz = tmp;
 				}
-				
+
 				System.out.println("Searching for " + targetUnlocalizedName);
 				int count = 0;
-				
+
 				for (int i = minx; i < maxx; i++)
 				{
 					for (int j = miny; j < maxy; j++)
@@ -93,7 +93,8 @@ public class ItemInfoPrinter extends Item
 						}
 					}
 				}
-				
+
+				System.out.println("Central location: " + getTargetX(itemstack, 2) + " " + getTargetY(itemstack, 2) + " " + getTargetZ(itemstack, 2));
 				System.out.println("Found " + count + " indexes of " + targetUnlocalizedName);
 			}
 		}

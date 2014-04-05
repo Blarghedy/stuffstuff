@@ -82,7 +82,9 @@ public class ItemInfoPrinter extends Item
 				}
 
 				System.out.println("Searching for " + targetUnlocalizedName);
+				System.out.print("{");
 				int count = 0;
+				boolean printComma = false;
 
 				for (int i = minx; i <= maxx; i++)
 				{
@@ -94,12 +96,14 @@ public class ItemInfoPrinter extends Item
 							if (unlocalizedName.equals(targetUnlocalizedName))
 							{
 								count++;
-								System.out.println(i + " " + j + " " + k + " " + world.getBlockMetadata(i, j, k));
+								System.out.print((printComma ? "," : "") + "\n\t{" + i + ", " + j + ", " + k + ", " + world.getBlockMetadata(i, j, k) + "}");
+								printComma = true;
 							}
 						}
 					}
 				}
 
+				System.out.println("\n}");
 				System.out.println("Central location: " + getTargetX(itemstack, 2) + " " + getTargetY(itemstack, 2) + " " + getTargetZ(itemstack, 2));
 				System.out.println("Found " + count + " indexes of " + targetUnlocalizedName);
 			}

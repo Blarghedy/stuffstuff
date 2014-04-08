@@ -10,77 +10,82 @@ import com.google.gson.JsonObject;
 
 public class JsonHelper
 {
-	public static void prettyPrint(JsonElement element)
+	public static StringBuilder prettyPrint(JsonElement element)
 	{
-		prettyPrintElement(element, 0);
-		System.out.print("\n");
+		StringBuilder ret = new StringBuilder();
+		prettyPrintElement(element, 0, ret);
+		ret.append('\n');
+		return ret;
 	}
 
-	public static void prettyPrintElement(JsonElement element, int indentationLevel)
+	private static void prettyPrintElement(JsonElement element, int indentationLevel, StringBuilder sb)
 	{
 		if (element.isJsonPrimitive())
 		{
-			System.out.print(element.getAsJsonPrimitive());
+			sb.append(element.getAsJsonPrimitive());
 		}
 		else if (element.isJsonArray())
 		{
-			prettyPrintArray(element.getAsJsonArray(), indentationLevel);
+			prettyPrintArray(element.getAsJsonArray(), indentationLevel, sb);
 		}
 		else if (element.isJsonObject())
 		{
-			prettyPrintObject(element.getAsJsonObject(), indentationLevel);
+			prettyPrintObject(element.getAsJsonObject(), indentationLevel, sb);
 		}
 		else if (element.isJsonNull())
 		{
-			System.out.print(element.getAsJsonNull());
+			sb.append(element.getAsJsonNull().toString());
 		}
 	}
 
-	public static void prettyPrintObject(JsonObject obj, int indentationLevel)
+	private static void prettyPrintObject(JsonObject obj, int indentationLevel, StringBuilder sb)
 	{
 		boolean printComma = false;
 		String indent = "";
+		String indent2;
+
 		for (int i = 0; i < indentationLevel; i++)
 		{
 			indent += "\t";
 		}
+		indent2 = indent + "\t";
 
-		System.out.print(indent + "{");
+		sb.append(indent + "{");
 
 		for (Map.Entry<String, JsonElement> entry : obj.entrySet())
 		{
 			String key = entry.getKey();
 			JsonElement value = entry.getValue();
 
-			System.out.print((printComma ? "," : "") + "\n" + indent + key + ": ");
+			sb.append((printComma ? "," : "") + "\n" + indent2 + key + ": ");
 			printComma = true;
 
-			prettyPrintElement(value, indentationLevel + 1);
+			prettyPrintElement(value, indentationLevel + 2, sb);
 		}
-		System.out.print("\n" + indent + "}");
+		sb.append("\n" + indent + "}");
 	}
 
-	public static void prettyPrintArray(JsonArray array, int indentationLevel)
+	private static void prettyPrintArray(JsonArray array, int indentationLevel, StringBuilder sb)
 	{
 		if (array.size() == 0)
 		{
-			System.out.print("[ ]");
+			sb.append("[ ]");
 		}
 		else if (arrayIsAllPrimitives(array))
 		{
-			System.out.print("[ ");
-			System.out.print(array.get(0).getAsJsonPrimitive());
+			sb.append("[ ");
+			sb.append(array.get(0).getAsJsonPrimitive());
 
 			for (int i = 1; i < array.size(); i++)
 			{
-				System.out.print(", " + array.get(i).getAsJsonPrimitive());
+				sb.append(", " + array.get(i).getAsJsonPrimitive());
 			}
 
-			System.out.print(" ]");
+			sb.append(" ]");
 		}
 		else
 		{
-			System.out.print("\n");
+			sb.append("\n");
 			String indent = "";
 			for (int i = 0; i < indentationLevel; i++)
 			{
@@ -89,23 +94,23 @@ public class JsonHelper
 			String newline = "\n\t" + indent;
 
 			boolean printComma = false;
-			System.out.println(indent + "[");
+			sb.append(indent + "[\n");
 
 			for (JsonElement element : array)
 			{
 				if (printComma) 
 				{
-					System.out.print(",");
-					System.out.print(newline);
+					sb.append(",");
+					sb.append(newline);
 				}
 				else
 				{
-					System.out.print(indent + "\t");
+					sb.append(indent + "\t");
 				}
 				printComma = true;
-				prettyPrintElement(element, indentationLevel + 1);
+				prettyPrintElement(element, indentationLevel + 1, sb);
 			}
-			System.out.print("\n" + indent + "]");
+			sb.append("\n" + indent + "]");
 		}
 	}
 

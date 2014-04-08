@@ -14,8 +14,6 @@ import stuffstuff.stuffstuff.StuffStuff;
 import stuffstuff.stuffstuff.helper.JsonHelper;
 import stuffstuff.stuffstuff.info.ItemInfo;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
@@ -91,18 +89,13 @@ public class ItemInfoPrinter extends Item
 				{
 					return true;
 				}
-				
+
 				JsonObject out = new JsonObject();
-				
+
 				List<String> list = new ArrayList<String>();
 				JsonArray outArray = new JsonArray();
-				
+
 				out.addProperty("target", targetUnlocalizedName);
-				
-//				System.out.println("Searching for " + targetUnlocalizedName);
-//				System.out.print("{");
-				int count = 0;
-				boolean printComma = false;
 
 				for (int i = minx; i <= maxx; i++)
 				{
@@ -113,12 +106,6 @@ public class ItemInfoPrinter extends Item
 							String unlocalizedName = world.getBlock(i, j, k).getUnlocalizedName();
 							if (unlocalizedName.equals(targetUnlocalizedName))
 							{
-//								count++;
-//								System.out.print((printComma ? "," : "") + "\n\t{" + i + ", " + j + ", " + k + ", " + world.getBlockMetadata(i, j, k) + "}");
-//								
-//								printComma = true;
-								
-//								int arr[] = {i, j, k, world.getBlockMetadata(i, j, k)};
 								JsonArray point = new JsonArray();
 								point.add(new JsonPrimitive(i));
 								point.add(new JsonPrimitive(j));
@@ -129,18 +116,10 @@ public class ItemInfoPrinter extends Item
 						}
 					}
 				}
-				
-				out.add("points", outArray);
-//				Gson gson = new GsonBuilder()./*setPrettyPrinting().*/create();
-//				
-//				System.out.println(gson.toJson(out));
-				System.out.println("PRINTING");
-				JsonHelper.prettyPrint(out);
-				System.out.println("PRINTED");
 
-//				System.out.println("\n}");
-//				System.out.println("Central location: " + getTargetX(itemstack, 2) + " " + getTargetY(itemstack, 2) + " " + getTargetZ(itemstack, 2));
-//				System.out.println("Found " + count + " indexes of " + targetUnlocalizedName);
+				out.add("points", outArray);
+
+				System.out.print(JsonHelper.prettyPrint(out).toString());
 			}
 		}
 

@@ -1,5 +1,8 @@
 package stuffstuff.stuffstuff.items;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
@@ -8,7 +11,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import stuffstuff.stuffstuff.StuffStuff;
+import stuffstuff.stuffstuff.helper.JsonHelper;
 import stuffstuff.stuffstuff.info.ItemInfo;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -80,9 +91,16 @@ public class ItemInfoPrinter extends Item
 				{
 					return true;
 				}
-
-				System.out.println("Searching for " + targetUnlocalizedName);
-				System.out.print("{");
+				
+				JsonObject out = new JsonObject();
+				
+				List<String> list = new ArrayList<String>();
+				JsonArray outArray = new JsonArray();
+				
+				out.addProperty("target", targetUnlocalizedName);
+				
+//				System.out.println("Searching for " + targetUnlocalizedName);
+//				System.out.print("{");
 				int count = 0;
 				boolean printComma = false;
 
@@ -95,17 +113,34 @@ public class ItemInfoPrinter extends Item
 							String unlocalizedName = world.getBlock(i, j, k).getUnlocalizedName();
 							if (unlocalizedName.equals(targetUnlocalizedName))
 							{
-								count++;
-								System.out.print((printComma ? "," : "") + "\n\t{" + i + ", " + j + ", " + k + ", " + world.getBlockMetadata(i, j, k) + "}");
-								printComma = true;
+//								count++;
+//								System.out.print((printComma ? "," : "") + "\n\t{" + i + ", " + j + ", " + k + ", " + world.getBlockMetadata(i, j, k) + "}");
+//								
+//								printComma = true;
+								
+//								int arr[] = {i, j, k, world.getBlockMetadata(i, j, k)};
+								JsonArray point = new JsonArray();
+								point.add(new JsonPrimitive(i));
+								point.add(new JsonPrimitive(j));
+								point.add(new JsonPrimitive(k));
+								point.add(new JsonPrimitive(world.getBlockMetadata(i, j, k)));
+								outArray.add(point);
 							}
 						}
 					}
 				}
+				
+				out.add("points", outArray);
+//				Gson gson = new GsonBuilder()./*setPrettyPrinting().*/create();
+//				
+//				System.out.println(gson.toJson(out));
+				System.out.println("PRINTING");
+				JsonHelper.prettyPrint(out);
+				System.out.println("PRINTED");
 
-				System.out.println("\n}");
-				System.out.println("Central location: " + getTargetX(itemstack, 2) + " " + getTargetY(itemstack, 2) + " " + getTargetZ(itemstack, 2));
-				System.out.println("Found " + count + " indexes of " + targetUnlocalizedName);
+//				System.out.println("\n}");
+//				System.out.println("Central location: " + getTargetX(itemstack, 2) + " " + getTargetY(itemstack, 2) + " " + getTargetZ(itemstack, 2));
+//				System.out.println("Found " + count + " indexes of " + targetUnlocalizedName);
 			}
 		}
 

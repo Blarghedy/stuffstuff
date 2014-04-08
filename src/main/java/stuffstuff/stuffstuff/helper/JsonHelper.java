@@ -44,9 +44,9 @@ public class JsonHelper
 		{
 			indent += "\t";
 		}
-		
+
 		System.out.print(indent + "{");
-		
+
 		for (Map.Entry<String, JsonElement> entry : obj.entrySet())
 		{
 			String key = entry.getKey();
@@ -54,7 +54,7 @@ public class JsonHelper
 
 			System.out.print((printComma ? "," : "") + "\n" + indent + key + ": ");
 			printComma = true;
-			
+
 			prettyPrintElement(value, indentationLevel + 1);
 		}
 		System.out.print("\n" + indent + "}");

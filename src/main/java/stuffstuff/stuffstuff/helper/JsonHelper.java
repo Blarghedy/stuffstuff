@@ -10,6 +10,8 @@ import com.google.gson.JsonObject;
 
 public class JsonHelper
 {
+	private static final String WHITE_SPACE = "  ";
+
 	public static StringBuilder prettyPrint(JsonElement element)
 	{
 		StringBuilder ret = new StringBuilder();
@@ -46,9 +48,9 @@ public class JsonHelper
 
 		for (int i = 0; i < indentationLevel; i++)
 		{
-			indent += "\t";
+			indent += WHITE_SPACE;
 		}
-		indent2 = indent + "\t";
+		indent2 = indent + WHITE_SPACE;
 
 		sb.append(indent + "{");
 
@@ -89,9 +91,9 @@ public class JsonHelper
 			String indent = "";
 			for (int i = 0; i < indentationLevel; i++)
 			{
-				indent += "\t";
+				indent += WHITE_SPACE;
 			}
-			String newline = "\n\t" + indent;
+			String newline = "\n" + WHITE_SPACE + indent;
 
 			boolean printComma = false;
 			sb.append(indent + "[\n");
@@ -105,7 +107,7 @@ public class JsonHelper
 				}
 				else
 				{
-					sb.append(indent + "\t");
+					sb.append(indent + WHITE_SPACE);
 				}
 				printComma = true;
 				prettyPrintElement(element, indentationLevel + 1, sb);

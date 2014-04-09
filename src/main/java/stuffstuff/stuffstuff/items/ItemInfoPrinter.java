@@ -1,8 +1,5 @@
 package stuffstuff.stuffstuff.items;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,6 +15,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -45,15 +43,17 @@ public class ItemInfoPrinter extends Item
 			Block block = world.getBlock(x, y, z);
 			setCenter(itemstack, x, y, z);
 			setTargetBlock(itemstack, block);
-			System.out.println("Setting center to " + x + " " + y + " " + z + " " + block.getUnlocalizedName());
+			System.out.println("Setting center to " + x + " " + y + " " + z + " " + GameRegistry.findUniqueIdentifierFor(block).toString());
 		}
 		else
 		{
 			int index = getTargetIndex(itemstack);
 			setTarget(itemstack, index, x, y, z);
+			// switch target index between 0 and 1 and save it
 			index = index == 0 ? 1 : 0;
 			setTargetIndex(itemstack, index);
-			String targetUnlocalizedName = getTargetBlock(itemstack);
+
+			String targetName = getTargetBlock(itemstack);
 
 			if (index == 0)
 			{
@@ -90,12 +90,18 @@ public class ItemInfoPrinter extends Item
 					return true;
 				}
 
-				JsonObject out = new JsonObject();
+				int centerx = getTargetX(itemstack, 2);
+				int centery = getTargetY(itemstack, 2);
+				int centerz = getTargetZ(itemstack, 2);
+				if (centerx == Integer.MAX_VALUE || centery == Integer.MAX_VALUE || centerz == Integer.MAX_VALUE)
+				{
+					return true;
+				}
 
-				List<String> list = new ArrayList<String>();
+				JsonObject out = new JsonObject();
 				JsonArray outArray = new JsonArray();
 
-				out.addProperty("target", targetUnlocalizedName);
+				out.addProperty("target", targetName);
 
 				for (int i = minx; i <= maxx; i++)
 				{
@@ -103,13 +109,13 @@ public class ItemInfoPrinter extends Item
 					{
 						for (int k = minz; k <= maxz; k++)
 						{
-							String unlocalizedName = world.getBlock(i, j, k).getUnlocalizedName();
-							if (unlocalizedName.equals(targetUnlocalizedName))
+							String name = GameRegistry.findUniqueIdentifierFor(world.getBlock(i, j, k)).toString();
+							if (name.equals(targetName))
 							{
 								JsonArray point = new JsonArray();
-								point.add(new JsonPrimitive(i));
-								point.add(new JsonPrimitive(j));
-								point.add(new JsonPrimitive(k));
+								point.add(new JsonPrimitive(i - centerx));
+								point.add(new JsonPrimitive(j - centery));
+								point.add(new JsonPrimitive(k - centerz));
 								point.add(new JsonPrimitive(world.getBlockMetadata(i, j, k)));
 								outArray.add(point);
 							}
@@ -178,12 +184,12 @@ public class ItemInfoPrinter extends Item
 
 	public void setTargetBlock(ItemStack itemstack, Block block)
 	{
-		setNBTTag(itemstack, "targetUnlocalized", block.getUnlocalizedName());
+		setNBTTag(itemstack, "targetName", GameRegistry.findUniqueIdentifierFor(block).toString());
 	}
 
 	public String getTargetBlock(ItemStack itemstack)
 	{
-		return getStringFromNBT(itemstack, "targetUnlocalized");
+		return getStringFromNBT(itemstack, "targetName");
 	}
 
 	public int getTargetIndex(ItemStack itemstack)

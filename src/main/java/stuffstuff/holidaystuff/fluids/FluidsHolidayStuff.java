@@ -28,23 +28,23 @@ public class FluidsHolidayStuff
 
 	public static void init()
 	{
-		fluidChocolate = new FluidChocolate(FluidInfo.CHOCOLATE_NAME);
+		fluidChocolate = new FluidChocolate(FluidInfo.CHOCOLATE_UNLOCALIZED_NAME);
 		FluidRegistry.registerFluid(fluidChocolate);
 		blockFluidChocolate = new BlockFluidChocolate(fluidChocolate);
 
-		fluidCandyCane = new FluidCandyCane(FluidInfo.CANDY_CANE_NAME);
+		fluidCandyCane = new FluidCandyCane(FluidInfo.CANDY_CANE_UNLOCALIZED_NAME);
 		FluidRegistry.registerFluid(fluidCandyCane);
 		blockFluidCandyCane = new BlockFluidCandyCane(fluidCandyCane);
 
-		fluidEggNog = new FluidEggNog(FluidInfo.EGG_NOG_NAME);
+		fluidEggNog = new FluidEggNog(FluidInfo.EGG_NOG_UNLOCALIZED_NAME);
 		FluidRegistry.registerFluid(fluidEggNog);
 		blockFluidEggNog = new BlockFluidEggNog(fluidEggNog);
 
-		fluidLicorice = new FluidLicorice(FluidInfo.LICORICE_NAME);
+		fluidLicorice = new FluidLicorice(FluidInfo.LICORICE_UNLOCALIZED_NAME);
 		FluidRegistry.registerFluid(fluidLicorice);
 		blockFluidLicorice = new BlockFluidLicorice(fluidLicorice);
 
-		fluidMashedPotatoes = new FluidMashedPotatoes(FluidInfo.MASHED_POTATOES_NAME);
+		fluidMashedPotatoes = new FluidMashedPotatoes(FluidInfo.MASHED_POTATOES_UNLOCALIZED_NAME);
 		FluidRegistry.registerFluid(fluidMashedPotatoes);
 		blockFluidMashedPotatoes = new BlockFluidMashedPotatoes(fluidMashedPotatoes);
 
@@ -52,12 +52,12 @@ public class FluidsHolidayStuff
 		FluidRegistry.registerFluid(fluidGravy);
 		blockFluidGravy = new BlockFluidGravy(fluidGravy);
 
-		GameRegistry.registerBlock(blockFluidChocolate, FluidInfo.CHOCOLATE_NAME);
-		GameRegistry.registerBlock(blockFluidCandyCane, FluidInfo.CANDY_CANE_NAME);
-		GameRegistry.registerBlock(blockFluidEggNog, FluidInfo.EGG_NOG_NAME);
-		GameRegistry.registerBlock(blockFluidLicorice, FluidInfo.LICORICE_NAME);
-		GameRegistry.registerBlock(blockFluidMashedPotatoes, FluidInfo.MASHED_POTATOES_NAME);
-		GameRegistry.registerBlock(blockFluidGravy, FluidInfo.GRAVY_NAME);
+		GameRegistry.registerBlock(blockFluidChocolate, FluidInfo.CHOCOLATE_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockFluidCandyCane, FluidInfo.CANDY_CANE_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockFluidEggNog, FluidInfo.EGG_NOG_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockFluidLicorice, FluidInfo.LICORICE_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockFluidMashedPotatoes, FluidInfo.MASHED_POTATOES_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockFluidGravy, FluidInfo.GRAVY_UNLOCALIZED_NAME);
 	}
 
 	public static void addNames()

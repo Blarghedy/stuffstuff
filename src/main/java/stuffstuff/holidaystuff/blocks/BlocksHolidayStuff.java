@@ -24,10 +24,10 @@ public class BlocksHolidayStuff
 		blockHalloweenLog = new BlockHalloweenLog();
 		blockHalloweenSapling = new BlockHalloweenSapling();
 
-		GameRegistry.registerBlock(blockHalloweenDirt, BlockInfo.HALLOWEEN_DIRT_NAME);
-		GameRegistry.registerBlock(blockHalloweenGrass, BlockInfo.HALLOWEEN_GRASS_NAME);
-		GameRegistry.registerBlock(blockHalloweenLog, ItemStuffLog.class, BlockInfo.HALLOWEEN_LOG_NAME);
-		GameRegistry.registerBlock(blockHalloweenSapling, BlockInfo.HALLOWEEN_SAPLING_NAME);
+		GameRegistry.registerBlock(blockHalloweenDirt, BlockInfo.HALLOWEEN_DIRT_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockHalloweenGrass, BlockInfo.HALLOWEEN_GRASS_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockHalloweenLog, ItemStuffLog.class, BlockInfo.HALLOWEEN_LOG_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockHalloweenSapling, BlockInfo.HALLOWEEN_SAPLING_UNLOCALIZED_NAME);
 	}
 
 	public static void registerTileEntities()

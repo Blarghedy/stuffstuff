@@ -12,11 +12,11 @@ public class Fluids
 
 	public static void init()
 	{
-		fluidPlaidWater = new FluidPlaidWater(FluidInfo.PLAID_WATER_NAME);
+		fluidPlaidWater = new FluidPlaidWater(FluidInfo.PLAID_WATER_UNLOCALIZED_NAME);
 		FluidRegistry.registerFluid(fluidPlaidWater);
 		blockFluidPlaidWater = new BlockFluidPlaidWater();
 
-		GameRegistry.registerBlock(blockFluidPlaidWater, FluidInfo.PLAID_WATER_NAME);
+		GameRegistry.registerBlock(blockFluidPlaidWater, FluidInfo.PLAID_WATER_UNLOCALIZED_NAME);
 	}
 
 	public static void addNames()

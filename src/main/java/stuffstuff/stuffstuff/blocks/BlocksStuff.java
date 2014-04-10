@@ -152,22 +152,22 @@ public class BlocksStuff
 		blockPlaidPlankDoor = new BlockStuffDoor(blockPlaidPlank, 0, true);
 
 		// register normal blocks
-		GameRegistry.registerBlock(blockPlaidPlank, BlockInfo.PLAID_PLANK_NAME);
-		GameRegistry.registerBlock(blockPlaidLog, ItemStuffLog.class, BlockInfo.PLAID_LOG_NAME);
-		GameRegistry.registerBlock(blockPlaidSapling, BlockInfo.PLAID_SAPLING_NAME);
-		GameRegistry.registerBlock(blockPlaidGrass, BlockInfo.PLAID_GRASS_NAME);
-		GameRegistry.registerBlock(blockPlaidLeaves, ItemPlaidLeaves.class, BlockInfo.PLAID_LEAVES_NAME);
-		GameRegistry.registerBlock(blockPlaidTallGrass, ItemPlaidTallGrass.class, BlockInfo.PLAID_TALL_GRASS_NAME);
+		GameRegistry.registerBlock(blockPlaidPlank, BlockInfo.PLAID_PLANK_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockPlaidLog, ItemStuffLog.class, BlockInfo.PLAID_LOG_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockPlaidSapling, BlockInfo.PLAID_SAPLING_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockPlaidGrass, BlockInfo.PLAID_GRASS_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockPlaidLeaves, ItemPlaidLeaves.class, BlockInfo.PLAID_LEAVES_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockPlaidTallGrass, ItemPlaidTallGrass.class, BlockInfo.PLAID_TALL_GRASS_UNLOCALIZED_NAME);
 
-		GameRegistry.registerBlock(blockPlaidSand, BlockInfo.PLAID_SAND_NAME);
-		GameRegistry.registerBlock(blockPlaidGravel, BlockInfo.PLAID_GRAVEL_NAME);
-		GameRegistry.registerBlock(blockPlaidCobble, BlockInfo.PLAID_COBBLESTONE_NAME);
-		GameRegistry.registerBlock(blockPlaidStone, BlockInfo.PLAID_STONE_NAME);
-		GameRegistry.registerBlock(blockPlaidDirt, BlockInfo.PLAID_DIRT_NAME);
-		GameRegistry.registerBlock(blockPlaidStoneBrick, BlockInfo.PLAID_STONE_BRICK_NAME);
-		GameRegistry.registerBlock(blockPlaidGlass, BlockInfo.PLAID_GLASS_NAME);
+		GameRegistry.registerBlock(blockPlaidSand, BlockInfo.PLAID_SAND_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockPlaidGravel, BlockInfo.PLAID_GRAVEL_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockPlaidCobble, BlockInfo.PLAID_COBBLESTONE_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockPlaidStone, BlockInfo.PLAID_STONE_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockPlaidDirt, BlockInfo.PLAID_DIRT_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockPlaidStoneBrick, BlockInfo.PLAID_STONE_BRICK_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(blockPlaidGlass, BlockInfo.PLAID_GLASS_UNLOCALIZED_NAME);
 
-		GameRegistry.registerBlock(blockStuffTallGrass, BlockInfo.TALL_GRASS_NAME);
+		GameRegistry.registerBlock(blockStuffTallGrass, BlockInfo.TALL_GRASS_UNLOCALIZED_NAME);
 
 		// register slabs
 		ItemStuffSlab.setSlabs(blockStoneSlab, blockStoneDoubleSlab);

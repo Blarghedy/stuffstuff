@@ -10,12 +10,6 @@ public class BlockInfo
 	public static final String TALL_GRASS_NAME = "Tall Grass";
 	public static final String TALL_GRASS_UNLOCALIZED_NAME = "tallGrass";
 
-	public static final String PLACER_UNLOCALIZED_NAME = "blockBlockPlacer";
-	public static final String PLACER_NAME = "Block Placer";
-	public static final String PLACER_FACING = "blockPlacerFacing";
-	public static final String PLACER_SIDES = "blockPlacerSides";
-	public static final String PLACER_TOP = "blockPlacerTop";
-
 	public static final String PLAID_PLANK_KEY = "plankPlaid";
 	public static final String PLAID_PLANK_NAME = "Plaid Plank";
 	public static final String PLAID_PLANK_UNLOCALIZED_NAME = "plankPlaid";

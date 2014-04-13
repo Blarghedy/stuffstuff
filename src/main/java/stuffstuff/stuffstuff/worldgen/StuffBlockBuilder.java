@@ -3,6 +3,7 @@ package stuffstuff.stuffstuff.worldgen;
 import java.util.ArrayList;
 
 import net.minecraft.block.Block;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import com.google.gson.JsonArray;
@@ -26,11 +27,9 @@ public abstract class StuffBlockBuilder
 
 	public void build(World world, int x, int y, int z)
 	{
-		int metaAtLocation;
-		Block blockAtLocation;
 		int xdif, ydif, zdif;
 		int meta;
-		
+
 		for (int i = 0; i < arr.length; i += 4)
 		{
 			xdif = arr[i];
@@ -38,18 +37,15 @@ public abstract class StuffBlockBuilder
 			zdif = arr[i + 2];
 			meta = arr[i + 3];
 
-			metaAtLocation = world.getBlockMetadata(x + xdif, y + ydif, z + zdif);
-			blockAtLocation = world.getBlock(x + xdif, y + ydif, z + zdif);
-			
-			if (canReplace(blockAtLocation, metaAtLocation))
+			if (canReplace(world, x + xdif, y + ydif, z + zdif))
 			{
 				world.setBlock(x + xdif, y + ydif, z + zdif, targetBlock, meta, 2);
 			}
 		}
 	}
-	
-	public abstract boolean canReplace(Block block, int meta);
-	
+
+	public abstract boolean canReplace(IBlockAccess world, int x, int y, int z);
+
 	public void validate()
 	{
 		if (!checkIsValid())
@@ -61,7 +57,7 @@ public abstract class StuffBlockBuilder
 			}
 		}
 	}
-	
+
 	private boolean checkIsValid()
 	{
 		if (arr == null || targetBlock == null || targetBlockName == null)

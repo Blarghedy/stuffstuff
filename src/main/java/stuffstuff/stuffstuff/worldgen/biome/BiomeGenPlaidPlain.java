@@ -13,7 +13,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import stuffstuff.stuffstuff.blocks.BlocksStuff;
 import stuffstuff.stuffstuff.blocks.items.ItemBiomeTeleporter;
 import stuffstuff.stuffstuff.fluid.Fluids;
-import stuffstuff.stuffstuff.worldgen.WorldGenPlaidTrees;
+import stuffstuff.stuffstuff.worldgen.trees.WorldGenPlaidTrees;
 
 public class BiomeGenPlaidPlain extends BiomeGenPlains
 {

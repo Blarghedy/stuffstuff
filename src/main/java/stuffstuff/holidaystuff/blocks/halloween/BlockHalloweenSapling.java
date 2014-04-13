@@ -14,7 +14,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import stuffstuff.holidaystuff.HolidayStuff;
 import stuffstuff.holidaystuff.info.BlockInfo;
-import stuffstuff.holidaystuff.worldgen.biome.halloween.HalloweenTreeGen;
 
 public class BlockHalloweenSapling extends BlockSapling
 {
@@ -47,8 +46,7 @@ public class BlockHalloweenSapling extends BlockSapling
 	public void func_149878_d(World world, int x, int y, int z, Random rand)
 	{
 		// was growTree
-		HalloweenTreeGen treeGen = new HalloweenTreeGen(world, x, y, z, 18, 6);
-		treeGen.genTree();
+		// TODO this
 	}
 
 	public void getSubBlocks(Item item, CreativeTabs tab, List list)

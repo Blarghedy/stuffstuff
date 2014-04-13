@@ -1,4 +1,4 @@
-package stuffstuff.stuffstuff.worldgen;
+package stuffstuff.stuffstuff.worldgen.trees;
 
 import java.util.Random;
 

@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import stuffstuff.stuffstuff.StuffStuff;
 import stuffstuff.stuffstuff.info.BlockInfo;
-import stuffstuff.stuffstuff.worldgen.WorldGenPlaidTrees;
+import stuffstuff.stuffstuff.worldgen.trees.WorldGenPlaidTrees;
 
 public class BlockPlaidSapling extends BlockSapling
 {

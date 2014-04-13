@@ -3,7 +3,7 @@ package stuffstuff.holidaystuff.worldgen.biome.halloween;
 import java.util.Random;
 
 import net.minecraft.world.World;
-import stuffstuff.stuffstuff.worldgen.WorldGenStuffTrees;
+import stuffstuff.stuffstuff.worldgen.trees.WorldGenStuffTrees;
 
 public class WorldGenHalloweenTrees extends WorldGenStuffTrees
 {
@@ -37,8 +37,7 @@ public class WorldGenHalloweenTrees extends WorldGenStuffTrees
 	@Override
 	public boolean growTree(World world, Random rand, int x, int y, int z)
 	{
-		HalloweenTreeGen treeGen = new HalloweenTreeGen(world, x, y, z, 10, 3);
-//		treeGen.genTree();
+		// TODO this
 		return true;
 	}
 

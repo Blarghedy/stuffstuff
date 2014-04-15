@@ -43,13 +43,19 @@ public class StuffStuff
 	@SidedProxy(clientSide = "stuffstuff.stuffstuff.proxy.ClientProxy", serverSide = "stuffstuff.stuffstuff.proxy.CommonProxy")
 	public static CommonProxy proxy;
 
-	public static File stuffstuffConfig;
 	public static FMLEventChannel channel;
+	public static String configDirectory;
+	public static String treeConfigDirectory;
+	public static File stuffstuffConfig;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent e)
 	{
-		stuffstuffConfig = e.getSuggestedConfigurationFile();
+		configDirectory = e.getModConfigurationDirectory() + "/stuffstuff/";
+		stuffstuffConfig = new File(configDirectory, "stuffstuff.cfg");
+
+		treeConfigDirectory = configDirectory + "trees/";
+
 		ConfigHandler.init(stuffstuffConfig);
 		Fluids.init();
 		ItemsStuff.init();

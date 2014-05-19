@@ -16,10 +16,28 @@ import com.google.gson.JsonParser;
 public class StuffTreeGenCollection
 {
 	private ArrayList<StuffTreeGen> treegens;
+	private String defaultString;
 
 	public StuffTreeGenCollection()
 	{
 		treegens = new ArrayList<StuffTreeGen>();
+		defaultString = "";
+	}
+
+	public StuffTreeGenCollection(String defaultString)
+	{
+		setDefaultString(defaultString);
+	}
+
+	public StuffTreeGenCollection setDefaultString(String defaultString)
+	{
+		this.defaultString = defaultString;
+		return this;
+	}
+
+	public String getDefaultString()
+	{
+		return defaultString;
 	}
 
 	/**
@@ -50,7 +68,7 @@ public class StuffTreeGenCollection
 	public StuffTreeGenCollection genFromFile(File file)
 	{
 		Configuration config = new Configuration(file);
-		String treestring = config.get("trees", "trees", "").getString();
+		String treestring = config.get("trees", "trees", defaultString).getString();
 		JsonArray treearray = new JsonParser().parse(treestring).getAsJsonArray();
 
 		addTreeGens(treearray);
